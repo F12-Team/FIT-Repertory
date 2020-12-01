@@ -4,7 +4,7 @@
 
 Ссылка на презентационный сайт проекта: http://pd-2020-2.std-1096.ist.mospolytech.ru/
 
-Ссылка на готовый проект: http://pd-2020-2-brshnkv-flppvch.std-1096.ist.mospolytech.ru/
+Ссылка на готовый проект (в разработке): http://pd-2020-2-brshnkv-flppvch.std-1096.ist.mospolytech.ru/
 
 Задачи по проекту (должны вести к достижению цели и решению проблемы), а также не забыть про требования к итоговой отчетности по ПД (https://pd.fit.mospolytech.ru/docs/report).
 
