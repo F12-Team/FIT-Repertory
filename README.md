@@ -13,7 +13,7 @@
 
 Ссылка на презентационный сайт проекта: http://pd-2020-2.std-1096.ist.mospolytech.ru/
 
-Ссылка на готовый проект (в разработке): http://pd-2020-2-brshnkv-flppvch.std-1096.ist.mospolytech.ru/
+Ссылка на готовое веб-приложение (в разработке): http://pd-2020-2-brshnkv-flppvch.std-1096.ist.mospolytech.ru/
 
 ## Участники
 
