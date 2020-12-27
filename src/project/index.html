@@ -1,0 +1,972 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta name="viewport" content="width=devcice-width,initial-scale=1.0">
+    <meta charset="utf-8">
+    <title>Проектная деятельность</title>
+    <link rel="stylesheet" href="static/css/main/main.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+        integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+
+    <!--Добавление свайпера-->
+    <!-- Swiper -->
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.css">
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
+    <script src="https://unpkg.com/swiper/swiper-bundle.js"></script>
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+    <link rel="stylesheet" href="static/css/main/swiper.css">
+    <link href="https://fonts.googleapis.com/css?family=Exo+2&display=swap" rel="stylesheet">
+
+    <script src="static/js/main/script.js"></script>
+</head>
+
+<body>
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-light fixed-top">
+            <div class="container">
+                <a class="navbar-brand" href="#">Проектная деятельность</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse"
+                    data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                    aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav ml-lg-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="#projects">Проекты<span class="sr-only">(current)</span></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="https://pd.fit.mospolytech.ru/docs">Регламент</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="https://pd.fit.mospolytech.ru/articles">Статьи</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <div class="jumbotron jumbotron-fluid height100p banner" id="projects">
+        <div class="container h100">
+            <div class="contentBox h100">
+                <div>
+                    <h1>Проектная деятельность на факультете информационных технологий</h1>
+                    <a href="#services" class="btn btnD1 scroll">Выберите направление</a>
+                    <p>Получите или усовершенствуйте навыки командной работы - уже в университете!</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--  <section class="sec1 choose" id="sec1">
+        <div class="container h100">
+            <div class="contentBox h100">
+                <div>
+                    <h1>Выберите направление: </h1><br>
+                    <hr>
+                </div>
+            </div>
+        </div>
+        <div class="container-fluid padding">
+            <div class="row text-center padding cardsroute" id="cardsroute">
+                <div class="col-xs-12 col-sm-6 col-md-4">
+                    <a class="route" value="click" onmousedown="viewroute1()" href="#route1">
+                        <img src="static/img/main/KIS.svg" class="f1_el">
+                        <h3>Направление</h3>
+                    </a>
+                </div>
+                <div class="col-xs-12 col-sm-6 col-md-4">
+                    <a class="route" value="click" onmousedown="viewroute2()" href="#route2"><img src="static/img/main/BIGDATA.svg"
+                            class="f2_el">
+                        <h3>Направление</h3>
+                    </a>
+                </div>
+                <div class="col-xs-12 col-sm-6 col-md-4">
+                    <a class="route" value="click" onmousedown="viewroute3()" href="#route3"><img src="static/img/main/IB.svg"
+                            class="f3_el">
+                        <h3>Направление</h3>
+                    </a>
+                </div>
+                <div class="col-xs-12 col-sm-6 col-md-4">
+                    <a class="route" value="click" onmousedown="viewroute4()" href="#route4"><img src="static/img/main/KIBERSYSTEM.svg"
+                            class="f4_el">
+                        <h3>Направление</h3>
+                    </a>
+                </div>
+                <div class="col-xs-12 col-sm-6 col-md-4">
+                    <a class="route" value="click" onmousedown="viewroute5()" href="#route5"><img src="static/img/main/SAPR.svg"
+                            class="f5_el">
+                        <h3>Направление</h3>
+                    </a>
+                </div>
+                </a>
+                <div class="col-xs-12 col-sm-6 col-md-4">
+                    <a class="route" value="click" onmousedown="viewroute6()"href="#route6"><img src="static/img/main/WEBTECH.svg"
+                            class="f6_el">
+
+                        <h3>Направление</h3>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>-->
+
+    <div class="secname">
+        <h4>Направления</h4>
+    </div>
+
+    <section id="services" class="dark">
+        <div class="inner-width">
+            <!--<h1 class="section-title">Выберите направление</h1>-->
+            <div class="services">
+                <a href="#route1" class="route service" value="click">
+                    <img class="logoqwerty" src="/static/img/main/KIS.svg">
+                    <h4>Корпоративные информационные системы</h4>
+                </a>
+
+                <a value="click" href="#route2" class="route service">
+                    <img class="logoqwerty" src="/static/img/main/BIGDATA.svg">
+                    <h4>Большие данные</h4>
+                </a>
+
+                <a class="route service" value="click" href="#route3">
+                    <img class="logoqwerty" src="/static/img/main/IB.svg">
+                    <h4>Информационная безопасность</h4>
+                </a>
+
+                <a class="route service" value="click" href="#route4">
+                    <img class="logoqwerty" src="/static/img/main/KIBERSYSTEM.svg">
+                    <h4>Киберфизические системы</h4>
+                </a>
+
+                <a class="route service" value="click" href="#route5">
+                    <img class="logoqwerty" src="/static/img/main/SAPR.svg">
+                    <h4>САПР</h4>
+                </a>
+
+                <a class="route service" value="click" href="#route6">
+                    <img class="logoqwerty" src="/static/img/main/WEBTECH.svg">
+                    <h4>Веб-технологии</h4>
+                </a>
+
+                <a class="route service" value="click" href="#route7">
+                    <img class="logoqwerty" src="/static/img/main/IB.svg">
+                    <h4>Информационная безопасность</h4>
+                </a>
+            </div>
+        </div>
+    </section>
+    <section class="swiper-section" id="route1" name="route1" style="display: none;">
+        <!-- Swiper -->
+        <div class="secname">
+            <h4>Лучшие проекты</h4>
+        </div>
+        <div class="swiper-container">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide card-container">
+                    <div class="swiper-card">
+                        <div class="swiper-circle">
+                            <h2>01</h2>
+                        </div>
+                        <div class="swiper-content">
+                            <p>Робот-муравей</p>
+                            <a href="/project2.html">Read more</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-slide card-container">
+                    <div class="swiper-card">
+                        <div class="swiper-circle">
+                            <h2>02</h2>
+                        </div>
+                        <div class="swiper-content">
+                            <p>Город для всех</p>
+                            <a href="/project1.html">Read more</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-slide card-container">
+                    <div class="swiper-card">
+                        <div class="swiper-circle">
+                            <h2>03</h2>
+                        </div>
+                        <div class="swiper-content">
+                            <p>Temp text Temp text Temp text Temp text Temp text Temp text Temp text</p>
+                            <a href="#">Read more</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-slide card-container">
+                    <div class="swiper-card">
+                        <div class="swiper-circle">
+                            <h2>04</h2>
+                        </div>
+                        <div class="swiper-content">
+                            <p>Робот-муравей</p>
+                            <a href="/project2.html">Read more</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-slide card-container">
+                    <div class="swiper-card">
+                        <div class="swiper-circle">
+                            <h2>05</h2>
+                        </div>
+                        <div class="swiper-content">
+                            <p>Город для всех</p>
+                            <a href="#">Read more</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-slide card-container">
+                    <div class="swiper-card">
+                        <div class="swiper-circle">
+                            <h2>06</h2>
+                        </div>
+                        <div class="swiper-content">
+                            <p>Temp text Temp text Temp text Temp text Temp text Temp text Temp text</p>
+                            <a href="#">Read more</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-slide card-container">
+                    <div class="swiper-card">
+                        <div class="swiper-circle">
+                            <h2>07</h2>
+                        </div>
+                        <div class="swiper-content">
+                            <p>Робот-муравей</p>
+                            <a href="/project2.html">Read more</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-slide card-container">
+                    <div class="swiper-card">
+                        <div class="swiper-circle">
+                            <h2>08</h2>
+                        </div>
+                        <div class="swiper-content">
+                            <p>Город для всех</p>
+                            <a href="#">Read more</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-slide card-container">
+                    <div class="swiper-card">
+                        <div class="swiper-circle">
+                            <h2>09</h2>
+                        </div>
+                        <div class="swiper-content">
+                            <p>Temp text Temp text Temp text Temp text Temp text Temp text Temp text</p>
+                            <a href="#">Read more</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-slide card-container">
+                    <div class="swiper-card swiper-end">
+                        <div class="swiper-circle">
+                            <h2>Ещё</h2>
+                        </div>
+                        <div class="swiper-content">
+                            <p></p>
+                            <a href="#">Перейти</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Add Pagination -->
+            <div class="swiper-pagination"></div>
+            <div class="swiper-button-prev"></div>
+            <div class="swiper-button-next"></div>
+        </div>
+        <script type="text/javascript">
+            function slowScroll(id) {
+                var offset = 0;
+                $('html, body').animate({
+                    scrollTop: $(id).offset().top - offset
+                }, 1000);
+                return false;
+            }
+        </script>
+    </section>
+
+    <section class="swiper-section" id="route2" style="display: none;">
+        <div class="secname">
+            <h4>Лучшие проекты</h4>
+        </div>
+        <!-- Swiper -->
+        <div class="swiper-container">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide card-container">
+                    <div class="swiper-card">
+                        <div class="swiper-circle">
+                            <h2>01</h2>
+                        </div>
+                        <div class="swiper-content">
+                            <p>Робот-муравей</p>
+                            <a href="/project2.html">Read more</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-slide card-container">
+                    <div class="swiper-card">
+                        <div class="swiper-circle">
+                            <h2>02</h2>
+                        </div>
+                        <div class="swiper-content">
+                            <p>Город для всех</p>
+                            <a href="/project1.html">Read more</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-slide card-container">
+                    <div class="swiper-card">
+                        <div class="swiper-circle">
+                            <h2>03</h2>
+                        </div>
+                        <div class="swiper-content">
+                            <p>Temp text Temp text Temp text Temp text Temp text Temp text Temp text</p>
+                            <a href="#">Read more</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-slide card-container">
+                    <div class="swiper-card">
+                        <div class="swiper-circle">
+                            <h2>04</h2>
+                        </div>
+                        <div class="swiper-content">
+                            <p>Робот-муравей</p>
+                            <a href="/project2.html">Read more</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-slide card-container">
+                    <div class="swiper-card">
+                        <div class="swiper-circle">
+                            <h2>05</h2>
+                        </div>
+                        <div class="swiper-content">
+                            <p>Город для всех</p>
+                            <a href="#">Read more</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-slide card-container">
+                    <div class="swiper-card">
+                        <div class="swiper-circle">
+                            <h2>06</h2>
+                        </div>
+                        <div class="swiper-content">
+                            <p>Temp text Temp text Temp text Temp text Temp text Temp text Temp text</p>
+                            <a href="#">Read more</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-slide card-container">
+                    <div class="swiper-card">
+                        <div class="swiper-circle">
+                            <h2>07</h2>
+                        </div>
+                        <div class="swiper-content">
+                            <p>Робот-муравей</p>
+                            <a href="/project2.html">Read more</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-slide card-container">
+                    <div class="swiper-card">
+                        <div class="swiper-circle">
+                            <h2>08</h2>
+                        </div>
+                        <div class="swiper-content">
+                            <p>Город для всех</p>
+                            <a href="#">Read more</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-slide card-container">
+                    <div class="swiper-card">
+                        <div class="swiper-circle">
+                            <h2>09</h2>
+                        </div>
+                        <div class="swiper-content">
+                            <p>Temp text Temp text Temp text Temp text Temp text Temp text Temp text</p>
+                            <a href="#">Read more</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-slide card-container">
+                    <div class="swiper-card swiper-end">
+                        <div class="swiper-circle">
+                            <h2>Ещё</h2>
+                        </div>
+                        <div class="swiper-content">
+                            <p></p>
+                            <a href="#">Перейти</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Add Pagination -->
+            <div class="swiper-pagination"></div>
+            <div class="swiper-button-prev"></div>
+            <div class="swiper-button-next"></div>
+        </div>
+
+        <!-- Initialize Swiper -->
+        <script src="static/swiper.js"></script>
+    </section>
+
+    <section class="swiper-section" id="route3" style="display: none;">
+        <!-- Swiper -->
+        <div class="secname">
+            <h4>Лучшие проекты</h4>
+        </div>
+        <div class="swiper-container">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide card-container">
+                    <div class="swiper-card">
+                        <div class="swiper-circle">
+                            <h2>01</h2>
+                        </div>
+                        <div class="swiper-content">
+                            <p>Робот-муравей</p>
+                            <a href="/project2.html">Read more</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-slide card-container">
+                    <div class="swiper-card">
+                        <div class="swiper-circle">
+                            <h2>02</h2>
+                        </div>
+                        <div class="swiper-content">
+                            <p>Город для всех</p>
+                            <a href="/project1.html">Read more</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-slide card-container">
+                    <div class="swiper-card">
+                        <div class="swiper-circle">
+                            <h2>03</h2>
+                        </div>
+                        <div class="swiper-content">
+                            <p>Temp text Temp text Temp text Temp text Temp text Temp text Temp text</p>
+                            <a href="#">Read more</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-slide card-container">
+                    <div class="swiper-card">
+                        <div class="swiper-circle">
+                            <h2>04</h2>
+                        </div>
+                        <div class="swiper-content">
+                            <p>Робот-муравей</p>
+                            <a href="/project2.html">Read more</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-slide card-container">
+                    <div class="swiper-card">
+                        <div class="swiper-circle">
+                            <h2>05</h2>
+                        </div>
+                        <div class="swiper-content">
+                            <p>Город для всех</p>
+                            <a href="#">Read more</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-slide card-container">
+                    <div class="swiper-card">
+                        <div class="swiper-circle">
+                            <h2>06</h2>
+                        </div>
+                        <div class="swiper-content">
+                            <p>Temp text Temp text Temp text Temp text Temp text Temp text Temp text</p>
+                            <a href="#">Read more</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-slide card-container">
+                    <div class="swiper-card">
+                        <div class="swiper-circle">
+                            <h2>07</h2>
+                        </div>
+                        <div class="swiper-content">
+                            <p>Робот-муравей</p>
+                            <a href="/project2.html">Read more</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-slide card-container">
+                    <div class="swiper-card">
+                        <div class="swiper-circle">
+                            <h2>08</h2>
+                        </div>
+                        <div class="swiper-content">
+                            <p>Город для всех</p>
+                            <a href="#">Read more</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-slide card-container">
+                    <div class="swiper-card">
+                        <div class="swiper-circle">
+                            <h2>09</h2>
+                        </div>
+                        <div class="swiper-content">
+                            <p>Temp text Temp text Temp text Temp text Temp text Temp text Temp text</p>
+                            <a href="#">Read more</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-slide card-container">
+                    <div class="swiper-card swiper-end">
+                        <div class="swiper-circle">
+                            <h2>Ещё</h2>
+                        </div>
+                        <div class="swiper-content">
+                            <p></p>
+                            <a href="#">Перейти</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Add Pagination -->
+            <div class="swiper-pagination"></div>
+            <div class="swiper-button-prev"></div>
+            <div class="swiper-button-next"></div>
+        </div>
+
+        <!-- Initialize Swiper -->
+        <script src="static/swiper.js"></script>
+    </section>
+
+    <section class="swiper-section" id="route4" style="display: none;">
+        <!-- Swiper -->
+        <div class="secname">
+            <h4>Лучшие проекты</h4>
+        </div>
+        <div class="swiper-container">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide card-container">
+                    <div class="swiper-card">
+                        <div class="swiper-circle">
+                            <h2>01</h2>
+                        </div>
+                        <div class="swiper-content">
+                            <p>Робот-муравей</p>
+                            <a href="/project2.html">Read more</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-slide card-container">
+                    <div class="swiper-card">
+                        <div class="swiper-circle">
+                            <h2>02</h2>
+                        </div>
+                        <div class="swiper-content">
+                            <p>Город для всех</p>
+                            <a href="/project1.html">Read more</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-slide card-container">
+                    <div class="swiper-card">
+                        <div class="swiper-circle">
+                            <h2>03</h2>
+                        </div>
+                        <div class="swiper-content">
+                            <p>Temp text Temp text Temp text Temp text Temp text Temp text Temp text</p>
+                            <a href="#">Read more</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-slide card-container">
+                    <div class="swiper-card">
+                        <div class="swiper-circle">
+                            <h2>04</h2>
+                        </div>
+                        <div class="swiper-content">
+                            <p>Робот-муравей</p>
+                            <a href="/project2.html">Read more</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-slide card-container">
+                    <div class="swiper-card">
+                        <div class="swiper-circle">
+                            <h2>05</h2>
+                        </div>
+                        <div class="swiper-content">
+                            <p>Город для всех</p>
+                            <a href="#">Read more</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-slide card-container">
+                    <div class="swiper-card">
+                        <div class="swiper-circle">
+                            <h2>06</h2>
+                        </div>
+                        <div class="swiper-content">
+                            <p>Temp text Temp text Temp text Temp text Temp text Temp text Temp text</p>
+                            <a href="#">Read more</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-slide card-container">
+                    <div class="swiper-card">
+                        <div class="swiper-circle">
+                            <h2>07</h2>
+                        </div>
+                        <div class="swiper-content">
+                            <p>Робот-муравей</p>
+                            <a href="/project2.html">Read more</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-slide card-container">
+                    <div class="swiper-card">
+                        <div class="swiper-circle">
+                            <h2>08</h2>
+                        </div>
+                        <div class="swiper-content">
+                            <p>Город для всех</p>
+                            <a href="#">Read more</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-slide card-container">
+                    <div class="swiper-card">
+                        <div class="swiper-circle">
+                            <h2>09</h2>
+                        </div>
+                        <div class="swiper-content">
+                            <p>Temp text Temp text Temp text Temp text Temp text Temp text Temp text</p>
+                            <a href="#">Read more</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-slide card-container">
+                    <div class="swiper-card swiper-end">
+                        <div class="swiper-circle">
+                            <h2>Ещё</h2>
+                        </div>
+                        <div class="swiper-content">
+                            <p></p>
+                            <a href="#">Перейти</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Add Pagination -->
+            <div class="swiper-pagination"></div>
+            <div class="swiper-button-prev"></div>
+            <div class="swiper-button-next"></div>
+        </div>
+
+        <!-- Initialize Swiper -->
+        <script src="static/swiper.js"></script>
+    </section>
+
+    <section class="swiper-section" id="route5" style="display: none;">
+        <!-- Swiper -->
+        <div class="secname">
+            <h4>Лучшие проекты</h4>
+        </div>
+        <div class="swiper-container">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide card-container">
+                    <div class="swiper-card">
+                        <div class="swiper-circle">
+                            <h2>01</h2>
+                        </div>
+                        <div class="swiper-content">
+                            <p>Робот-муравей</p>
+                            <a href="/project2.html">Read more</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-slide card-container">
+                    <div class="swiper-card">
+                        <div class="swiper-circle">
+                            <h2>02</h2>
+                        </div>
+                        <div class="swiper-content">
+                            <p>Город для всех</p>
+                            <a href="/project1.html">Read more</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-slide card-container">
+                    <div class="swiper-card">
+                        <div class="swiper-circle">
+                            <h2>03</h2>
+                        </div>
+                        <div class="swiper-content">
+                            <p>Temp text Temp text Temp text Temp text Temp text Temp text Temp text</p>
+                            <a href="#">Read more</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-slide card-container">
+                    <div class="swiper-card">
+                        <div class="swiper-circle">
+                            <h2>04</h2>
+                        </div>
+                        <div class="swiper-content">
+                            <p>Робот-муравей</p>
+                            <a href="/project2.html">Read more</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-slide card-container">
+                    <div class="swiper-card">
+                        <div class="swiper-circle">
+                            <h2>05</h2>
+                        </div>
+                        <div class="swiper-content">
+                            <p>Город для всех</p>
+                            <a href="#">Read more</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-slide card-container">
+                    <div class="swiper-card">
+                        <div class="swiper-circle">
+                            <h2>06</h2>
+                        </div>
+                        <div class="swiper-content">
+                            <p>Temp text Temp text Temp text Temp text Temp text Temp text Temp text</p>
+                            <a href="#">Read more</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-slide card-container">
+                    <div class="swiper-card">
+                        <div class="swiper-circle">
+                            <h2>07</h2>
+                        </div>
+                        <div class="swiper-content">
+                            <p>Робот-муравей</p>
+                            <a href="/project2.html">Read more</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-slide card-container">
+                    <div class="swiper-card">
+                        <div class="swiper-circle">
+                            <h2>08</h2>
+                        </div>
+                        <div class="swiper-content">
+                            <p>Город для всех</p>
+                            <a href="#">Read more</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-slide card-container">
+                    <div class="swiper-card">
+                        <div class="swiper-circle">
+                            <h2>09</h2>
+                        </div>
+                        <div class="swiper-content">
+                            <p>Temp text Temp text Temp text Temp text Temp text Temp text Temp text</p>
+                            <a href="#">Read more</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-slide card-container">
+                    <div class="swiper-card swiper-end">
+                        <div class="swiper-circle">
+                            <h2>Ещё</h2>
+                        </div>
+                        <div class="swiper-content">
+                            <p></p>
+                            <a href="#">Перейти</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Add Pagination -->
+            <div class="swiper-pagination"></div>
+            <div class="swiper-button-prev"></div>
+            <div class="swiper-button-next"></div>
+        </div>
+
+        <!-- Initialize Swiper -->
+        <script src="static/js/main/swiper.js"></script>
+    </section>
+
+    <section class="swiper-section" id="route6" style="display: none;">
+        <!-- Swiper -->
+        <div class="secname">
+            <h4>Лучшие проекты</h4>
+        </div>
+        <div class="swiper-container">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide card-container">
+                    <div class="swiper-card">
+                        <div class="swiper-circle">
+                            <h2>01</h2>
+                        </div>
+                        <div class="swiper-content">
+                            <p>Робот-муравей</p>
+                            <a href="/project2.html">Read more</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-slide card-container">
+                    <div class="swiper-card">
+                        <div class="swiper-circle">
+                            <h2>02</h2>
+                        </div>
+                        <div class="swiper-content">
+                            <p>Город для всех</p>
+                            <a href="/project1.html">Read more</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-slide card-container">
+                    <div class="swiper-card">
+                        <div class="swiper-circle">
+                            <h2>03</h2>
+                        </div>
+                        <div class="swiper-content">
+                            <p>Temp text Temp text Temp text Temp text Temp text Temp text Temp text</p>
+                            <a href="#">Read more</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-slide card-container">
+                    <div class="swiper-card">
+                        <div class="swiper-circle">
+                            <h2>04</h2>
+                        </div>
+                        <div class="swiper-content">
+                            <p>Робот-муравей</p>
+                            <a href="/project2.html">Read more</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-slide card-container">
+                    <div class="swiper-card">
+                        <div class="swiper-circle">
+                            <h2>05</h2>
+                        </div>
+                        <div class="swiper-content">
+                            <p>Город для всех</p>
+                            <a href="#">Read more</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-slide card-container">
+                    <div class="swiper-card">
+                        <div class="swiper-circle">
+                            <h2>06</h2>
+                        </div>
+                        <div class="swiper-content">
+                            <p>Temp text Temp text Temp text Temp text Temp text Temp text Temp text</p>
+                            <a href="#">Read more</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-slide card-container">
+                    <div class="swiper-card">
+                        <div class="swiper-circle">
+                            <h2>07</h2>
+                        </div>
+                        <div class="swiper-content">
+                            <p>Робот-муравей</p>
+                            <a href="/project2.html">Read more</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-slide card-container">
+                    <div class="swiper-card">
+                        <div class="swiper-circle">
+                            <h2>08</h2>
+                        </div>
+                        <div class="swiper-content">
+                            <p>Город для всех</p>
+                            <a href="#">Read more</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-slide card-container">
+                    <div class="swiper-card">
+                        <div class="swiper-circle">
+                            <h2>09</h2>
+                        </div>
+                        <div class="swiper-content">
+                            <p>Temp text Temp text Temp text Temp text Temp text Temp text Temp text</p>
+                            <a href="#">Read more</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-slide card-container">
+                    <div class="swiper-card swiper-end">
+                        <div class="swiper-circle">
+                            <h2>Ещё</h2>
+                        </div>
+                        <div class="swiper-content">
+                            <p></p>
+                            <a href="#">Перейти</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Add Pagination -->
+            <div class="swiper-pagination"></div>
+            <div class="swiper-button-prev"></div>
+            <div class="swiper-button-next"></div>
+        </div>
+
+        <!-- Initialize Swiper -->
+        <script src="static/js/main/swiper.js"></script>
+        <script>
+            var services = document.getElementById("services").querySelectorAll(".service");
+            services.forEach(el => {
+                el.addEventListener("click", function (e) {
+                    let ind = [...services].indexOf(this);
+                    document.querySelectorAll(".swiper-section").forEach(el => { el.style.display = "none" });
+                    [...document.querySelectorAll(".swiper-section")][ind].style.display = "block";
+                });
+            });
+        </script>
+    </section>
+    <footer>
+        <div class="inner-width">
+            <div class="copyright">
+                &copy; 2020, Московский Политехнический Университет | <a href="https://fit.mospolytech.ru">ФИТ</a>
+            </div>
+            <div class="sm">
+                <a href="#" class="fab fa-facebook-f"></a>
+                <a href="#" class="fab fa-vk"></a>
+                <a href="#" class="fab fa-instagram"></a>
+                <a href="#" class="fab fa-youtube"></a>
+            </div>
+        </div>
+    </footer>
+</body>
+
+
+</html>

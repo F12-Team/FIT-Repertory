@@ -1,0 +1,59 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="jumbotron jumbotron-fluid text-center" id="projects">
+    <div class="container h100">
+        <div class="contentBox h100">
+            <div>
+                <h1>Проектная деятельность на факультете информационных технологий</h1>
+                <a href="#services" class="btn btn-primary scroll">Выберите направление</a>
+                <p>Получите или усовершенствуйте навыки командной работы - уже в университете!</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div>
+    <h2 class="text-center">Направления</h2>
+</div>
+
+<div class="row justify-content-center w-100">
+    {% for direction in directions %}
+    <a href="{{ url_for('direction', direction_id=direction.id) }}" class="card col-md-3 m-2 p-2 text-center">
+        <img class="card-img-top" src="/static/img/{{ direction.img }}.svg" alt="Card image cap">
+        <div class="card-body">
+            <h5 class="card-title">{{ direction.name }}</h5>
+        </div>
+    </a>
+    {% endfor %}
+</div>
+
+<div class="row justify-content-center w-100" style="{% if request.endpoint == 'index' %}display: none;{% endif %}">
+    <div class="row w-100 justify-content-center">
+        <h2 class="text-center">Лучшие проекты</h2>
+    </div>
+    <div class="row w-100 justify-content-center">
+        {% for project in projects %}
+        <div class="col-md-3 m-2 p-2 text-center">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">{{ loop.index }}</h5>
+                    <p class="card-text">{{ project.name }}</p>
+                    <a href="{{ url_for('project', project_id=project.id) }}" class="btn btn-primary">Страница проекта</a>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+        <div class="col-md-3 m-2 p-2 text-center">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Ещё</h5>
+                    <p class="card-text"></p>
+                    <a href="{{ url_for('all_projects', direction_id=direction_id) }}" class="btn btn-primary">Перейти</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

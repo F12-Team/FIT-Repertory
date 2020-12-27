@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div>
+    {{ projects.name_of_project }}
+</div>
+<div>
+    {{ projects.description_of_project }}
+</div>
+<div>
+    {{ projects.poster }}
+</div>
+<div>
+    <iframe src="{{ projects.video }}" width="480" height="320"></iframe>
+</div>
+<div>
+    {{ projects.likes }}
+</div>
+<div>
+    {{ projects.git }}
+</div>
+<div>
+    {{ projects.site }}
+</div>
+<div>
+    {{ projects.year }}
+</div>
+<div>
+    {{ projects.autumn_or_spring }}
+</div>
+<div>
+    {{ projects.last_name }} {{ projects.first_name }} {{ projects.middle_name or '' }}
+</div>
+<div>
+    {{ projects.description_of_curator }}
+</div>
+<div>
+    {{ projects.name_of_direction }}
+</div>
+<div>
+    {{ projects.description_of_direction }}
+</div>
+<div>
+    {% for people in teams %}
+        <div>
+            {{ people.last_name }} {{ people.first_name }} {{ people.middle_name or '' }}
+        </div>
+        <div>
+            {{ people.name_of_group }}
+        </div>
+        <div>
+            {{ people.role }}
+        </div>
+    {% endfor %}
+</div>
+
+{% endblock %}
