@@ -6,7 +6,7 @@ import io
 import math
 import datetime
 
-PER_PAGE = 1
+PER_PAGE = 5
 
 app = Flask(__name__)
 application = app
@@ -90,7 +90,7 @@ def projects():
         'per_page': PER_PAGE
     }
     query = '''
-        SELECT id, name FROM Projects ORDER BY likes DESC;
+        SELECT id, name FROM Projects ORDER BY likes DESC
         LIMIT %s OFFSET %s;
     '''
     cursor = mysql.connection.cursor(named_tuple=True)

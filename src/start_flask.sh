@@ -1,6 +1,6 @@
 #!/bin/bash
 
-. ve*/bin/activate
+. project/ve/bin/activate
 
 cd project*
 
