@@ -23,7 +23,7 @@ def index():
         FROM Directions 
         ORDER BY order_of_direction;
     '''
-    
+
     cursor.execute(query)
     directions = cursor.fetchall()
 
@@ -37,13 +37,13 @@ def index():
 @app.route('/direction/<int:direction_id>')
 def direction(direction_id):
     cursor = mysql.connection.cursor(named_tuple=True)
-    
+
     query = '''
         SELECT * 
         FROM Directions 
         ORDER BY order_of_direction;
     '''
-    
+
     cursor.execute(query)
     directions = cursor.fetchall()
 
@@ -118,6 +118,7 @@ def all_projects(direction_id):
 
     return render_template('projects.html', projects=projects)
 
+
 @app.route('/projects')
 def projects():
     cursor = mysql.connection.cursor(named_tuple=True)
@@ -128,18 +129,18 @@ def projects():
         SELECT count(*) AS count 
         FROM Projects;
     '''
-    
+
     cursor.execute(query)
     total_count = cursor.fetchone().count
-    
+
     total_pages = math.ceil(total_count/PER_PAGE)
-    
+
     pagination_info = {
         'current_page': page,
         'total_pages': total_pages,
         'per_page': PER_PAGE
     }
-    
+
     query = '''
         SELECT id, name 
         FROM Projects 
