@@ -31,14 +31,15 @@
     </div>
 </div>
 
-<div class="row justify-content-center w-100" style="{% if request.endpoint == 'index' %}display: none;{% endif %}">
-    <div class="row w-100 justify-content-center secname2">
+<div` class="swiper-section" style="{% if request.endpoint == 'index' %}display: none;{% endif %}">
+    <div class="secname">
         <h4>Лучшие проекты</h4>
     </div>
-    <div class="card-deck swiper-container w-100 pl-5">
-        <div class="swiper-wrapper w-100 pl-5">
+    <div class="swiper-container">
+        <div class="swiper-wrapper">
             {% for project in projects %}
-            <div class="card swiper-slide" style="min-width: 18rem; max-width: 18rem;">
+            <div class="card-container swiper-slide">
+                <div class="swiper-card">
                 <img class="card-img-top" src="..." alt="Card image cap">
                 <div class="card-body">
                     <h5 class="card-title">{{ loop.index }}</h5>
@@ -48,6 +49,7 @@
                     <a href="{{ url_for('project', project_id=project.id) }}" class="btn btn-primary">Страница
                         проекта</a>
                 </div>
+            </div>
             </div>
             {% endfor %}
             <div class="card swiper-slide" style="min-width: 18rem; max-width: 18rem;">

@@ -181,6 +181,7 @@ section.dark .section-title::after{
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
+    padding: auto;
   }
   
 .service{

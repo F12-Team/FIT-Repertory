@@ -2,21 +2,22 @@
 {% from 'pagination.html' import render_pagination %}
 
 {% block content %}
-
-<div class="row w-100 justify-content-center">
+<div class="projects_header">
+    <h1 class="d-flex align-items-center justify-content-center " style=" margin: 30px; margin-top: 120px; color: #f2f2f2; font-size: 40px;"> Проекты</h1>
+</div>
+<div class="row justify-content-center mt-5">
 {% for project in projects %}
-<div class="col-md-3 m-2 p-2 text-center">
-    <div class="card">
-        <div class="card-body">
-            <h5 class="card-title">{{ loop.index }}</h5>
-            <p class="card-text">{{ project.name }}</p>
-            <a href="{{ url_for('project', project_id=project.id) }}" class="btn btn-primary">Страница проекта</a>
+<div class="col-md-3 m-2 p-2 text-center d-flex align-items-stretch card-columns services">
+    <div class="card service1">
+        <div class="card-body d-flex flex-column">
+            <h5>{{ loop.index }}</h5>
+            <p class="cardtext">{{ project.name }}</p>
+            <a href="{{ url_for('project', project_id=project.id) }}" class="btnprojects">Страница проекта</a>
         </div>
     </div>
 </div>
 {% endfor %}
 </div>
-
 {{ render_pagination(request.endpoint, pagination_info) }}
 
 {% endblock %}
