@@ -527,10 +527,16 @@ footer {
 
 /* ------------ projects ------------- */
 
+.servicess{
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
 .services1 {
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
+    align-items: flex-end;
 }
 
 .service1{
@@ -545,7 +551,7 @@ footer {
     transition: .3s linear;
     background-color: white;
     padding-bottom: 0px;
-    width: calc(33% - 20px);
+    align-content:center;
 }   
 
 .service1 h5{
@@ -572,8 +578,7 @@ footer {
     text-decoration: none;
     margin-top: 20px;
     justify-content: center;
-    align-items: center;
-    
+    align-items:center;
 }
 
 .btnprojects:hover{
