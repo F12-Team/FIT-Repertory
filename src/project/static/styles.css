@@ -137,25 +137,6 @@ a:hover {
     color: #f2f2f2;
     /*text-shadow: 1px 1px 2px #000;*/
 }
-
-@media (max-width: 992px) {
-    .banner {
-        min-height: 100vh;
-        padding: 100px 0;
-    }
-
-    .contentBox h1 {
-        font-size: 2rem;
-    }
-
-    .navbar-light .navbar-brand,
-    .navbar-light .navbar-brand:hover,
-    .navbar-light .navbar-brand:focus,
-    .navbar-light .navbar-brand:visited {
-        font-size: 1.4rem;
-    }
-}
-
 /*Выбор направления*/
 
 .inner-width {
@@ -172,14 +153,6 @@ section .dark {
 .dark {
     padding-top: 25px;
     padding-bottom: 25px;
-}
-
-.section-title {
-    text-align: center;
-    margin-bottom: 80px;
-    position: relative;
-    font-size: 26px;
-    padding-bottom: 20px;
 }
 
 section.dark .section-title {
@@ -207,12 +180,14 @@ section.dark .section-title::after {
     border-radius: 20px;
     box-shadow: 0 15px 25px rgba(0, 0, 0, 0.2);
     margin: 20px 0;
-    padding: 40px 20px;
+    /*padding: 40px 20px; */
     color: #fff;
     cursor: pointer;
     transition: .3s linear;
     background-color: white;
     font-weight: bold;
+    padding-top: 20px;
+    margin:10px;
 }
 
 .logoqwerty {
@@ -259,9 +234,10 @@ section.dark .section-title::after {
     text-align: center;
     justify-content: center;
     margin-top: 100px;
-    margin-bottom: 25px;
+    margin-bottom: 60px;
     font-size: 40px;
     color: white;
+    font-weight: bold;
 }
 
 .secname2 h4 {
@@ -307,61 +283,6 @@ footer {
 
 .sm a:hover {
     color: #22bbbb;
-}
-
-@media screen and (max-width: 980px) {
-
-    .inner-width {
-        max-width: 800px;
-    }
-
-    .service {
-        width: calc(50% - 20px);
-    }
-    .service1 {
-        width: calc(50% - 20px);
-    }
-}
-
-@media screen and (max-width: 600px) {
-    .inner-width {
-        padding: 0 20px;
-    }
-
-    .service {
-        width: 100%;
-    }
-    .service1 {
-        width: 100%;
-    }
-
-    .navbar-light .navbar-brand,
-    .navbar-light .navbar-brand:hover,
-    .navbar-light .navbar-brand:focus,
-    .navbar-light .navbar-brand:visited {
-        font-size: 1.2rem;
-    }
-
-    .contentBox h1 {
-        font-size: 2rem;
-        text-transform: none;
-    }
-
-}
-
-@media screen and (max-width: 330px) {
-
-    .navbar-light .navbar-brand,
-    .navbar-light .navbar-brand:hover,
-    .navbar-light .navbar-brand:focus,
-    .navbar-light .navbar-brand:visited {
-        font-size: 1rem;
-    }
-
-    .contentBox h1 {
-        padding-top: 30px;
-    }
-
 }
 
 .vsc-initalized {
@@ -600,3 +521,487 @@ footer {
 
 /* ------ pagination -------- */
 
+
+/* ------ project page -------- */
+
+.inner-width{
+    max-width: 1300px;
+    margin: auto;
+    padding: 0 40px;
+}
+
+section{
+    padding: 100px 0;
+    background-color: #403F4C;
+}
+
+.section-title{
+    text-align: center;
+    margin-bottom: 80px;
+    position: relative;
+    padding-bottom: 20px;
+    color: #f2f2f2;
+}
+
+.name_project{
+    color: #f2f2f2;
+    font-weight: bold;
+}
+
+.about-content{
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.about-pic{
+    width: 500px;
+    margin-left: 100px;
+}
+
+.about-text{
+    flex: 1;
+    color: #f2f2f2;
+}
+
+.about-text h2{
+    font-weight: bold;
+    color: #fffdd0;
+}
+
+.about-text h3{
+    margin: 10px 0;
+    color: #fdf5e6;
+    font-size: 16px;
+    font-style: italic;
+}
+
+.about-text h3 span:nth-child(1):after,
+.about-text h3 span:nth-child(2):after{
+    content: "";
+    width: 6px;
+    height: 6px;
+    background-color: #444;
+    display: inline-block;
+    border-radius: 50%;
+    margin: 0 14px;
+}
+
+.sec1{
+    min-height: 10vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 0;
+    margin: 50px;
+}
+
+.sec1 .container{
+    max-width: 1200px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    margin-top: 0;
+}
+
+.sec1 .title span{
+    background-color: indianred;
+    text-align: left;
+}
+
+.image, .info-menu{
+    margin:0 auto;
+    width: calc(45% - 40px);
+    
+}
+
+.image2{
+    margin:0 auto;
+    width:100%;
+
+}
+
+.likebtn{
+    margin-bottom: 0;
+    height:50px;
+}
+
+.likebtnimg{
+    height: 50px;
+    margin-bottom: 0;
+    margin-left: 10px;
+}
+
+.icon{
+    position: relative;
+    width: 14px;
+}
+
+.icon::before, .icon::after{
+    content: "";
+    position: absolute;
+    width: 14px;
+    height:3px;
+    background-color: #403F4C;
+    top: -1.5px;
+}
+
+.icon::after{
+    transform: rotate(90deg);
+    transition: .5s linear;
+
+}
+
+.title{
+    background-color: indianred;
+    display: flex;
+    color: #f2f2f2;
+    padding: 20px;
+    cursor: pointer;
+    text-transform: uppercase;
+    font-size: 14px;
+    font-weight: 600;
+    align-items:center;
+    justify-content: space-between;
+    margin-bottom: 10px;
+    border-radius: 20px;
+}
+
+.text{
+    background-color: rgb(122, 122, 122);
+    color:#f2f2f2;
+    line-height: 26px;
+    margin-bottom: 10px;
+    margin-top: 10px;
+    height: auto;
+    text-align: left;
+    padding: 10px;
+    border-radius: 20px;
+}
+
+.item #hidden_content3 ul{
+    padding-left: 25px;
+}
+
+.item #hidden_content4 ol{
+    padding-left: 25px;
+}
+
+.show-block{
+    display: flex;
+}
+.item:target .icon::after{
+    transform: rotate(0);
+}
+
+.item0{
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.likesblock{
+    height: 60px;
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    color:#403F4C;
+    font-weight:bold;
+    margin: 0;
+    justify-content: flex-end;
+}
+
+.likesblock p{
+    border: 2px solid;
+    border-radius: 50px;
+    padding: 7px;
+}
+
+.likes{
+    margin-top: 20px;
+}
+
+.linksblock{
+    display: flex;
+    align-items: center;
+    
+}
+.right{
+    margin-left: auto;
+}
+.links{
+    
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.iconbtn{
+    width: 45px;
+    height: 45px;
+    text-decoration: none;
+    margin: 20px;
+    position: relative;
+    font-size: 20px;
+    border-radius: 50%;
+}
+
+.iconbtn::before{
+    position: absolute;
+    z-index: 1;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%);
+}
+
+.iconbtn::after{
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box;
+    border-radius: 50%;
+    z-index: 0;
+}
+
+.links .iconbtn{
+    border: 4px solid indianred;
+    color: #403F4C;
+}
+.links .iconbtn::after{
+    background: indianred;
+    transition: 0.4s;
+}
+.links .iconbtn:hover::after{
+    transform: scale(1.3);
+    opacity: 0;
+}
+
+.links .iconbtn:hover{
+    color: #403F4C;
+}
+
+.sec1 i{
+    background-color: rgb(122, 122, 122)
+}
+
+.sec1 .points_sum{
+    font-weight: bold;
+}
+
+.sec1 em{
+    background-color: rgb(122, 122, 122);
+    color: #000;
+    font-weight:bold; 
+}
+
+.container1{
+    width:80%;
+    margin:auto;
+    overflow:hidden;
+}
+
+.testimonials{
+    color: #f2f2f2;
+    text-align: center;
+    color: #403F4C;
+  }
+  .inner{
+    max-width: 1200px;
+    margin: auto;
+    overflow: hidden;
+    padding: 0 20px;
+  }
+  .row{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .col{
+    flex: 33.33%;
+    max-width: 33.33%;
+    box-sizing: border-box;
+    padding: 15px;
+  }
+  .testimonial{
+    background: #fff;
+    padding: 30px;
+  }
+  .testimonial img{
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+  }
+  .name{
+    font-size: 20px;
+    text-transform: uppercase;
+    margin: 20px 0;
+  }
+
+@media (max-width: 992px) {
+    .banner {
+        min-height: 100vh;
+        padding: 100px 0;
+    }
+
+    .contentBox h1 {
+        font-size: 2rem;
+    }
+
+    .navbar-light .navbar-brand,
+    .navbar-light .navbar-brand:hover,
+    .navbar-light .navbar-brand:focus,
+    .navbar-light .navbar-brand:visited {
+        font-size: 1.4rem;
+    }
+}
+
+@media screen and (max-width: 980px) {
+
+    .inner-width {
+        max-width: 800px;
+    }
+
+    .service {
+        width: calc(50% - 20px);
+    }
+    .service1 {
+        width: calc(50% - 20px);
+    }
+    
+    .about-pic{
+        margin-left: 0;
+        margin-top: 20px;
+    }
+
+    .about-text{
+        align-items: center;
+        justify-content: center;
+    }
+
+    .col{
+        flex: 100%;
+        max-width: 80%;
+      }
+}
+
+@media screen and (max-width:790px) {
+    .sec1 .container{
+        max-width: 600px;
+        display: block;
+        text-align:center;
+    }
+
+    .image, .info-menu{
+        width: 100%;
+        margin: 30px 0;
+    }
+
+    .likesblock{
+        height: 60px;
+        display: flex;
+        align-items: center;
+    }
+    
+    .links{
+        margin-left: 20px;
+        height: 60px;
+        display: flex;
+        align-items: center;
+        justify-content:space-around;
+    }
+
+    .item0{
+        align-items: center;
+        justify-content: space-around;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .inner-width {
+        padding: 0 20px;
+    }
+
+    .service {
+        width: 100%;
+    }
+    .service1 {
+        width: 100%;
+    }
+
+    .navbar-light .navbar-brand,
+    .navbar-light .navbar-brand:hover,
+    .navbar-light .navbar-brand:focus,
+    .navbar-light .navbar-brand:visited {
+        font-size: 1.2rem;
+    }
+
+    .contentBox h1 {
+        font-size: 2rem;
+        text-transform: none;
+    }
+    .sec1{
+        margin: 0;
+    }
+
+    .col{
+        flex: 100%;
+        max-width: 100%;
+      }
+}
+
+@media screen and (max-width:380px){
+    .sec1 .container{
+        max-width: 600px;
+        display: block;
+        text-align:center;
+    }
+
+    .image, .info-menu{
+        width: 100%;
+        margin: 30px 0;
+    }
+    
+    .likesblock{
+        height: 60px;
+        display: flex;
+        align-items: center;
+        padding: 10px;
+    }
+    
+    .links{
+        margin-left: 20px;
+        height: 60px;
+        display: flex;
+        align-items: center;
+    }
+
+    .item0{
+        align-items: center;
+    }
+
+    .likebtn{
+        margin-left: -10px;
+    }
+}
+
+@media screen and (max-width: 330px) {
+
+    .navbar-light .navbar-brand,
+    .navbar-light .navbar-brand:hover,
+    .navbar-light .navbar-brand:focus,
+    .navbar-light .navbar-brand:visited {
+        font-size: 1rem;
+    }
+
+    .contentBox h1 {
+        padding-top: 30px;
+    }
+
+    .iconbtn{
+        margin:10px;
+    }
+}

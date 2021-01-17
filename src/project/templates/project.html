@@ -1,47 +1,119 @@
 {% extends 'base.html' %}
 {% block content %}
 <div class="" style="margin-top: 120px; ">
-<div>
-    {{ projects.name_of_project }}
-</div>
-<div>
-    {{ projects.description_of_project }}
-</div>
-<div>
-    {{ projects.poster }}
-</div>
-<div>
-    <iframe src="{{ projects.video }}" width="480" height="320"></iframe>
-</div>
-<div>
-    {{ projects.likes }}
-</div>
-<div>
-    {{ projects.git }}
-</div>
-<div>
-    {{ projects.site }}
-</div>
-<div>
-    {{ projects.year }}
-</div>
-<div>
-    {{ projects.autumn_or_spring }}
-</div>
-<div>
-    {{ projects.last_name }} {{ projects.first_name }} {{ projects.middle_name or '' }}
-</div>
-<div>
-    {{ projects.description_of_curator }}
-</div>
-<div>
-    {{ projects.name_of_direction }}
-</div>
-<div>
-    {{ projects.description_of_direction }}
-</div>
-<div>
-    {% for people in teams %}
+    <section id="about">
+        <div class="inner-width">
+            <h1 class="section-title name_project">Страничка проекта</h1>
+            <div class="about-content">
+                <div class="about-text">
+                    <h2>{{ projects.name_of_project }}</h2>
+                    <h3>{{ projects.year }}. {{ projects.autumn_or_spring }}</h3>
+                </div>
+                <iframe src="" width="480" height="320" class="about-pic"></iframe>
+            </div>
+        </div>
+    </section>
+    <section class="sec1" style="background-color: #fdf5e6;">
+        <div class="projdesc"></div>
+        <div class="container">
+            <div class="image">
+                <iframe src="{{ projects.video }}" height="250" class="image2"></iframe>
+                <div class="item item0" id="item0">
+                    <div class="links">
+                        <div class="likesblock">
+                            <a class="likebtn iconbtn far fa-heart"></a>
+                            <p class="likes"> 222</p>
+                        </div>
+                        <div class="linksblock">
+                            <a href="/index.html" class=" right iconbtn fas fa-laptop" title="Сайт проекта"></a>
+                            <a href="#" class="iconbtn fab fa-github" title="Git-репозиторий проекта"></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="info-menu">
+                <h1 class="" style="margin-bottom: 30px;">Описание проекта</h1>
+                <p>{{ projects.description_of_project }}</p>
+            </div>
+        </div>
+    </section>
+    <section class="testimonials">
+        <div class="inner">
+            <h1 class="name_project" style="margin-bottom: 30px;">Стэк технологий</h1>
+            <div class="row">
+                <div class="col">
+                    <div class="testimonial">
+                        <img src="" alt="">
+                        <div class="name">Технология</div>
+                        <p>
+                            Описание использования технологии в проекте
+                        </p>
+                    </div>
+                </div>
+
+                <div class="col">
+                    <div class="testimonial">
+                        <img src="" alt="">
+                        <div class="name">Технология</div>
+                        <p>
+                            Описание использования технологии в проекте
+                        </p>
+                    </div>
+                </div>
+
+                <div class="col">
+                    <div class="testimonial">
+                        <img src="" alt="">
+                        <div class="name">Технология</div>
+                        <p>
+                            Описание использования технологии в проекте
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <div>
+        {{ projects.name_of_project }}
+    </div>
+    <div>
+        {{ projects.description_of_project }}
+    </div>
+    <div>
+        {{ projects.poster }}
+    </div>
+    <!--<div>
+        <iframe src="{{ projects.video }}" width="480" height="320"></iframe>
+    </div> -->
+    <div>
+        {{ projects.likes }}
+    </div>
+    <div>
+        {{ projects.git }}
+    </div>
+    <div>
+        {{ projects.site }}
+    </div>
+    <div>
+        {{ projects.year }}
+    </div>
+    <div>
+        {{ projects.autumn_or_spring }}
+    </div>
+    <div>
+        {{ projects.last_name }} {{ projects.first_name }} {{ projects.middle_name or '' }}
+    </div>
+    <div>
+        {{ projects.description_of_curator }}
+    </div>
+    <div>
+        {{ projects.name_of_direction }}
+    </div>
+    <div>
+        {{ projects.description_of_direction }}
+    </div>
+    <div>
+        {% for people in teams %}
         <div>
             {{ people.last_name }} {{ people.first_name }} {{ people.middle_name or '' }}
         </div>
@@ -51,8 +123,7 @@
         <div>
             {{ people.role }}
         </div>
-    {% endfor %}
-</div>
+        {% endfor %}
+    </div>
 </div>
 {% endblock %}
-
