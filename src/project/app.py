@@ -4,7 +4,7 @@ from mysql_db import MySQL
 import mysql.connector as connector
 import math
 
-PER_PAGE = 5
+PER_PAGE = 6
 
 app = Flask(__name__)
 application = app

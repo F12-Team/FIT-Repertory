@@ -827,6 +827,8 @@ section{
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
+    margin-left: 0px;
+    margin-right: 0px;
   }
   .col{
     flex: 33.33%;
