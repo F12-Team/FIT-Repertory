@@ -20,7 +20,7 @@
 <div class="inner-width" id="directions">
     <div class="services justify-content-center">
         {% for direction in directions %}
-        <a href="{{ url_for('direction', direction_id=direction.id) }}" class="route service m-2">
+        <a href="{{ url_for('direction', _anchor='swiper', direction_id=direction.id) }}" class="route service m-2">
             <img class="logoqwerty" src="/static/img/{{ direction.img }}.svg" alt="Card image cap">
             <div class="card-body">
                 <h5 class="cardtext">{{ direction.name }}</h5>
@@ -31,81 +31,40 @@
     </div>
 </div>
 
-<div` class="swiper-section" style="{% if request.endpoint == 'index' %}display: none;{% endif %}">
-    <div class="secname">
-        <h4>Лучшие проекты</h4>
-    </div>
+<div id="swiper" class="swiper-section" style="{% if request.endpoint == 'index' %}display: none;{% endif %}">
     <div class="swiper-container">
         <div class="swiper-wrapper">
             {% for project in projects %}
             <div class="card-container swiper-slide">
                 <div class="swiper-card">
-                <img class="card-img-top" src="..." alt="Card image cap">
-                <div class="card-body">
-                    <h5 class="card-title">{{ loop.index }}</h5>
+                    <div class="swiper-circle">
+                        <h2 class="card-title">{{ semestrs.autumn_or_spring }}</h2>
+                    </div>
+                <div class="swiper-content">
                     <p class="card-text">{{ project.name }}</p>
-                </div>
-                <div class="card-footer">
                     <a href="{{ url_for('project', project_id=project.id) }}" class="btn btn-primary">Страница
                         проекта</a>
-                </div>
+                    </div>
             </div>
             </div>
             {% endfor %}
-            <div class="card swiper-slide" style="min-width: 18rem; max-width: 18rem;">
-                <img class="card-img-top" src="..." alt="Card image cap">
-                <div class="card-body">
-                    <h5 class="card-title">Ещё</h5>
-                    <p class="card-text"></p>
+            <div class="card-container swiper-slide">
+                <div class="swiper-card swiper-end">
+                <div class="swiper-circle">
+                    <h2 class="card-title">Ещё</h2>
                 </div>
-                <div class="card-footer">
+                <div class="swiper-content">
+                    <p class="card-text"></p>
                     <a href="{{ url_for('all_projects', direction_id=direction_id) }}"
                         class="btn btn-primary">Перейти</a>
                 </div>
             </div>
+            </div>
         </div>
-        <div class="swiper-button-prev pl-5"></div>
+        <div class="swiper-pagination"></div>
+        <div class="swiper-button-prev"></div>
         <div class="swiper-button-next"></div>
-        <div class="swiper-pagination mt-5"></div>
     </div>
-    <script>
-        var swiper = new Swiper('.swiper-container', {
-            updateOnWindowResize: true,
-            observer: true,
-            observeParents: true,
-            pagination: {
-                el: '.swiper-pagination',
-                clickable: true,
-            },
-            navigation: {
-                nextEl: '.swiper-button-next',
-                prevEl: '.swiper-button-prev',
-            },
-            breakpoints: {
-                250: {
-                    slidesPerView: 1,
-                    spaceBetween: 15
-                },
-                550: {
-                    slidesPerView: 2,
-                    spaceBetween: 15
-                },
-                850: {
-                    slidesPerView: 3,
-                    spaceBetween: 15
-                },
-                1150: {
-                    slidesPerView: 3,
-                    spaceBetween: 15
-                },
-                1450: {
-                    slidesPerView: 3,
-                    spaceBetween: 15
-                }
-            }
-        });
-    </script>
-
 </div>
 
 {% endblock %}

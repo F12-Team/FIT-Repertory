@@ -7,7 +7,7 @@
             <div class="about-content">
                 <div class="about-text">
                     <h2>{{ projects.name_of_project }}</h2>
-                    <h3>{{ projects.year }}. {{ projects.autumn_or_spring }}</h3>
+                    <h3>{{ projects.autumn_or_spring }}</h3>
                 </div>
                 <iframe src="" width="480" height="320" class="about-pic"></iframe>
             </div>
@@ -22,11 +22,11 @@
                     <div class="links">
                         <div class="likesblock">
                             <a class="likebtn iconbtn far fa-heart"></a>
-                            <p class="likes"> 222</p>
+                            <p class="likes">{{ projects.likes }}</p>
                         </div>
                         <div class="linksblock">
-                            <a href="/index.html" class=" right iconbtn fas fa-laptop" title="Сайт проекта"></a>
-                            <a href="#" class="iconbtn fab fa-github" title="Git-репозиторий проекта"></a>
+                            <a href="{{ projects.site }}" class=" right iconbtn fas fa-laptop" title="Сайт проекта"></a>
+                            <a href="{{ projects.git }}" class="iconbtn fab fa-github" title="Git-репозиторий проекта"></a>
                         </div>
                     </div>
                 </div>

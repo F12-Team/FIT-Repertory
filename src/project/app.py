@@ -58,9 +58,21 @@ def direction(direction_id):
     cursor.execute(query, (direction_id,))
     projects = cursor.fetchall()
 
+    query = '''
+        SELECT s.autumn_or_spring
+        FROM Projects AS p 
+        JOIN Semesters AS s ON p.id_of_semestr=s.id 
+        JOIN Curators AS c ON c.id = p.id_of_curator 
+        JOIN Directions AS d ON d.id = p.id_of_direction
+        WHERE p.id = %s;
+    '''
+
+    cursor.execute(query, (direction_id,))
+    semestrs = cursor.fetchone()
+    
     cursor.close()
 
-    return render_template('index.html', directions=directions, projects=projects, direction_id=direction_id)
+    return render_template('index.html', directions=directions, projects=projects, semestrs=semestrs, direction_id=direction_id)
 
 
 @app.route('/project/<int:project_id>')
@@ -113,7 +125,7 @@ def all_projects(direction_id):
 
     cursor.execute(query, (direction_id,))
     projects = cursor.fetchall()
-
+    
     cursor.close()
 
     return render_template('projects.html', projects=projects)
@@ -154,3 +166,4 @@ def projects():
     cursor.close()
 
     return render_template('projects.html', projects=projects, pagination_info=pagination_info)
+
