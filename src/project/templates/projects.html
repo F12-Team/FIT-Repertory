@@ -16,7 +16,7 @@
             <div class="col">
                 <label for="FormControlSelect1">Семестр</label>
                 <select class="form-control" id="semestr" name="semestr">
-                    <option value="{% if pagination_info.semestr == "IS NOT NULL" or pagination_info.semestr == None %}{% else %}{{ pagination_info.semestr | replace("=", "") | replace("'", "") }}{% endif %}"></option>
+                    <option value="{% if pagination_info.semestr == "IS NOT NULL" or pagination_info.semestr == None %}{% else %}{{ pagination_info.semestr | replace("=", "") | replace("'", "") }}{% endif %}">{% if pagination_info.semestr == '=1' %}Осенний семестр 2020{% endif %}{% if pagination_info.semestr == '=2' %}Весенний семестр 2021{% endif %}{% if pagination_info.semestr == '=3' %}Весенний семестр 2020{% endif %}{% if pagination_info.semestr == '=4' %}Осенний семестр 2019{% endif %}</option>
                     <option value="1">Осенний семестр 2020</option>
                     <option value="2">Весенний семестр 2021</option>
                     <option value="3">Весенний семестр 2020</option>
@@ -26,7 +26,7 @@
             <div class="col">
                 <label for="FormControlSelect2">Направление</label>
                 <select class="form-control" id="direct" name="direct">
-                    <option value="{% if pagination_info.direct == "IS NOT NULL" or pagination_info.direct == None %}{% else %}{{ pagination_info.direct | replace("=", "") | replace("'", "") }}{% endif %}"></option>
+                    <option value="{% if pagination_info.direct == "IS NOT NULL" or pagination_info.direct == None %}{% else %}{{ pagination_info.direct | replace("=", "") | replace("'", "") }}{% endif %}">{% if pagination_info.direct == '=1' %}ИНТЕГРАЦИЯ И ПРОГРАММИРОВАНИЕ В САПР{% endif %}{% if pagination_info.direct == '=2' %}ПРИКЛАДНАЯ КИБЕРБЕЗОПАСНОСТЬ{% endif %}{% if pagination_info.direct == '=5' %}КОРПОРАТИВНЫЕ ИНФОРМАЦИОННЫЕ СИСТЕМЫ{% endif %}{% if pagination_info.direct == '=6' %}КИБЕРФИЗИЧЕСКИЕ СИСТЕМЫ{% endif %}{% if pagination_info.direct == '=7' %}ВЕБ-ТЕХНОЛОГИИ{% endif %}{% if pagination_info.direct == '=8' %}БОЛЬШИЕ И ОТКРЫТЫЕ ДАННЫЕ{% endif %}{% if pagination_info.direct == '=9' %}КИБЕРБЕЗОПАСНОСТЬ ВЕБ-ПРИЛОЖЕНИЙ{% endif %}</option>
                     <option value="1">ИНТЕГРАЦИЯ И ПРОГРАММИРОВАНИЕ В САПР</option>
                     <option value="2">ПРИКЛАДНАЯ КИБЕРБЕЗОПАСНОСТЬ</option>
                     <option value="5">КОРПОРАТИВНЫЕ ИНФОРМАЦИОННЫЕ СИСТЕМЫ</option>

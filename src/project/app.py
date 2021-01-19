@@ -4,7 +4,7 @@ from mysql_db import MySQL
 import mysql.connector as connector
 import math
 
-PER_PAGE = 1
+PER_PAGE = 3
 
 app = Flask(__name__)
 application = app
@@ -129,6 +129,55 @@ def all_projects(direction_id):
     cursor.close()
 
     return render_template('projects.html', projects=projects)
+
+
+@app.route('/project/<int:project_id>/like')
+def like(project_id):
+    cursor = mysql.connection.cursor(named_tuple=True)
+
+    query = '''
+        SELECT p.name as name_of_project, p.description as description_of_project, p.poster, p.video, p.likes, p.git, p.site, 
+        s.year, s.autumn_or_spring,
+        c.last_name, c.first_name, c.middle_name, c.description as description_of_curator,
+        d.name as name_of_direction, d.description as description_of_direction
+        FROM Projects AS p 
+        JOIN Semesters AS s ON p.id_of_semestr=s.id 
+        JOIN Curators AS c ON c.id = p.id_of_curator 
+        JOIN Directions AS d ON d.id = p.id_of_direction
+        WHERE p.id = %s;
+    '''
+
+    cursor.execute(query, (project_id,))
+    projects = cursor.fetchone()
+
+    query = '''
+        SELECT t.role, s.last_name, s.first_name, s.middle_name, 
+        g.name AS name_of_group 
+        FROM Teams AS t 
+        JOIN Students AS s ON t.id_of_student = s.id 
+        JOIN `Groups` AS g ON s.id_of_group = g.id 
+        WHERE id_of_project = %s 
+        ORDER BY last_name;
+    '''
+
+    cursor.execute(query, (project_id,))
+    teams = cursor.fetchall()
+
+    cursor.close()
+
+    resp = make_response(render_template('project.html', projects=projects, teams=teams))
+    if 'like' in request.cookies:
+        return redirect(url_for('project', project_id=project_id))
+    else:
+        resp.set_cookie('like', 'like')
+        query = '''
+            UPDATE Projects SET likes = likes + 1 WHERE id = %s;
+        '''
+        cursor = mysql.connection.cursor(named_tuple=True)
+        cursor.execute(query, (project_id,))
+        mysql.connection.commit()
+        cursor.close()
+    return resp
 
 
 @app.route('/projects', methods=['GET', 'POST'])
