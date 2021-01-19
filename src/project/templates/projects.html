@@ -3,23 +3,52 @@
 
 {% block content %}
 <div class="projects_header">
-    <h1 class="d-flex align-items-center justify-content-center " style=" margin: 30px; margin-top: 120px; color: #f2f2f2; font-size: 40px;"> Проекты</h1>
+    <h1 class="d-flex align-items-center justify-content-center "
+        style=" margin: 30px; margin-top: 120px; color: #f2f2f2; font-size: 40px;"> Проекты</h1>
+</div>
+<div class="row w-100">
+    <form class="w-75" method="post">
+        <div class="form-row">
+            <div class="col">
+                <label for="name">Название проекта</label>
+                <input class="form-control" type="text" id="name" name="name">
+            </div>
+            <div class="col">
+                <label for="FormControlSelect1">Семестр</label>
+                <select class="form-control" id="semestr" name="semestr">
+                    <option></option>
+                    <option>1</option>
+                </select>
+            </div>
+            <div class="col">
+                <label for="FormControlSelect2">Направление</label>
+                <select class="form-control" id="direct" name="direct">
+                    <option>{{direct or ''}}</option>
+                    <option>1</option>
+                    <option>2</option>
+                </select>
+            </div>
+            <div class="col">
+                <a href="{{ url_for(endpoint, page=1, name=request.form.get('name') or None, direct=request.form.get('direct') or None, semestr=request.form.get('semestr') or None) }}"></a>
+                <button type="submit" class="btn btn-primary w-100">Поиск</button>
+            </div>
+        </div>
+    </form>
 </div>
 <div class="row justify-content-center mt-5 servicess">
-{% for project in projects %}
+    {% for project in projects %}
     <div class="card-container">
         <div class="swiper-card d-flex flex-column">
             <div class="swiper-circle">
-                <h2 class="card-title">{{ loop.index + (pagination_info.current_page - 1) * 6 }}</h2>
+                <h2 class="card-title">{{ loop.index + (pagination_info.current_page - 1) * 1 }}</h2>
             </div>
             <div class="swiper-content">
-            <p class="cardtext" style="margin-bottom:0; padding-bottom:0;">{{ project.name }}</p>
-            <a href="{{ url_for('project', project_id=project.id) }}" class="btnprojects">Страница проекта</a>
+                <p class="cardtext" style="margin-bottom:0; padding-bottom:0;">{{ project.name }}</p>
+                <a href="{{ url_for('project', project_id=project.id) }}" class="btnprojects">Страница проекта</a>
             </div>
         </div>
     </div>
-
-{% endfor %}
+    {% endfor %}
 </div>
 {{ render_pagination(request.endpoint, pagination_info) }}
 

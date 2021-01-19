@@ -4,7 +4,7 @@ from mysql_db import MySQL
 import mysql.connector as connector
 import math
 
-PER_PAGE = 6
+PER_PAGE = 1
 
 app = Flask(__name__)
 application = app
@@ -131,39 +131,52 @@ def all_projects(direction_id):
     return render_template('projects.html', projects=projects)
 
 
-@app.route('/projects')
+@app.route('/projects', methods=['GET', 'POST'])
 def projects():
-    cursor = mysql.connection.cursor(named_tuple=True)
+    if request.method == 'POST' or request.method == 'GET':
+        cursor = mysql.connection.cursor(named_tuple=True)
 
-    page = request.args.get('page', 1, type=int)
+        page = request.args.get('page', 1, type=int)
+        name = request.form.get('name', None)
+        direct = request.form.get('direct', None)
+        semestr = request.form.get('semestr', None)
+        print(page)
+        print(name)
+        print(direct)
+        print(semestr)
 
-    query = '''
-        SELECT count(*) AS count 
-        FROM Projects;
-    '''
+        if name:
+            name = "'%" + name + "%'"
+        else:
+            name = "'%%'"
+        if direct:
+            direct = '=' + direct
+        else:
+            direct = str('IS NOT NULL')
+        if semestr:
+            semestr = '=' + semestr
+        else:
+            semestr = str('IS NOT NULL')
 
-    cursor.execute(query)
-    total_count = cursor.fetchone().count
+        query = "SELECT count(*) AS count FROM Projects WHERE LOWER( name ) LIKE {} AND id_of_direction {} AND id_of_semestr {};".format(name, direct, semestr)
 
-    total_pages = math.ceil(total_count/PER_PAGE)
+        cursor.execute(query)
+        total_count = cursor.fetchone().count
 
-    pagination_info = {
-        'current_page': page,
-        'total_pages': total_pages,
-        'per_page': PER_PAGE
-    }
+        total_pages = math.ceil(total_count/PER_PAGE)
 
-    query = '''
-        SELECT id, name 
-        FROM Projects 
-        ORDER BY likes DESC
-        LIMIT %s OFFSET %s;
-    '''
+        pagination_info = {
+            'current_page': page,
+            'total_pages': total_pages,
+            'per_page': PER_PAGE
+        }
 
-    cursor.execute(query, (PER_PAGE, PER_PAGE*(page-1)))
-    projects = cursor.fetchall()
+        query = "SELECT id, name FROM Projects WHERE LOWER( name ) LIKE {} AND id_of_direction {} AND id_of_semestr {} ORDER BY likes DESC LIMIT {} OFFSET {};".format(name, direct, semestr, PER_PAGE, PER_PAGE*(page-1))
 
-    cursor.close()
+        cursor.execute(query)
+        projects = cursor.fetchall()
 
-    return render_template('projects.html', projects=projects, pagination_info=pagination_info)
+        cursor.close()
+
+        return render_template('projects.html', projects=projects, pagination_info=pagination_info, name=name, semestr=semestr, direct=direct )
 
