@@ -57,6 +57,7 @@
     </div>
     {% endfor %}
 </div>
-{{ render_pagination(request.endpoint, pagination_info) }}
-
+{% if pagination_info.total_pages > 0 %}
+    {{ render_pagination(request.endpoint, pagination_info) }}
+{% endif %}
 {% endblock %}
