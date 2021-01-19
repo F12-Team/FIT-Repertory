@@ -347,7 +347,6 @@ footer {
 .card-container .swiper-card {
     position: relative;
     min-width: 300px;
-    width: 400px;
     height: 420px;
     background: #fff;
     margin: 25px;
@@ -789,7 +788,8 @@ section{
 }
 
 .links .iconbtn:hover{
-    color: #indianred;
+    color: indianred;
+    ;
 }
 
 .sec1 i{
@@ -816,40 +816,74 @@ section{
     color: #f2f2f2;
     text-align: center;
     color: #403F4C;
-  }
-  .inner{
+}
+.inner{
     max-width: 1200px;
     margin: auto;
     overflow: hidden;
     padding: 0 20px;
-  }
-  .row{
+}
+.row{
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     margin-left: 0px;
     margin-right: 0px;
-  }
-  .col{
+}
+.col{
     flex: 33.33%;
     max-width: 33.33%;
     box-sizing: border-box;
     padding: 15px;
-  }
-  .testimonial{
+}
+.testimonial{
     background: #fff;
     padding: 30px;
-  }
-  .testimonial img{
+}
+.testimonial img{
     width: 100px;
     height: 100px;
     border-radius: 50%;
-  }
-  .name{
+}
+.name{
     font-size: 20px;
     text-transform: uppercase;
     margin: 20px 0;
-  }
+}
+
+.pagination-outer{ text-align: center; }
+.pagination{
+    display: inline-flex;
+    position: relative;
+}
+.pagination:before{
+    content: "";
+    width: 100%;
+    height: 2px;
+    background: #e8e8e8;
+    position: absolute;
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+}
+.pagination li a.page-link{
+    padding: 5px 15px;
+    margin-right: 15px;
+    background: #f8f8f8;
+    border: 1px solid #e8e8e8;
+    border-radius: 5px;
+    box-shadow: 0 8px 6px -9px #5b5f5f;
+    font-size: 17px;
+    color: #686c6c;
+}
+.pagination li:first-child a.page-link{ margin-right: 30px; }
+.pagination li:last-child a.page-link{ margin: 0 0 0 15px; }
+.pagination li.active a.page-link,
+.pagination li a.page-link:hover{
+      background: #ce5353;
+      border-color: #ce5353;
+      color: #fff;
+}
 
 @media (max-width: 992px) {
     .banner {
@@ -996,6 +1030,10 @@ section{
     .likebtn{
         margin-left: -10px;
     }
+
+    .card-container{
+        width: 100%;
+    }
 }
 
 @media screen and (max-width: 330px) {
@@ -1014,4 +1052,47 @@ section{
     .iconbtn{
         margin:10px;
     }
+}
+
+
+.pagination-outer{ text-align: center; }
+.pagination{
+    display: inline-flex;
+    position: relative;
+}
+.pagination:before{
+    content: "";
+    width: 100%;
+    height: 2px;
+    background: #e8e8e8;
+    position: absolute;
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+}
+.pagination li a.page-link{
+    padding: 5px 15px;
+    margin-right: 15px;
+    background: #f8f8f8;
+    border: 1px solid #e8e8e8;
+    border-radius: 5px;
+    box-shadow: 0 8px 6px -9px #5b5f5f;
+    font-size: 17px;
+    color: #686c6c;
+}
+.pagination li:first-child a.page-link{ margin-right: 30px; }
+.pagination li:last-child a.page-link{ margin: 0 0 0 15px; }
+.pagination li.active a.page-link,
+.pagination li a.page-link:hover{
+    background: #ce5353;
+    border-color: #ce5353;
+    color: #fff;
+}
+@media only screen and (max-width: 479px){
+    .pagination{
+        display: block;
+        overflow: auto;
+    }
+    .pagination:before{ display: none; }
+    .pagination li{ display: inline-block; }
 }
