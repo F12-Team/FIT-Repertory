@@ -11,25 +11,32 @@
         <div class="form-row">
             <div class="col">
                 <label for="name">Название проекта</label>
-                <input class="form-control" type="text" id="name" name="name">
+                <input class="form-control" type="text" id="name" name="name" value="{% if pagination_info.name == "'%%'" or pagination_info.name == None %}{% else %}{{ pagination_info.name | replace("%", "") | replace("'", "") }}{% endif %}">
             </div>
             <div class="col">
                 <label for="FormControlSelect1">Семестр</label>
                 <select class="form-control" id="semestr" name="semestr">
-                    <option></option>
-                    <option>1</option>
+                    <option value="{% if pagination_info.semestr == "IS NOT NULL" or pagination_info.semestr == None %}{% else %}{{ pagination_info.semestr | replace("=", "") | replace("'", "") }}{% endif %}"></option>
+                    <option value="1">Осенний семестр 2020</option>
+                    <option value="2">Весенний семестр 2021</option>
+                    <option value="3">Весенний семестр 2020</option>
+                    <option value="4">Осенний семестр 2019</option>
                 </select>
             </div>
             <div class="col">
                 <label for="FormControlSelect2">Направление</label>
                 <select class="form-control" id="direct" name="direct">
-                    <option>{{direct or ''}}</option>
-                    <option>1</option>
-                    <option>2</option>
+                    <option value="{% if pagination_info.direct == "IS NOT NULL" or pagination_info.direct == None %}{% else %}{{ pagination_info.direct | replace("=", "") | replace("'", "") }}{% endif %}"></option>
+                    <option value="1">ИНТЕГРАЦИЯ И ПРОГРАММИРОВАНИЕ В САПР</option>
+                    <option value="2">ПРИКЛАДНАЯ КИБЕРБЕЗОПАСНОСТЬ</option>
+                    <option value="5">КОРПОРАТИВНЫЕ ИНФОРМАЦИОННЫЕ СИСТЕМЫ</option>
+                    <option value="6">КИБЕРФИЗИЧЕСКИЕ СИСТЕМЫ</option>
+                    <option value="7">ВЕБ-ТЕХНОЛОГИИ</option>
+                    <option value="8">БОЛЬШИЕ И ОТКРЫТЫЕ ДАННЫЕ</option>
+                    <option value="9">КИБЕРБЕЗОПАСНОСТЬ ВЕБ-ПРИЛОЖЕНИЙ</option>
                 </select>
             </div>
-            <div class="col">
-                <a href="{{ url_for(endpoint, page=1, name=request.form.get('name') or None, direct=request.form.get('direct') or None, semestr=request.form.get('semestr') or None) }}"></a>
+            <div class="row w-100">
                 <button type="submit" class="btn btn-primary w-100">Поиск</button>
             </div>
         </div>
