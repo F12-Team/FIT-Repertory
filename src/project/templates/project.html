@@ -21,7 +21,7 @@
                 <div class="item item0" id="item0">
                     <div class="links">
                         <div class="likesblock">
-                            <a class="likebtn iconbtn far fa-heart"></a>
+                            <a class="likebtn iconbtn far fa-heart" href="{{ url_for('like', project_id=projects.id) }}"></a>
                             <p class="likes">{{ projects.likes }}</p>
                         </div>
                         <div class="linksblock">

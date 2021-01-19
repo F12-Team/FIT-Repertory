@@ -69,7 +69,7 @@ def direction(direction_id):
 
     cursor.execute(query, (direction_id,))
     semestrs = cursor.fetchone()
-    
+
     cursor.close()
 
     return render_template('index.html', directions=directions, projects=projects, semestrs=semestrs, direction_id=direction_id)
@@ -80,7 +80,7 @@ def project(project_id):
     cursor = mysql.connection.cursor(named_tuple=True)
 
     query = '''
-        SELECT p.name as name_of_project, p.description as description_of_project, p.poster, p.video, p.likes, p.git, p.site, 
+        SELECT p.id as id, p.name as name_of_project, p.description as description_of_project, p.poster, p.video, p.likes, p.git, p.site, 
         s.year, s.autumn_or_spring,
         c.last_name, c.first_name, c.middle_name, c.description as description_of_curator,
         d.name as name_of_direction, d.description as description_of_direction
@@ -125,7 +125,7 @@ def all_projects(direction_id):
 
     cursor.execute(query, (direction_id,))
     projects = cursor.fetchall()
-    
+
     cursor.close()
 
     return render_template('projects.html', projects=projects)
@@ -136,7 +136,7 @@ def like(project_id):
     cursor = mysql.connection.cursor(named_tuple=True)
 
     query = '''
-        SELECT p.name as name_of_project, p.description as description_of_project, p.poster, p.video, p.likes, p.git, p.site, 
+        SELECT p.id as id, p.name as name_of_project, p.description as description_of_project, p.poster, p.video, p.likes, p.git, p.site, 
         s.year, s.autumn_or_spring,
         c.last_name, c.first_name, c.middle_name, c.description as description_of_curator,
         d.name as name_of_direction, d.description as description_of_direction
@@ -165,7 +165,8 @@ def like(project_id):
 
     cursor.close()
 
-    resp = make_response(render_template('project.html', projects=projects, teams=teams))
+    resp = make_response(render_template(
+        'project.html', projects=projects, teams=teams))
     if 'like' in request.cookies:
         return redirect(url_for('project', project_id=project_id))
     else:
@@ -183,7 +184,7 @@ def like(project_id):
 @app.route('/projects', methods=['GET', 'POST'])
 def projects():
     cursor = mysql.connection.cursor(named_tuple=True)
-        
+
     page = request.args.get('page', 1, type=int)
     name = request.args.get('name', None)
     direct = request.args.get('direct', None)
@@ -238,7 +239,8 @@ def projects():
         'direct': direct
     }
 
-    query = "SELECT id, name FROM Projects WHERE LOWER( name ) LIKE {} AND id_of_direction {} AND id_of_semestr {} ORDER BY likes DESC LIMIT {} OFFSET {};".format(name, direct, semestr, PER_PAGE, PER_PAGE*(page-1))
+    query = "SELECT id, name FROM Projects WHERE LOWER( name ) LIKE {} AND id_of_direction {} AND id_of_semestr {} ORDER BY likes DESC LIMIT {} OFFSET {};".format(
+        name, direct, semestr, PER_PAGE, PER_PAGE*(page-1))
 
     cursor.execute(query)
     projects = cursor.fetchall()
@@ -246,4 +248,3 @@ def projects():
     cursor.close()
 
     return render_template('projects.html', projects=projects, pagination_info=pagination_info)
-
