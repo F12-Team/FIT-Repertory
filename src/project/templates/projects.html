@@ -4,17 +4,17 @@
 {% block content %}
 <div class="projects_header">
     <h1 class="d-flex align-items-center justify-content-center "
-        style=" margin: 30px; margin-top: 120px; color: #f2f2f2; font-size: 40px;"> Проекты</h1>
+        style=" margin: 30px; margin-top: 120px; color: #f2f2f2;"> Проекты</h1>
 </div>
 <div class="row w-100">
-    <form class="w-75" method="post">
+    <form class="w-50" method="post">
         <div class="form-row">
             <div class="col">
-                <label for="name">Название проекта</label>
+                <label for="name" style="color: #f2f2f2; font-weight: bold; font-size: 18px;">Название проекта</label>
                 <input class="form-control" type="text" id="name" name="name" value="{% if pagination_info.name == "'%%'" or pagination_info.name == None %}{% else %}{{ pagination_info.name | replace("%", "") | replace("'", "") }}{% endif %}">
             </div>
             <div class="col">
-                <label for="FormControlSelect1">Семестр</label>
+                <label for="FormControlSelect1" style="color: #f2f2f2;  font-weight: bold; font-size: 18px;">Семестр</label>
                 <select class="form-control" id="semestr" name="semestr">
                     <option value="{% if pagination_info.semestr == "IS NOT NULL" or pagination_info.semestr == None %}{% else %}{{ pagination_info.semestr | replace("=", "") | replace("'", "") }}{% endif %}">{% if pagination_info.semestr == '=1' %}Осенний семестр 2020{% endif %}{% if pagination_info.semestr == '=2' %}Весенний семестр 2021{% endif %}{% if pagination_info.semestr == '=3' %}Весенний семестр 2020{% endif %}{% if pagination_info.semestr == '=4' %}Осенний семестр 2019{% endif %}</option>
                     <option value="1">Осенний семестр 2020</option>
@@ -24,7 +24,7 @@
                 </select>
             </div>
             <div class="col">
-                <label for="FormControlSelect2">Направление</label>
+                <label for="FormControlSelect2" style="color: #f2f2f2; font-weight: bold; font-size: 18px;">Направление</label>
                 <select class="form-control" id="direct" name="direct">
                     <option value="{% if pagination_info.direct == "IS NOT NULL" or pagination_info.direct == None %}{% else %}{{ pagination_info.direct | replace("=", "") | replace("'", "") }}{% endif %}">{% if pagination_info.direct == '=1' %}ИНТЕГРАЦИЯ И ПРОГРАММИРОВАНИЕ В САПР{% endif %}{% if pagination_info.direct == '=2' %}ПРИКЛАДНАЯ КИБЕРБЕЗОПАСНОСТЬ{% endif %}{% if pagination_info.direct == '=5' %}КОРПОРАТИВНЫЕ ИНФОРМАЦИОННЫЕ СИСТЕМЫ{% endif %}{% if pagination_info.direct == '=6' %}КИБЕРФИЗИЧЕСКИЕ СИСТЕМЫ{% endif %}{% if pagination_info.direct == '=7' %}ВЕБ-ТЕХНОЛОГИИ{% endif %}{% if pagination_info.direct == '=8' %}БОЛЬШИЕ И ОТКРЫТЫЕ ДАННЫЕ{% endif %}{% if pagination_info.direct == '=9' %}КИБЕРБЕЗОПАСНОСТЬ ВЕБ-ПРИЛОЖЕНИЙ{% endif %}</option>
                     <option value="1">ИНТЕГРАЦИЯ И ПРОГРАММИРОВАНИЕ В САПР</option>
@@ -36,8 +36,8 @@
                     <option value="9">КИБЕРБЕЗОПАСНОСТЬ ВЕБ-ПРИЛОЖЕНИЙ</option>
                 </select>
             </div>
-            <div class="row w-100">
-                <button type="submit" class="btn btn-primary w-100">Поиск</button>
+            <div class="row w-100" style="margin-top: 20px ;">
+                <button type="submit" class="btn btn-primary w-75" style="background-color: #ce5353; border-color: #ce5353; border-radius: 40px;">Поиск</button>
             </div>
         </div>
     </form>
