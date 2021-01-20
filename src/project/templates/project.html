@@ -9,7 +9,7 @@
                     <h2>{{ projects.name_of_project }}</h2>
                     <h3>{{ projects.autumn_or_spring }}</h3>
                 </div>
-                <iframe src="" width="480" height="320" class="about-pic"></iframe>
+                <iframe src="" width="480" height="320" class="about-pic">{{ projects.poster }}</iframe>
             </div>
         </div>
     </section>
@@ -21,12 +21,14 @@
                 <div class="item item0" id="item0">
                     <div class="links">
                         <div class="likesblock">
-                            <a class="likebtn iconbtn far fa-heart" href="{{ url_for('like', project_id=projects.id) }}"></a>
+                            <a class="likebtn iconbtn far fa-heart"
+                                href="{{ url_for('like', project_id=projects.id) }}"></a>
                             <p class="likes">{{ projects.likes }}</p>
                         </div>
                         <div class="linksblock">
                             <a href="{{ projects.site }}" class=" right iconbtn fas fa-laptop" title="Сайт проекта"></a>
-                            <a href="{{ projects.git }}" class="iconbtn fab fa-github" title="Git-репозиторий проекта"></a>
+                            <a href="{{ projects.git }}" class="iconbtn fab fa-github"
+                                title="Git-репозиторий проекта"></a>
                         </div>
                     </div>
                 </div>
@@ -73,57 +75,42 @@
             </div>
         </div>
     </section>
-    <div>
-        {{ projects.name_of_project }}
-    </div>
-    <div>
-        {{ projects.description_of_project }}
-    </div>
-    <div>
-        {{ projects.poster }}
-    </div>
-    <!--<div>
-        <iframe src="{{ projects.video }}" width="480" height="320"></iframe>
-    </div> -->
-    <div>
-        {{ projects.likes }}
-    </div>
-    <div>
-        {{ projects.git }}
-    </div>
-    <div>
-        {{ projects.site }}
-    </div>
-    <div>
-        {{ projects.year }}
-    </div>
-    <div>
-        {{ projects.autumn_or_spring }}
-    </div>
-    <div>
-        {{ projects.last_name }} {{ projects.first_name }} {{ projects.middle_name or '' }}
-    </div>
-    <div>
-        {{ projects.description_of_curator }}
-    </div>
-    <div>
-        {{ projects.name_of_direction }}
-    </div>
-    <div>
-        {{ projects.description_of_direction }}
-    </div>
-    <div>
-        {% for people in teams %}
-        <div>
-            {{ people.last_name }} {{ people.first_name }} {{ people.middle_name or '' }}
+    <section class="d-flex flex-column " id="part">
+        <!--style="background: linear-gradient(#403F4C, #fdf5e6) !important;"-->
+
+        <div style="flex-grow: 2" class="d-flex" id="wrapper">
+
+            <!-- Page Content -->
+            <div id="page-content-wrapper" style="width: 100% !important;">
+
+                <div class="container-fluid px-3 px-md-5 pb-5">
+                    <h1 class="section-title name_project">Распределение ролей</h1>
+
+                    <table class="table" style="color: #f2f2f2; font-weight: bold;">
+                        <thead style="background-color: #ce5353;">
+                            <tr>
+                                <th>ФИО</th>
+                                <th>Роль</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for people in teams %}
+                            <tr>
+                                <td>{{ people.last_name }} {{ people.first_name }} {{ people.middle_name or '' }}, {{
+                                    people.name_of_group }}</td>
+                                <td>{{ people.role }}</td>
+                            </tr>
+                            {% endfor %}
+                            <tr>
+                                <td>{{ projects.last_name }} {{ projects.first_name }} {{ projects.middle_name or '' }}
+                                </td>
+                                <td>{{ projects.description_of_curator }}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
         </div>
-        <div>
-            {{ people.name_of_group }}
-        </div>
-        <div>
-            {{ people.role }}
-        </div>
-        {% endfor %}
-    </div>
+    </section>
 </div>
 {% endblock %}
