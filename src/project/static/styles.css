@@ -888,7 +888,9 @@ section{
     margin: 20px 0;
 }
 
-
+.table-scrollable{
+    overflow: auto;
+}
 
 @media (max-width: 992px) {
     .banner {

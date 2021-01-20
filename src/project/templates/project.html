@@ -3,13 +3,13 @@
 <div class="" style="margin-top: 120px; ">
     <section id="about">
         <div class="inner-width">
-            <h1 class="section-title name_project">Страничка проекта</h1>
-            <div class="about-content">
+            <h1 class="section-title name_project">{{ projects.name_of_project }}</h1>
+            <!--<div class="about-content">
                 <div class="about-text">
                     <h2>{{ projects.name_of_project }}</h2>
                     <h3>{{ projects.autumn_or_spring }}</h3>
-                </div>
-                <iframe src="" width="480" height="320" class="about-pic">{{ projects.poster }}</iframe>
+                </div> -->
+                <!--<iframe src="" width="480" height="320" class="about-pic"></iframe> -->
             </div>
         </div>
     </section>
@@ -34,7 +34,7 @@
                 </div>
             </div>
             <div class="info-menu">
-                <h1 class="" style="margin-bottom: 30px;">Описание проекта</h1>
+                <h1 class="" style="margin-bottom: 30px;">{{ projects.name_of_project }}</h1>
                 <p>{{ projects.description_of_project }}</p>
             </div>
         </div>
@@ -85,8 +85,9 @@
 
                 <div class="container-fluid px-3 px-md-5 pb-5">
                     <h1 class="section-title name_project">Распределение ролей</h1>
+                    <div class="table-scrollable">
 
-                    <table class="table" style="color: #f2f2f2; font-weight: bold;">
+                    <table class="table table-scrollable" style="color: #f2f2f2; font-weight: bold;">
                         <thead style="background-color: #ce5353;">
                             <tr>
                                 <th>ФИО</th>
@@ -108,6 +109,7 @@
                             </tr>
                         </tbody>
                     </table>
+                </div>
                 </div>
             </div>
         </div>
