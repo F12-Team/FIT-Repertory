@@ -3,12 +3,14 @@
 <div class="" style="margin-top: 120px; ">
     <section id="about">
         <div class="inner-width">
-            <h1 class="section-title name_project">{{ projects.name_of_project }}</h1>
-            <!--<div class="about-content">
+            <h1 class="section-title name_project mb-0">{{ projects.name_of_project }}</h1>
+            <div class="heading-line mx-auto w-100 mb-3"></div>
+            
+            <div class="about-content">
                 <div class="about-text">
-                    <h2>{{ projects.name_of_project }}</h2>
-                    <h3>{{ projects.autumn_or_spring }}</h3>
-                </div> -->
+                    
+                    <h2 class="text-center mb-5">{{ projects.autumn_or_spring }}</h2>
+                </div> 
                 <!--<iframe src="" width="480" height="320" class="about-pic"></iframe> -->
             </div>
         </div>
@@ -34,42 +36,36 @@
                 </div>
             </div>
             <div class="info-menu">
-                <h1 class="" style="margin-bottom: 30px;">Описание проекта</h1>
+                
                 <p>{{ projects.description_of_project }}</p>
             </div>
         </div>
     </section>
     <section class="testimonials">
         <div class="inner">
-            <h1 class="name_project" style="margin-bottom: 30px;">Стэк технологий</h1>
+            <h1 class="name_project" style="margin-bottom: 30px;">Используемые технологии</h1>
             <div class="row">
                 <div class="col">
                     <div class="testimonial">
-                        <img src="{{ url_for('static', filename='img/js.png') }}" alt="">
-                        <div class="name">JavaScript</div>
-                        <p>
-                            Современный ультипарадигменный язык программирования
-                        </p>
+                        <img src="{{ url_for('static', filename='img/' + projects.id|string + '1.png') }}" alt="">
+                        <div class="name"></div>
+                        
                     </div>
                 </div>
 
                 <div class="col">
                     <div class="testimonial">
-                        <img src="{{ url_for('static', filename='img/mysql_PNG23.png') }}" alt="">
-                        <div class="name">MySQL</div>
-                        <p>
-                            Cвободная реляционная система управления базами данных
-                        </p>
+                        <img src="{{ url_for('static', filename='img/' + projects.id|string + '2.png') }}" alt="">
+                        <!--<div class="name"></div>-->
+                        
                     </div>
                 </div>
 
                 <div class="col">
                     <div class="testimonial">
-                        <img src="{{ url_for('static', filename='img/py.png') }}" alt="">
-                        <div class="name">Python</div>
-                        <p>
-                            Высокоуровневый язык программирования общего назначения
-                        </p>
+                        <img src="{{ url_for('static', filename='img/' + projects.id|string + '3.png') }}" alt="">
+                        <!--<div class="name"></div>-->
+                        
                     </div>
                 </div>
             </div>

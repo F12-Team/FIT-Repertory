@@ -663,6 +663,10 @@ section{
     
 }
 
+.info-menu p {
+    font-size: 1.5rem;
+}
+
 .image2{
     margin:0 auto;
     width:100%;
@@ -853,7 +857,6 @@ section{
 }
 
 .testimonials{
-    color: #f2f2f2;
     text-align: center;
     color: #403F4C;
 }
@@ -877,18 +880,23 @@ section{
     padding: 15px;
 }
 .testimonial{
-    background: #fff;
+    background-color: #fdf5e6;
     padding: 30px;
+    min-height: 250px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 .testimonial img{
-    width: 150px;
-    height: 150px;
+    max-width: 200px;
+    max-height: 200px;
     border-radius: 0%;
+    padding: auto;
 }
 .name{
     font-size: 20px;
     text-transform: uppercase;
-    margin: 20px 0;
+    margin: 50px 0;
 }
 
 .table-scrollable{
@@ -1059,6 +1067,9 @@ section{
     #part{
         padding-top: 0px;
     }
+    .name_project {
+        font-size: 2rem;
+    }
 }
 
 @media screen and (max-width: 330px) {
@@ -1083,3 +1094,7 @@ section{
     }
 }
 
+.heading-line {
+    background-color: white;
+    height: 5px;
+}
