@@ -239,8 +239,8 @@ def projects():
         'direct': direct
     }
 
-    query = "SELECT id, name FROM Projects WHERE LOWER( name ) LIKE {} AND id_of_direction {} AND id_of_semestr {} ORDER BY likes DESC LIMIT {} OFFSET {};".format(
-        name, direct, semestr, PER_PAGE, PER_PAGE*(page-1))
+    query = "SELECT p.id, p.name, d.autumn_or_spring FROM Projects AS p JOIN Semesters as d ON p.id_of_semestr = d.id WHERE LOWER( name ) LIKE {} AND id_of_direction {} AND id_of_semestr {} ORDER BY likes DESC LIMIT {} OFFSET {};".format(name, direct, semestr, PER_PAGE, PER_PAGE*(page-1))
+    #query = "SELECT p.id, p.name FROM Projects AS p WHERE LOWER( name ) LIKE {} AND id_of_direction {} AND id_of_semestr {} ORDER BY likes DESC LIMIT {} OFFSET {};".format(name, direct, semestr, PER_PAGE, PER_PAGE*(page-1))
 
     cursor.execute(query)
     projects = cursor.fetchall()
