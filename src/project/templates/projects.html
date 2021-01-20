@@ -16,24 +16,24 @@
             <div class="col">
                 <label for="FormControlSelect1" style="color: #f2f2f2;  font-weight: bold; font-size: 18px;">Семестр</label>
                 <select class="form-control" id="semestr" name="semestr">
-                    <option value="{% if pagination_info.semestr == "IS NOT NULL" or pagination_info.semestr == None %}{% else %}{{ pagination_info.semestr | replace("=", "") | replace("'", "") }}{% endif %}">{% if pagination_info.semestr == '=1' %}Осенний семестр 2020{% endif %}{% if pagination_info.semestr == '=2' %}Весенний семестр 2021{% endif %}{% if pagination_info.semestr == '=3' %}Весенний семестр 2020{% endif %}{% if pagination_info.semestr == '=4' %}Осенний семестр 2019{% endif %}</option>
-                    <option value="1">Осенний семестр 2020</option>
-                    <option value="2">Весенний семестр 2021</option>
-                    <option value="3">Весенний семестр 2020</option>
-                    <option value="4">Осенний семестр 2019</option>
+                    <option value=""></option>
+                    <option value="1" {% if pagination_info.semestr == '=1' %}selected{% endif %}>Осенний семестр 2020</option>
+                    <option value="2" {% if pagination_info.semestr == '=2' %}selected{% endif %}>Весенний семестр 2021</option>
+                    <option value="3" {% if pagination_info.semestr == '=3' %}selected{% endif %}>Весенний семестр 2020</option>
+                    <option value="4" {% if pagination_info.semestr == '=4' %}selected{% endif %}>Осенний семестр 2019</option>
                 </select>
             </div>
             <div class="col">
                 <label for="FormControlSelect2" style="color: #f2f2f2; font-weight: bold; font-size: 18px;">Направление</label>
                 <select class="form-control" id="direct" name="direct">
-                    <option value="{% if pagination_info.direct == "IS NOT NULL" or pagination_info.direct == None %}{% else %}{{ pagination_info.direct | replace("=", "") | replace("'", "") }}{% endif %}">{% if pagination_info.direct == '=1' %}ИНТЕГРАЦИЯ И ПРОГРАММИРОВАНИЕ В САПР{% endif %}{% if pagination_info.direct == '=2' %}ПРИКЛАДНАЯ КИБЕРБЕЗОПАСНОСТЬ{% endif %}{% if pagination_info.direct == '=5' %}КОРПОРАТИВНЫЕ ИНФОРМАЦИОННЫЕ СИСТЕМЫ{% endif %}{% if pagination_info.direct == '=6' %}КИБЕРФИЗИЧЕСКИЕ СИСТЕМЫ{% endif %}{% if pagination_info.direct == '=7' %}ВЕБ-ТЕХНОЛОГИИ{% endif %}{% if pagination_info.direct == '=8' %}БОЛЬШИЕ И ОТКРЫТЫЕ ДАННЫЕ{% endif %}{% if pagination_info.direct == '=9' %}КИБЕРБЕЗОПАСНОСТЬ ВЕБ-ПРИЛОЖЕНИЙ{% endif %}</option>
-                    <option value="1">ИНТЕГРАЦИЯ И ПРОГРАММИРОВАНИЕ В САПР</option>
-                    <option value="2">ПРИКЛАДНАЯ КИБЕРБЕЗОПАСНОСТЬ</option>
-                    <option value="5">КОРПОРАТИВНЫЕ ИНФОРМАЦИОННЫЕ СИСТЕМЫ</option>
-                    <option value="6">КИБЕРФИЗИЧЕСКИЕ СИСТЕМЫ</option>
-                    <option value="7">ВЕБ-ТЕХНОЛОГИИ</option>
-                    <option value="8">БОЛЬШИЕ И ОТКРЫТЫЕ ДАННЫЕ</option>
-                    <option value="9">КИБЕРБЕЗОПАСНОСТЬ ВЕБ-ПРИЛОЖЕНИЙ</option>
+                    <option value=""></option>
+                    <option value="1" {% if pagination_info.direct == '=1' %}selected{% endif %}>ИНТЕГРАЦИЯ И ПРОГРАММИРОВАНИЕ В САПР</option>
+                    <option value="2" {% if pagination_info.direct == '=2' %}selected{% endif %}>ПРИКЛАДНАЯ КИБЕРБЕЗОПАСНОСТЬ</option>
+                    <option value="5" {% if pagination_info.direct == '=5' %}selected{% endif %}>КОРПОРАТИВНЫЕ ИНФОРМАЦИОННЫЕ СИСТЕМЫ</option>
+                    <option value="6" {% if pagination_info.direct == '=6' %}selected{% endif %}>КИБЕРФИЗИЧЕСКИЕ СИСТЕМЫ</option>
+                    <option value="7" {% if pagination_info.direct == '=7' %}selected{% endif %}>ВЕБ-ТЕХНОЛОГИИ</option>
+                    <option value="8" {% if pagination_info.direct == '=8' %}selected{% endif %}>БОЛЬШИЕ И ОТКРЫТЫЕ ДАННЫЕ</option>
+                    <option value="9" {% if pagination_info.direct == '=9' %}selected{% endif %}>КИБЕРБЕЗОПАСНОСТЬ ВЕБ-ПРИЛОЖЕНИЙ</option>
                 </select>
             </div>
             <div class="row w-100" style="margin-top: 20px ;">

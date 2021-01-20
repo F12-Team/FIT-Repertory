@@ -48,9 +48,10 @@ def direction(direction_id):
     directions = cursor.fetchall()
 
     query = '''
-        SELECT id, name 
-        FROM Projects 
-        WHERE id_of_direction = %s 
+        SELECT p.id, p.name, s.autumn_or_spring 
+        FROM Projects AS p
+        JOIN Semesters AS s ON p.id_of_semestr = s.id
+        WHERE p.id_of_direction = %s 
         ORDER BY likes DESC 
         LIMIT 9;
     '''
@@ -69,6 +70,7 @@ def direction(direction_id):
 
     cursor.execute(query, (direction_id,))
     semestrs = cursor.fetchone()
+    print(semestrs)
 
     cursor.close()
 
@@ -109,7 +111,7 @@ def project(project_id):
 
     cursor.close()
 
-    return render_template('project.html', projects=projects, teams=teams)
+    return render_template('project.html', projects=projects, teams=teams, title='Карточка проекта')
 
 
 @app.route('/direction/<int:direction_id>/all')
@@ -247,4 +249,4 @@ def projects():
 
     cursor.close()
 
-    return render_template('projects.html', projects=projects, pagination_info=pagination_info)
+    return render_template('projects.html', projects=projects, pagination_info=pagination_info, title='Все проекты')
