@@ -8,8 +8,13 @@
                 <div class="about-text">
                     <h2>{{ projects.name_of_project }}</h2>
                     <h3>{{ projects.autumn_or_spring }}</h3>
+<<<<<<< HEAD
                 </div> -->
                 <!--<iframe src="" width="480" height="320" class="about-pic"></iframe> -->
+=======
+                </div>
+                <img src="{{ url_for('static', filename='img/' + projects.poster) }}" class="about-pic" alt="">
+>>>>>>> 0268f8c1c067ec3fb662e1cd9a7606513c82a12f
             </div>
         </div>
     </section>
@@ -17,7 +22,7 @@
         <div class="projdesc"></div>
         <div class="container">
             <div class="image">
-                <iframe src="{{ projects.video }}" height="250" class="image2"></iframe>
+                <iframe src="{% if projects.video != None %}{{ projects.video }}{% else %}{{ url_for('static', filename='img/nph.jpg') }}{% endif %}" height="254" class="image2"></iframe>
                 <div class="item item0" id="item0">
                     <div class="links">
                         <div class="likesblock">
@@ -26,8 +31,8 @@
                             <p class="likes">{{ projects.likes }}</p>
                         </div>
                         <div class="linksblock">
-                            <a href="{{ projects.site }}" class=" right iconbtn fas fa-laptop" title="Сайт проекта"></a>
-                            <a href="{{ projects.git }}" class="iconbtn fab fa-github"
+                            <a href="{% if projects.site != '' %}{{ projects.site }}{% else %}#{% endif %}" {% if projects.site != '' %}target="_blank"{% endif %} class=" right iconbtn fas fa-laptop" title="Сайт проекта"></a>
+                            <a href="{% if projects.git != '' %}{{ projects.git }}{% else %}#{% endif %}" {% if projects.git != '' %}target="_blank"{% endif %} class="iconbtn fab fa-github"
                                 title="Git-репозиторий проекта"></a>
                         </div>
                     </div>
@@ -45,30 +50,30 @@
             <div class="row">
                 <div class="col">
                     <div class="testimonial">
-                        <img src="" alt="">
-                        <div class="name">Технология</div>
+                        <img src="{{ url_for('static', filename='img/js.png') }}" alt="">
+                        <div class="name">JavaScript</div>
                         <p>
-                            Описание использования технологии в проекте
+                            Современный ультипарадигменный язык программирования
                         </p>
                     </div>
                 </div>
 
                 <div class="col">
                     <div class="testimonial">
-                        <img src="" alt="">
-                        <div class="name">Технология</div>
+                        <img src="{{ url_for('static', filename='img/mysql_PNG23.png') }}" alt="">
+                        <div class="name">MySQL</div>
                         <p>
-                            Описание использования технологии в проекте
+                            Cвободная реляционная система управления базами данных
                         </p>
                     </div>
                 </div>
 
                 <div class="col">
                     <div class="testimonial">
-                        <img src="" alt="">
-                        <div class="name">Технология</div>
+                        <img src="{{ url_for('static', filename='img/py.png') }}" alt="">
+                        <div class="name">Python</div>
                         <p>
-                            Описание использования технологии в проекте
+                            Высокоуровневый язык программирования общего назначения
                         </p>
                     </div>
                 </div>

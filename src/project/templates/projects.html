@@ -47,7 +47,8 @@
     <div class="card-container">
         <div class="swiper-card d-flex flex-column">
             <div class="swiper-circle">
-                <h2 class="card-title">{{ loop.index + (pagination_info.current_page - 1) * 1 }}</h2>
+                <!--<h4 class="card-title">{{ loop.index + (pagination_info.current_page - 1) * 1 }}</h4>-->
+                <h4 class="card-title">{{ project.autumn_or_spring }}</h4>
             </div>
             <div class="swiper-content">
                 <p class="cardtext" style="margin-bottom:0; padding-bottom:0;">{{ project.name }}</p>
