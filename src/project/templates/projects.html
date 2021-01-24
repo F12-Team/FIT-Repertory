@@ -10,7 +10,7 @@
     <form class="w-50" method="post">
         <div class="form-row">
             <div class="col">
-                <label for="name" style="color: #f2f2f2; font-weight: bold; font-size: 18px;">Название проекта</label>
+                <label for="name" style="color: #f2f2f2; font-weight: bold; font-size: 18px;">Проект</label>
                 <input class="form-control" type="text" id="name" name="name" value="{% if pagination_info.name == "'%%'" or pagination_info.name == None %}{% else %}{{ pagination_info.name | replace("%", "") | replace("'", "") }}{% endif %}">
             </div>
             <div class="col">
