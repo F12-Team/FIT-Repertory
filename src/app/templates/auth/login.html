@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="login-page">
+    <div class="title-area text-center py-5 d-flex">
+        <div class="m-auto">
+            <div class="login-form p-3 rounded text-white bg-dark">
+                <form method="POST" class="container-fluid">
+                    <div class="form-group pt-5 row mb-5">
+                        <label for="login" class="col-sm-3 col-form-label">Логин</label>
+                        <div class="col-sm-9">
+                            <input type="text" class="form-control" id="login" name="login">
+                        </div>
+                    </div>
+                    <div class="form-group row mb-5">
+                        <label for="password" class="col-sm-3 col-form-label">Пароль</label>
+                        <div class="col-sm-9">
+                            <input type="password" class="form-control" id="password" name="password">
+                        </div>
+                    </div>
+                    <div class="row pb-4">
+                        <button type="submit" class="btn btn-light mx-auto">Войти</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

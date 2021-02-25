@@ -1,8 +1,8 @@
 #!/bin/bash
 
-. project/ve/bin/activate
+. ve/bin/activate
 
-cd project*
+cd app*
 
 export FLASK_APP=$(ls | grep app)
 export FLASK_ENV=development
