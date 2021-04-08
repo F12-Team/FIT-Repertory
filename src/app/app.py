@@ -47,6 +47,8 @@ def index():
 @app.route('/direction', methods=['POST'])
 def get_projects_by_direction_id():
     direction_id = request.form.get('direction', 0, type=int)
+    print(jsonify(Project.query.filter(Project.direction_id == direction_id).order_by(desc(Project.likes)).limit(9).all()))
+    print('DEBUGG TOOOOOL')
     return jsonify(Project.query.filter(Project.direction_id == direction_id).order_by(desc(Project.likes)).limit(9).all())
 
 

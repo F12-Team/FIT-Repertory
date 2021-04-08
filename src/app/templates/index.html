@@ -6,7 +6,7 @@
         <div class="contentBox h100">
             <div>
                 <h1>Проектная деятельность на факультете информационных технологий</h1>
-                <a href="#directions" class="btn btnD1 scroll">Выберите направление</a>
+                <a  scroll-target="#directions" id="scrollButton" class="btn btnD1 scroll">Выберите направление</a>
                 <p>Получите или усовершенствуйте навыки командной работы уже в университете!</p>
             </div>
         </div>
@@ -20,8 +20,8 @@
 <div class="inner-width" id="directions">
     <div class="services justify-content-center">
         {% for direction in directions %}
-        <a href="" class="route service m-2">
-            <img class="logoqwerty" src="" alt="Card image cap">
+        <a  class="route service m-2" data-id="{{ direction.id}}">
+            <img class="logoqwerty" src="" alt="Card image cap" >
             <div class="card-body">
                 <h5 class="cardtext">{{ direction.name }}</h5>
                 <p class="cardtext">{{ direction.description }}</p>
@@ -31,9 +31,9 @@
     </div>
 </div>
 
-<div id="swiper" class="swiper-section" style="{% if request.endpoint == 'index' %}display: none;{% endif %}">
+<div id="swiperDisplay" class="swiper-section" style=" {% if request.endpoint == 'index' %}display: none;{% endif %} ">
     <div class="swiper-container">
-        <div class="swiper-wrapper">
+        <div  id="swiper"class="swiper-wrapper">
             {% for project in projects %}
             <div class="card-container swiper-slide">
                 <div class="swiper-card">
