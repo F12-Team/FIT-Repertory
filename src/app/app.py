@@ -41,3 +41,16 @@ app.register_blueprint(view_bp)
 @app.route('/')
 def index():
     return render_template('index.html', directions={}, projects={})
+    
+
+@app.route('/direction/<int:direction_id>', methods=['POST'])
+def get_projects_by_direction_id(direction_id):
+    return jsonify(Project.query.filter(Project.direction_id == direction_id).order_by(desc(Project.likes)).limit(9).all())
+
+
+@app.route('/images/<image_id>')
+def image(image_id):
+    img = Image.query.get(image_id)
+    if img is None:
+        abort(404)
+    return send_from_directory(app.config['UPLOAD_FOLDER'], img.storage_filename)
