@@ -1,7 +1,7 @@
 from flask import Blueprint, render_template, redirect, url_for, flash, request, jsonify
 from flask_login import LoginManager, login_user, logout_user, login_required, current_user
 from functools import wraps
-from sqlalchemy import exc
+from sqlalchemy import exc, desc
 from models import Faculty, Direction, Group, Role, Laboratory, Status, Semester, Type, Student, User, Image, Info, Project
 
 bp = Blueprint('view', __name__, url_prefix='/view')
@@ -35,9 +35,9 @@ PER_PAGE = 5
 
 def search_params():
     return {
-        'name': request.args.get('name'),
-        'direction_ids': request.args.getlist('direction_ids'),
-        'semester_ids': request.args.getlist('semester_ids')
+        'name': request.form.get('name'),
+        'direction_ids': request.form.getlist('direction_ids'),
+        'semester_ids': request.form.getlist('semester_ids')
     }
 
 def local_pagination(pagination):
@@ -52,16 +52,46 @@ def local_pagination(pagination):
 def projects():
     semesters = Semester.query.all()
     directions = Direction.query.all()
+    projects = Project.query.order_by(desc(Project.likes)).limit(PER_PAGE).all()
 
-    return render_template('view/projects.html', semesters=semesters, directions=directions)
+    return render_template('view/projects.html', semesters=semesters, directions=directions, projects=projects)
 
 
 @bp.route('/search', methods=['POST'])
 def search():
-    page = request.args.get('page', 1, type=int)
+    page = request.form.get('page', 1, type=int)
     projects_filter = ProjectsFilter(**search_params())
     projects = projects_filter.perform()
     pagination = projects.paginate(page, PER_PAGE)
     projects = pagination.items
 
     return jsonify(projects, local_pagination(pagination), search_params())
+
+@bp.route('/project/<project_id>')
+def project(project_id):
+    project = Project.query.filter(Project.id==project_id)
+
+    return render_template('view/project.html', project=project)
+
+@bp.route('/like', methods=['POST'])
+def like():
+    like = request.form.get('like')
+    project_id = request.form.get('project_id')
+
+    print(like)
+    print(project_id)
+
+    if like == 'True':
+        project = Project.query.filter(Project.id==project_id).first()
+        print('like')
+        project.likes = project.likes + 1
+        db.session.add(project)
+        db.session.commit()
+    else:
+        project = Project.query.filter(Project.id==project_id).first()
+        print('dislike')
+        project.likes = project.likes - 1
+        db.session.add(project)
+        db.session.commit()
+
+    return jsonify('complete')

@@ -39,4 +39,20 @@
         </div>
     </form>
 </div>
+<div class="row justify-content-center mt-5 servicess">
+    {% for project in projects %}
+    <div class="card-container">
+        <div class="swiper-card d-flex flex-column">
+            <div class="swiper-circle">
+                <!--<h4 class="card-title">{{ loop.index + (pagination_info.current_page - 1) * 1 }}</h4>-->
+                <h4 class="card-title">{{ project.autumn_or_spring }}</h4>
+            </div>
+            <div class="swiper-content">
+                <p class="cardtext" style="margin-bottom:0; padding-bottom:0;">{{ project.name }}</p>
+                <a href="{{ url_for('project', project_id=project.id) }}" class="btnprojects">Страница проекта</a>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
 {% endblock %}

@@ -1,5 +1,90 @@
 {% extends 'base.html' %}
-
 {% block content %}
+<div class="" style="margin-top: 120px; ">
+    <section id="about">
+        <div class="inner-width">
+            <h1 class="section-title name_project mb-0">{{ project.name_of_project }}</h1>
+            <div class="heading-line mx-auto w-100 mb-3"></div>
+            
+            <div class="about-content">
+                <div class="about-text">
+                    
+                    <h2 class="text-center mb-5">{{ project.autumn_or_spring }}</h2>
+                </div> 
+                <!--<iframe src="" width="480" height="320" class="about-pic"></iframe> -->
+            </div>
+        </div>
+    </section>
+    <section class="sec1" style="background-color: #fdf5e6;">
+        <div class="projdesc"></div>
+        <div class="container">
+            <div class="image">
+                <iframe src="{% if project.video != None %}{{ project.video }}{% else %}{{ url_for('static', filename='img/nph.jpg') }}{% endif %}" height="254" class="image2"></iframe>
+                <div class="item item0" id="item0">
+                    <div class="links">
+                        <div class="likesblock">
+                            <a class="likebtn iconbtn far fa-heart"
+                                href=""></a>
+                            <p class="likes">{{ project.likes }}</p>
+                        </div>
+                        <div class="linksblock">
+                            <a href="{% if project.site != '' %}{{ project.site }}{% else %}#{% endif %}" {% if project.site != '' %}target="_blank"{% endif %} class=" right iconbtn fas fa-laptop" title="Сайт проекта"></a>
+                            <a href="{% if project.git != '' %}{{ project.git }}{% else %}#{% endif %}" {% if project.git != '' %}target="_blank"{% endif %} class="iconbtn fab fa-github"
+                                title="Git-репозиторий проекта"></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="info-menu">
+                
+                <p>{{ project.description_of_project }}</p>
+            </div>
+        </div>
+    </section>
+    <section class="testimonials">
+        <div class="inner">
+            <h1 class="name_project mt-5" style="margin-bottom: 30px;">Используемые технологии</h1>
+                
+        </div>
+    </section>
+    <section class="d-flex flex-column " id="part">
+        <!--style="background: linear-gradient(#403F4C, #fdf5e6) !important;"-->
 
+        <div style="flex-grow: 2" class="d-flex" id="wrapper">
+
+            <!-- Page Content -->
+            <div id="page-content-wrapper" style="width: 100% !important;">
+
+                <div class="container-fluid px-3 px-md-5 pb-5">
+                    <h1 class="section-title name_project" style="margin-bottom: 30px;">Распределение ролей</h1>
+                    <div class="table-scrollable">
+
+                    <table class="table table-scrollable" style="color: #f2f2f2; font-weight: bold;">
+                        <thead style="background-color: #ce5353;">
+                            <tr>
+                                <th>Участник</th>
+                                <th>Роль</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for people in teams %}
+                            <tr>
+                                <td>{{ people.last_name }} {{ people.first_name }} {{ people.middle_name or '' }}, {{
+                                    people.name_of_group }}</td>
+                                <td>{{ people.role }}</td>
+                            </tr>
+                            {% endfor %}
+                            <tr>
+                                <td>{{ project.last_name }} {{ project.first_name }} {{ project.middle_name or '' }}
+                                </td>
+                                <td>{{ project.description_of_curator }}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
 {% endblock %}
