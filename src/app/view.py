@@ -1,4 +1,4 @@
-from flask import Blueprint, render_template, redirect, url_for, flash, request
+from flask import Blueprint, render_template, redirect, url_for, flash, request, jsonify
 from flask_login import LoginManager, login_user, logout_user, login_required, current_user
 from functools import wraps
 from sqlalchemy import exc
@@ -40,6 +40,14 @@ def search_params():
         'semester_ids': request.args.getlist('semester_ids')
     }
 
+def local_pagination(pagination):
+    return {
+        'page': pagination.page,
+        'has_prev': pagination.has_prev,
+        'has_next': pagination.has_next,
+        'iter_pages': list(pagination.iter_pages()) ,
+    }
+
 @bp.route('/projects')
 def projects():
     semesters = Semester.query.all()
@@ -56,4 +64,4 @@ def search():
     pagination = projects.paginate(page, PER_PAGE)
     projects = pagination.items
 
-    return jsonify(projects=projects, pagination=pagination, search_params=search_params())
+    return jsonify(projects, local_pagination(pagination), search_params())
