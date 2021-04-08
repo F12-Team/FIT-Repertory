@@ -40,7 +40,8 @@ app.register_blueprint(view_bp)
 
 @app.route('/')
 def index():
-    return render_template('index.html', directions={}, projects={})
+    directions = Direction.query.all()
+    return render_template('index.html', directions=directions, projects={})
     
 
 @app.route('/direction/<int:direction_id>', methods=['POST'])
