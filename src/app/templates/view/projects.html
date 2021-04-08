@@ -1,5 +1,42 @@
 {% extends 'base.html' %}
 
 {% block content %}
-
+<div class="projects_header">
+    <h1 class="d-flex align-items-center justify-content-center "
+        style=" margin: 30px; margin-top: 120px; color: #f2f2f2;"> Проекты</h1>
+</div>
+<div class="row w-100">
+    <form class="w-50" method="post">
+        <div class="form-row">
+            <div class="col">
+                <label for="name" style="color: #f2f2f2; font-weight: bold; font-size: 18px;">Название проекта</label>
+                <input class="form-control" type="text" id="name" name="name" value="">
+            </div>
+            <div class="col">
+                <label for="FormControlSelect1"
+                    style="color: #f2f2f2;  font-weight: bold; font-size: 18px;">Семестр</label>
+                <select class="form-control" id="semestr" name="semestr">
+                    <option value=""></option>
+                    {% for semester in semesters %}
+                    <option value="{{ semester.id }}">{{ semester.name }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div class="col">
+                <label for="FormControlSelect2"
+                    style="color: #f2f2f2; font-weight: bold; font-size: 18px;">Направление</label>
+                <select class="form-control" id="direct" name="direct">
+                    <option value=""></option>
+                    {% for direction in directions %}
+                    <option value="{{ direction.id }}">{{ direction.name }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div class="row w-100" style="margin-top: 20px ;">
+                <button type="submit" class="btn btn-primary w-75"
+                    style="background-color: #ce5353; border-color: #ce5353; border-radius: 40px;">Поиск</button>
+            </div>
+        </div>
+    </form>
+</div>
 {% endblock %}

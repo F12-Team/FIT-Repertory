@@ -6,6 +6,9 @@ from models import Faculty, Direction, Group, Role, Laboratory, Status, Semester
 
 bp = Blueprint('view', __name__, url_prefix='/view')
 
-@bp.route('/')
-def index():
-    return redirect(url_for('index'))
+@bp.route('/projects')
+def projects():
+    semesters = Semester.query.all()
+    directions = Direction.query.all()
+
+    return render_template('view/projects.html', semesters=semesters, directions=directions)

@@ -44,9 +44,11 @@ def index():
     return render_template('index.html', directions=directions, projects={})
     
 
-@app.route('/direction/<int:direction_id>', methods=['POST'])
-def get_projects_by_direction_id(direction_id):
-    return jsonify(Project.query.filter(Project.direction_id == direction_id).order_by(desc(Project.likes)).limit(9).all())
+@app.route('/direction', methods=['POST'])
+def get_projects_by_direction_id():
+    direction = request.args.get('direction', 0, type=int)
+    if direction != 0:
+        return jsonify(Project.query.filter(Project.direction_id == direction_id).order_by(desc(Project.likes)).limit(9).all())
 
 
 @app.route('/images/<image_id>')
