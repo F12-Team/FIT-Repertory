@@ -6,9 +6,9 @@ def is_admin():
     return current_user.role.name == 'Администратор'
 
 
-def is_moderator():
+def is_curator():
     print(current_user.role)
-    return current_user.role.name == 'Модератор'
+    return current_user.role.name == 'Куратор'
 
 
 def is_user():
@@ -20,14 +20,5 @@ class UsersPolicy:
     def __init__(self, record=None):
         self.record = record
 
-    def update_movie(self):
-        return is_admin() or is_moderator()
-
-    def create_movie(self):
-        return is_admin()
-
-    def delete_movie(self):
-        return is_admin()
-
-    def moderate_reviews(self):
-        return is_moderator()
+    def update(self):
+        return is_admin() or is_curator()
