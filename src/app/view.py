@@ -5,3 +5,7 @@ from sqlalchemy import exc
 from models import Faculty, Direction, Group, Role, Laboratory, Status, Semester, Type, Student, User, Image, Info, Project
 
 bp = Blueprint('view', __name__, url_prefix='/view')
+
+@bp.route('/')
+def index():
+    return redirect(url_for('index'))

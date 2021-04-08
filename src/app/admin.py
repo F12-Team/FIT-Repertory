@@ -6,3 +6,6 @@ from models import Faculty, Direction, Group, Role, Laboratory, Status, Semester
 
 bp = Blueprint('admin', __name__, url_prefix='/admin')
 
+@bp.route('/')
+def index():
+    return redirect(url_for('index'))
