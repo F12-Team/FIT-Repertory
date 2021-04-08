@@ -1,6 +1,6 @@
-from flask import Flask, render_template, abort, send_from_directory, render_template, request
+from flask import Flask, render_template, abort, send_from_directory, render_template, request, jsonify
 from flask_sqlalchemy import SQLAlchemy
-from sqlalchemy import MetaData
+from sqlalchemy import MetaData, desc
 from flask_migrate import Migrate
 from sqlalchemy import exc
 
@@ -46,9 +46,8 @@ def index():
 
 @app.route('/direction', methods=['POST'])
 def get_projects_by_direction_id():
-    direction = request.args.get('direction', 0, type=int)
-    if direction != 0:
-        return jsonify(Project.query.filter(Project.direction_id == direction_id).order_by(desc(Project.likes)).limit(9).all())
+    direction_id = request.form.get('direction', 0, type=int)
+    return jsonify(Project.query.filter(Project.direction_id == direction_id).order_by(desc(Project.likes)).limit(9).all())
 
 
 @app.route('/images/<image_id>')
