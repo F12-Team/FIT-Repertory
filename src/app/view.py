@@ -4,7 +4,7 @@ from functools import wraps
 from sqlalchemy import exc, desc
 from models import Faculty, Direction, Group, Role, Laboratory, Status, Semester, Type, Student, User, Image, Info, Project
 from app import db
-from tools import AlchemyEncoder
+from tools import new_alchemy_encoder
 import json
 
 bp = Blueprint('view', __name__, url_prefix='/view')
@@ -80,13 +80,19 @@ def search():
     projects = projects_filter.perform()
     pagination = projects.paginate(page, PER_PAGE)
     projects = pagination.items
+    projects2 = {}
+    for project in projects:
+        projects2.update(project.to_dict())
+        print(project.to_dict())
 
-    return jsonify(local_pagination(pagination), search_params(), json.loads(json.dumps(projects, cls=AlchemyEncoder)))
+    print(projects2)
+
+    return jsonify(local_pagination(pagination), search_params(), projects2)
 
 
 @bp.route('/project/<project_id>')
 def project(project_id):
-    project = Project.query.filter(Project.id == project_id)
+    project = Project.query.filter(Project.id == project_id).all()
 
     return render_template('view/project.html', project=project)
 

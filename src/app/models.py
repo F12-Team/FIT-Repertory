@@ -8,6 +8,7 @@ from app import db
 from sqlalchemy.dialects import mysql
 #from users_policy import UsersPolicy
 from sqlalchemy import exc
+from sqlalchemy_serializer import SerializerMixin
 
 
 pictures = db.Table('pictures',
@@ -29,7 +30,7 @@ curators = db.Table('curators',
                     db.Column('description', db.Text()))
 
 
-class Faculty(db.Model):
+class Faculty(db.Model, SerializerMixin):
     __tablename__ = 'faculties'
 
     id = db.Column(db.Integer, primary_key=True)
@@ -42,7 +43,7 @@ class Faculty(db.Model):
         return '<Faculty %r>' % self.name
 
 
-class Direction(db.Model):
+class Direction(db.Model, SerializerMixin):
     __tablename__ = 'directions'
 
     id = db.Column(db.Integer, primary_key=True)
@@ -56,7 +57,7 @@ class Direction(db.Model):
         return '<Direction %r>' % self.name
 
 
-class Group(db.Model):
+class Group(db.Model, SerializerMixin):
     __tablename__ = 'groups'
 
     id = db.Column(db.Integer, primary_key=True)
@@ -69,7 +70,7 @@ class Group(db.Model):
         return '<Group %r>' % self.name
 
 
-class Role(db.Model):
+class Role(db.Model, SerializerMixin):
     __tablename__ = 'roles'
 
     id = db.Column(db.Integer, primary_key=True)
@@ -80,7 +81,7 @@ class Role(db.Model):
         return '<Role %r>' % self.name
 
 
-class Laboratory(db.Model):
+class Laboratory(db.Model, SerializerMixin):
     __tablename__ = 'laboratories'
 
     id = db.Column(db.Integer, primary_key=True)
@@ -93,7 +94,7 @@ class Laboratory(db.Model):
         return '<Laboratory %r>' % self.name
 
 
-class Status(db.Model):
+class Status(db.Model, SerializerMixin):
     __tablename__ = 'statuses'
 
     id = db.Column(db.Integer, primary_key=True)
@@ -104,7 +105,7 @@ class Status(db.Model):
         return '<Status %r>' % self.name
 
 
-class Semester(db.Model):
+class Semester(db.Model, SerializerMixin):
     __tablename__ = 'semesters'
 
     id = db.Column(db.Integer, primary_key=True)
@@ -115,7 +116,7 @@ class Semester(db.Model):
         return '<Semester %r>' % self.name
 
 
-class Type(db.Model):
+class Type(db.Model, SerializerMixin):
     __tablename__ = 'types'
 
     id = db.Column(db.Integer, primary_key=True)
@@ -126,7 +127,7 @@ class Type(db.Model):
         return '<Type %r>' % self.name
 
 
-class Student(db.Model, UserMixin):
+class Student(db.Model, SerializerMixin):
     __tablename__ = 'students'
 
     id = db.Column(db.Integer, primary_key=True)
@@ -145,7 +146,7 @@ class Student(db.Model, UserMixin):
         return ' '.join([self.last_name, self.first_name, self.middle_name or ''])
 
 
-class User(db.Model, UserMixin):
+class User(db.Model, UserMixin, SerializerMixin):
     __tablename__ = 'users'
 
     id = db.Column(db.Integer, primary_key=True)
@@ -172,7 +173,7 @@ class User(db.Model, UserMixin):
         return check_password_hash(self.password_hash, password)
 
 
-class Image(db.Model):
+class Image(db.Model, SerializerMixin):
     __tablename__ = 'images'
 
     id = db.Column(db.String(128), primary_key=True)
@@ -194,8 +195,7 @@ class Image(db.Model):
         _, ext = os.path.splitext(self.file_name)
         return self.id + ext
 
-
-class Info(db.Model):
+class Info(db.Model, SerializerMixin):
     __tablename__ = 'info'
 
     id = db.Column(db.String(128), primary_key=True)
@@ -207,11 +207,10 @@ class Info(db.Model):
     type_id = db.Column(db.Integer, db.ForeignKey('types.id'), primary_key=True)
 
 
-class Project(db.Model):
+class Project(db.Model, SerializerMixin):
     __tablename__ = 'projects'
 
     id = db.Column(db.Integer, primary_key=True)
-    key = db.Column(db.String(128), nullable=False, unique=True)
     name = db.Column(db.String(128), nullable=False)
     description = db.Column(db.String(128))
     likes = db.Column(db.Integer, default=0)
@@ -220,6 +219,9 @@ class Project(db.Model):
     direction_id = db.Column(db.Integer, db.ForeignKey('directions.id'), nullable=False)
     laboratory_id = db.Column(db.Integer, db.ForeignKey('laboratories.id'), nullable=False)
     status_id = db.Column(db.Integer, db.ForeignKey('statuses.id'), nullable=False)
+    teamlead_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
+
+    curators = db.relationship('User', secondary=curators)
 
     def __repr__(self):
         return '<Project %r>' % self.name
