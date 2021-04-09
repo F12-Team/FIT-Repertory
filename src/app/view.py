@@ -98,13 +98,13 @@ def like():
     if like == 'True':
         project = Project.query.filter(Project.id == project_id).first()
         print('like')
-        project.likes = project.likes + 1
+        project.like()
         db.session.add(project)
         db.session.commit()
     else:
         project = Project.query.filter(Project.id == project_id).first()
         print('dislike')
-        project.likes = project.likes - 1
+        project.unlike()
         db.session.add(project)
         db.session.commit()
 
