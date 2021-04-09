@@ -38,18 +38,19 @@ app.register_blueprint(curator_bp)
 app.register_blueprint(project_bp)
 app.register_blueprint(view_bp)
 
+from tools import AlchemyEncoder
+import json
+
 @app.route('/')
 def index():
     directions = Direction.query.all()
     return render_template('index.html', directions=directions, projects={})
-    
 
 @app.route('/direction', methods=['POST'])
 def get_projects_by_direction_id():
     direction_id = request.form.get('direction', 0, type=int)
-    print(jsonify(Project.query.filter(Project.direction_id == direction_id).order_by(desc(Project.likes)).limit(9).all()))
-    print('DEBUGG TOOOOOL')
-    return jsonify(Project.query.filter(Project.direction_id == direction_id).order_by(desc(Project.likes)).limit(9).all())
+
+    return json.dumps(Project.query.filter(Project.direction_id == direction_id).order_by(desc(Project.likes)).limit(9).all(), cls=AlchemyEncoder)
 
 
 @app.route('/images/<image_id>')

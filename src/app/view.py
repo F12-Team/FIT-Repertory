@@ -3,8 +3,12 @@ from flask_login import LoginManager, login_user, logout_user, login_required, c
 from functools import wraps
 from sqlalchemy import exc, desc
 from models import Faculty, Direction, Group, Role, Laboratory, Status, Semester, Type, Student, User, Image, Info, Project
+from app import db
+from tools import AlchemyEncoder
+import json
 
 bp = Blueprint('view', __name__, url_prefix='/view')
+
 
 class ProjectsFilter:
     def __init__(self, name, direction_ids, semester_ids):
@@ -21,17 +25,22 @@ class ProjectsFilter:
 
     def __filter_by_name(self):
         if self.name:
-            self.query = self.query.filter(Project.name.ilike('%' + self.name + '%'))
-    
+            self.query = self.query.filter(
+                Project.name.ilike('%' + self.name + '%'))
+
     def __filter_by_direction(self):
         if self.direction_ids:
-            self.query = self.query.filter(Project.direction_ids.in_(self.direction_ids))
-    
+            self.query = self.query.filter(
+                Project.direction_ids.in_(self.direction_ids))
+
     def __filter_by_semester(self):
         if self.semester_ids:
-            self.query = self.query.filter(Project.semester_ids.in_(self.semester_ids))
+            self.query = self.query.filter(
+                Project.semester_ids.in_(self.semester_ids))
+
 
 PER_PAGE = 5
+
 
 def search_params():
     return {
@@ -40,19 +49,22 @@ def search_params():
         'semester_ids': request.form.getlist('semester_ids')
     }
 
+
 def local_pagination(pagination):
     return {
         'page': pagination.page,
         'has_prev': pagination.has_prev,
         'has_next': pagination.has_next,
-        'iter_pages': list(pagination.iter_pages()) ,
+        'iter_pages': list(pagination.iter_pages()),
     }
+
 
 @bp.route('/projects')
 def projects():
     semesters = Semester.query.all()
     directions = Direction.query.all()
-    projects = Project.query.order_by(desc(Project.likes)).limit(PER_PAGE).all()
+    projects = Project.query.order_by(
+        desc(Project.likes)).limit(PER_PAGE).all()
 
     return render_template('view/projects.html', semesters=semesters, directions=directions, projects=projects)
 
@@ -65,13 +77,15 @@ def search():
     pagination = projects.paginate(page, PER_PAGE)
     projects = pagination.items
 
-    return jsonify(projects, local_pagination(pagination), search_params())
+    return jsonify(local_pagination(pagination), search_params(), json.loads(json.dumps(projects, cls=AlchemyEncoder)))
+
 
 @bp.route('/project/<project_id>')
 def project(project_id):
-    project = Project.query.filter(Project.id==project_id)
+    project = Project.query.filter(Project.id == project_id)
 
     return render_template('view/project.html', project=project)
+
 
 @bp.route('/like', methods=['POST'])
 def like():
@@ -82,13 +96,13 @@ def like():
     print(project_id)
 
     if like == 'True':
-        project = Project.query.filter(Project.id==project_id).first()
+        project = Project.query.filter(Project.id == project_id).first()
         print('like')
         project.likes = project.likes + 1
         db.session.add(project)
         db.session.commit()
     else:
-        project = Project.query.filter(Project.id==project_id).first()
+        project = Project.query.filter(Project.id == project_id).first()
         print('dislike')
         project.likes = project.likes - 1
         db.session.add(project)
