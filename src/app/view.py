@@ -101,11 +101,11 @@ def like():
         project.like()
         db.session.add(project)
         db.session.commit()
+        return jsonify('complete like')
     else:
         project = Project.query.filter(Project.id == project_id).first()
         print('dislike')
         project.unlike()
         db.session.add(project)
         db.session.commit()
-
-    return jsonify('complete')
+        return jsonify('complete dislike')
