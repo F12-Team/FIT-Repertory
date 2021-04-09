@@ -59,12 +59,16 @@ def local_pagination(pagination):
     }
 
 
-@bp.route('/projects')
+@bp.route('/projects', methods=['POST', 'GET'])
 def projects():
+    direction_id = request.form.get('direction_id', 0, int)
     semesters = Semester.query.all()
     directions = Direction.query.all()
-    projects = Project.query.order_by(
-        desc(Project.likes)).limit(PER_PAGE).all()
+    projects = Project.query.order_by(desc(Project.likes))
+    if direction_id == 0:
+        projects = projects.limit(PER_PAGE).all()
+    else:
+        projects = projects.filter(Project.direction_id==direction_id).limit(PER_PAGE).all()
 
     return render_template('view/projects.html', semesters=semesters, directions=directions, projects=projects)
 
