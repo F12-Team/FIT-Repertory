@@ -4,7 +4,7 @@ from functools import wraps
 from sqlalchemy import exc, desc
 from models import Faculty, Direction, Group, Role, Laboratory, Status, Semester, Type, Student, User, Image, Info, Project
 from app import db
-from tools import new_alchemy_encoder, ProjectsFilter
+from tools import ProjectsFilter
 import json
 
 bp = Blueprint('view', __name__, url_prefix='/view')

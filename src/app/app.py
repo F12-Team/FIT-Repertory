@@ -38,7 +38,6 @@ app.register_blueprint(curator_bp)
 app.register_blueprint(project_bp)
 app.register_blueprint(view_bp)
 
-from tools import new_alchemy_encoder
 import json
 
 @app.route('/')

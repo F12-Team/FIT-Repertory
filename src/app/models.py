@@ -192,7 +192,6 @@ class Image(db.Model, SerializerMixin):
     mime_type = db.Column(db.String(128), nullable=False)
     md5_hash = db.Column(db.String(128), nullable=False, unique=True)
     created_at = db.Column(db.DateTime, nullable=False, server_default=sa.sql.func.now())
-    object_type = db.Column(db.String(128))
 
     def __repr__(self):
         return '<Image %r>' % self.file_name
