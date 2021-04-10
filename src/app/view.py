@@ -12,10 +12,10 @@ bp = Blueprint('view', __name__, url_prefix='/view')
 
 
 class ProjectsFilter:
-    def __init__(self, name, direction_ids, semester_ids):
+    def __init__(self, name, direction_id, semester_id):
         self.name = name
-        self.direction_ids = direction_ids
-        self.semester_ids = semester_ids
+        self.direction_id = direction_id
+        self.semester_id = semester_id
         self.query = Project.query
 
     def perform(self):
@@ -30,14 +30,14 @@ class ProjectsFilter:
                 Project.name.ilike('%' + self.name + '%'))
 
     def __filter_by_direction(self):
-        if self.direction_ids:
+        if self.direction_id:
             self.query = self.query.filter(
-                Project.direction_ids.in_(self.direction_ids))
+                Project.direction_id == self.direction_id)
 
     def __filter_by_semester(self):
-        if self.semester_ids:
+        if self.semester_id:
             self.query = self.query.filter(
-                Project.semester_ids.in_(self.semester_ids))
+                Project.semester_id == self.semester_id)
 
 
 PER_PAGE = 5
@@ -46,8 +46,8 @@ PER_PAGE = 5
 def search_params():
     return {
         'name': request.form.get('name'),
-        'direction_ids': request.form.getlist('direction_ids'),
-        'semester_ids': request.form.getlist('semester_ids')
+        'direction_id': request.form.get('direction_id'),
+        'semester_id': request.form.get('semester_id')
     }
 
 
