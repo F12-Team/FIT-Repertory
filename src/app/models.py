@@ -159,6 +159,8 @@ class User(db.Model, UserMixin, SerializerMixin):
 
     role_id = db.Column(db.Integer, db.ForeignKey('roles.id'), nullable=False)
 
+    serialize_rules = ('-password_hash',)
+
     def __repr__(self):
         return '<User %r>' % self.login
 
@@ -222,6 +224,11 @@ class Project(db.Model, SerializerMixin):
     teamlead_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
 
     curators = db.relationship('User', secondary=curators)
+    teamlead = db.relationship('User')
+    direction = db.relationship('Direction')
+    laboratory = db.relationship('Laboratory')
+    status = db.relationship('Status')
+    semester = db.relationship('Semester')
 
     def __repr__(self):
         return '<Project %r>' % self.name
