@@ -11,9 +11,14 @@ def is_curator():
     return current_user.role.name == 'Куратор'
 
 
-def is_user():
+def is_teamlead():
     print(current_user.role)
-    return current_user.role.name == 'Пользователь'
+    return current_user.role.name == 'Тимлид'
+
+
+def is_student():
+    print(current_user.role)
+    return current_user.role.name == 'Студент'
 
 
 class UsersPolicy:

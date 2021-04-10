@@ -6,9 +6,9 @@ from werkzeug.security import generate_password_hash, check_password_hash
 import markdown
 from app import db
 from sqlalchemy.dialects import mysql
-#from users_policy import UsersPolicy
 from sqlalchemy import exc
 from sqlalchemy_serializer import SerializerMixin
+from users_policy import UsersPolicy
 
 
 pictures = db.Table('pictures',
@@ -159,6 +159,8 @@ class User(db.Model, UserMixin, SerializerMixin):
 
     role_id = db.Column(db.Integer, db.ForeignKey('roles.id'), nullable=False)
 
+    role = db.relationship('Role')
+
     serialize_rules = ('-password_hash',)
 
     def __repr__(self):
@@ -173,6 +175,13 @@ class User(db.Model, UserMixin, SerializerMixin):
 
     def check_password(self, password):
         return check_password_hash(self.password_hash, password)
+
+    def can(self, action, record=None):
+        policy = UsersPolicy(record=record)
+        method = getattr(policy, action, None)
+        if method:
+            return method()
+        return False
 
 
 class Image(db.Model, SerializerMixin):
