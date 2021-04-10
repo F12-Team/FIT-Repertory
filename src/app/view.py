@@ -72,9 +72,6 @@ def like():
     like = request.form.get('like')
     project_id = request.form.get('project_id')
 
-    print(like)
-    print(project_id)
-
     if like == 'True':
         project = Project.query.filter(Project.id == project_id).first()
         project.like()
