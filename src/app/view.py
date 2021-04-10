@@ -4,7 +4,7 @@ from functools import wraps
 from sqlalchemy import exc, desc
 from models import Faculty, Direction, Group, Role, Laboratory, Status, Semester, Type, Student, User, Image, Info, Project
 from app import db
-from tools import ProjectsFilter
+from tools import ProjectsFilterForSearch
 import json
 
 bp = Blueprint('view', __name__, url_prefix='/view')
@@ -47,7 +47,7 @@ def projects():
 @bp.route('/search', methods=['POST'])
 def search():
     page = request.form.get('page', 1, type=int)
-    projects_filter = ProjectsFilter(**search_params())
+    projects_filter = ProjectsFilterForSearch(**search_params())
     projects = projects_filter.perform()
     pagination = projects.paginate(page, PER_PAGE)
     projects = pagination.items

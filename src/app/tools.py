@@ -6,7 +6,7 @@ import hashlib
 from werkzeug.utils import secure_filename
 from app import db
 
-class ProjectsFilter:
+class ProjectsFilterForSearch:
     def __init__(self, name, direction_id, semester_id):
         self.name = name
         self.direction_id = direction_id

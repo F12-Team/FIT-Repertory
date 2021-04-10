@@ -27,3 +27,6 @@ class UsersPolicy:
 
     def update(self):
         return is_admin() or is_curator()
+
+    def addprojects(self):
+        return is_admin()
