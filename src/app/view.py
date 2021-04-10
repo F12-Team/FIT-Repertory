@@ -62,7 +62,8 @@ def search():
 
 @bp.route('/project/<project_id>')
 def project(project_id):
-    project = Project.query.filter(Project.id == project_id).all()
+    project = Project.query.filter(Project.id == project_id).first()
+    print(project)
 
     return render_template('view/project.html', project=project)
 
