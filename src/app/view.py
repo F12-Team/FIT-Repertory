@@ -4,40 +4,10 @@ from functools import wraps
 from sqlalchemy import exc, desc
 from models import Faculty, Direction, Group, Role, Laboratory, Status, Semester, Type, Student, User, Image, Info, Project
 from app import db
-from tools import new_alchemy_encoder
+from tools import new_alchemy_encoder, ProjectsFilter
 import json
-from collections import ChainMap
 
 bp = Blueprint('view', __name__, url_prefix='/view')
-
-
-class ProjectsFilter:
-    def __init__(self, name, direction_id, semester_id):
-        self.name = name
-        self.direction_id = direction_id
-        self.semester_id = semester_id
-        self.query = Project.query
-
-    def perform(self):
-        self.__filter_by_name()
-        self.__filter_by_direction()
-        self.__filter_by_semester()
-        return self.query.order_by(Project.likes.desc())
-
-    def __filter_by_name(self):
-        if self.name:
-            self.query = self.query.filter(
-                Project.name.ilike('%' + self.name + '%'))
-
-    def __filter_by_direction(self):
-        if self.direction_id:
-            self.query = self.query.filter(
-                Project.direction_id == self.direction_id)
-
-    def __filter_by_semester(self):
-        if self.semester_id:
-            self.query = self.query.filter(
-                Project.semester_id == self.semester_id)
 
 
 PER_PAGE = 5
@@ -84,7 +54,7 @@ def search():
 
     newdata = {}
     for entry in projects:
-        name = entry.to_dict().pop('id') #remove and return the name field to use as a key
+        name = entry.to_dict().pop('id')
         newdata[name] = entry.to_dict()
 
     return jsonify(local_pagination(pagination), search_params(), newdata)
@@ -107,14 +77,12 @@ def like():
 
     if like == 'True':
         project = Project.query.filter(Project.id == project_id).first()
-        print('like')
         project.like()
         db.session.add(project)
         db.session.commit()
         return jsonify('complete like')
     else:
         project = Project.query.filter(Project.id == project_id).first()
-        print('dislike')
         project.unlike()
         db.session.add(project)
         db.session.commit()
