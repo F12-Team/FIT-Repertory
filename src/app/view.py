@@ -6,6 +6,7 @@ from models import Faculty, Direction, Group, Role, Laboratory, Status, Semester
 from app import db
 from tools import new_alchemy_encoder
 import json
+from collections import ChainMap
 
 bp = Blueprint('view', __name__, url_prefix='/view')
 
@@ -80,14 +81,13 @@ def search():
     projects = projects_filter.perform()
     pagination = projects.paginate(page, PER_PAGE)
     projects = pagination.items
-    projects2 = {}
-    for project in projects:
-        projects2.update(project.to_dict())
-        print(project.to_dict())
 
-    print(projects2)
+    newdata = {}
+    for entry in projects:
+        name = entry.to_dict().pop('id') #remove and return the name field to use as a key
+        newdata[name] = entry.to_dict()
 
-    return jsonify(local_pagination(pagination), search_params(), projects2)
+    return jsonify(local_pagination(pagination), search_params(), newdata)
 
 
 @bp.route('/project/<project_id>')
