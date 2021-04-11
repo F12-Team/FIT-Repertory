@@ -231,7 +231,7 @@ class Project(db.Model, SerializerMixin):
     direction_id = db.Column(db.Integer, db.ForeignKey('directions.id'), nullable=False)
     laboratory_id = db.Column(db.Integer, db.ForeignKey('laboratories.id'), nullable=False)
     status_id = db.Column(db.Integer, db.ForeignKey('statuses.id'), nullable=False)
-    teamlead_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
+    teamlead_id = db.Column(db.Integer, db.ForeignKey('users.id'))
 
     curators = db.relationship('User', secondary=curators)
     teamlead = db.relationship('User')
