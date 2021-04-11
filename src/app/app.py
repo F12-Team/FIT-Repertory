@@ -47,9 +47,14 @@ def index():
 
 @app.route('/direction', methods=['POST'])
 def get_projects_by_direction_id():
-    direction_id = request.form.get('direction', 0, type=int)
+    direction_id = request.form.get('direction_id', 0, type=int)
+    projects = Project.query.filter(Project.direction_id == direction_id).order_by(desc(Project.likes)).limit(9).all()
+    newdata = {}
+    for entry in projects:
+        name = entry.to_dict().pop('id')
+        newdata[name] = entry.to_dict()
 
-    return jsonify(Project.query.filter(Project.direction_id == direction_id).order_by(desc(Project.likes)).limit(9).to_dict())
+    return jsonify(newdata)
 
 
 @app.route('/images/<image_id>')
