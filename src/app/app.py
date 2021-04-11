@@ -49,10 +49,9 @@ def index():
 def get_projects_by_direction_id():
     direction_id = request.form.get('direction_id', 0, type=int)
     projects = Project.query.filter(Project.direction_id == direction_id).order_by(desc(Project.likes)).limit(9).all()
-    newdata = {}
+    newdata = []
     for entry in projects:
-        name = entry.to_dict().pop('id')
-        newdata[name] = entry.to_dict()
+        newdata.append(entry.to_dict())
 
     return jsonify(newdata)
 
