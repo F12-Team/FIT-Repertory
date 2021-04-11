@@ -52,10 +52,9 @@ def search():
     pagination = projects.paginate(page, PER_PAGE)
     projects = pagination.items
 
-    newdata = {}
+    newdata = []
     for entry in projects:
-        name = entry.to_dict().pop('id')
-        newdata[name] = entry.to_dict()
+        newdata.append(entry.to_dict())
 
     return jsonify(local_pagination(pagination), search_params(), newdata)
 
