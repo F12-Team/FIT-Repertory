@@ -16,8 +16,9 @@ $('a .scroll').on('click', function() {
 });
 
 window.onload = function () {
-
-
+    if (window.location.toString().endsWith("/view/projects")){
+        renderPagination();
+    }
 
     
     var els = document.getElementsByClassName('route');
@@ -75,7 +76,8 @@ window.onload = function () {
 CatchProjectOfDirection =  async function(directionID) {
     let urlDir = url + 'direction';
     let uri = new URL(urlDir);
-    let body = 'direction=' + encodeURIComponent(directionID);
+    var body = new FormData();
+    body.append("direction_id", directionID);
     sendRequest(uri,'POST',function () {
         console.log(this.response);
         ShowProjects(this.response);
@@ -89,7 +91,12 @@ ShowProjects = function(response) {
     var cardPlace = document.getElementById('swiper')
     swiper.style.display = '';
     cardPlace.innerHTML = '';
-    for (var i = 0; i < 8; i++) {
+    if (response.length < 1) {
+
+    }
+    else
+    for (i in response) {
+    
     
     var cardContainer = document.createElement("div");
     cardContainer.classList.add("card-container");    
@@ -103,7 +110,7 @@ ShowProjects = function(response) {
 
     cardTitle = document.createElement("h4");
     cardTitle.classList.add("card-title"); 
-    cardTitle.innerHTML = "чет о там";
+    cardTitle.innerHTML = response[i].semester.name;
 
     cardCircle.appendChild(cardTitle);
     
@@ -112,13 +119,15 @@ ShowProjects = function(response) {
 
     cardText = document.createElement("p")
     cardText.classList.add("card-text");
-    cardText.innerHTML = "sad";
+    cardText.innerHTML = response[i].name;
     cardButton = document.createElement("a")
     cardButton.classList.add("btn");
     cardButton.classList.add("btn-primary");
+    cardButton.href = url + 'view/project/' + response[i].id; 
+    cardButton.innerHTML = "Перейти";
     cardBody.appendChild(cardText);
     cardBody.appendChild(cardButton);
-
+    
     card.appendChild(cardCircle);
     card.appendChild(cardBody);
     cardContainer.appendChild(card);
@@ -177,7 +186,6 @@ ShowProjects = function(response) {
       });
 }
 
-
 sendRequest = function(url, method, onloadHandler, params){
     let xhr = new XMLHttpRequest();
     xhr.open(method, url);
@@ -185,4 +193,13 @@ sendRequest = function(url, method, onloadHandler, params){
     xhr.onload = onloadHandler;
     xhr.send(params);
 }
+
+renderPagination = function() {
+
+
+
+}
+
+
+
 

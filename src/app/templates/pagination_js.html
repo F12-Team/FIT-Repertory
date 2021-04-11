@@ -1,0 +1,38 @@
+{% macro render_pagination() %}
+    <!-- <nav id="nagigation">
+        <ul class="pagination justify-content-center">
+            <li class="page-item ">
+                <a class="page-link bg-dark text-light" href="" aria-label="Previous">
+                    <span aria-hidden="true">&laquo;</span>
+                </a>
+            </li>
+            
+                    <li class="page-item ">
+                        <a class="page-link bg-dark text-light" href="">
+                           
+                        </a>
+                    </li>
+                
+            <li class="page-item ">
+                <a class="page-link bg-dark text-light" href="" aria-label="Next">
+                    <span aria-hidden="true">&raquo;</span>
+                </a>
+            </li>
+        </ul>
+    </nav> -->
+    <div id="app">
+        <p>page: {{ currentPage }}</p>
+        <v-pagination v-model="currentPage" :page-count="total"></v-pagination>
+    </div>
+    <script>
+        Vue.component('v-pagination', window['vue-plain-pagination'])
+      
+        new Vue({
+          el: '#app',
+          data: {
+            currentPage: 5,
+            total: 9,
+          },
+        })
+      </script>
+{% endmacro %}

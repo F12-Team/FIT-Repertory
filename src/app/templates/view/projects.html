@@ -1,3 +1,5 @@
+{% from 'pagination_js.html' import render_pagination %}
+
 {% extends 'base.html' %}
 
 {% block content %}
@@ -54,4 +56,5 @@
     </div>
     {% endfor %}
 </div>
+<VueTailwindPagination :current="currentPage" :total="total" :per-page="perPage" @page-changed="current = $event"/>
 {% endblock %}

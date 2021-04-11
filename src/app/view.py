@@ -10,7 +10,7 @@ import json
 bp = Blueprint('view', __name__, url_prefix='/view')
 
 
-PER_PAGE = 10
+PER_PAGE = 3
 
 
 def search_params():
