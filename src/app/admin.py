@@ -42,3 +42,62 @@ def addproject():
         project.curators.append(add_curator)
     db.session.commit()
     return jsonify('complete add')
+
+
+@bp.route('/groups')
+#@login_required
+#@check_rights('addprojects')
+def groups():
+    groups = Group.query.all()
+    directions = Direction.query.all()
+
+    return render_template('admin/groups.html', directions=directions, groups=groups)
+
+
+@bp.route('/addgroup', methods=['POST'])
+#@login_required
+#@check_rights('addprojects')
+def addgroup():
+    name = request.form.get('name')
+    direction_id = request.form.get('direction_id')
+    group = Group(name=name, direction_id=direction_id)
+    db.session.add(group)
+    db.session.commit()
+    return jsonify('complete add')
+
+
+@bp.route('/semesters')
+#@login_required
+#@check_rights('addprojects')
+def semesters():
+    semesters = Semester.query.all()
+
+    return render_template('admin/addprojects.html', semesters=semesters)
+
+
+@bp.route('/addsemester', methods=['POST'])
+#@login_required
+#@check_rights('addprojects')
+def addsemester():
+    name = request.form.get('name')
+    semester = Semester(name=name)
+    db.session.add(semester)
+    db.session.commit()
+    return jsonify('complete add')
+
+
+@bp.route('/users')
+#@login_required
+#@check_rights('addprojects')
+def users():
+    users = User.query.all()
+
+    return render_template('admin/addprojects.html', users=users)
+
+
+@bp.route('/adduser', methods=['POST'])
+#@login_required
+#@check_rights('addprojects')
+def adduser():
+    
+    return jsonify('complete add')
