@@ -1,21 +1,7 @@
 let url = window.location;
 
-
-$('a .scroll').on('click', function() {
-
-    let href = $(this).attr('scroll-target');
-
-    $('html, body').animate({
-        scrollTop: $(href).offset().top
-    }, {
-        duration: 370,   // по умолчанию «400» 
-        easing: "linear" // по умолчанию «swing» 
-    });
-
-    return false;
-});
-
 window.onload = function () {
+
     if (window.location.toString().endsWith("/view/projects")){
         renderPagination();
     }
@@ -25,8 +11,10 @@ window.onload = function () {
     l = els.length;
     for (var i = 0; i< l; i++) {
         els[i].onclick = function() {
-
+            
+            showBlink();
             CatchProjectOfDirection(this.dataset.id);
+            
         };
         
     }
@@ -71,16 +59,61 @@ window.onload = function () {
       });
 }
 
-
+showBlink = function() {
+    var swiper = document.getElementById('swiperDisplay')
+    var cardPlace = document.getElementById('swiper')
+    swiper.style.display = '';
+    cardPlace.innerHTML = '';
+    for (i = 0; i < 9; i++) {
+        
+    
+        var cardContainer = document.createElement("div");
+        cardContainer.classList.add("card-container");    
+        cardContainer.classList.add("swiper-slide");  
+          
+        var card = document.createElement("div");
+        
+        card.classList.add("swiper-card"); 
+        card.classList.add("ph-item"); 
+        
+        cardCircle = document.createElement("div");
+        cardCircle.classList.add("swiper-circle"); 
+       
+        cardTitle = document.createElement("div");
+        
+    
+        cardCircle.appendChild(cardTitle);
+        
+        cardBody = document.createElement("div");
+        cardBody.classList.add("swiper-content"); 
+    
+        cardText = document.createElement("p")
+        cardText.classList.add("card-text");
+        
+        cardButton = document.createElement("a")
+        cardButton.classList.add("btn");
+        cardButton.classList.add("btn-primary");
+        cardButton.innerHTML = "Перейти";
+        cardBody.appendChild(cardText);
+        cardBody.appendChild(cardButton);
+        
+        card.appendChild(cardCircle);
+        card.appendChild(cardBody);
+        cardContainer.appendChild(card);
+        cardPlace.appendChild(cardContainer);
+    
+        }
+}
 
 CatchProjectOfDirection =  async function(directionID) {
     let urlDir = url + 'direction';
     let uri = new URL(urlDir);
     var body = new FormData();
     body.append("direction_id", directionID);
+
     sendRequest(uri,'POST',function () {
         console.log(this.response);
-        ShowProjects(this.response);
+        setTimeout(() => ShowProjects(this.response), 2000);
     }, body);
 
 
@@ -95,21 +128,24 @@ ShowProjects = function(response) {
 
     }
     else
+    {
+    
     for (i in response) {
     
     
     var cardContainer = document.createElement("div");
     cardContainer.classList.add("card-container");    
     cardContainer.classList.add("swiper-slide");  
-    
+      
     var card = document.createElement("div");
-    card.classList.add("swiper-card");    
-
+    
+    card.classList.add("swiper-card"); 
+    
     cardCircle = document.createElement("div");
     cardCircle.classList.add("swiper-circle"); 
-
+   
     cardTitle = document.createElement("h4");
-    cardTitle.classList.add("card-title"); 
+    
     cardTitle.innerHTML = response[i].semester.name;
 
     cardCircle.appendChild(cardTitle);
@@ -131,24 +167,10 @@ ShowProjects = function(response) {
     card.appendChild(cardCircle);
     card.appendChild(cardBody);
     cardContainer.appendChild(card);
-
     cardPlace.appendChild(cardContainer);
 
-
-    // {% for project in projects %}
-    // <div class="card-container swiper-slide">
-    //     <div class="swiper-card">
-    //         <div class="swiper-circle">
-    //             <h4 class="card-title">{{ project.autumn_or_spring }}</h4>
-    //         </div>
-    //     <div class="swiper-content">
-    //         <p class="card-text">{{ project.name }}</p>
-    //         <a href="" class="btn btn-primary">Страница проекта</a>
-    //         </div>
-    // </div>
-    // </div>
-    // {% endfor %}
     }
+}
     var swiper = new Swiper('.swiper-container', {
         updateOnWindowResize: true,
         observer: true,
@@ -195,11 +217,5 @@ sendRequest = function(url, method, onloadHandler, params){
 }
 
 renderPagination = function() {
-
-
-
 }
-
-
-
 

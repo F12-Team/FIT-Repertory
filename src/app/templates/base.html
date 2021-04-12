@@ -26,14 +26,16 @@
         integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns"
         crossorigin="anonymous"></script>
 
+
     <script src="{{ url_for('static', filename='main.js')}}"></script>
-    
+
     <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js"></script>
 
-    <script src="//unpkg.com/vue-plain-pagination@0.2.1"></script>
     <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
 
     <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
+
+    <link rel="stylesheet" href="https://unpkg.com/placeholder-loading/dist/css/placeholder-loading.min.css">
 
     <title>
         {% if title %}
