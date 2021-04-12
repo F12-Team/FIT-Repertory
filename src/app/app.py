@@ -43,7 +43,8 @@ import json
 @app.route('/')
 def index():
     directions = Direction.query.all()
-    return render_template('index.html', directions=directions, projects={})
+    projects = Project.query.order_by(desc(Project.likes)).limit(9).all()
+    return render_template('index.html', directions=directions, projects=projects)
 
 @app.route('/direction', methods=['POST'])
 def get_projects_by_direction_id():
