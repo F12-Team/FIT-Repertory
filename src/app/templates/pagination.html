@@ -1,5 +1,5 @@
 {% macro render_pagination(pagination, endpoint) %}
-    <nav>
+    <nav id="nagigation" hidden>
         <ul class="pagination justify-content-center">
             <li class="page-item {% if not pagination.has_prev %}disabled{% endif %}">
                 <a class="page-link bg-dark text-light" href="{{ url_for(endpoint, page=(pagination.page - 1)) if pagination.has_prev else '#' }}" aria-label="Previous">
