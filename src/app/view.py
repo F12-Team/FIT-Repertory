@@ -41,7 +41,7 @@ def projects():
     else:
         projects = projects.filter(Project.direction_id==direction_id).limit(PER_PAGE).all()
 
-    return render_template('view/projects.html', semesters=semesters, directions=directions, projects=projects)
+    return render_template('view/projects.html', semesters=semesters, directions=directions, projects={})
 
 
 @bp.route('/search', methods=['POST'])
@@ -57,7 +57,7 @@ def search():
     for entry in projects:
         newdata.append(entry.to_dict())
 
-    return jsonify(local_pagination(pagination), search_params(), newdata)
+    return jsonify(local_pagination(pagination), per_page, search_params(), newdata)
 
 
 @bp.route('/project/<project_id>')
