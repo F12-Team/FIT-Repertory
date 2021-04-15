@@ -10,7 +10,7 @@ import json
 bp = Blueprint('view', __name__, url_prefix='/view')
 
 
-PER_PAGE = 3
+PER_PAGE = 6
 
 
 def search_params():
@@ -32,7 +32,7 @@ def local_pagination(pagination):
 
 @bp.route('/projects', methods=['POST', 'GET'])
 def projects():
-    direction_id = request.form.get('direction_id', 0, int)
+    direction_id = request.form.get('direction_id', 0, type=int)
     semesters = Semester.query.all()
     directions = Direction.query.all()
     projects = Project.query.order_by(desc(Project.likes))
@@ -47,9 +47,10 @@ def projects():
 @bp.route('/search', methods=['POST'])
 def search():
     page = request.form.get('page', 1, type=int)
+    per_page = request.form.get('per_page', PER_PAGE, type=int)
     projects_filter = ProjectsFilterForSearch(**search_params())
     projects = projects_filter.perform()
-    pagination = projects.paginate(page, PER_PAGE)
+    pagination = projects.paginate(page, per_page)
     projects = pagination.items
 
     newdata = []
