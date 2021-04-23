@@ -5,7 +5,11 @@ let url = window.location.origin;
 window.onload = function () {
     
     if (window.location.toString().endsWith("/view/projects")){
+        // let form = document.forms.search;
+        // console.log(form);
         renderPagination();
+        document.getElementById('submitForm').onclick = renderPagination;
+
     }
 
     
@@ -60,7 +64,7 @@ window.onload = function () {
         }
       });
 }
-
+/// ДЛЯ ПОДГРУЗКИ
 showBlink = function() {
     var swiper = document.getElementById('swiperDisplay')
     var cardPlace = document.getElementById('swiper')
@@ -114,13 +118,14 @@ CatchProjectOfDirection =  async function(directionID) {
     body.append("direction_id", directionID);
 
     sendRequest(uri,'POST',function () {
-        console.log(this.response);
+
         setTimeout(() => ShowProjects(this.response), 2000);
     }, body);
 
 
 }
 
+/// ДЛЯ ГЛАВНОЙ СТРАНИЦЫ
 ShowProjects = function(response) {
     var swiper = document.getElementById('swiperDisplay')
     var cardPlace = document.getElementById('swiper')
@@ -161,7 +166,7 @@ ShowProjects = function(response) {
     cardButton = document.createElement("a")
     cardButton.classList.add("btn");
     cardButton.classList.add("btn-primary");
-    cardButton.href = url + 'view/project/' + response[i].id; 
+    cardButton.href = url + '/view/project/' + response[i].id; 
     cardButton.innerHTML = "Перейти";
     cardBody.appendChild(cardText);
     cardBody.appendChild(cardButton);
@@ -219,31 +224,55 @@ sendRequest = function(url, method, onloadHandler, params){
 }
 
 renderPagination = function() {
+    // if (form) {
+    //     alert('!!!!');
+    //     document.getElementById('name').value = form.name.value;
+    // }
+    // else {
+    //     alert('asd');   
+    // }
     let urlDir = url + '/view/search';
     let uri = new URL(urlDir);
     let form = document.forms.search;
+    console.log(form);
     var body = new FormData(form);
+    // console.log(body);
 
 
     try {
-        var curpage = document.getElementById('current_page');
-        page_val = curpage.children[0].value;
+        // var curpage = document.getElementById('current_page');
+        page_val = event.target.innerHTML;
         body.append("page", page_val);
-       
+        sendRequest(uri,'POST',function () {
+
+             renderDirectionResponse(this.response);
+            renderButtons(this.response[0],first=false);
+        }, body);
 
      }
      catch(e){
          alert('ТРЕВОГА, НА СЕРВЕРЕ ЗАМЕЧЕНЫ УКРАИНЦЫ. МАССОВАЯ ЭВАКУАЦИЯ');
+         sendRequest(uri,'POST',function () {
+            renderDirectionResponse(this.response);
+            renderButtons(this.response[0]);
+        },body);
      }
-     sendRequest(uri,'POST',function () {
-        console.log(this.response);
-        renderDirectionResponse(this.response);
-        renderButtons(this.response[0]);
-    }, body);
+    // if (page) {
+        
+    //     body.append('page',page);
+        
+    //     }
+    // else {
+    //  sendRequest(uri,'POST',function () {
+    //     console.log(this.response);
+    //     renderDirectionResponse(this.response);
+    //     renderButtons(this.response[0]);
+    // }, body);
+// }
 
     
 }
-
+// ДЛЯ СТРАНИЦЫ /view/projects
 renderDirectionResponse = function(response){
   
     var cardPlace = document.getElementById('projects');
@@ -275,7 +304,7 @@ renderDirectionResponse = function(response){
     cardButton = document.createElement("a")
     cardButton.classList.add("btn");
     cardButton.classList.add("btn-primary");
-    cardButton.href = url + 'view/project/' + response[3][i].id; 
+    cardButton.href = url + '/view/project/' + response[3][i].id; 
     cardButton.innerHTML = "Перейти";
     cardBody.appendChild(cardText);
     cardBody.appendChild(cardButton);
@@ -292,10 +321,17 @@ renderDirectionResponse = function(response){
 
 renderButtons = function(response){
     var pagination = document.getElementById('pagination');
-    
-    // var pagination_items = document.getElementById('pagination_items');
+    pagination.children[0].value = response.page-1;
     if (response.page == response.iter_pages[0]) {
        pagination.children[0].classList.add('disabled');
+    }
+    else {
+        pagination.children[0].classList.remove('disabled');
+    }
+    pLength = pagination.children.length-1;
+    for (var i = 1; i< pLength; i++ ) {
+        console.log(pagination.children.length);
+       pagination.children[1].remove();
     }
     for (i in response.iter_pages){
         li = document.createElement('li');
@@ -314,22 +350,11 @@ renderButtons = function(response){
         pagination.insertBefore(li, pagination.children[i].nextElementSibling);
         
     }
-
-    // <ul class="pagination">
-    //   <li class="page-item">
-    //     <a class="page-link" href="#" aria-label="Previous">
-    //       <span aria-hidden="true">&laquo;</span>
-    //       <span class="sr-only">Previous</span>
-    //     </a>
-    //   </li>
-    //   <li class="page-item"><a class="page-link" href="#">1</a></li>
-    //   <li class="page-item"><a class="page-link" href="#">2</a></li>
-    //   <li class="page-item"><a class="page-link" href="#">3</a></li>
-    //   <li class="page-item">
-    //     <a class="page-link" href="#" aria-label="Next">
-    //       <span aria-hidden="true">&raquo;</span>
-    //       <span class="sr-only">Next</span>
-    //     </a>
-    //   </li>
-    // </ul>
+    pagination.children[pagination.children.length-1] = response.page +1;
+    if (response.page == response.iter_pages[response.iter_pages.length-1]) {
+        pagination.children[pagination.children.length-1].classList.add('disabled');
+     }
+     else{
+        pagination.children[pagination.children.length-1].classList.remove('disabled');
+     }
 }
