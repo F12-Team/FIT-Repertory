@@ -21,7 +21,7 @@ db = SQLAlchemy(app, metadata=MetaData(naming_convention=naming_convention))
 migrate = Migrate(app, db)
 
 
-from models import Faculty, Direction, Group, Role, Laboratory, Status, Semester, Type, Student, User, Image, Info, Project
+from models import Faculty, Direction, Group, Role, Status, Semester, Type, Student, User, Image, Info, Project
 
 
 from auth import bp as auth_bp, init_login_manager
