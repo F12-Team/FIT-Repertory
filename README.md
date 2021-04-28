@@ -21,6 +21,7 @@
 |----------------|------------------|--------------------------|
 | 191-351        | [@lSenichl](https://github.com/lSenichl)        | Барышников С.С.          |
 | 191-351        | [@oconsuel](https://github.com/oconsuel)        | Филиппович В.А.          |
+| 191-351        | [@fuckgradyan](https://github.com/fuckgradyan)        | Фаградян А.С.            |
 
 ## Личный вклад участников
 
