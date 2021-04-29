@@ -15,7 +15,16 @@ def addproject_params():
         'direction_id': request.form.get('direction_id'),
         'semester_id': request.form.get('semester_id'),
         'teamlead_id': request.form.get('teamlead_id'),
-        #'description': bleach.clean(request.form.get('description'))
+    }
+
+def adduser_params():
+    return {
+        'login': request.form.get('login'),
+        'last_name': request.form.get('last_name'),
+        'first_name': request.form.get('first_name'),
+        'middle_name': request.form.get('middle_name', '', type=str),
+        'password': request.form.get('password'),
+        'role_id': request.form.get('role_id'),
     }
 
 @bp.route('/addprojects')
@@ -90,6 +99,7 @@ def addsemester():
 #@check_rights('addprojects')
 def users():
     users = User.query.all()
+    roles = Role.query.all()
 
     return render_template('admin/addprojects.html', users=users)
 
@@ -98,5 +108,8 @@ def users():
 #@login_required
 #@check_rights('addprojects')
 def adduser():
+    user = Project(**adduser_params())
+    db.session.add(user)
+    db.session.commit()
 
     return jsonify('complete add')
