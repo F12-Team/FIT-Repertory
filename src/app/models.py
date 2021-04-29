@@ -35,18 +35,6 @@ techs = db.Table('techs',
                     db.Column('project_id', db.Integer, db.ForeignKey('projects.id'), primary_key=True))
 
 
-class Faculty(db.Model, SerializerMixin):
-    __tablename__ = 'faculties'
-
-    id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String(128), nullable=False, unique=True)
-    description = db.Column(db.Text())
-
-    image_id = db.Column(db.String(128), db.ForeignKey('images.id'))
-
-    def __repr__(self):
-        return '<Faculty %r>' % self.name
-
 
 class Direction(db.Model, SerializerMixin):
     __tablename__ = 'directions'
@@ -55,8 +43,9 @@ class Direction(db.Model, SerializerMixin):
     name = db.Column(db.String(128), nullable=False, unique=True)
     description = db.Column(db.Text())
 
-    faculty_id = db.Column(db.Integer, db.ForeignKey('faculties.id'), nullable=False)
     image_id = db.Column(db.String(128), db.ForeignKey('images.id'))
+
+    image = db.relationship('Image')
 
     def __repr__(self):
         return '<Direction %r>' % self.name

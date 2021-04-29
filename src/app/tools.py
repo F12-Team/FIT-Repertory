@@ -1,4 +1,4 @@
-from models import Faculty, Direction, Group, Role, Status, Semester, Type, Student, User, Image, Info, Project
+from models import Direction, Group, Role, Status, Semester, Type, Student, User, Image, Info, Project
 import os
 from uuid import uuid4
 from flask import current_app
@@ -36,10 +36,12 @@ class ProjectsFilterForSearch:
 
 
 class ImageSaver:
-    def __init__(self, file):
+    def __init__(self, file, type_id):
         self.file = file
+        self.type_id = type_id
 
     def save(self):
+        print('saving')
         self.img = self.__find_by_md5_hash()
         if self.img is not None:
             return None
@@ -48,7 +50,8 @@ class ImageSaver:
             id=str(uuid4()),
             file_name=file_name,
             mime_type=self.file.mimetype,
-            md5_hash=self.md5_hash
+            md5_hash=self.md5_hash,
+            type_id=self.type_id
         )
         self.file.save(os.path.join(
             current_app.config['UPLOAD_FOLDER'], self.img.storage_filename))
@@ -66,4 +69,5 @@ class ImageSaver:
     def __find_by_md5_hash(self):
         self.md5_hash = hashlib.md5(self.file.read()).hexdigest()
         self.file.seek(0)
+        print(Image.query.filter(Image.md5_hash == self.md5_hash).first())
         return Image.query.filter(Image.md5_hash == self.md5_hash).first()

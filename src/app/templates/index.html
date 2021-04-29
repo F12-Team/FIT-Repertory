@@ -21,7 +21,7 @@
     <div class="services justify-content-center">
         {% for direction in directions %}
         <a class="route service m-2" data-id="{{ direction.id}}" href="#swiper">
-            <img class="logoqwerty" src="" alt="Card image cap">
+            <img class="logoqwerty" src="{{ direction.image.url }}" alt="Card image cap">
             <div class="card-body">
                 <h5 class="cardtext">{{ direction.name }}</h5>
                 <p class="cardtext">{{ direction.description }}</p>

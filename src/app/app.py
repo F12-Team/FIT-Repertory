@@ -21,7 +21,7 @@ db = SQLAlchemy(app, metadata=MetaData(naming_convention=naming_convention))
 migrate = Migrate(app, db)
 
 
-from models import Faculty, Direction, Group, Role, Status, Semester, Type, Student, User, Image, Info, Project
+from models import Direction, Group, Role, Status, Semester, Type, Student, User, Image, Info, Project
 
 
 from auth import bp as auth_bp, init_login_manager
@@ -39,6 +39,7 @@ app.register_blueprint(project_bp)
 app.register_blueprint(view_bp)
 
 import json
+from tools import ImageSaver
 
 @app.route('/')
 def index():
@@ -63,3 +64,20 @@ def image(image_id):
     if img is None:
         abort(404)
     return send_from_directory(app.config['UPLOAD_FOLDER'], img.storage_filename)
+
+
+@app.route('/add_image', methods=['POST'])
+#@login_required
+#@check_rights('create_movie')
+def add_image():
+    file = request.files.get('img')
+    type_id = request.form.get('type_id')
+    img = None
+    if file and file.filename:
+        img_saver = ImageSaver(file, type_id)
+        img = img_saver.save()
+
+    if img == None:
+        return jsonify('error of saving image')
+
+    return jsonify('complete saving image')
