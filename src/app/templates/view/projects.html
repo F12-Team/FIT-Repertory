@@ -17,7 +17,7 @@
             <div class="col">
                 <label for="FormControlSelect1"
                     style="color: #f2f2f2;  font-weight: bold; font-size: 18px;">Семестр</label>
-                <select class="form-control" id="semestr" name="semestr">
+                <select class="form-control" id="semestr" name="semester_id">
                     <option value=""></option>
                     {% for semester in semesters %}
                     <option value="{{ semester.id }}">{{ semester.name }}</option>
@@ -27,16 +27,26 @@
             <div class="col">
                 <label for="FormControlSelect2"
                     style="color: #f2f2f2; font-weight: bold; font-size: 18px;">Направление</label>
-                <select class="form-control" id="direct" name="direct">
+                <select class="form-control" id="direct" name="direction_id">
                     <option value=""></option>
                     {% for direction in directions %}
                     <option value="{{ direction.id }}">{{ direction.name }}</option>
                     {% endfor %}
                 </select>
             </div>
-            <div class="row w-100" style="margin-top: 20px ;">
+            <div class="col">
+                <label for="FormControlSelect2"
+                    style="color: #f2f2f2; font-weight: bold; font-size: 18px;">Отображаемые проекты</label>
+                <select class="form-control" id="per_page" name="per_page">
+                    <option value="6" selected>6</option>
+                    <option value="12">12</option>
+                    <option value="18">18</option>
+                   
+                </select>
+            </div>
+            <div class="row w-100 col-md-10" style="margin-top: 20px ;">
                 <a class="btn btn-primary w-75"
-                    style="background-color: #ce5353; border-color: #ce5353; border-radius: 40px;" id="submitForm">Поиск</a>
+                    style="background-color: #ce5353; border-color: #ce5353; border-radius: 40px;" id="submitForm" href="#projects">Поиск</a>
             </div>
         </div>
     </form>
@@ -65,12 +75,14 @@
         </a>
       </li>
       
-      <li class="page-item">
-        <a class="page-link"  aria-label="Next">
+      <li class="page-item" >
+        <a class="page-link"  aria-label="Next" id="next">
           <span aria-hidden="true">&raquo;</span>
           <span class="sr-only">Next</span>
         </a>
       </li>
+      
     </ul>
+    
   </nav>
 {% endblock %}

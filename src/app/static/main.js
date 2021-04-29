@@ -4,7 +4,7 @@ let url = window.location.origin;
 
 window.onload = function () {
     
-    if (window.location.toString().endsWith("/view/projects")){
+    if (window.location.toString().search("/view/projects")!=-1){
         // let form = document.forms.search;
         // console.log(form);
         renderPagination();
@@ -234,19 +234,23 @@ renderPagination = function() {
     let urlDir = url + '/view/search';
     let uri = new URL(urlDir);
     let form = document.forms.search;
-    console.log(form);
+    // console.log(form);
     var body = new FormData(form);
     // console.log(body);
 
 
     try {
         // var curpage = document.getElementById('current_page');
-        page_val = event.target.innerHTML;
+        page_val = event.target.value;
         body.append("page", page_val);
         sendRequest(uri,'POST',function () {
-
-             renderDirectionResponse(this.response);
+            if (this.response[3].length>0){
+            renderDirectionResponse(this.response);
             renderButtons(this.response[0],first=false);
+            }
+            else {
+                printEmpty();
+            }
         }, body);
 
      }
@@ -321,7 +325,9 @@ renderDirectionResponse = function(response){
 
 renderButtons = function(response){
     var pagination = document.getElementById('pagination');
-    pagination.children[0].value = response.page-1;
+    pagination.style.display = '';
+    pagination.children[0].children[0].value = response.page-1;
+    pagination.children[0].children[0].onclick =  renderPagination;
     if (response.page == response.iter_pages[0]) {
        pagination.children[0].classList.add('disabled');
     }
@@ -330,31 +336,48 @@ renderButtons = function(response){
     }
     pLength = pagination.children.length-1;
     for (var i = 1; i< pLength; i++ ) {
-        console.log(pagination.children.length);
+        // console.log(pagination.children.length);
        pagination.children[1].remove();
     }
     for (i in response.iter_pages){
         li = document.createElement('li');
         li.classList.add('page-item');
         a = document.createElement('a');
+        
         if (response.iter_pages[i]==response.page){
             li.classList.add('active');
             li.classList.add('disabled');
             li.id = 'current_page';
             li.value = response.page;
         }
+        else {
+            li.value = response.iter_pages[i];
+        }
         a.classList.add('page-link');
         a.innerHTML = response.iter_pages[i];
         a.onclick =  renderPagination;
+        a.value = response.iter_pages[i];
         li.appendChild(a);
         pagination.insertBefore(li, pagination.children[i].nextElementSibling);
         
     }
-    pagination.children[pagination.children.length-1] = response.page +1;
+    // pagination.children[pagination.children.length-1] = response.page +1;
+    pagination.children[pagination.children.length-1].children[0].value = response.page ? response.page+1 : 1;
+    pagination.children[pagination.children.length-1].children[0].onclick = renderPagination;
     if (response.page == response.iter_pages[response.iter_pages.length-1]) {
         pagination.children[pagination.children.length-1].classList.add('disabled');
      }
      else{
         pagination.children[pagination.children.length-1].classList.remove('disabled');
      }
+}
+
+printEmpty = function() {
+    var pagination = document.getElementById('pagination');
+    pagination.style.display = 'none';
+    var cardPlace = document.getElementById('projects');
+    cardPlace.innerHTML = '';
+    var h3 = document.createElement('h3');
+    h3.innerHTML = "Ничего не найдено :(";
+    cardPlace.appendChild(h3);
 }

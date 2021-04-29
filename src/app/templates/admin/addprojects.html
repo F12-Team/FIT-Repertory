@@ -1,5 +1,47 @@
 {% extends 'base.html' %}
 
 {% block content %}
+<div id="project-area"></div>
+<form class="w-50" method="post" name="search">
+    <div class="form-row">
+        <div class="col">
+            <label for="name" style="color: #f2f2f2; font-weight: bold; font-size: 18px;">Название проекта</label>
+            <input class="form-control" type="text" id="name" name="name" value="">
+        </div>
+        <div class="col">
+            <label for="FormControlSelect1"
+                style="color: #f2f2f2;  font-weight: bold; font-size: 18px;">Семестр</label>
+            <select class="form-control" id="semestr" name="semester_id">
+                <option value=""></option>
+                {% for semester in semesters %}
+                <option value="{{ semester.id }}">{{ semester.name }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <div class="col">
+            <label for="FormControlSelect2"
+                style="color: #f2f2f2; font-weight: bold; font-size: 18px;">Направление</label>
+            <select class="form-control" id="direct" name="direction_id">
+                <option value=""></option>
+                {% for direction in directions %}
+                <option value="{{ direction.id }}">{{ direction.name }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <div class="col">
+            <label for="FormControlSelect2"
+                style="color: #f2f2f2; font-weight: bold; font-size: 18px;">Кураторы</label>
+            <select class="form-control" id="curators_ids" name="curators_ids">
+                    {% for curator in curators%}
+                <option value="{{curator.id}}" selected>{{curator.last_name}} {{curator.first_name}} {{curator.middle_name}}</option>
+                    {% endfor %}
+            </select>
+        </div>
+        <div class="row w-100 col-md-10" style="margin-top: 20px ;">
+            <a class="btn btn-primary w-75"
+                style="background-color: #ce5353; border-color: #ce5353; border-radius: 40px;" id="submitForm" href="#projects">Поиск</a>
+        </div>
+    </div>
+</form>
 
 {% endblock %}
