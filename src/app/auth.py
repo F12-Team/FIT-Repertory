@@ -34,6 +34,18 @@ def check_rights(action):
     return decorator
 
 
+def check_own(project):
+    def decorator(func):
+        @wraps(func)
+        def wrapper(*args, **kwargs):
+            if not current_user.id == project.teamlead_id or current_user not in project.curators:
+                flash('У вас недостаточно прав для доступа к данной странице.', 'danger')
+                return redirect(url_for('index'))
+            return func(*args, **kwargs)
+        return wrapper
+    return decorator
+
+
 @bp.route('/login', methods=['GET', 'POST'])
 def login():
     if request.method == 'POST':

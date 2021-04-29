@@ -98,5 +98,5 @@ def users():
 #@login_required
 #@check_rights('addprojects')
 def adduser():
-    
+
     return jsonify('complete add')
