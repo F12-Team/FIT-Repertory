@@ -30,17 +30,10 @@ curators = db.Table('curators',
                     db.Column('description', db.Text()))
 
 
-class Faculty(db.Model, SerializerMixin):
-    __tablename__ = 'faculties'
+techs = db.Table('techs',
+                    db.Column('technology_id', db.Integer, db.ForeignKey('technologies.id'), primary_key=True),
+                    db.Column('project_id', db.Integer, db.ForeignKey('projects.id'), primary_key=True))
 
-    id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String(128), nullable=False, unique=True)
-    description = db.Column(db.Text())
-
-    image_id = db.Column(db.String(128), db.ForeignKey('images.id'))
-
-    def __repr__(self):
-        return '<Faculty %r>' % self.name
 
 
 class Direction(db.Model, SerializerMixin):
@@ -50,8 +43,9 @@ class Direction(db.Model, SerializerMixin):
     name = db.Column(db.String(128), nullable=False, unique=True)
     description = db.Column(db.Text())
 
-    faculty_id = db.Column(db.Integer, db.ForeignKey('faculties.id'), nullable=False)
     image_id = db.Column(db.String(128), db.ForeignKey('images.id'))
+
+    image = db.relationship('Image')
 
     def __repr__(self):
         return '<Direction %r>' % self.name
@@ -79,19 +73,6 @@ class Role(db.Model, SerializerMixin):
 
     def __repr__(self):
         return '<Role %r>' % self.name
-
-
-class Laboratory(db.Model, SerializerMixin):
-    __tablename__ = 'laboratories'
-
-    id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String(128), nullable=False, unique=True)
-    description = db.Column(db.Text())
-
-    image_id = db.Column(db.String(128), db.ForeignKey('images.id'))
-
-    def __repr__(self):
-        return '<Laboratory %r>' % self.name
 
 
 class Status(db.Model, SerializerMixin):
@@ -212,7 +193,7 @@ class Info(db.Model, SerializerMixin):
 
     id = db.Column(db.String(128), primary_key=True)
     name = db.Column(db.String(128), nullable=False)
-    description = db.Column(db.String(128))
+    description = db.Column(db.Text())
     resource = db.Column(db.String(128))
 
     project_id = db.Column(db.Integer, db.ForeignKey('projects.id'), primary_key=True)
@@ -224,19 +205,18 @@ class Project(db.Model, SerializerMixin):
 
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(128), nullable=False)
-    description = db.Column(db.String(128))
+    short_description = db.Column(db.Text())
+    description = db.Column(db.Text())
     likes = db.Column(db.Integer, default=0)
 
     semester_id = db.Column(db.Integer, db.ForeignKey('semesters.id'), nullable=False)
     direction_id = db.Column(db.Integer, db.ForeignKey('directions.id'), nullable=False)
-    laboratory_id = db.Column(db.Integer, db.ForeignKey('laboratories.id'), nullable=False)
     status_id = db.Column(db.Integer, db.ForeignKey('statuses.id'), nullable=False)
     teamlead_id = db.Column(db.Integer, db.ForeignKey('users.id'))
 
     curators = db.relationship('User', secondary=curators)
     teamlead = db.relationship('User')
     direction = db.relationship('Direction')
-    laboratory = db.relationship('Laboratory')
     status = db.relationship('Status')
     semester = db.relationship('Semester')
 
@@ -248,3 +228,10 @@ class Project(db.Model, SerializerMixin):
 
     def unlike(self):
         self.likes = self.likes - 1
+
+
+class Technology(db.Model, SerializerMixin):
+    __tablename__ = 'technologies'
+
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(128), primary_key=True)

@@ -121,7 +121,7 @@ header a:hover{
 
 /* Boxes */
 #boxes{
-  margin-top:20px;
+  color: #fff;
 }
 
 #boxes .box{
@@ -173,6 +173,60 @@ footer{
   text-align: center;
 }
 
+/* task block */
+
+#tasks{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 50px 0;
+}
+.card_con{
+  width: 90%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.pre_card_block{
+  display:block;
+  align-items: center;
+  width: 100%;
+}
+
+.card_block{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.left_card_block{
+  width: 45%;
+  display: block;
+  align-items:center;
+}
+
+.center_card_block{
+  width: 10%;
+}
+
+.right_card_block{
+  width: 45%;
+  display: block;
+  align-items:center;
+
+}
+.task_card{
+  background: #eee;
+  height:150px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 20px 0;
+  padding: 20px;
+  font-size: 24px;
+}
+
 /* Media Queries */
 @media(max-width: 768px){
   header #branding,
@@ -217,7 +271,7 @@ footer{
 .qwerty{
   overflow: hidden;
   box-shadow: 0px 2px 8px 0px var(--clr-gray-light);
-  background-color: white;
+  background-color: #eee;
   text-align: center;
   border-radius: 1rem;
   position: relative;
