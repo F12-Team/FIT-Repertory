@@ -94,7 +94,7 @@ def addsemester():
     return jsonify('complete add')
 
 
-@bp.route('/users')
+@bp.route('/addusers')
 #@login_required
 #@check_rights('addprojects')
 def users():
