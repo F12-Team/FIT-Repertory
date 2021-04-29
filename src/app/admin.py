@@ -101,7 +101,7 @@ def users():
     users = User.query.all()
     roles = Role.query.all()
 
-    return render_template('admin/addprojects.html', users=users)
+    return render_template('admin/addprojects.html', users=users, roles=roles)
 
 
 @bp.route('/adduser', methods=['POST'])
