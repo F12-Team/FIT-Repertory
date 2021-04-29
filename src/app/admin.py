@@ -14,8 +14,8 @@ def addproject_params():
         'name': request.form.get('name'),
         'direction_id': request.form.get('direction_id'),
         'semester_id': request.form.get('semester_id'),
-        'laboratory_id': request.form.get('laboratory_id'),
-        'description': bleach.clean(request.form.get('description'))
+        'teamlead_id': request.form.get('teamlead_id'),
+        #'description': bleach.clean(request.form.get('description'))
     }
 
 @bp.route('/addprojects')
