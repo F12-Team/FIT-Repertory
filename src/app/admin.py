@@ -23,7 +23,6 @@ def adduser_params():
         'last_name': request.form.get('last_name'),
         'first_name': request.form.get('first_name'),
         'middle_name': request.form.get('middle_name', '', type=str),
-        'password': request.form.get('password'),
         'role_id': request.form.get('role_id'),
     }
 
@@ -109,6 +108,9 @@ def users():
 #@check_rights('addprojects')
 def adduser():
     user = Project(**adduser_params())
+    password = request.form.get('password')
+    user.set_password(password)
+    
     db.session.add(user)
     db.session.commit()
 
