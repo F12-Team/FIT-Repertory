@@ -6,12 +6,12 @@
     <div class="form-row">
         <div class="col">
             <label for="name" style="color: #f2f2f2; font-weight: bold; font-size: 18px;">Название проекта</label>
-            <input class="form-control" type="text" id="name" name="name" value="">
+            <input class="form-control" type="text" name="name" value="">
         </div>
         <div class="col">
             <label for="FormControlSelect1"
                 style="color: #f2f2f2;  font-weight: bold; font-size: 18px;">Семестр</label>
-            <select class="form-control" id="semestr" name="semester_id">
+            <select class="form-control" name="semester_id">
                 <option value=""></option>
                 {% for semester in semesters %}
                 <option value="{{ semester.id }}">{{ semester.name }}</option>
@@ -21,7 +21,7 @@
         <div class="col">
             <label for="FormControlSelect2"
                 style="color: #f2f2f2; font-weight: bold; font-size: 18px;">Направление</label>
-            <select class="form-control" id="direct" name="direction_id">
+            <select class="form-control" name="direction_id">
                 <option value=""></option>
                 {% for direction in directions %}
                 <option value="{{ direction.id }}">{{ direction.name }}</option>
@@ -31,7 +31,8 @@
         <div class="col">
             <label for="FormControlSelect2"
                 style="color: #f2f2f2; font-weight: bold; font-size: 18px;">Кураторы</label>
-            <select class="form-control" id="curators_ids" name="curators_ids">
+            <select class="form-control   " name="curators_ids" data-live-search="true" multiple> 
+                <!-- selectpicker -->
                     {% for curator in curators%}
                 <option value="{{curator.id}}" selected>{{curator.last_name}} {{curator.first_name}} {{curator.middle_name}}</option>
                     {% endfor %}
@@ -43,8 +44,25 @@
 
 </div>
 <a class="btn btn-primary" id="addProjectButton">+</a>
-<div class="row w-100 col-md-10" style="margin-top: 20px ;">
-    <a class="btn btn-primary w-75"
-        style="background-color: #ce5353; border-color: #ce5353; border-radius: 40px;" id="uploadProjects" href="#projects">Поиск</a>
-</div>
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter" id="uploadProjects">
+    Launch demo modal
+  </button>
+
+<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
+          
+        </div>
+        <div class="modal-body">
+          <div class="loader"></div>
+          <p id="uploadPlaceholder">Загрузка...</p>
+        </div>
+        <div class="modal-footer" >
+            <button type="button" class="btn btn-secondary" id="modal-footer" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
 {% endblock %}

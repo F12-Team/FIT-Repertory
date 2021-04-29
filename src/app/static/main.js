@@ -1,5 +1,7 @@
 let url = window.location.origin;
-
+$(document).ready(function() { // 
+    $('.selectpicker').selectpicker();
+  });
 
 
 window.onload = function () {
@@ -14,7 +16,7 @@ window.onload = function () {
     if (window.location.toString().search("/admin/addprojects")!=-1){
         
         document.getElementById('addProjectButton').onclick = addForm;
-
+        document.getElementById('uploadProjects').onclick = uploadProjects;
     }
 
     
@@ -387,14 +389,49 @@ printEmpty = function() {
     cardPlace.appendChild(h3);
 }
 addForm = function() {
+    
     let form = document.forms[document.forms.length-1];
+    
     cloneForm = form.cloneNode(true);
     cloneForm.elements.semester_id.value = form.elements.semester_id.value;
     cloneForm.elements.direction_id.value = form.elements.direction_id.value;
     cloneForm.elements.semester_id.value = form.elements.semester_id.value;
     cloneForm.elements.name.value = '';
     cloneForm.elements.curators_ids.value = '';
+    // console.log(cloneForm.elements.curators_ids);
+    
     cloneForm.name = `${Math.round(Math.random()*10000)}`;
     var pArea = document.getElementById('project-area');
     pArea.append(cloneForm);
+    
+}
+
+uploadProjects = async function() {
+    forms = document.forms;
+    button = document.getElementById('modal-footer')
+    button.style.display = "none";
+    // CountProjects = document.getElementById('uploadPlaceholder');
+    for (var i =0; i < forms.length; i++) {
+        
+        let urlDir = url + '/admin/addproject';
+        let uri = new URL(urlDir);
+        var body = new FormData(forms[i]);
+        sendRequest(uri,'POST', function() {
+        
+        setTimeout(() => { 
+        if (this.response== "complete add"){
+            p = document.getElementById('uploadPlaceholder');
+            p.innerHTML = `${i} из ${forms.length}`;
+        } else {
+
+        } }, 3000);
+        }, body);
+        
+    }
+    button = document.getElementById('modal-footer')
+    button.style.display = "";
+}
+
+uploadProject = async function(i) {
+    
 }
