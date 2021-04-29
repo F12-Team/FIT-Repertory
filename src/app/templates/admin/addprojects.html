@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<div id="project-area"></div>
+<div id="project-area" class="text-center">
 <form class="w-50" method="post" name="search">
     <div class="form-row">
         <div class="col">
@@ -37,11 +37,14 @@
                     {% endfor %}
             </select>
         </div>
-        <div class="row w-100 col-md-10" style="margin-top: 20px ;">
-            <a class="btn btn-primary w-75"
-                style="background-color: #ce5353; border-color: #ce5353; border-radius: 40px;" id="submitForm" href="#projects">Поиск</a>
-        </div>
+        
     </div>
 </form>
 
+</div>
+<a class="btn btn-primary" id="addProjectButton">+</a>
+<div class="row w-100 col-md-10" style="margin-top: 20px ;">
+    <a class="btn btn-primary w-75"
+        style="background-color: #ce5353; border-color: #ce5353; border-radius: 40px;" id="uploadProjects" href="#projects">Поиск</a>
+</div>
 {% endblock %}

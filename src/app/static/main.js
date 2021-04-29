@@ -11,6 +11,11 @@ window.onload = function () {
         document.getElementById('submitForm').onclick = renderPagination;
 
     }
+    if (window.location.toString().search("/admin/addprojects")!=-1){
+        
+        document.getElementById('addProjectButton').onclick = addForm;
+
+    }
 
     
     var els = document.getElementsByClassName('route');
@@ -380,4 +385,16 @@ printEmpty = function() {
     var h3 = document.createElement('h3');
     h3.innerHTML = "Ничего не найдено :(";
     cardPlace.appendChild(h3);
+}
+addForm = function() {
+    let form = document.forms[document.forms.length-1];
+    cloneForm = form.cloneNode(true);
+    cloneForm.elements.semester_id.value = form.elements.semester_id.value;
+    cloneForm.elements.direction_id.value = form.elements.direction_id.value;
+    cloneForm.elements.semester_id.value = form.elements.semester_id.value;
+    cloneForm.elements.name.value = '';
+    cloneForm.elements.curators_ids.value = '';
+    cloneForm.name = `${Math.round(Math.random()*10000)}`;
+    var pArea = document.getElementById('project-area');
+    pArea.append(cloneForm);
 }
