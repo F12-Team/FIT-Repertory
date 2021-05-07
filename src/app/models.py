@@ -24,12 +24,6 @@ teams = db.Table('teams',
                     db.Column('description', db.Text()))
 
 
-curators = db.Table('curators',
-                    db.Column('curator_id', db.Integer, db.ForeignKey('users.id'), primary_key=True),
-                    db.Column('project_id', db.Integer, db.ForeignKey('projects.id'), primary_key=True),
-                    db.Column('description', db.Text()))
-
-
 techs = db.Table('techs',
                     db.Column('technology_id', db.Integer, db.ForeignKey('technologies.id'), primary_key=True),
                     db.Column('project_id', db.Integer, db.ForeignKey('projects.id'), primary_key=True))
@@ -213,8 +207,9 @@ class Project(db.Model, SerializerMixin):
     direction_id = db.Column(db.Integer, db.ForeignKey('directions.id'), nullable=False)
     status_id = db.Column(db.Integer, db.ForeignKey('statuses.id'), nullable=False)
     teamlead_id = db.Column(db.Integer, db.ForeignKey('users.id'))
+    curator_id = db.Column(db.Integer, db.ForeignKey('users.id'))
 
-    curators = db.relationship('User', secondary=curators)
+    curator = db.relationship('User')
     teamlead = db.relationship('User')
     direction = db.relationship('Direction')
     status = db.relationship('Status')
