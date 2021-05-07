@@ -15,6 +15,7 @@ def addproject_params():
         'direction_id': request.form.get('direction_id'),
         'semester_id': request.form.get('semester_id'),
         'teamlead_id': request.form.get('teamlead_id'),
+        'curator_id': request.form.get('curator_id')
     }
 
 def adduser_params():
@@ -43,10 +44,6 @@ def addprojects():
 def addproject():
     project = Project(**addproject_params(), status_id=1)
     db.session.add(project)
-    curators_ids = request.form.getlist('curators_ids')
-    for curator_id in curators_ids:
-        add_curator = User.query.filter(User.id == curator_id).first()
-        project.curators.append(add_curator)
     db.session.commit()
     return jsonify('complete add')
 
