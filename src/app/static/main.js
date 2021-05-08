@@ -3,7 +3,9 @@ $(document).ready(function() { //
     $('.selectpicker').selectpicker();
   });
 
-
+function sleep(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms));
+  }
 window.onload = function () {
     
     if (window.location.toString().search("/view/projects")!=-1){
@@ -397,7 +399,7 @@ addForm = function() {
     cloneForm.elements.direction_id.value = form.elements.direction_id.value;
     cloneForm.elements.semester_id.value = form.elements.semester_id.value;
     cloneForm.elements.name.value = '';
-    cloneForm.elements.curators_ids.value = '';
+    cloneForm.elements.curator_id.value = '';
     // console.log(cloneForm.elements.curators_ids);
     
     cloneForm.name = `${Math.round(Math.random()*10000)}`;
@@ -406,32 +408,55 @@ addForm = function() {
     
 }
 
-uploadProjects = async function() {
+uploadProjects =  async function() {
+    document.getElementById('uploadProjects').onclick = function() {
+        return false;
+    }
     forms = document.forms;
     button = document.getElementById('modal-footer')
     button.style.display = "none";
+    var success = 0;
+    var error = 0;
+    console.log(forms);
     // CountProjects = document.getElementById('uploadPlaceholder');
     for (var i =0; i < forms.length; i++) {
         
         let urlDir = url + '/admin/addproject';
         let uri = new URL(urlDir);
         var body = new FormData(forms[i]);
-        sendRequest(uri,'POST', function() {
-        
-        setTimeout(() => { 
-        if (this.response== "complete add"){
-            p = document.getElementById('uploadPlaceholder');
-            p.innerHTML = `${i} из ${forms.length}`;
-        } else {
-
-        } }, 3000);
-        }, body);
+        await sleep(2000);
+        if (body.get('checkbox')) {   
+        }
+        else {
+            body.delete('checkbox');
+            
+                sendRequest(uri,'POST', function() {
+                    if (this.response== "complete add"){
+                        p = document.getElementById('uploadPlaceholder');
+                        p.innerHTML = `${i} из ${forms.length}`;
+                        button = document.getElementById('modal-footer');
+                        button.style.display = "";
+                        success++;
+                        
+                    } else {
+                        error++;
+                    }
+                }, body);
+             
+             forms[i].innerHTML = '';
+             
+        }
         
     }
-    button = document.getElementById('modal-footer')
-    button.style.display = "";
-}
-
-uploadProject = async function(i) {
+    
+    p1 = document.getElementById('results');
+    p1.innerHTML = `${success+1} проектов успешно загружено, при загрузке ${error} произошла ошибка`;
+    successCheck = document.getElementById('loader-success');
+    successCheck.innerHTML = '';
+    ico = document.createElement('i');
+    ico.classList.add('fa');
+    ico.classList.add('fa-check');
+    successCheck.appendChild(ico);
+    
     
 }

@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<div id="project-area" class="text-center">
+<div id="project-area" class="m-5" style="margin-top: 5% !important;">
 <form class="w-50" method="post" name="search">
     <div class="form-row">
         <div class="col">
@@ -18,6 +18,14 @@
                 {% endfor %}
             </select>
         </div>
+        <div>
+            <div class="form-check">
+                
+                    <input type="checkbox" class="form-check-input" id="checkbox" name="checkbox">
+                    <label class="form-check-label" for="checkbox">Игнорировать</label>
+                
+              </div>
+        </div>
         <div class="col">
             <label for="FormControlSelect2"
                 style="color: #f2f2f2; font-weight: bold; font-size: 18px;">Направление</label>
@@ -31,7 +39,7 @@
         <div class="col">
             <label for="FormControlSelect2"
                 style="color: #f2f2f2; font-weight: bold; font-size: 18px;">Кураторы</label>
-            <select class="form-control   " name="curators_ids" data-live-search="true" multiple> 
+            <select class="form-control" name="curator_id"> 
                 <!-- selectpicker -->
                     {% for curator in curators%}
                 <option value="{{curator.id}}" selected>{{curator.last_name}} {{curator.first_name}} {{curator.middle_name}}</option>
@@ -56,8 +64,13 @@
           
         </div>
         <div class="modal-body">
-          <div class="loader"></div>
+            <div id="loader-success">
+            <div class="spinner-border" role="status">
+                <span class="sr-only">Loading...</span>
+              </div>
+            </div>
           <p id="uploadPlaceholder">Загрузка...</p>
+          <p id="results"> </p>
         </div>
         <div class="modal-footer" >
             <button type="button" class="btn btn-secondary" id="modal-footer" data-dismiss="modal">Close</button>
