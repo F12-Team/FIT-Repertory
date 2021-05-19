@@ -403,6 +403,7 @@ addForm = function() {
     // console.log(cloneForm.elements.curators_ids);
     
     cloneForm.name = `${Math.round(Math.random()*10000)}`;
+    cloneForm.id = `${Math.round(Math.random()*10000)}`;
     var pArea = document.getElementById('project-area');
     pArea.append(cloneForm);
     
@@ -413,13 +414,24 @@ uploadProjects =  async function() {
         return false;
     }
     forms = document.forms;
+    cloneForm = forms[0].cloneNode(true);
+    cloneForm.elements.semester_id.value = form.elements.semester_id.value;
+    cloneForm.elements.direction_id.value = form.elements.direction_id.value;
+    cloneForm.elements.semester_id.value = form.elements.semester_id.value;
+    cloneForm.elements.name.value = '';
+    cloneForm.elements.curator_id.value = '';
+    // console.log(cloneForm.elements.curators_ids);
+    
+    cloneForm.name = `${Math.round(Math.random()*10000)}`;
+    cloneForm.id = `${Math.round(Math.random()*10000)}`;
     button = document.getElementById('modal-footer')
     button.style.display = "none";
     var success = 0;
     var error = 0;
     console.log(forms);
     // CountProjects = document.getElementById('uploadPlaceholder');
-    for (var i =0; i < forms.length; i++) {
+    var onDelete = []
+    for (var i = 0; i < forms.length; i++) {
         
         let urlDir = url + '/admin/addproject';
         let uri = new URL(urlDir);
@@ -437,16 +449,30 @@ uploadProjects =  async function() {
                         button = document.getElementById('modal-footer');
                         button.style.display = "";
                         success++;
+                        // onDelete.push(forms[i].id);
                         
+                        // console.log(forms[i].id);
+                        // projectArea = document.getElementById('project-area');
+                        // onDeleteForm = document.getElementById(`${forms[i].id}`); 
+                        // projectArea.removeChild(onDeleteForm);
                     } else {
                         error++;
                     }
                 }, body);
              
-             forms[i].innerHTML = '';
-             
+        forms[i].innerHTML = '';
+        onDelete.push(forms[i].id);
         }
-        
+        console.log(onDelete);
+    }
+    for (var i = 0; i < onDelete.length; i++) {
+        if (onDelete[i]!="") {
+        console.log(onDelete.length);
+        projectArea = document.getElementById('project-area');
+        onDeleteForm = document.getElementById(onDelete[i]); 
+        projectArea.removeChild(onDeleteForm);
+        onDelete[i] = "";
+        }
     }
     
     p1 = document.getElementById('results');
@@ -457,6 +483,9 @@ uploadProjects =  async function() {
     ico.classList.add('fa');
     ico.classList.add('fa-check');
     successCheck.appendChild(ico);
-    
+    projectArea = document.getElementById('project-area');
+    if (projectArea.children.length<1) {
+        projectArea.appendChild(cloneForm);
+    }
     
 }
