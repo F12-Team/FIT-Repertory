@@ -53,6 +53,7 @@ class Group(db.Model, SerializerMixin):
     description = db.Column(db.Text())
 
     direction_id = db.Column(db.Integer, db.ForeignKey('directions.id'), nullable=False)
+    direction = db.relationship('Direction')
 
     def __repr__(self):
         return '<Group %r>' % self.name

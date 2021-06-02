@@ -12,7 +12,34 @@
     </li>
 </ul>
 <div class="tab-content" id="myTabContent">
-    <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">...</div>
+    <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Название</th>
+                    <th scope="col">Куратор</th>
+                    <th scope="col">Тимлид</th>
+                    <th scope="col">Направление</th>
+                    <th scope="col">Лайки</th>
+                    <th scope="col">Статус</th>
+                </tr>
+            </thead>
+            {% for item in projects %}
+            <tbody>
+                <tr>
+                    <th scope="row">{{ loop.index }}</th>
+                    <td>{{ item.name }}</td>
+                    <td>{{ item.curator.full_name or 'Не назначен' }}</td>
+                    <td>{{ item.teamlead.full_name or 'Не назначен' }}</td>
+                    <td>{{ item.direction.name }}</td>
+                    <td>{{ item.likes }}</td>
+                    <td>{{ item.status.name }}</td>
+                </tr>
+            </tbody>
+            {% endfor %}
+        </table>
+    </div>
     <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
         <div id="project-area" class="m-5" style="margin-top: 5% !important;">
             <form class="w-50" method="post" name="search" id="search">

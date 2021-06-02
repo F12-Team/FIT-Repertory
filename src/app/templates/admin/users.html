@@ -12,7 +12,26 @@
     </li>
 </ul>
 <div class="tab-content" id="myTabContent">
-    <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">...</div>
+    <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Название</th>
+                    <th scope="col">Описание</th>
+                </tr>
+            </thead>
+            {% for item in users %}
+            <tbody>
+                <tr>
+                    <th scope="row">{{ loop.index }}</th>
+                    <td>{{ item.full_name }}</td>
+                    <td>{{ item.role.name }}</td>
+                </tr>
+            </tbody>
+            {% endfor %}
+        </table>
+    </div>
     <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">...</div>
 </div>
 {% endblock %}

@@ -29,11 +29,12 @@ def adduser_params():
 
 @bp.route('/projects')
 def projects():
+    projects = Project.query.all()
     semesters = Semester.query.all()
     directions = Direction.query.all()
     curators = User.query.join(Role).filter(Role.name == 'Куратор').all()
     teamleads = User.query.join(Role).filter(Role.name == 'Тимлид').all()
-    return render_template('admin/projects.html', semesters=semesters, directions=directions, curators=curators, teamleads=teamleads)
+    return render_template('admin/projects.html', semesters=semesters, directions=directions, curators=curators, teamleads=teamleads, projects=projects)
 
 
 @bp.route('/addproject', methods=['POST'])
