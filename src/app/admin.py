@@ -27,20 +27,16 @@ def adduser_params():
         'role_id': request.form.get('role_id'),
     }
 
-@bp.route('/addprojects')
-#@login_required
-#@check_rights('addprojects')
-def addprojects():
+@bp.route('/projects')
+def projects():
     semesters = Semester.query.all()
     directions = Direction.query.all()
     curators = User.query.join(Role).filter(Role.name == 'Куратор').all()
     teamleads = User.query.join(Role).filter(Role.name == 'Тимлид').all()
-    return render_template('admin/addprojects.html', semesters=semesters, directions=directions, curators=curators, teamleads=teamleads)
+    return render_template('admin/projects.html', semesters=semesters, directions=directions, curators=curators, teamleads=teamleads)
 
 
 @bp.route('/addproject', methods=['POST'])
-#@login_required
-#@check_rights('addprojects')
 def addproject():
     project = Project(**addproject_params(), status_id=1)
     db.session.add(project)
@@ -49,8 +45,6 @@ def addproject():
 
 
 @bp.route('/groups')
-#@login_required
-#@check_rights('addprojects')
 def groups():
     groups = Group.query.all()
     directions = Direction.query.all()
@@ -59,8 +53,6 @@ def groups():
 
 
 @bp.route('/addgroup', methods=['POST'])
-#@login_required
-#@check_rights('addprojects')
 def addgroup():
     name = request.form.get('name')
     direction_id = request.form.get('direction_id')
@@ -71,17 +63,13 @@ def addgroup():
 
 
 @bp.route('/semesters')
-#@login_required
-#@check_rights('addprojects')
 def semesters():
     semesters = Semester.query.all()
 
-    return render_template('admin/addprojects.html', semesters=semesters)
+    return render_template('admin/semesters.html', semesters=semesters)
 
 
 @bp.route('/addsemester', methods=['POST'])
-#@login_required
-#@check_rights('addprojects')
 def addsemester():
     name = request.form.get('name')
     semester = Semester(name=name)
@@ -90,24 +78,20 @@ def addsemester():
     return jsonify('complete add')
 
 
-@bp.route('/addusers')
-#@login_required
-#@check_rights('addprojects')
+@bp.route('/users')
 def users():
     users = User.query.all()
     roles = Role.query.all()
 
-    return render_template('admin/addprojects.html', users=users, roles=roles)
+    return render_template('admin/users.html', users=users, roles=roles)
 
 
 @bp.route('/adduser', methods=['POST'])
-#@login_required
-#@check_rights('addprojects')
 def adduser():
     user = Project(**adduser_params())
     password = request.form.get('password')
     user.set_password(password)
-    
+
     db.session.add(user)
     db.session.commit()
 
