@@ -9,7 +9,7 @@
 html,
 body {
     font-family: 'Montserrat', sans-serif !important;
-    background-color: #403F4C !important;
+    /* background-color: #403F4C !important; */
     color: #000;
 }
 
@@ -30,7 +30,7 @@ a:hover {
     text-decoration: none;
 }
 
-.navbar {
+/* .navbar {
     background-color: #CE5353 !important;
     transition: 0.5s;
 }
@@ -51,12 +51,12 @@ a:hover {
 .navbar-light .navbar-nav .nav-link {
     color: #f2f2f2 !important;
     /*text-shadow: 1px 1px 2px #000;*/
-}
+/* }
 
 .navbar-light .navbar-nav .nav-link:hover .navbar-light .navbar-nav .nav-link:focus {
     color: rgba(255, 255, 255, 1) !important;
     /*text-shadow: 2px 2px 3px #000;*/
-}
+/* }
 
 .navbar-light .navbar-brand,
 .navbar-light .navbar-brand:hover,
@@ -64,14 +64,14 @@ a:hover {
 .navbar-light .navbar-brand:visited {
     color: rgba(255, 255, 255, 1) !important;
     /*text-shadow: 1px 1px 2px #000;*/
-    font-size: 1.5rem;
+    /* font-size: 1.5rem;
     font-weight: 600;
 }
 
 .nav-item .nav-link{
     font-size: 20px;
     font-weight: bold;
-}
+} */ 
 
 
 .banner {
@@ -247,52 +247,6 @@ section.dark .section-title::after {
     margin-bottom: 25px;
     font-size: 40px;
     color: white;
-}
-
-
-/*footer*/
-footer {
-    background: #ce5353;
-    color: #fff;
-    /*text-shadow: 1px 1px 2px #000;*/
-    padding: 80px 0;
-    text-align: center;
-}
-
-.copyright {
-    margin-bottom: 20px;
-    font-size: 20px;
-}
-
-.copyright a {
-    font-size: 20px;
-    color: #22bbbb;
-    font-weight: 500;
-}
-
-.copyright a:hover {
-    color: #f2f2f2;
-}
-
-.sm a {
-    color: #fff;
-    font-size: 32px;
-    margin: 0 10px;
-    transition: .2s linear;
-}
-
-.sm a:hover {
-    color: #22bbbb;
-}
-
-.vsc-initalized {
-    display: flex;
-    flex-direction: column;
-    height: 100%;
-}
-
-.footer {
-    flex: 0 0 auto;
 }
 
 .cursor-pointer {

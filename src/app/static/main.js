@@ -33,7 +33,21 @@ window.onload = function () {
         };
         
     }
-    
+/*Код для button-top в base-html*/     
+    jQuery(document).ready(function() {
+        var btn = $('#button-top');  
+        $(window).scroll(function() {     
+          if ($(window).scrollTop() > 300) {
+             btn.addClass('show');
+           } else {
+             btn.removeClass('show');
+           }
+         });
+         btn.on('click', function(e) {
+           e.preventDefault();
+           $('html, body').animate({scrollTop:0}, '300');
+         });
+      });
     $(document).scroll(function () {
         $('.navbar').toggleClass('scrolled', $(this).scrollTop() > $('.navbar').height());
       });
@@ -73,6 +87,7 @@ window.onload = function () {
         }
       });
 }
+
 /// ДЛЯ ПОДГРУЗКИ
 showBlink = function() {
     var swiper = document.getElementById('swiperDisplay')
