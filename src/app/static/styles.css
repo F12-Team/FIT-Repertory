@@ -9,7 +9,6 @@
 html,
 body {
     font-family: 'Montserrat', sans-serif !important;
-    /* background-color: #403F4C !important; */
     color: #000;
 }
 
@@ -29,50 +28,6 @@ a {
 a:hover {
     text-decoration: none;
 }
-
-/* .navbar {
-    background-color: #CE5353 !important;
-    transition: 0.5s;
-}
-
-.navbar.scrolled {
-    background-color: #CE5353 !important;
-    transition: 0.5s;
-}
-
-.navbar-light .navbar-nav .active>.nav-link,
-.navbar-light .navbar-nav .nav-link.active,
-.navbar-light .navbar-nav .nav-link.show,
-.navbar-light .navbar-nav .show>.nav-link {
-    color: #000 !important;
-    background-color: #fff;
-}
-
-.navbar-light .navbar-nav .nav-link {
-    color: #f2f2f2 !important;
-    /*text-shadow: 1px 1px 2px #000;*/
-/* }
-
-.navbar-light .navbar-nav .nav-link:hover .navbar-light .navbar-nav .nav-link:focus {
-    color: rgba(255, 255, 255, 1) !important;
-    /*text-shadow: 2px 2px 3px #000;*/
-/* }
-
-.navbar-light .navbar-brand,
-.navbar-light .navbar-brand:hover,
-.navbar-light .navbar-brand:focus,
-.navbar-light .navbar-brand:visited {
-    color: rgba(255, 255, 255, 1) !important;
-    /*text-shadow: 1px 1px 2px #000;*/
-    /* font-size: 1.5rem;
-    font-weight: 600;
-}
-
-.nav-item .nav-link{
-    font-size: 20px;
-    font-weight: bold;
-} */ 
-
 
 .banner {
     position: relative;
