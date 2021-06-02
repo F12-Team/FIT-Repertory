@@ -27,6 +27,7 @@ from models import Direction, Group, Role, Status, Semester, Type, Student, User
 from auth import bp as auth_bp, init_login_manager
 from admin import bp as admin_bp
 from curator import bp as curator_bp
+from teamlead import bp as teamlead_bp
 from project import bp as project_bp
 from view import bp as view_bp
 
@@ -35,6 +36,7 @@ init_login_manager(app)
 app.register_blueprint(auth_bp)
 app.register_blueprint(admin_bp)
 app.register_blueprint(curator_bp)
+app.register_blueprint(teamlead_bp)
 app.register_blueprint(project_bp)
 app.register_blueprint(view_bp)
 
@@ -46,6 +48,7 @@ def index():
     directions = Direction.query.all()
     projects = Project.query.order_by(desc(Project.likes)).limit(9).all()
     return render_template('index.html', directions=directions, projects=projects)
+
 
 @app.route('/direction', methods=['POST'])
 def get_projects_by_direction_id():

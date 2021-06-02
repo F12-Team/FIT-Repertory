@@ -38,7 +38,7 @@ def check_own(project):
     def decorator(func):
         @wraps(func)
         def wrapper(*args, **kwargs):
-            if not current_user.id == project.teamlead_id or current_user not in project.curators:
+            if not current_user.id == project.teamlead_id or current_user.id == project.curator_id:
                 flash('У вас недостаточно прав для доступа к данной странице.', 'danger')
                 return redirect(url_for('index'))
             return func(*args, **kwargs)
