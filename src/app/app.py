@@ -45,7 +45,7 @@ from tools import ImageSaver
 
 @app.route('/')
 def index():
-    directions = Direction.query.all()
+    directions = Direction.query.filter(Direction.name != 'Заглушка').all()
     projects = Project.query.order_by(desc(Project.likes)).limit(9).all()
     return render_template('index.html', directions=directions, projects=projects)
 

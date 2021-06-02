@@ -1,81 +1,97 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<div id="project-area" class="m-5" style="margin-top: 5% !important;">
-<form class="w-50" method="post" name="search" id="search">
-    <div class="form-row">
-        <div class="col">
-            <label for="name" style="color: #f2f2f2; font-weight: bold; font-size: 18px;">Название проекта</label>
-            <input class="form-control" type="text" name="name" value="">
+<ul class="nav nav-tabs pt-5" id="myTab" role="tablist">
+    <li class="nav-item" role="presentation">
+        <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home"
+            aria-selected="true">Просмотр</a>
+    </li>
+    <li class="nav-item" role="presentation">
+        <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile"
+            aria-selected="false">Добавление</a>
+    </li>
+</ul>
+<div class="tab-content" id="myTabContent">
+    <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">...</div>
+    <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+        <div id="project-area" class="m-5" style="margin-top: 5% !important;">
+            <form class="w-50" method="post" name="search" id="search">
+                <div class="form-row">
+                    <div class="col">
+                        <label for="name" style="color: #f2f2f2; font-weight: bold; font-size: 18px;">Название
+                            проекта</label>
+                        <input class="form-control" type="text" name="name" value="">
+                    </div>
+                    <div class="col">
+                        <label for="FormControlSelect1"
+                            style="color: #f2f2f2;  font-weight: bold; font-size: 18px;">Семестр</label>
+                        <select class="form-control" name="semester_id">
+                            <option value=""></option>
+                            {% for semester in semesters %}
+                            <option value="{{ semester.id }}">{{ semester.name }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                    <div>
+                        <div class="form-check">
+                            <input type="checkbox" class="form-check-input" id="checkbox" name="checkbox">
+                            <label class="form-check-label" for="checkbox">Игнорировать</label>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <label for="FormControlSelect2"
+                            style="color: #f2f2f2; font-weight: bold; font-size: 18px;">Направление</label>
+                        <select class="form-control" name="direction_id">
+                            <option value=""></option>
+                            {% for direction in directions %}
+                            <option value="{{ direction.id }}">{{ direction.name }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                    <div class="col">
+                        <label for="FormControlSelect2"
+                            style="color: #f2f2f2; font-weight: bold; font-size: 18px;">Кураторы</label>
+                        <select class="form-control" name="curator_id">
+                            <!-- selectpicker -->
+                            {% for curator in curators%}
+                            <option value="{{curator.id}}" selected>{{curator.last_name}} {{curator.first_name}}
+                                {{curator.middle_name}}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                </div>
+            </form>
         </div>
-        <div class="col">
-            <label for="FormControlSelect1"
-                style="color: #f2f2f2;  font-weight: bold; font-size: 18px;">Семестр</label>
-            <select class="form-control" name="semester_id">
-                <option value=""></option>
-                {% for semester in semesters %}
-                <option value="{{ semester.id }}">{{ semester.name }}</option>
-                {% endfor %}
-            </select>
-        </div>
-        <div>
-            <div class="form-check">
-                
-                    <input type="checkbox" class="form-check-input" id="checkbox" name="checkbox">
-                    <label class="form-check-label" for="checkbox">Игнорировать</label>
-                
-              </div>
-        </div>
-        <div class="col">
-            <label for="FormControlSelect2"
-                style="color: #f2f2f2; font-weight: bold; font-size: 18px;">Направление</label>
-            <select class="form-control" name="direction_id">
-                <option value=""></option>
-                {% for direction in directions %}
-                <option value="{{ direction.id }}">{{ direction.name }}</option>
-                {% endfor %}
-            </select>
-        </div>
-        <div class="col">
-            <label for="FormControlSelect2"
-                style="color: #f2f2f2; font-weight: bold; font-size: 18px;">Кураторы</label>
-            <select class="form-control" name="curator_id"> 
-                <!-- selectpicker -->
-                    {% for curator in curators%}
-                <option value="{{curator.id}}" selected>{{curator.last_name}} {{curator.first_name}} {{curator.middle_name}}</option>
-                    {% endfor %}
-            </select>
-        </div>
-        
+        <a class="btn btn-primary" id="addProjectButton">+</a>
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter"
+            id="uploadProjects">
+            Launch demo modal
+        </button>
     </div>
-</form>
-
 </div>
-<a class="btn btn-primary" id="addProjectButton">+</a>
-<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter" id="uploadProjects">
-    Launch demo modal
-  </button>
 
-<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+
+<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+    aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
-          
-        </div>
-        <div class="modal-body">
-            <div id="loader-success">
-            <div class="spinner-border" role="status">
-                <span class="sr-only">Loading...</span>
-              </div>
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
+
             </div>
-          <p id="uploadPlaceholder">Загрузка...</p>
-          <p id="results"> </p>
+            <div class="modal-body">
+                <div id="loader-success">
+                    <div class="spinner-border" role="status">
+                        <span class="sr-only">Loading...</span>
+                    </div>
+                </div>
+                <p id="uploadPlaceholder">Загрузка...</p>
+                <p id="results"> </p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" id="modal-footer" data-dismiss="modal">Close</button>
+            </div>
         </div>
-        <div class="modal-footer" >
-            <button type="button" class="btn btn-secondary" id="modal-footer" data-dismiss="modal">Close</button>
-        </div>
-      </div>
     </div>
-  </div>
+</div>
 {% endblock %}
