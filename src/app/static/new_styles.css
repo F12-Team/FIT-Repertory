@@ -1,3 +1,37 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+/* Default styles */
+* {
+    outline: none !important;
+    scroll-behavior: smooth;
+    box-sizing: border-box;
+}
+
+html,
+body {
+    font-family: 'Montserrat', sans-serif !important;
+    color: #000;
+}
+
+/* header {
+    position: relative;
+    z-index: 1000000;
+} */
+
+p {
+    font-size: 1.15rem;
+}
+
+a {
+    text-decoration: none !important;
+    color: #000;
+}
+
+a:hover {
+    text-decoration: none;
+}
+
+
+
 /* Navbar styles*/
 
 .navbar{
@@ -187,8 +221,12 @@
     margin-top: 10px !important;
 }
 
-/* Search page and project page */
+/* Search page and projects page */
 
+.search_block{
+    margin-top: 120px;
+    margin-bottom: 50px;
+}
 .search-menu{
     font-size: 44px;
 }
@@ -219,15 +257,62 @@
 }
 
 .pro-name-napr{
-    width: 30%;
+    width: 33%;
 }
 
-.pro-likes{
-    width: 30%;
+.pro-like{
+    width: 33%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 .pro-sem{
-    width:30%;
+    width:33%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
+
+.search-pro{
+    outline: none;
+    border: none;
+}
+/* Pagination on search page*/
+
+.pagination-outer{ text-align: center; }
+.pagination{
+    display: inline-flex;
+    position: relative;
+}
+.pagination:before{
+    content: "";
+    width: 100%;
+    height: 0px;
+    background: #e8e8e8;
+    position: absolute;
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+}
+.pagination li a.page-link{
+    padding: 5px 15px;
+    margin-right: 15px;
+    border-radius: 5px;
+    font-size: 17px;
+    color: #686c6c;
+    outline: none;
+    border: none;
+}
+/* .pagination li:first-child a.page-link{ margin-right: 30px; }
+.pagination li:last-child a.page-link{ margin: 0 0 0 15px; }
+.pagination li.active a.page-link,
+.pagination li a.page-link:hover{
+    background: #ce5353;
+    border-color: #ce5353;
+    color: #fff;
+}  */
+
+
 /* Footer styles*/
 
 .footer{
