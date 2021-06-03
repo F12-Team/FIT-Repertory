@@ -22,7 +22,7 @@ def gen_password():
 def gen_login(teamlead_name):
     teamlead_name = teamlead_name.replace(" ", "")
     teamlead_name = transliterate(teamlead_name)
-    teamlead_name = 'teamlead' + teamlead_name[1:9]
+    teamlead_name = 'teamlead_' + teamlead_name[1:9] + '_'
 
     alphabet = string.ascii_letters + string.digits
     name = teamlead_name + ''.join(secrets.choice(alphabet) for i in range(8))
@@ -32,13 +32,15 @@ def gen_login(teamlead_name):
 def index():
     #projects = Project.query.join(Status).filter(Project.curator_id == current_user.id).filter(Status.name in curator_project_statuses).all()
     projects = Project.query.join(Status).filter(Status.name in curator_project_statuses).all()
+    projects_for_gen = Project.query.join(Status).filter(Status.name in curator_project_statuses_for_gen_psswds).all()
+    count_of_projects_for_gen = projects_for_gen.length
 
-    return render_template('curator/projects.html', projects=projects)
+    return render_template('curator/projects.html', projects=projects, count_of_projects_for_gen=count_of_projects_for_gen)
 
 
 @bp.route('/genpsswds', methods=['POST'])
 def genpsswds():
-    #projects = Project.query.join(Status).filter(Project.curator_id == current_user.id).filter(Status.name in curator_project_statuses).all()
+    #projects = Project.query.join(Status).filter(Project.curator_id == current_user.id).filter(Status.name in curator_project_statuses_for_gen_psswds).all()
     projects = Project.query.join(Status).filter(Status.name in curator_project_statuses_for_gen_psswds).all()
 
     creds = {}
@@ -55,7 +57,7 @@ def genpsswds():
         db.session.add(user)
         db.session.commit()
 
-        added_user = User.query.filter(User.login == login).all
+        added_user = User.query.filter(User.login == login).first()
 
         project.teamlead_id = added_user.id
 
@@ -63,3 +65,11 @@ def genpsswds():
         db.session.commit()
 
     return jsonify(creds)
+
+
+@bp.route('/confirm', methods=['POST'])
+def confirm():
+    project_id = request.form.get('project_id')
+    project = Project.query.filter(Project.id == project_id).first()
+    project.status_id = 2
+    return jsonify('complete add')
