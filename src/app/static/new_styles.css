@@ -29,7 +29,7 @@ a {
 }
 
 a:hover {
-    text-decoration: none;
+    text-decoration: none !important;
 }
 
 
@@ -160,10 +160,13 @@ a:hover {
 
 .tag-1{
     font-size: 54px;
+    font-weight: 800;
 }
 
 .tag-2{
     font-size: 44px;
+    font-weight: 700;
+    color: #818393;
 }
 
 .cards-flex{
@@ -173,10 +176,11 @@ a:hover {
 }
 
 .service {
+    border: 1px solid #4A46FF;
+    box-sizing: border-box;
+    border-radius: 20px;
     width: 28%;
     text-align: center;
-    border: 1px solid#CE5353;
-    border-radius: 20px;
     margin: 20px 0;
     /*padding: 40px 20px; */
     color: #fff;
@@ -204,36 +208,46 @@ a:hover {
 }
 
 .logoqwerty {
-    filter: invert(41%) sepia(74%) saturate(621%) hue-rotate(317deg) brightness(92%) contrast(74%);
+    filter: invert(30%) sepia(65%) saturate(5831%) hue-rotate(237deg) brightness(99%) contrast(104%);
 }
 
 .service:hover .logoqwerty {
-    filter: invert(100%) sepia(6%) saturate(0%) hue-rotate(115deg) brightness(108%) contrast(108%);
+    filter: invert(30%) sepia(65%) saturate(5831%) hue-rotate(237deg) brightness(99%) contrast(104%);
 }
 
+.service .card-body{
+    padding: 0 30px;
+}
 .service .cardtext {
     font-size: 22px;
     color: black;
-    font-weight: bold;
+    font-weight: 700;
     text-decoration: none;
 }
 
+.service .cardtext1{
+    color:#818393;
+    font-weight: 600;
+    text-decoration: none;
+    font-size: 15px;
+}
+
 .service .cardtext:hover {
-    color: #f2f2f2;
+    color: black;
     text-decoration: none;
 }
 
 .service:hover {
-    background-color: #CE5353;
+    background-color: none;
 }
 
 .service:hover .cardtext {
-    color: #f2f2f2;
+    color: black;
     text-decoration: none;
 }
 
 .service:hover .icon {
-    color: #fff;
+    color: none;
 }
 
 .top_proj_block{
@@ -247,34 +261,85 @@ a:hover {
 
 .top-cards-flex{
     display: flex;
-    justify-content: space-between;
+    justify-content: space-evenly;
     flex-wrap: wrap;
 }
 
+.top-proj-name{
+    font-weight: 800;
+    font-size: 35px;
+}
+
+.top-proj-derec{
+    font-weight: 600;
+    font-size: 28px;
+    color: #818393;
+}
+
+.to-all-proj{
+    background: #4A46FF;
+    border-radius: 10px;
+    padding: 10px 20px;
+    font-size: 15px;
+    font-weight: 600;
+    text-decoration: none;
+    outline: none;
+    border:0;
+}
+
+.to-all-proj:focus{
+    outline: none !important;
+}
+
+.to-all-proj:hover{
+    background: #4A46FF;
+    border-radius: 10px;
+}
 .top-card{
-    width:45%;
+    width: 35%;
     margin-bottom: 60px;
     align-self: baseline; 
 }
 
+.top-card:hover{
+    cursor: pointer;
+    color: black;
+    text-decoration: none !important;
+}
+
 .card-body{
     padding-left: 0;
+}
+.card-img-top{
+    border-radius: 20px;
 }
 
 .top-likes{
     position: relative;
     text-align: center;
     margin-bottom: 20px;
+    max-width: 360px;
 }
 
 .bott-right{
     position: absolute;
-  bottom: 2px;
-  right: 16px;
+    padding: 0 20px;
+    padding-top: 10px;
+    bottom: -1px;
+    right: -1px;
+    background: rgba(255, 255, 255, 0.7);
+    border-radius: 20px 0px;
 }
 
 .card-tittle{
     margin-top: 10px !important;
+    font-size: 22px;
+    font-weight: 700;
+}
+
+.card-text{
+    font-size: 18px;
+    font-weight: 400;
 }
 
 /* Search page and projects page */
