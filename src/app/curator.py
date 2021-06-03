@@ -30,8 +30,11 @@ def gen_login(teamlead_name):
 
 @bp.route('/')
 def index():
-    #projects = Project.query.join(Status).filter(Project.curator_id == current_user.id).filter(Status.name in curator_project_statuses).all()
-    projects = Project.query.join(Status).filter(Status.name in curator_project_statuses).all()
+    if current_user:
+        projects = Project.query.join(Status).filter(Project.curator_id == current_user.id).filter(Status.name in curator_project_statuses).all()
+    else:
+        projects = Project.query.join(Status).filter(Status.name in curator_project_statuses).all()
+
     projects_for_gen = Project.query.join(Status).filter(Status.name in curator_project_statuses_for_gen_psswds).all()
     count_of_projects_for_gen = projects_for_gen.length
 
@@ -40,8 +43,10 @@ def index():
 
 @bp.route('/genpsswds', methods=['POST'])
 def genpsswds():
-    #projects = Project.query.join(Status).filter(Project.curator_id == current_user.id).filter(Status.name in curator_project_statuses_for_gen_psswds).all()
-    projects = Project.query.join(Status).filter(Status.name in curator_project_statuses_for_gen_psswds).all()
+    if current_user:
+        projects = Project.query.join(Status).filter(Project.curator_id == current_user.id).filter(Status.name in curator_project_statuses_for_gen_psswds).all()
+    else:
+        projects = Project.query.join(Status).filter(Status.name in curator_project_statuses_for_gen_psswds).all()
 
     creds = {}
 
@@ -72,4 +77,8 @@ def confirm():
     project_id = request.form.get('project_id')
     project = Project.query.filter(Project.id == project_id).first()
     project.status_id = 2
+
+    db.session.add(project)
+    db.session.commit()
+
     return jsonify('complete add')
