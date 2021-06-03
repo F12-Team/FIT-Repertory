@@ -313,6 +313,158 @@ a:hover {
 }  */
 
 
+/* Project page */
+
+.head-block{
+    margin-top: 120px;
+    display: flex;
+}
+.poster-block{
+    display: flex;
+    justify-content: center;
+    width: 41%;
+    margin-right: 30px;
+}
+.poster-block-img{
+    max-height: 640px;
+    max-width: 640px;
+    min-height: 320px;
+     
+}
+
+.info-block{
+    width: 58%;
+}
+
+.proj-name{
+    font-size: 35px;
+    font-weight: 800;
+}
+
+.proj-sem{
+    font-size: 28px;
+    font-weight: 600;
+}
+
+.proj-links{
+    margin-top: 60px;
+}
+
+.proj-git{
+    margin-right: 30px;
+}
+
+.plink{
+
+    padding: 12px 30px;
+}
+
+.plike{
+    margin-bottom: 0;
+}
+
+.proj-shrt-desc{
+    margin-top: 120px;
+}
+
+#button-like {   
+    display: inline-block;   
+    background-color: #FF9800;   
+    width: 50px;   
+    height: 50px;   
+    text-align: center;   
+    border-radius: 4px;   
+    margin: 30px;   
+    position: fixed;   
+    bottom: 360px;   
+    right: 30px;   
+    transition: background-color .3s;   
+    z-index: 1000; 
+    
+}
+
+#button-like:hover {   
+    cursor: pointer;   
+    background-color: #333; 
+} 
+
+#button-like:active {   
+    background-color: #555; 
+} 
+
+#button-like::after {
+    content: "\f004";
+    font-family: FontAwesome;
+    font-weight: normal;
+    font-style: normal;
+    font-size: 2em;
+    line-height: 50px;
+    color: #fff; 
+}
+
+.tech-block{
+    margin-top: 60px;
+}
+
+.item-tech{
+    font-size: 18px;
+    padding: 12px 26px;
+    margin-right: 10px;
+    border: 1px solid black;
+}
+
+.video-block{
+    margin-top: 60px;
+    width: 100%;
+}
+
+.video-txt{
+    font-size: 55px; 
+    margin-bottom: 10px;
+}
+
+video{
+    border-radius: 20px;
+}
+
+.md-block{
+    margin-top: 60px;
+}
+
+.md-txt{
+    font-size: 55px; 
+    margin-bottom: 10px;
+}
+
+.team-block{
+    margin-top: 60px;
+    margin-bottom: 120px;
+}
+
+.team-txt{
+    font-size: 55px; 
+    margin-bottom: 10px;
+}
+
+.kur-block{
+    padding: 60px;
+    border: 1px solid black;
+    border-radius: 20px;
+}
+
+.kur-name{
+
+}
+
+.all-stud-block{
+    flex-wrap: wrap;
+}
+
+.stud-block{
+    width: 50%;
+    padding: 70px;
+}
+
 /* Footer styles*/
 
 .footer{

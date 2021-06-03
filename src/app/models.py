@@ -224,7 +224,10 @@ class Project(db.Model, SerializerMixin):
 
     def unlike(self):
         self.likes = self.likes - 1
-
+    
+    @property
+    def html(self):
+        return markdown.markdown(self.description)
 
 class Technology(db.Model, SerializerMixin):
     __tablename__ = 'technologies'
