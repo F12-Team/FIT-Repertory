@@ -14,7 +14,6 @@ def addproject_params():
         'name': request.form.get('name'),
         'direction_id': request.form.get('direction_id'),
         'semester_id': request.form.get('semester_id'),
-        'teamlead_id': request.form.get('teamlead_id'),
         'curator_id': request.form.get('curator_id')
     }
 
