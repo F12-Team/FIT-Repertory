@@ -13,7 +13,7 @@
 
 Ссылка на презентационный сайт проекта: http://about-fit-repertory.std-1001.ist.mospolytech.ru/
 
-Ссылка на готовое веб-приложение: http://pd-2020-2-brshnkv-phlppvch.std-1096.ist.mospolytech.ru/
+Ссылка на готовое веб-приложение: http://fitrep.ru/
 
 ## Участники
 
