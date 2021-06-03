@@ -548,6 +548,7 @@ a:hover {
     max-height: 640px;
     max-width: 640px;
     min-height: 320px;
+    border-radius: 20px;
      
 }
 
@@ -563,6 +564,7 @@ a:hover {
 .proj-sem{
     font-size: 28px;
     font-weight: 600;
+    color: #818393;
 }
 
 .proj-links{
@@ -573,13 +575,22 @@ a:hover {
     margin-right: 30px;
 }
 
-.plink{
-
+.plink, .plink:hover{
+    background: none;
     padding: 12px 30px;
+    border: 1px solid #4A46FF;
+    color: #4A46FF;
+    border-radius: 10px;
+    font-size: 14px;
 }
+
 
 .plike{
     margin-bottom: 0;
+    color: #4A46FF;
+    font-weight: 400;
+    font-size: 18px;
+    margin-right: 100px;
 }
 
 .proj-shrt-desc{
@@ -588,7 +599,7 @@ a:hover {
 
 #button-like {   
     display: inline-block;   
-    background-color: #FF9800;   
+    background-color: #C9C8FF;   
     width: 50px;   
     height: 50px;   
     text-align: center;   
@@ -604,11 +615,11 @@ a:hover {
 
 #button-like:hover {   
     cursor: pointer;   
-    background-color: #333; 
+    background-color:none; 
 } 
 
 #button-like:active {   
-    background-color: #555; 
+    background-color:none; 
 } 
 
 #button-like::after {
@@ -616,20 +627,25 @@ a:hover {
     font-family: FontAwesome;
     font-weight: normal;
     font-style: normal;
-    font-size: 2em;
+    font-size: 1.5em;
     line-height: 50px;
-    color: #fff; 
+    color: #4A46FF; 
 }
 
 .tech-block{
     margin-top: 60px;
 }
-
+.tech-block-name{
+    font-size: 22px;
+    font-weight: 700;
+    color:#818393;
+}
 .item-tech{
     font-size: 18px;
     padding: 12px 26px;
     margin-right: 10px;
-    border: 1px solid black;
+    border: 1px solid #4A46FF;
+    border-radius: 10px;
 }
 
 .video-block{
@@ -640,6 +656,8 @@ a:hover {
 .video-txt{
     font-size: 55px; 
     margin-bottom: 10px;
+    font-weight: 800;
+    color: #4A46FF;
 }
 
 video{
@@ -653,6 +671,8 @@ video{
 .md-txt{
     font-size: 55px; 
     margin-bottom: 10px;
+    font-weight: 800;
+    color: #4A46FF;
 }
 
 .team-block{
@@ -663,16 +683,26 @@ video{
 .team-txt{
     font-size: 55px; 
     margin-bottom: 10px;
+    font-weight: 800;
+    color: #4A46FF;
 }
 
 .kur-block{
     padding: 60px;
-    border: 1px solid black;
+    border: 1px solid #4A46FF;
     border-radius: 20px;
 }
 
 .kur-name{
+    font-weight: 600;
+    font-size: 28px;
+    color: #020827;
+}
 
+.kur-role{
+    color: #4A46FF;
+    font-size: 22.5px;
+    font-weight: 700;
 }
 
 .all-stud-block{
@@ -684,6 +714,23 @@ video{
     padding: 70px;
 }
 
+.stud-name{
+    font-size: 28px;
+    font-weight: 600;
+    color:#020827;
+}
+
+.stud-role{
+    font-size: 22px;
+    font-weight: 700;
+    color: #818393;
+}
+
+.stud-group{
+    font-size: 18px;
+    font-weight: 400;
+    color:#818393;
+}
 /* Footer styles*/
 
 .footer{
