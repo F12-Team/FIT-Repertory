@@ -37,18 +37,18 @@
     transition: background-color .3s;   
     z-index: 1000; 
     
- }
+}
 
- #button-top:hover {   
+#button-top:hover {   
     cursor: pointer;   
     background-color: #333; 
- } 
+} 
 
- #button-top:active {   
+#button-top:active {   
     background-color: #555; 
- } 
+} 
 
- #button-top::after {
+#button-top::after {
     content: "\f077";
     font-family: FontAwesome;
     font-weight: normal;
@@ -56,12 +56,144 @@
     font-size: 2em;
     line-height: 50px;
     color: #fff; 
- } 
+} 
 
- /* Footer styles*/
+
+/* Main page = направления + Top 9 проектов */
+
+.mp-cont{
+    
+}
+
+.site-name{
+    margin-top: 120px;
+}
+
+.tag-1{
+    font-size: 54px;
+}
+
+.tag-2{
+    font-size: 44px;
+}
+
+.cards-flex{
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.service {
+    width: 28%;
+    text-align: center;
+    border: 1px solid#CE5353;
+    border-radius: 20px;
+    margin: 20px 0;
+    /*padding: 40px 20px; */
+    color: #fff;
+    cursor: pointer;
+    transition: .3s linear;
+    background-color: white;
+    font-weight: bold;
+    margin: 30px;
+    margin-top: 50px;
+    align-self: baseline;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.logo-block{
+    margin-bottom: 10px;
+}
+
+.logoqwerty {
+    height: 84px;
+    margin-top:30px;
+    margin-bottom: 10px;
+}
+
+.logoqwerty {
+    filter: invert(41%) sepia(74%) saturate(621%) hue-rotate(317deg) brightness(92%) contrast(74%);
+}
+
+.service:hover .logoqwerty {
+    filter: invert(100%) sepia(6%) saturate(0%) hue-rotate(115deg) brightness(108%) contrast(108%);
+}
+
+.service .cardtext {
+    font-size: 22px;
+    color: black;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.service .cardtext:hover {
+    color: #f2f2f2;
+    text-decoration: none;
+}
+
+.service:hover {
+    background-color: #CE5353;
+}
+
+.service:hover .cardtext {
+    color: #f2f2f2;
+    text-decoration: none;
+}
+
+.service:hover .icon {
+    color: #fff;
+}
+
+.top_proj_block{
+    margin-top: 120px;
+}
+
+.top-cards-block{
+    margin-top: 30px;
+    margin-bottom: 120px;
+}
+
+.top-cards-flex{
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.top-card{
+    width:45%;
+    margin-bottom: 60px;
+    align-self: baseline;
+    
+}
+
+.card-body{
+    padding-left: 0;
+}
+
+.top-likes{
+    position: relative;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.bott-right{
+    position: absolute;
+  bottom: 2px;
+  right: 16px;
+}
+
+.card-tittle{
+    margin-top: 10px !important;
+}
+/* Footer styles*/
+
 
 .footer{
-    min-height: 152px; 
+    min-height: 182px; 
     border-top-width: 1.4px;
     border-top-style: solid;
        border-top-color: black;
