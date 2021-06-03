@@ -59,10 +59,10 @@
                     </li>
                     <!-- <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups"> -->
                     {% if current_user.is_authenticated %}
-                    <button class="btn btn-outline-success nav__button" type="submit"
+                    <button class="btn btn-outline-success nav__button log-btn" type="submit"
                         href="{{ url_for('auth.logout') }}">Выйти</button>
                     {% else %}
-                    <button class="btn btn-outline-success nav__button" type="submit"
+                    <button class="btn btn-outline-success nav__button log-btn" type="submit"
                         href="{{ url_for('auth.login') }}">Войти</button>
                     {% endif %}
                     <button class="btn btn-primary nav__button last-btn" type="submit"
@@ -74,43 +74,7 @@
         </div>
         </div>
     </nav>
-    <!-- <nav class="navbar navbar-expand-lg navbar-light fixed-top">
-        <div class="container">
-            <a class="navbar-brand" href="{{ url_for('index') }}">FIT Repertory</a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"><i class="fa fa-navicon"
-                        style="color:#f2f2f2; font-size:28px;"></i></span>
-            </button>
-
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav ml-lg-auto">
-                    <li class="nav-item">
-                        <a class="nav-link " href="{{ url_for('view.projects') }}">Проекты<span
-                                class="sr-only">(current)</span></a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="https://pd.fit.mospolytech.ru/docs">Регламент</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="https://pd.fit.mospolytech.ru/articles">Статьи</a>
-                    </li>
-                    {% if current_user.is_authenticated %}
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ url_for('auth.logout') }}">Выйти</a>
-                    </li>
-                    {% else %}
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ url_for('auth.login') }}">Войти</a>
-                    </li>
-                    {% endif %}
-                </ul>
-            </div>
-        </div>
-    </nav> -->
-
-
-
+    
     <a id="button-top"></a>
     
     <div class="container my-5 mw-100 p-0 m-0 mt-0">
@@ -136,7 +100,7 @@
             <div class="d-flex flex-row-reverse bd-highlight cprt-ic-block">
                 <a href="https://www.facebook.com/fit.MosPolytech/"><i
                         class="bd-highlight bi bi-facebook cprt-icon"></i></a>
-                <i class="bd-highlight bi bi-instagram cprt-icon"></i>
+                        <a href="https://www.facebook.com/fit.MosPolytech/"><i class="fa fa-vk bd-highlight cprt-icon " aria-hidden="true"></i></a>
                 <a href="https://www.instagram.com/fit.mospolytech/"><i
                         class="bd-highlight bi bi-instagram cprt-icon"></i></a>
             </div>
