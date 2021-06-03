@@ -123,7 +123,7 @@
     </div>
 </div>
 
-<!-- <div id="swiperDisplay" class="swiper-section">
+<!-- <div id="swiperDisplay" class="swiper-section"> 
     <div class="swiper-container">
         <div id="swiper" class="swiper-wrapper">
             {% for project in projects %}
@@ -156,5 +156,80 @@
         <div class="swiper-button-next"></div>
     </div>
 </div> -->
+
+<div class="container">
+    <div class="search_block">
+        <div class="d-flex justify-content-between bd-highlight search-menu">
+            <a class="bd-highlight">Проект...</a>
+            <div class="bd-highlight dropdown" id="slider">
+                <a class="dropdown-toggle" href="" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown"
+                    aria-expanded="false">
+                    Направление
+                    <i class="bi bi-chevron-down drop-ic"></i>
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                    {% for direction in directions %}
+                    <li><a class="dropdown-item" value="{{ direction.id }}" href="">{{ direction.name }}</a></li>
+                    {% endfor %}
+                </ul>
+            </div>
+            <div class="bd-highlight dropdown" id="slider2">
+                <a class="dropdown-toggle" href="" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown"
+                    aria-expanded="false">
+                    Семестр
+                    <i class="bi bi-chevron-down drop-ic"></i>
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                    {% for semester in semesters %}
+                    <li><a class="dropdown-item" value="{{ semester.id }}" href="">{{ semester.name }}</a></li>
+                    {% endfor %}
+                </ul>
+            </div>
+            <div id="other" class="input-group rounded">
+                <input type="search" class="form-control rounded" placeholder="Search" aria-label="Search"
+                    aria-describedby="search-addon" />
+                <span class="input-group-text border-0" id="search-addon">
+                    <i class="fas fa-search"></i>
+                </span>
+            </div>
+            <div id="other" style="display:none" class="input-group rounded bd-highlight">
+                <input class="form-control" type="text" id="name" name="name" value="" />
+                <span class="input-group-text border-0" id="search-addon">
+                    <i class="bi bi-search"></i>
+                </span>
+            </div>
+        </div>
+        <div class="pro-sort">
+            <div class="d-flex justify-content-between">
+                <!-- <div class="d-flex flex-row bd-highlight"> -->
+                    <label class="pro-label">
+                        Отображать по <select>
+                            <option value="6">6</option>
+                            <option value="12">12</option>
+                            <option value="18">18</option>
+                        </select>
+                    </label>
+                    <button class="btn btn-primary">Поиск</button>
+                <!-- </div> -->
+            </div>
+        </div>
+    </div>
+    <div class="some-proj">
+        <div class="d-flex flex-column bd-highlight">
+            {% for project in projects %}
+            <div class="d-flex justify-content-between bd-highlight pro-block">
+                <div class="d-flex flex-column bd-highlight pro-name-napr">
+                    <p class="fw-bold pro-name">{{ project.name }}</p>
+                    <p class="">Учебное направление СДЕЛАТЬ!!!</p>
+                </div>
+                <p class="pro-like"><i class="bi bi-heart"></i> {{ project.likes }}</p>
+                <p class="pro-sem">СЕМЕСТР СДЕЛАТЬ!!!!</p>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+          
+    </div>
+</div>
 
 {% endblock %}

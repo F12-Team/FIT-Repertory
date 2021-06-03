@@ -62,7 +62,6 @@
 /* Main page = направления + Top 9 проектов */
 
 .mp-cont{
-    
 }
 
 .site-name{
@@ -102,7 +101,6 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-
 }
 
 .logo-block{
@@ -166,8 +164,7 @@
 .top-card{
     width:45%;
     margin-bottom: 60px;
-    align-self: baseline;
-    
+    align-self: baseline; 
 }
 
 .card-body{
@@ -189,8 +186,49 @@
 .card-tittle{
     margin-top: 10px !important;
 }
-/* Footer styles*/
 
+/* Search page and project page */
+
+.search-menu{
+    font-size: 44px;
+}
+
+.dropdown-toggle::after {
+    display: none;
+}
+
+.search-menu i{
+    
+    align-items: center;
+}
+.drop-ic{
+    margin-left: 50px;
+    font-size: 20px;
+
+}
+
+.pro-sort{
+    margin-top: 50px;
+}
+.pro-block{
+    margin-bottom: 60px;
+}
+
+.some-proj{
+    margin-top:50px;
+}
+
+.pro-name-napr{
+    width: 30%;
+}
+
+.pro-likes{
+    width: 30%;
+}
+.pro-sem{
+    width:30%;
+}
+/* Footer styles*/
 
 .footer{
     min-height: 182px; 

@@ -60,7 +60,7 @@
                     <!-- <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups"> -->
                     {% if current_user.is_authenticated %}
                     <button class="btn btn-outline-success nav__button" type="submit"
-                        href="{{ url_for('auth.logout') }}">Выййти</button>
+                        href="{{ url_for('auth.logout') }}">Выйти</button>
                     {% else %}
                     <button class="btn btn-outline-success nav__button" type="submit"
                         href="{{ url_for('auth.login') }}">Войти</button>
