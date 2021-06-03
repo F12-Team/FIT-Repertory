@@ -30,6 +30,7 @@ a {
 
 a:hover {
     text-decoration: none !important;
+    color: #000;
 }
 
 
@@ -352,6 +353,18 @@ a:hover {
     font-size: 44px;
 }
 
+.search-link, .search-link:hover{
+    cursor: pointer;
+    font-size: 44px;
+    font-weight: 700;
+    color: #CCCED4;
+}
+
+.search-title{
+    font-size: 44px;
+    font-weight: 700;
+}
+
 .dropdown-toggle::after {
     display: none;
 }
@@ -360,12 +373,52 @@ a:hover {
     
     align-items: center;
 }
+.dropdown-menu{
+    border: 1px solid #C9C8FF;
+    border-radius: 20px;
+}
+
+.dropdown-item:hover{
+    background-color: #C9C8FF;
+    border-radius: 20px;
+}
+
+.ex-button{
+    cursor: pointer;
+    padding: 0 20px;
+}
 .drop-ic{
     margin-left: 50px;
     font-size: 20px;
 
 }
+.pro-label{
+    color: #818393;
+}
+.pro-label select{
+    background: #4A46FF;
+    border-radius: 10px;
+    padding: 10px 20px;
+    color:#FFFFFF;
+}
+.pro-label option{
+    background: #FFFFFF;
+    color:black;
+    
+}
 
+.search-but{
+    background: #4A46FF;
+    border-radius: 10px;
+    padding: 10px 30px;
+    color:#FFFFFF;
+}
+.search-but:hover{
+    background: #4A46FF;
+    border-radius: 10px;
+    padding: 10px 30px;
+    color:#FFFFFF;
+}
 .pro-sort{
     margin-top: 50px;
 }
@@ -375,10 +428,24 @@ a:hover {
 
 .some-proj{
     margin-top:50px;
-}
 
+}
+.to-project-link{
+    cursor: pointer;
+}
 .pro-name-napr{
     width: 33%;
+}
+
+.pro-name{
+    font-size: 28px;
+    font-weight: 600;
+}
+
+.pro-derec{
+    font-weight: 700;
+    font-size: 22px;
+    color:#CCCED4;
 }
 
 .pro-like{
@@ -386,25 +453,42 @@ a:hover {
     display: flex;
     align-items: center;
     justify-content: center;
+    color:#818393;
+    font-weight: 700;
+    font-size: 22px;
+}
+.pro-like i{
+    margin-right: 10px;
 }
 .pro-sem{
     width:33%;
     display: flex;
     align-items: center;
     justify-content: center;
+    color:#818393;
+    font-weight: 700;
+    font-size: 22px;
 }
 
 .search-pro{
     outline: none;
     border: none;
+    font-size: 44px;
+    font-weight: 700;
+    color: #CCCED4;
 }
 /* Pagination on search page*/
+
+.pagin-block{
+    margin-bottom: 120px;
+}
 
 .pagination-outer{ text-align: center; }
 .pagination{
     display: inline-flex;
     position: relative;
 }
+
 .pagination:before{
     content: "";
     width: 100%;
@@ -415,6 +499,7 @@ a:hover {
     left: 0;
     transform: translateY(-50%);
 }
+
 .pagination li a.page-link{
     padding: 5px 15px;
     margin-right: 15px;
@@ -424,6 +509,19 @@ a:hover {
     outline: none;
     border: none;
 }
+
+.page-item:hover .page-link{
+    cursor: pointer;
+    background: none;
+    border: 1px solid #4A46FF;
+}
+
+.page-item.active .page-link{
+    background: #C9C8FF !important;
+    border: none;
+    color:#4A46FF;
+}
+
 /* .pagination li:first-child a.page-link{ margin-right: 30px; }
 .pagination li:last-child a.page-link{ margin: 0 0 0 15px; }
 .pagination li.active a.page-link,
