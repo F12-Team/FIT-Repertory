@@ -1,68 +1,132 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<div class="jumbotron jumbotron-fluid height100p banner" id="projects">
-    <div class="container h100">
-        <div class="contentBox h100">
-            <div>
-                <h1>Проектная деятельность на факультете информационных технологий</h1>
-                <a scroll-target="#directions"  href="#directions" id="scrollButton" class="btn btnD1 scroll">Выберите направление</a>
-                <p>Получите или усовершенствуйте навыки командной работы уже в университете!</p>
+<div class="container mp-cont">
+    <div class="derec__block">
+        <div class="site-name">
+            <div class="d-flex flex-column bd-highlight">
+                <div class="bd-highlight">
+                    <p class="fw-bold tag-1">Проектная деятельность</p>
+                </div>
+                <div class="bd-highlight">
+                    <p class="tag-2">Факультет информационных технологий
+                    <p>
+                </div>
+            </div>
+        </div>
+        <div class="cards-block">
+            <div class="" id="directions">
+                <div class="cards-flex">
+                    {% for direction in directions %}
+                    <!-- Обновить выбор направления и переход на блок с ТОП-проектами -->
+                    <a class="route service" data-id="{{ direction.id}}" href="#swiper">
+                        <div class="logo-block"><img class="logoqwerty" src="{{ direction.image.url }}"
+                                alt="Card image cap"></div>
+                        <div class="card-body">
+                            <h5 class="cardtext">{{ direction.name }}</h5>
+                            <p class="cardtext">{{ direction.description }}</p>
+                        </div>
+                    </a>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="top_proj_block">
+        <div class="info-block d-flex justify-content-between">
+            <div class="derec-name">
+                <div class="d-flex flex-column bd-highlight">
+                    <div class="bd-highlight">
+                        <p class="fw-bold">Топ 9 проектов</p>
+                    </div>
+                    <div class="bd-highlight">
+                        <p class="">ВЫБРАННОЕ НАПРАВЛЕНИЕ!!!!
+                        <p>
+                    </div>
+                </div>
+            </div>
+            <div class="derec-btn">
+                <div class="d-flex align-items-start flex-column bd-highlight"><button class="btn btn-primary"><i
+                            class="bi bi-search"></i>Ко всем проектам</button></div>
+                <!-- Обновить переход на страницу со всеми проектами с фильтром направления -->
+            </div>
+        </div>
+        <div class="top-cards-block">
+            <div class="top-cards-flex">
+                <a class="route-to-pr-page">
+                    <div class="top-card ">
+                        <div class="top-likes"><img src="https://img.pikbest.com/01/56/32/93KpIkbEsTjF8.jpg-0.jpg!bw700"
+                                class=" card-img-top" alt="..."> <!-- Обновить подгрузку постера или заглушки -->
+                            <div class="bott-right">
+                                <p>2000 <i class="bi bi-heart"></i></p> <!-- Обновить подгрузку лайков -->
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title fw-bold">Card title</h5> <!-- Обновить подгрузку названия проекта -->
+                            <p class="card-text">Some quick example text toSome quick example text to build on tSome
+                                quick
+                                example text to build on t build on t</p>
+                            <!-- Обновить подгрузку короткого описания проекта -->
+
+                        </div>
+                    </div>
+                </a>
+
+                <div class="top-card ">
+                    <div class="top-likes"><img src="https://img.pikbest.com/01/56/32/93KpIkbEsTjF8.jpg-0.jpg!bw700"
+                            class=" card-img-top" alt="...">
+                        <div class="bott-right">
+                            <p>2000 <i class="bi bi-heart"></i></p>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title fw-bold">Card title</h5>
+                        <p class="card-text">Some quick example text to build on t</p>
+                    </div>
+                </div>
+                <div class="top-card ">
+                    <div class="top-likes"><img src="https://img.pikbest.com/01/56/32/93KpIkbEsTjF8.jpg-0.jpg!bw700"
+                            class=" card-img-top" alt="...">
+                        <div class="bott-right">
+                            <p>2000 <i class="bi bi-heart"></i></p>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title fw-bold">Card title</h5>
+                        <p class="card-text">Some quick example text to build on tSome quick example text to build on
+                            tSome quick example text to build on tSome quick example text to build on tSome quick
+                            example text to build on tSome quick example text to build on t</p>
+
+                    </div>
+                </div>
+                <div class="top-card ">
+                    <div class="top-likes"><img src="https://img.pikbest.com/01/56/32/93KpIkbEsTjF8.jpg-0.jpg!bw700"
+                            class=" card-img-top" alt="...">
+                        <div class="bott-right">
+                            <p>2000 <i class="bi bi-heart"></i></p>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title fw-bold">Card title</h5>
+                        <p class="card-text">Some quick example text to build on t</p>
+                    </div>
+                </div>
+                <div class="top-card ">
+                    <div class="top-likes"><img src="https://img.pikbest.com/01/56/32/93KpIkbEsTjF8.jpg-0.jpg!bw700"
+                            class=" card-img-top" alt="...">
+                        <div class="bott-right">
+                            <p>2000 <i class="bi bi-heart"></i></p>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title fw-bold">Card title</h5>
+                        <p class="card-text">Some quick example text Some quick example text to build on tto build on t
+                        </p>
+
+                    </div>
+                </div>
             </div>
         </div>
     </div>
 </div>
-
-<div class="secname">
-    <h4>Направления</h4>
-</div>
-
-<div class="inner-width" id="directions">
-    <div class="services justify-content-center">
-        {% for direction in directions %}
-        <a class="route service m-2" data-id="{{ direction.id}}" href="#swiper">
-            <img class="logoqwerty" src="{{ direction.image.url }}" alt="Card image cap">
-            <div class="card-body">
-                <h5 class="cardtext">{{ direction.name }}</h5>
-                <p class="cardtext">{{ direction.description }}</p>
-            </div>
-        </a>
-        {% endfor %}
-    </div>
-</div>
-
-<div id="swiperDisplay" class="swiper-section">
-    <div class="swiper-container">
-        <div id="swiper" class="swiper-wrapper">
-            {% for project in projects %}
-            <div class="card-container swiper-slide">
-                <div class="swiper-card">
-                    <div class="swiper-circle">
-                        <h4 class="card-title"></h4>
-                    </div>
-                    <div class="swiper-content">
-                        <p class="card-text">{{ project.name }}</p>
-                        <a href="" class="btn btn-primary">Страница проекта</a>
-                    </div>
-                </div>
-            </div>
-            {% endfor %}
-            <div class="card-container swiper-slide">
-                <div class="swiper-card swiper-end">
-                    <div class="swiper-circle">
-                        <h4 class="card-title">Все проекты направления</h4>
-                    </div>
-                    <div class="swiper-content">
-                        <p class="card-text"></p>
-                        <a href="" class="btn btn-primary">Перейти</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="swiper-pagination"></div>
-        <div class="swiper-button-prev"></div>
-        <div class="swiper-button-next"></div>
-    </div>
-</div>
-
 {% endblock %}

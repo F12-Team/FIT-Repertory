@@ -1,0 +1,499 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+/* Default styles */
+* {
+    outline: none !important;
+    scroll-behavior: smooth;
+    box-sizing: border-box;
+}
+
+html,
+body {
+    font-family: 'Montserrat', sans-serif !important;
+    color: #000;
+}
+
+/* header {
+    position: relative;
+    z-index: 1000000;
+} */
+
+p {
+    font-size: 1.15rem;
+}
+
+a {
+    text-decoration: none !important;
+    color: #000;
+}
+
+a:hover {
+    text-decoration: none;
+}
+
+
+
+/* Navbar styles*/
+
+.navbar{
+    height: 90px !important;
+}
+
+.navbar-nav > li{
+    margin-left: 30px;
+    margin-right: 30px;
+    display: flex;
+    align-items: center;
+}
+
+.nav__button{
+    padding: 12px 30px;
+    margin-right: 30px;
+}
+
+.last-btn{
+    margin-right: 0px;
+}
+
+
+/*Button on-top styles*/
+
+#button-top {   
+    display: inline-block;   
+    background-color: #FF9800;   
+    width: 50px;   
+    height: 50px;   
+    text-align: center;   
+    border-radius: 4px;   
+    margin: 30px;   
+    position: fixed;   
+    bottom: 300px;   
+    right: 30px;   
+    transition: background-color .3s;   
+    z-index: 1000; 
+    
+}
+
+#button-top:hover {   
+    cursor: pointer;   
+    background-color: #333; 
+} 
+
+#button-top:active {   
+    background-color: #555; 
+} 
+
+#button-top::after {
+    content: "\f077";
+    font-family: FontAwesome;
+    font-weight: normal;
+    font-style: normal;
+    font-size: 2em;
+    line-height: 50px;
+    color: #fff; 
+} 
+
+
+/* Main page = направления + Top 9 проектов */
+
+.mp-cont{
+}
+
+.site-name{
+    margin-top: 120px;
+}
+
+.tag-1{
+    font-size: 54px;
+}
+
+.tag-2{
+    font-size: 44px;
+}
+
+.cards-flex{
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.service {
+    width: 28%;
+    text-align: center;
+    border: 1px solid#CE5353;
+    border-radius: 20px;
+    margin: 20px 0;
+    /*padding: 40px 20px; */
+    color: #fff;
+    cursor: pointer;
+    transition: .3s linear;
+    background-color: white;
+    font-weight: bold;
+    margin: 30px;
+    margin-top: 50px;
+    align-self: baseline;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.logo-block{
+    margin-bottom: 10px;
+}
+
+.logoqwerty {
+    height: 84px;
+    margin-top:30px;
+    margin-bottom: 10px;
+}
+
+.logoqwerty {
+    filter: invert(41%) sepia(74%) saturate(621%) hue-rotate(317deg) brightness(92%) contrast(74%);
+}
+
+.service:hover .logoqwerty {
+    filter: invert(100%) sepia(6%) saturate(0%) hue-rotate(115deg) brightness(108%) contrast(108%);
+}
+
+.service .cardtext {
+    font-size: 22px;
+    color: black;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.service .cardtext:hover {
+    color: #f2f2f2;
+    text-decoration: none;
+}
+
+.service:hover {
+    background-color: #CE5353;
+}
+
+.service:hover .cardtext {
+    color: #f2f2f2;
+    text-decoration: none;
+}
+
+.service:hover .icon {
+    color: #fff;
+}
+
+.top_proj_block{
+    margin-top: 120px;
+}
+
+.top-cards-block{
+    margin-top: 30px;
+    margin-bottom: 120px;
+}
+
+.top-cards-flex{
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.top-card{
+    width:45%;
+    margin-bottom: 60px;
+    align-self: baseline; 
+}
+
+.card-body{
+    padding-left: 0;
+}
+
+.top-likes{
+    position: relative;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.bott-right{
+    position: absolute;
+  bottom: 2px;
+  right: 16px;
+}
+
+.card-tittle{
+    margin-top: 10px !important;
+}
+
+/* Search page and projects page */
+
+.search_block{
+    margin-top: 120px;
+    margin-bottom: 50px;
+}
+.search-menu{
+    font-size: 44px;
+}
+
+.dropdown-toggle::after {
+    display: none;
+}
+
+.search-menu i{
+    
+    align-items: center;
+}
+.drop-ic{
+    margin-left: 50px;
+    font-size: 20px;
+
+}
+
+.pro-sort{
+    margin-top: 50px;
+}
+.pro-block{
+    margin-bottom: 60px;
+}
+
+.some-proj{
+    margin-top:50px;
+}
+
+.pro-name-napr{
+    width: 33%;
+}
+
+.pro-like{
+    width: 33%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.pro-sem{
+    width:33%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.search-pro{
+    outline: none;
+    border: none;
+}
+/* Pagination on search page*/
+
+.pagination-outer{ text-align: center; }
+.pagination{
+    display: inline-flex;
+    position: relative;
+}
+.pagination:before{
+    content: "";
+    width: 100%;
+    height: 0px;
+    background: #e8e8e8;
+    position: absolute;
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+}
+.pagination li a.page-link{
+    padding: 5px 15px;
+    margin-right: 15px;
+    border-radius: 5px;
+    font-size: 17px;
+    color: #686c6c;
+    outline: none;
+    border: none;
+}
+/* .pagination li:first-child a.page-link{ margin-right: 30px; }
+.pagination li:last-child a.page-link{ margin: 0 0 0 15px; }
+.pagination li.active a.page-link,
+.pagination li a.page-link:hover{
+    background: #ce5353;
+    border-color: #ce5353;
+    color: #fff;
+}  */
+
+
+/* Project page */
+
+.head-block{
+    margin-top: 120px;
+    display: flex;
+}
+.poster-block{
+    display: flex;
+    justify-content: center;
+    width: 41%;
+    margin-right: 30px;
+}
+.poster-block-img{
+    max-height: 640px;
+    max-width: 640px;
+    min-height: 320px;
+     
+}
+
+.info-block{
+    width: 58%;
+}
+
+.proj-name{
+    font-size: 35px;
+    font-weight: 800;
+}
+
+.proj-sem{
+    font-size: 28px;
+    font-weight: 600;
+}
+
+.proj-links{
+    margin-top: 60px;
+}
+
+.proj-git{
+    margin-right: 30px;
+}
+
+.plink{
+
+    padding: 12px 30px;
+}
+
+.plike{
+    margin-bottom: 0;
+}
+
+.proj-shrt-desc{
+    margin-top: 120px;
+}
+
+#button-like {   
+    display: inline-block;   
+    background-color: #FF9800;   
+    width: 50px;   
+    height: 50px;   
+    text-align: center;   
+    border-radius: 4px;   
+    margin: 30px;   
+    position: fixed;   
+    bottom: 360px;   
+    right: 30px;   
+    transition: background-color .3s;   
+    z-index: 1000; 
+    
+}
+
+#button-like:hover {   
+    cursor: pointer;   
+    background-color: #333; 
+} 
+
+#button-like:active {   
+    background-color: #555; 
+} 
+
+#button-like::after {
+    content: "\f004";
+    font-family: FontAwesome;
+    font-weight: normal;
+    font-style: normal;
+    font-size: 2em;
+    line-height: 50px;
+    color: #fff; 
+}
+
+.tech-block{
+    margin-top: 60px;
+}
+
+.item-tech{
+    font-size: 18px;
+    padding: 12px 26px;
+    margin-right: 10px;
+    border: 1px solid black;
+}
+
+.video-block{
+    margin-top: 60px;
+    width: 100%;
+}
+
+.video-txt{
+    font-size: 55px; 
+    margin-bottom: 10px;
+}
+
+video{
+    border-radius: 20px;
+}
+
+.md-block{
+    margin-top: 60px;
+}
+
+.md-txt{
+    font-size: 55px; 
+    margin-bottom: 10px;
+}
+
+.team-block{
+    margin-top: 60px;
+    margin-bottom: 120px;
+}
+
+.team-txt{
+    font-size: 55px; 
+    margin-bottom: 10px;
+}
+
+.kur-block{
+    padding: 60px;
+    border: 1px solid black;
+    border-radius: 20px;
+}
+
+.kur-name{
+
+}
+
+.all-stud-block{
+    flex-wrap: wrap;
+}
+
+.stud-block{
+    width: 50%;
+    padding: 70px;
+}
+
+/* Footer styles*/
+
+.footer{
+    min-height: 182px; 
+    border-top-width: 1.4px;
+    border-top-style: solid;
+       border-top-color: black;
+
+}
+
+.cprt-ic-block{
+    margin-top: 15px;
+
+}
+
+.footer i{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.cprt-icon{
+    height: 50px;
+    width: 50px;
+    font-size: 1.5rem;
+    margin-right: 0 30px;
+}
+
+.copyr{
+    height: 30px;
+    font-size: 11.32px;
+}

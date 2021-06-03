@@ -6,40 +6,27 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta http-equiv="Cache-Control" content="no-store" />
 
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
-        integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+    <!--Bootstrap links-->
 
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.2/css/all.css">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
-        integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
-
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.0/font/bootstrap-icons.css">
-
-    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
-
-    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
-
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
-        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4"
         crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns"
-        crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
 
+    <!--jQuery links-->
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
     <script src="{{ url_for('static', filename='main.js')}}"></script>
 
     <link rel="stylesheet" href="https://unpkg.com/placeholder-loading/dist/css/placeholder-loading.min.css">
     <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='new_styles.css') }}">
 
     <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
-    <!-- Latest compiled and minified CSS -->
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/css/bootstrap-select.min.css">
-
-<!-- Latest compiled and minified JavaScript -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/js/bootstrap-select.min.js"></script>
-
-<!-- (Optional) Latest compiled and minified JavaScript translation files -->
 
     <title>
         {% if title %}
@@ -51,7 +38,43 @@
 </head>
 
 <body>
-    <nav class="navbar navbar-expand-lg navbar-light fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-light data-bs-target">
+        <div class="container">
+            <a class="navbar-brand" href="{{ url_for('index') }}">FIT Repertory</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo01"
+                aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <form class="d-flex">
+                <ul class="navbar-nav d-flex justify-content-center align-middle p-0">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="#">Направления</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="https://pd.fit.mospolytech.ru/docs">Регламент</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="https://pd.fit.mospolytech.ru/articles">Статьи</a>
+                    </li>
+                    <!-- <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups"> -->
+                    {% if current_user.is_authenticated %}
+                    <button class="btn btn-outline-success nav__button" type="submit"
+                        href="{{ url_for('auth.logout') }}">Выйти</button>
+                    {% else %}
+                    <button class="btn btn-outline-success nav__button" type="submit"
+                        href="{{ url_for('auth.login') }}">Войти</button>
+                    {% endif %}
+                    <button class="btn btn-primary nav__button last-btn" type="submit"
+                        href="{{ url_for('view.projects') }}">Проекты</button>
+                    <!-- </div> -->
+        </div>
+        </ul>
+        </form>
+        </div>
+        </div>
+    </nav>
+    <!-- <nav class="navbar navbar-expand-lg navbar-light fixed-top">
         <div class="container">
             <a class="navbar-brand" href="{{ url_for('index') }}">FIT Repertory</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
@@ -63,7 +86,8 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav ml-lg-auto">
                     <li class="nav-item">
-                        <a class="nav-link " href="{{ url_for('view.projects') }}">Проекты<span class="sr-only">(current)</span></a>
+                        <a class="nav-link " href="{{ url_for('view.projects') }}">Проекты<span
+                                class="sr-only">(current)</span></a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="https://pd.fit.mospolytech.ru/docs">Регламент</a>
@@ -83,8 +107,17 @@
                 </ul>
             </div>
         </div>
-    </nav>
+    </nav> -->
 
+
+
+    <a id="button-top"></a>
+    
+    <div class="container my-5 mw-100 p-0 m-0 mt-0">
+        {% block content %}
+        <h1>Содержимое по умолчанию</h1>
+        {% endblock %}
+    </div>
     <div class="mt-5 mx-3">
         {% with messages = get_flashed_messages(with_categories=true) %}
         {% for category, msg in messages %}
@@ -98,22 +131,27 @@
         {% endwith %}
     </div>
 
-    <div class="container my-5 mw-100 p-0 m-0 mt-0">
-        {% block content %}
-        <h1>Содержимое по умолчанию</h1>
-        {% endblock %}
-    </div>
+    <footer class="footer">
+        <div class="container">
+            <div class="d-flex flex-row-reverse bd-highlight cprt-ic-block">
+                <a href="https://www.facebook.com/fit.MosPolytech/"><i
+                        class="bd-highlight bi bi-facebook cprt-icon"></i></a>
+                <i class="bd-highlight bi bi-instagram cprt-icon"></i>
+                <a href="https://www.instagram.com/fit.mospolytech/"><i
+                        class="bd-highlight bi bi-instagram cprt-icon"></i></a>
+            </div>
+            <div class="d-flex flex-row bd-highlight">
+                <div class="d-flex flex-column bd-highlight mb-3 copyr">
 
-    <footer>
-        <div class="copyright">
-            &copy; 2021, Московский Политехнический Университет | <a href="https://fit.mospolytech.ru">ФИТ</a>
+                    <div class="p-2 bd-highlight">&copy; 2021, Московский Политехнический Университет</div>
+                    <a href="https://fit.mospolytech.ru">
+                        <div class="p-2 bd-highlight">Факультет информационных технологий</div>
+                    </a>
+                </div>
+            </div>
+
         </div>
-        <div class="sm">
-            <a href="https://www.facebook.com/fit.MosPolytech/" target="_blank" class="fab fa-facebook-f"></a>
-            <a href="https://vk.com/fit.mospolytech" target="_blank" class="fab fa-vk"></a>
-            <a href="https://www.instagram.com/fit.mospolytech/" target="_blank" class="fab fa-instagram"></a>
-            <!--<a href="#" class="fab fa-youtube"></a>-->
-        </div>
+        <!-- <a href="https://vk.com/fit.mospolytech" target="_blank" class="fab fa-vk"></a> -->
     </footer>
 </body>
 
