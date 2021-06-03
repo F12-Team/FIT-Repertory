@@ -12,6 +12,8 @@ bp = Blueprint('curator', __name__, url_prefix='/curator')
 
 curator_project_statuses = ['В разработке', 'Отправлено на рассмотрение куратором']
 
+curator_project_statuses_for_gen_psswds = ['Отсутствует тимлид']
+
 def gen_password():
     alphabet = string.ascii_letters + string.digits
     password = ''.join(secrets.choice(alphabet) for i in range(16))
@@ -37,7 +39,7 @@ def index():
 @bp.route('/genpsswds', methods=['POST'])
 def genpsswds():
     #projects = Project.query.join(Status).filter(Project.curator_id == current_user.id).filter(Status.name in curator_project_statuses).all()
-    projects = Project.query.join(Status).filter(Status.name in curator_project_statuses).all()
+    projects = Project.query.join(Status).filter(Status.name in curator_project_statuses_for_gen_psswds).all()
 
     creds = {}
 
@@ -54,5 +56,10 @@ def genpsswds():
         db.session.commit()
 
         added_user = User.query.filter(User.login == login).all
+
+        project.teamlead_id = added_user.id
+
+        db.session.add(project)
+        db.session.commit()
 
     return jsonify(creds)
