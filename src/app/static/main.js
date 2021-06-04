@@ -1,7 +1,4 @@
 let url = window.location.origin;
-$(document).ready(function () { // 
-    $('.selectpicker').selectpicker();
-});
 
 function sleep(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
