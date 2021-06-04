@@ -545,9 +545,9 @@ a:hover {
     margin-right: 30px;
 }
 .poster-block-img{
-    max-height: 640px;
-    max-width: 640px;
-    min-height: 320px;
+    max-height: 720px;
+    max-width: 720px;
+    min-height: 360px;
     border-radius: 20px;
      
 }

@@ -4,26 +4,29 @@
     <a id="button-like"></a> <!-- Добавить проставление лайков -->
     <div class="head-block">
         <div class="poster-block">
-            <img src="https://img.pikbest.com/01/56/32/93KpIkbEsTjF8.jpg-0.jpg!bw700" class="poster-block-img"
-                alt="..."> <!-- Добавить подгрузку постера -->
+            <!-- <img src="{% for info in project.info %}{% if info.type.name == 'Постер с GoogleDisk' %}{{ info.resource }}{% endif %}{% endfor %}" class="poster-block-img" alt="..."> -->
+            <iframe
+                src="{% for info in project.info %}{% if info.type.name == 'Постер с GoogleDisk' %}{{ info.resource | replace('view', 'preview') }}{% endif %}{% endfor %}"></iframe>
         </div>
         <div class="info-block">
             <div class="proj-desc d-block">
                 <div class="d-flex align-items-start flex-column bd-highlight">
                     <p class="proj-name">{{ project.name }}</p>
-                    <!-- Добавить подгрузку названия -->
-                    <p class="proj-sem">Проектный семестр 2021</p> <!-- Добавить подгрузку семестра -->
+                    <p class="proj-sem">{{ project.semester.name }}</p>
                 </div>
                 <div class="proj-links d-flex flex-row justify-content-between">
                     <div class="d-flex justify-content-between bd-highlight">
-                        <div class="bd-highlight proj-git"><button class="btn btn-outline-success plink" type="submit"
-                                href="">GitHub</button></div> <!-- Добавить подгрузку гита -->
-                        <div class="bd-highlight proj-site"><button class="btn btn-outline-success plink" type="submit"
-                                href="">Сайт проекта</button></div> <!-- Добавить подгрузку сайта -->
+                        <div class="bd-highlight proj-git"><a target="_blank" rel="noopener noreferrer"
+                                class="btn btn-outline-success plink"
+                                href="{% for info in project.info %}{% if info.type.name == 'GitHub' %}{{ info.resource }}{% endif %}{% endfor %}">GitHub</a>
+                        </div> <!-- Добавить подгрузку гита -->
+                        <div class="bd-highlight proj-site"><a target="_blank" rel="noopener noreferrer"
+                                class="btn btn-outline-success plink"
+                                href="{% for info in project.info %}{% if info.type.name == 'Сайт' %}{{ info.resource }}{% endif %}{% endfor %}">Сайт
+                                проекта</a></div> <!-- Добавить подгрузку сайта -->
                     </div>
                     <div class="proj-likes d-flex align-items-center justify-content-end">
-                        <p class="plike"><i class="bi bi-heart"></i> 2222</p>
-                        <!-- Это не кнопка, а текстовое поле. Добавить подгрузку значения лайков-->
+                        <p class="plike"><i class="bi bi-heart px-2"></i>{{ project.likes }}</p>
                     </div>
                 </div>
                 <div class="proj-shrt-desc d-flex justify-content-start">
@@ -37,36 +40,24 @@
         <div class="d-flex flex-column bd-highlight">
             <p class="bd-highlight tech-block-name">Языки и инструменты проекта</p>
             <div class=" bd-highlight d-flex flex-row flex-wrap justify-content-start">
-                <p class="bd-highlight item-tech">Java</p>
-                <p class="bd-highlight item-tech">flutter</p>
-                <p class="bd-highlight item-tech">figma</p>
-                <p class="bd-highlight item-tech">kotlin</p>
-                <p class="bd-highlight item-tech">Java</p>
-                <p class="bd-highlight item-tech">flutter</p>
-                <p class="bd-highlight item-tech">figma</p>
-                <p class="bd-highlight item-tech">kotlin</p>
-                <p class="bd-highlight item-tech">Java</p>
-                <p class="bd-highlight item-tech">flutter</p>
-                <p class="bd-highlight item-tech">figma</p>
-                <p class="bd-highlight item-tech">kotlin</p>
-                <p class="bd-highlight item-tech">Java</p>
-                <p class="bd-highlight item-tech">flutter</p>
-                <p class="bd-highlight item-tech">figma</p>
-                <p class="bd-highlight item-tech">kotlin</p>
+                {% for item in project.techs %}
+                <p class="bd-highlight item-tech">{{ item.name }}</p>
+                {% endfor %}
             </div>
         </div>
     </div>
     <div class="video-block d-flex flex-column">
         <div class="d-flex flex-row justify-content-start">
-            <p class="video-txt" style="">Видеообзор</p>
+            <p class="video-txt">Видеообзор</p>
         </div>
-        <video src="http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4" playsinline
-            controls class="intro-video" preload="auto" type="video/mp4"></video>
-        <!-- Добавить подгрузку видео(пока в разработке)-->
+        <!-- <video src="{% for info in project.info %}{% if info.type.name == 'Видео с GoogleDisk' %}{{ info.resource }}{% endif %}{% endfor %}" playsinline
+            controls class="intro-video" preload="auto" type="video/mp4"></video> -->
+        <iframe
+            src="{% for info in project.info %}{% if info.type.name == 'Видео с GoogleDisk' %}{{ info.resource | replace('view', 'preview') }}{% endif %}{% endfor %}"></iframe>
     </div>
     <div class="md-block">
         <div class="d-flex flex-row justify-content-start">
-            <p class="md-txt" style="">Поподробнее о проекте</p>
+            <p class="md-txt">Поподробнее о проекте</p>
         </div>
         <div>
             {{ project.html | safe }}
@@ -80,26 +71,19 @@
         <div class="team-cards">
             <div class="d-flex justify-content-center">
                 <div class="kur-block d-flex flex-column align-items-center justify-content-center">
-                    <p class="kur-name">Куратор Кураторович</p>
+                    <p class="kur-name">{% if project.curator %}{{ project.curator.full_name }}{% else %}Информация
+                        временно отсутствует{% endif %}</p>
                     <p class="kur-role">Куратор</p>
                 </div>
             </div>
             <div class="d-flex justify-content-center all-stud-block">
+                {% for student in project.function %}
                 <div class="stud-block d-flex flex-column align-items-center justify-content-center">
-                    <p class="stud-name">Студент Студентович Студентов</p>
-                    <p class="stud-role">Дизайнер</p>
-                    <p class="stud-group"> 199-999</p>
+                    <p class="stud-name">{{ student.student.full_name }}</p>
+                    <p class="stud-role">{{ student.function }}</p>
+                    <p class="stud-group"> {{ student.student.group.name }}</p>
                 </div>
-                <div class="stud-block d-flex flex-column align-items-center justify-content-center">
-                    <p class="stud-name">Студент С.С.</p>
-                    <p class="stud-role">Тим-лид</p>
-                    <p class="stud-group"> 199-999</p>
-                </div>
-                <div class="stud-block d-flex flex-column align-items-center justify-content-center">
-                    <p class="stud-name">Студент Студентович</p>
-                    <p class="stud-role">Бэкэнд-разработчик</p>
-                    <p class="stud-group"> 199-999</p>
-                </div>
+                {% endfor %}
             </div>
         </div>
     </div>
