@@ -59,48 +59,45 @@
                     </li>
                     <!-- <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups"> -->
                     {% if current_user.is_authenticated %}
-                    <button class="btn btn-outline-success nav__button log-btn" type="submit"
-                        href="{{ url_for('auth.logout') }}">Выйти</button>
+                    <a class="btn btn-outline-success nav__button log-btn" type="submit"
+                        href="{{ url_for('auth.logout') }}">Выйти</a>
                     {% else %}
-                    <button class="btn btn-outline-success nav__button log-btn" type="submit"
-                        href="{{ url_for('auth.login') }}">Войти</button>
+                    <a class="btn btn-outline-success nav__button log-btn" type="submit"
+                        href="{{ url_for('auth.login') }}">Войти</a>
                     {% endif %}
-                    <button class="btn btn-primary nav__button last-btn" type="submit"
-                        href="{{ url_for('view.projects') }}">Проекты</button>
+                    <a class="btn btn-primary nav__button last-btn" type="submit"
+                        href="{{ url_for('view.projects') }}">Проекты</a>
                     <!-- </div> -->
-        </div>
-        </ul>
-        </form>
-        </div>
+                </ul>
+            </form>
         </div>
     </nav>
-    
+
     <a id="button-top"></a>
-    
+
     <div class="container my-5 mw-100 p-0 m-0 mt-0">
         {% block content %}
         <h1>Содержимое по умолчанию</h1>
         {% endblock %}
     </div>
-    <div class="mt-5 mx-3">
-        {% with messages = get_flashed_messages(with_categories=true) %}
-        {% for category, msg in messages %}
-        <div class="alert alert-{{ category }} alert-dismissible fade show mt-5" role="alert">
-            {{ msg }}
-            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-            </button>
-        </div>
-        {% endfor %}
-        {% endwith %}
+
+    {% with messages = get_flashed_messages(with_categories=true) %}
+    {% for category, msg in messages %}
+    <div class="alert alert-{{ category }} alert-dismissible fade show" role="alert">
+        {{ msg }}
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
     </div>
+    {% endfor %}
+    {% endwith %}
+
 
     <footer class="footer">
         <div class="container">
             <div class="d-flex flex-row-reverse bd-highlight cprt-ic-block">
                 <a href="https://www.facebook.com/fit.MosPolytech/"><i
                         class="bd-highlight bi bi-facebook cprt-icon"></i></a>
-                        <a href="https://vk.com/fit.mospolytech"><i class="fa fa-vk bd-highlight cprt-icon " aria-hidden="true"></i></a>
+                <a href="https://vk.com/fit.mospolytech"><i class="fa fa-vk bd-highlight cprt-icon "
+                        aria-hidden="true"></i></a>
                 <a href="https://www.instagram.com/fit.mospolytech/"><i
                         class="bd-highlight bi bi-instagram cprt-icon"></i></a>
             </div>
