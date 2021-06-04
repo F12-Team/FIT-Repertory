@@ -45,9 +45,7 @@ window.onload = function () {
             $('html, body').animate({ scrollTop: 0 }, '300');
         });
     });
-    $(document).scroll(function () {
-        $('.navbar').toggleClass('scrolled', $(this).scrollTop() > $('.navbar').height());
-    });
+    
     var swiper = new Swiper('.swiper-container', {
         updateOnWindowResize: true,
         observer: true,
