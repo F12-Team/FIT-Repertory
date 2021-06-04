@@ -731,6 +731,41 @@ video{
     font-weight: 400;
     color:#818393;
 }
+
+/* Login page */
+
+.login-page{
+    margin-top: 120px;
+    margin-bottom: 120px;
+}
+
+.login-block{
+    margin-bottom: 30px;
+}
+
+.place{
+    width: 500px;
+    padding: 10px 20px;
+    border: 1px solid #4A46FF;
+    border-radius: 20px;
+}
+
+.place-txt{
+    padding-left: 30px;
+    color: #818393;
+    font-weight: 700;
+    font-size: 22px;
+}
+
+.place-btn, .place-btn:hover{
+    margin-top: 60px;
+    background: #4A46FF;
+    color:#FFFFFF;
+    border-radius: 10px;
+    font-size: 12px;
+    font-weight: 600;
+    padding: 12px 30px;
+}
 /* Footer styles*/
 
 .footer{
