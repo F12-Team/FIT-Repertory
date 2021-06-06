@@ -268,7 +268,7 @@ renderPagination = function () {
 
     try {
         // var curpage = document.getElementById('current_page');
-        page_val = event.target.value;
+        page_val = this.value;
         body.append("page", page_val);
         sendRequest(uri, 'POST', function () {
             if (this.response[3].length > 0) {
@@ -381,8 +381,8 @@ renderDirectionResponse = function (response) {
 renderButtons = function (response) {
     var pagination = document.getElementById('pagination');
     pagination.style.display = '';
-    pagination.children[0].children[0].value = response.page - 1;
-    pagination.children[0].children[0].onclick = renderPagination;
+    pagination.children[0].value = response.page - 1;
+    pagination.children[0].onclick = renderPagination;
     if (response.page == response.iter_pages[0]) {
         pagination.children[0].classList.add('disabled');
     }
@@ -417,8 +417,8 @@ renderButtons = function (response) {
 
     }
     // pagination.children[pagination.children.length-1] = response.page +1;
-    pagination.children[pagination.children.length - 1].children[0].value = response.page ? response.page + 1 : 1;
-    pagination.children[pagination.children.length - 1].children[0].onclick = renderPagination;
+    pagination.children[pagination.children.length - 1].value = response.page + 1;
+    pagination.children[pagination.children.length - 1].onclick = renderPagination;
     if (response.page == response.iter_pages[response.iter_pages.length - 1]) {
         pagination.children[pagination.children.length - 1].classList.add('disabled');
     }
