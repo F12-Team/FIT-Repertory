@@ -1,3 +1,9 @@
+function getCookie(name) {
+    let matches = document.cookie.match(new RegExp(
+      "(?:^|; )" + name.replace(/([\.$?*|{}\(\)\[\]\\\/\+^])/g, '\\$1') + "=([^;]*)"
+    ));
+    return matches ? decodeURIComponent(matches[1]) : undefined;
+  }
 let url = window.location.origin;
 // Для задержки между загрузкои проектов
 function sleep(ms) {
@@ -10,6 +16,22 @@ window.onload = function () {
         // console.log(form);
         renderPagination();
         document.getElementById('submitForm').onclick = renderPagination;
+
+    }
+    if (window.location.toString().search("/view/project/") != -1) {
+        var like = document.querySelector('#button-like');
+        like.onclick = function() {
+            this.style.cssText = "color: #4A46FF !important;";
+        }
+        // document.cookie = "user1=John2"; // обновляем только куки с именем 'user'
+        // console.log(getCookie('name'));
+        // console.log(getCookie('user'));
+        // if (getCookie('name')){
+        //     alert('андефаинд');
+        // }
+        // if (getCookie('user')){
+        //     alert('всё правильно')
+        // }
 
     }
     if (window.location.toString().search("/admin/addprojects") != -1) {
