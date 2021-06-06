@@ -806,3 +806,6 @@ video{
     color: #818393;
     font-size: 12px;
 }
+.ph-item {
+    border: 0px !important;
+}
