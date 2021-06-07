@@ -510,7 +510,7 @@ a:hover {
     font-size: 17px;
     color: #686c6c;
     outline: none;
-    border: none;
+    border: 1px solid transparent;
 }
 
 .page-item:hover .page-link{
@@ -809,9 +809,7 @@ video{
     color: #818393;
     font-size: 12px;
 }
-<<<<<<< HEAD
-=======
+
 .ph-item {
     border: 0px !important;
 }
->>>>>>> 792a28fe116fcfd1b2b202db13d191376479dc49
