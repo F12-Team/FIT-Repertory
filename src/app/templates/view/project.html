@@ -5,8 +5,9 @@
     <div class="head-block">
         <div class="poster-block">
             <!-- <img src="{% for info in project.info %}{% if info.type.name == 'Постер с GoogleDisk' %}{{ info.resource }}{% endif %}{% endfor %}" class="poster-block-img" alt="..."> -->
-            <iframe
-                src="{% for info in project.info %}{% if info.type.name == 'Постер с GoogleDisk' %}{{ info.resource | replace('view', 'preview') }}{% endif %}{% endfor %}"></iframe>
+            <iframe class="poster-block-img"
+                src="{% for info in project.info %}{% if info.type.name == 'Постер с GoogleDisk' %}{{ info.resource | replace('view', 'preview') }}{% endif %}{% endfor %}"
+                width="480" height="720" scrolling="no"></iframe>
         </div>
         <div class="info-block">
             <div class="proj-desc d-block">
