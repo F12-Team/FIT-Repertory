@@ -20,10 +20,45 @@ window.onload = function () {
     }
     if (window.location.toString().search("/view/project/") != -1) {
         var like = document.querySelector('#button-like');
+        project_id = window.location.toString().substring(window.location.toString().indexOf("/view/project/")+14,window.location.toString().length);
         like.onclick = function() {
+            
             this.style.cssText = "color: #4A46FF !important;";
+            cookie = getCookie(project_id);
+            if (cookie == "true"){
+                
+                let urlDir = url + '/view/like';
+                let uri = new URL(urlDir);
+                var body = new FormData();
+                body.append("like", 'False');
+                body.append("project_id", `${project_id}`);
+                sendRequest(uri, 'POST', function () {
+                    
+                    if (this.response == "complete dislike") {
+                    document.cookie = `${project_id}=false; expires=Tue, 19 Jan 2038 03:14:07 GMT`;
+                    alert('Убрано!');
+                    alert(document.cookie);
+                    }
+                }, body);
+                
+            }
+            else {
+                let urlDir = url + '/view/like';
+                let uri = new URL(urlDir);
+                var body = new FormData();
+                body.append("like", 'True');
+                body.append("project_id", `${project_id}`);
+                sendRequest(uri, 'POST', function () {
+                    
+                    if (this.response == "complete like") {
+                    document.cookie = `${project_id}=true; expires=Tue, 19 Jan 2038 03:14:07 GMT`;
+                    alert('Проставлено!');
+                    alert(document.cookie);
+                    }
+                }, body);
+            }
         }
-        // document.cookie = "user1=John2"; // обновляем только куки с именем 'user'
+        // document.cookie = "user1=John2; expires=Tue, 19 Jan 2038 03:14:07 GMT"; // обновляем только куки с именем 'user'
         // console.log(getCookie('name'));
         // console.log(getCookie('user'));
         // if (getCookie('name')){
@@ -66,42 +101,6 @@ window.onload = function () {
             $('html, body').animate({ scrollTop: 0 }, '300');
         });
     });
-    
-    // var swiper = new Swiper('.swiper-container', {
-    //     updateOnWindowResize: true,
-    //     observer: true,
-    //     observeParents: true,
-    //     pagination: {
-    //         el: '.swiper-pagination',
-    //         clickable: true,
-    //     },
-    //     navigation: {
-    //         nextEl: '.swiper-button-next',
-    //         prevEl: '.swiper-button-prev',
-    //     },
-    //     breakpoints: {
-    //         250: {
-    //             slidesPerView: 1,
-    //             spaceBetween: 15
-    //         },
-    //         550: {
-    //             slidesPerView: 2,
-    //             spaceBetween: 15
-    //         },
-    //         850: {
-    //             slidesPerView: 3,
-    //             spaceBetween: 15
-    //         },
-    //         1150: {
-    //             slidesPerView: 3,
-    //             spaceBetween: 15
-    //         },
-    //         1450: {
-    //             slidesPerView: 3,
-    //             spaceBetween: 15
-    //         }
-    //     }
-    // });
 }
 
 /// ДЛЯ ПОДГРУЗКИ
@@ -165,7 +164,8 @@ CatchProjectOfDirection = async function (directionID) {
 
     sendRequest(uri, 'POST', function () {
 
-        setTimeout(() => ShowProjects(this.response), 2000);
+        // setTimeout(() => ShowProjects(this.response), 10);
+        ShowProjects(this.response)
     }, body);
 
 
@@ -227,41 +227,6 @@ ShowProjects = function (response) {
         
         }
     }
-    // var swiper = new Swiper('.swiper-container', {
-    //     updateOnWindowResize: true,
-    //     observer: true,
-    //     observeParents: true,
-    //     pagination: {
-    //         el: '.swiper-pagination',
-    //         clickable: true,
-    //     },
-    //     navigation: {
-    //         nextEl: '.swiper-button-next',
-    //         prevEl: '.swiper-button-prev',
-    //     },
-    //     breakpoints: {
-    //         250: {
-    //             slidesPerView: 1,
-    //             spaceBetween: 15
-    //         },
-    //         550: {
-    //             slidesPerView: 2,
-    //             spaceBetween: 15
-    //         },
-    //         850: {
-    //             slidesPerView: 3,
-    //             spaceBetween: 15
-    //         },
-    //         1150: {
-    //             slidesPerView: 3,
-    //             spaceBetween: 15
-    //         },
-    //         1450: {
-    //             slidesPerView: 3,
-    //             spaceBetween: 15
-    //         }
-    //     }
-    // });
 }
 
 sendRequest = function (url, method, onloadHandler, params) {
