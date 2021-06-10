@@ -19,6 +19,7 @@ window.onload = function () {
 
     }
     if (window.location.toString().search("/view/project/") != -1) {
+        // let counter = 0;
         project_id = window.location.toString().substring(window.location.toString().indexOf("/view/project/")+14,window.location.toString().length);
         cookie1 = getCookie(project_id);
         if (cookie1 == "true") {
@@ -28,7 +29,7 @@ window.onload = function () {
         
         like.onclick = function() {
             cookie = getCookie(project_id);
-            if (cookie == "true"){
+            if (cookie == "true"  ){
                 
                 let urlDir = url + '/view/like';
                 let uri = new URL(urlDir);
@@ -39,6 +40,7 @@ window.onload = function () {
                     
                     if (this.response == "complete dislike") {
                     document.cookie = `${project_id}=false; expires=Tue, 19 Jan 2038 03:14:07 GMT`;
+                    document.querySelector("#plike").innerHTML = parseInt(document.querySelector("#plike").innerHTML, 10) - 1;
                     }
                 }, body);
                 
@@ -53,6 +55,8 @@ window.onload = function () {
                     
                     if (this.response == "complete like") {
                     document.cookie = `${project_id}=true; expires=Tue, 19 Jan 2038 03:14:07 GMT`;
+                    
+                    document.querySelector("#plike").innerHTML = parseInt(document.querySelector("#plike").innerHTML, 10) + 1;
                     }
                 }, body);
             }
