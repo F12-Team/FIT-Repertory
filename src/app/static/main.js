@@ -19,11 +19,14 @@ window.onload = function () {
 
     }
     if (window.location.toString().search("/view/project/") != -1) {
-        var like = document.querySelector('#button-like');
         project_id = window.location.toString().substring(window.location.toString().indexOf("/view/project/")+14,window.location.toString().length);
+        cookie1 = getCookie(project_id);
+        if (cookie1 == "true") {
+            document.querySelector("#button-like1").checked = true;
+        }
+        var like = document.querySelector('#button-like1');
+        
         like.onclick = function() {
-            
-            this.style.cssText = "color: #4A46FF !important;";
             cookie = getCookie(project_id);
             if (cookie == "true"){
                 
@@ -36,8 +39,6 @@ window.onload = function () {
                     
                     if (this.response == "complete dislike") {
                     document.cookie = `${project_id}=false; expires=Tue, 19 Jan 2038 03:14:07 GMT`;
-                    alert('Убрано!');
-                    alert(document.cookie);
                     }
                 }, body);
                 
@@ -52,8 +53,6 @@ window.onload = function () {
                     
                     if (this.response == "complete like") {
                     document.cookie = `${project_id}=true; expires=Tue, 19 Jan 2038 03:14:07 GMT`;
-                    alert('Проставлено!');
-                    alert(document.cookie);
                     }
                 }, body);
             }

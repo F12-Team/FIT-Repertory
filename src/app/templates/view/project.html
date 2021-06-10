@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 {% block content %}
 <div class="container">
-    <a id="button-like"></a> <!-- Добавить проставление лайков -->
+    <!-- <a id="button-like"></a> Добавить проставление лайков -->
     <div class="head-block">
         <div class="poster-block">
             <!-- <img src="{% for info in project.info %}{% if info.type.name == 'Постер с GoogleDisk' %}{{ info.resource }}{% endif %}{% endfor %}" class="poster-block-img" alt="..."> -->
@@ -32,6 +32,7 @@
                 </div>
                 <div class="proj-shrt-desc d-flex justify-content-start">
                     {{ project.short_description }}
+                    
                 </div>
             </div>
         </div>
@@ -45,6 +46,10 @@
                 {% endfor %}
             </div>
         </div>
+    </div>
+    <div class="like-container"> 
+        <input type="checkbox" class="like-btn" id="button-like1">
+        <i class="fa fa-heart"></i>
     </div>
     <div class="video-block d-flex flex-column">
         <div class="d-flex flex-row justify-content-start">
