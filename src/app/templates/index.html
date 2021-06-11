@@ -52,7 +52,7 @@
         <div class="top-cards-block" id="cards">
             <div class="top-cards-flex" id="top-cards-flex">
                 {% for item in projects %}
-                <a class="route-to-pr-page top-card">
+                <a class="route-to-pr-page top-card" href="{{ url_for('view.project', project_id=item.id) }}">
                     <!-- <div class="top-card "> -->
                     <div class="top-likes">
                         <img src="https://img.pikbest.com/01/56/32/93KpIkbEsTjF8.jpg-0.jpg!bw700" class=" card-img-top" alt="...">
