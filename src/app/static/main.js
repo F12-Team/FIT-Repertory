@@ -21,6 +21,7 @@ window.onload = function () {
     if (window.location.toString().search("/view/project/") != -1) {
         // let counter = 0;
         project_id = window.location.toString().substring(window.location.toString().indexOf("/view/project/")+14,window.location.toString().length);
+        // проставка лаика в случае cookie == true
         cookie1 = getCookie(project_id);
         if (cookie1 == "true") {
             document.querySelector("#button-like1").checked = true;
@@ -29,7 +30,7 @@ window.onload = function () {
         
         like.onclick = function() {
             cookie = getCookie(project_id);
-            if (cookie == "true"  ){
+            if (cookie == "true"){
                 
                 let urlDir = url + '/view/like';
                 let uri = new URL(urlDir);
