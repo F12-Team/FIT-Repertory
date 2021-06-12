@@ -18,7 +18,7 @@
                 <div class="cards-flex">
                     {% for direction in directions %}
                     <!-- Обновить выбор направления и переход на блок с ТОП-проектами -->
-                    <a class="route service" data-id="{{ direction.id}}" href="#swiper">
+                    <a class="route service" data-id="{{direction.id}}" href="#cards">
                         <div class="logo-block"><img class="logoqwerty" src="{{ direction.image.url }}"
                                 alt="Card image cap"></div>
                         <div class="card-body">
@@ -39,91 +39,35 @@
                         <p class="top-proj-name">Топ 9 проектов</p>
                     </div>
                     <div class="bd-highlight">
-                        <p class="top-proj-derec">ВЫБРАННОЕ НАПРАВЛЕНИЕ!!!!</p>
+                        <p class="top-proj-derec" id="top-proj-derec">Все направления</p>
                     </div>
                 </div>
             </div>
             <div class="derec-btn">
-                <div class="d-flex align-items-start flex-column bd-highlight"><button
-                        class="btn btn-primary to-all-proj"><i class="bi bi-search"></i>Ко всем проектам</button></div>
+                <div class="d-flex align-items-start flex-column bd-highlight"><a
+                        class="btn btn-primary to-all-proj"><i class="bi bi-search mx-2"></i>Ко всем проектам</a></div>
                 <!-- Обновить переход на страницу со всеми проектами с фильтром направления -->
             </div>
         </div>
-        <div class="top-cards-block">
-            <div class="top-cards-flex">
-                <a class="route-to-pr-page top-card">
+        <div class="top-cards-block" id="cards">
+            <div class="top-cards-flex" id="top-cards-flex">
+                {% for item in projects %}
+                <a class="route-to-pr-page top-card" href="{{ url_for('view.project', project_id=item.id) }}">
                     <!-- <div class="top-card "> -->
-                    <div class="top-likes"><img src="https://img.pikbest.com/01/56/32/93KpIkbEsTjF8.jpg-0.jpg!bw700"
-                            class=" card-img-top" alt="..."> <!-- Обновить подгрузку постера или заглушки -->
+                    <div class="top-likes">
+                        <img src="https://img.pikbest.com/01/56/32/93KpIkbEsTjF8.jpg-0.jpg!bw700" class=" card-img-top" alt="...">
+                        <!-- <iframe class="poster-block-img" src="{% for info in item.info %}{% if info.type.name == 'Постер с GoogleDisk' %}{{ info.resource | replace('view', 'preview') }}{% endif %}{% endfor %}" width="480" height="720" scrolling="no"></iframe> -->
                         <div class="bott-right">
-                            <p>2000 <i class="bi bi-heart"></i></p> <!-- Обновить подгрузку лайков -->
+                            <p>{{ item.likes }} <i class="bi bi-heart"></i></p>
                         </div>
                     </div>
                     <div class="card-body">
-                        <h5 class="card-title fw-bold">Card title</h5> <!-- Обновить подгрузку названия проекта -->
-                        <p class="card-text">Some quick example text toSome quick example text to build on tSome
-                            quick
-                            example text to build on t build on t</p>
-                        <!-- Обновить подгрузку короткого описания проекта -->
-
+                        <h5 class="card-title fw-bold">{{ item.name }}</h5>
+                        <p class="card-text">{{ item.short_description | truncate }}</p>
                         <!-- </div> -->
                     </div>
                 </a>
-                <!-- <a class="route-to-pr-page"> -->
-                <a class="route-to-pr-page top-card">
-                    <div class="top-likes"><img src="https://img.pikbest.com/01/56/32/93KpIkbEsTjF8.jpg-0.jpg!bw700"
-                            class=" card-img-top" alt="...">
-                        <div class="bott-right">
-                            <p>2000 <i class="bi bi-heart"></i></p>
-                        </div>
-                    </div>
-                    <div class="card-body">
-                        <h5 class="card-title fw-bold">Card title</h5>
-                        <p class="card-text">Some quick example text to build on t</p>
-                    </div>
-                </a>
-                <!-- </a> -->
-                <a class="route-to-pr-page top-card">
-                    <div class="top-likes"><img src="https://img.pikbest.com/01/56/32/93KpIkbEsTjF8.jpg-0.jpg!bw700"
-                            class=" card-img-top" alt="...">
-                        <div class="bott-right">
-                            <p>2000 <i class="bi bi-heart"></i></p>
-                        </div>
-                    </div>
-                    <div class="card-body">
-                        <h5 class="card-title fw-bold">Card title</h5>
-                        <p class="card-text">Some quick example text to build on tSome quick example text to build on
-                            tSome quick example text to build on tSome quick example text to build on tSome quick
-                            example text to build on tSome quick example text to build on t</p>
-
-                    </div>
-                </a>
-                <a class="route-to-pr-page top-card">
-                    <div class="top-likes"><img src="https://img.pikbest.com/01/56/32/93KpIkbEsTjF8.jpg-0.jpg!bw700"
-                            class=" card-img-top" alt="...">
-                        <div class="bott-right">
-                            <p>2000 <i class="bi bi-heart"></i></p>
-                        </div>
-                    </div>
-                    <div class="card-body">
-                        <h5 class="card-title fw-bold">Card title</h5>
-                        <p class="card-text">Some quick example text to build on t</p>
-                    </div>
-                </a>
-                <a class="route-to-pr-page top-card">
-                    <div class="top-likes"><img src="https://img.pikbest.com/01/56/32/93KpIkbEsTjF8.jpg-0.jpg!bw700"
-                            class=" card-img-top" alt="...">
-                        <div class="bott-right">
-                            <p>2000 <i class="bi bi-heart"></i></p>
-                        </div>
-                    </div>
-                    <div class="card-body">
-                        <h5 class="card-title fw-bold">Card title</h5>
-                        <p class="card-text">Some quick example text Some quick example text to build on tto build on t
-                        </p>
-
-                    </div>
-                </a>
+                {% endfor %}
             </div>
         </div>
     </div>

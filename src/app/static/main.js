@@ -1,5 +1,11 @@
+function getCookie(name) {
+    let matches = document.cookie.match(new RegExp(
+      "(?:^|; )" + name.replace(/([\.$?*|{}\(\)\[\]\\\/\+^])/g, '\\$1') + "=([^;]*)"
+    ));
+    return matches ? decodeURIComponent(matches[1]) : undefined;
+  }
 let url = window.location.origin;
-
+// Для задержки между загрузкои проектов
 function sleep(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
 }
@@ -10,6 +16,61 @@ window.onload = function () {
         // console.log(form);
         renderPagination();
         document.getElementById('submitForm').onclick = renderPagination;
+
+    }
+    if (window.location.toString().search("/view/project/") != -1) {
+        // let counter = 0;
+        project_id = window.location.toString().substring(window.location.toString().indexOf("/view/project/")+14,window.location.toString().length);
+        // проставка лаика в случае cookie == true
+        cookie1 = getCookie(project_id);
+        if (cookie1 == "true") {
+            document.querySelector("#button-like1").checked = true;
+        }
+        var like = document.querySelector('#button-like1');
+        
+        like.onclick = function() {
+            cookie = getCookie(project_id);
+            if (cookie == "true"){
+                
+                let urlDir = url + '/view/like';
+                let uri = new URL(urlDir);
+                var body = new FormData();
+                body.append("like", 'False');
+                body.append("project_id", `${project_id}`);
+                sendRequest(uri, 'POST', function () {
+                    
+                    if (this.response == "complete dislike") {
+                    document.cookie = `${project_id}=false; expires=Tue, 19 Jan 2038 03:14:07 GMT`;
+                    document.querySelector("#plike").innerHTML = parseInt(document.querySelector("#plike").innerHTML, 10) - 1;
+                    }
+                }, body);
+                
+            }
+            else {
+                let urlDir = url + '/view/like';
+                let uri = new URL(urlDir);
+                var body = new FormData();
+                body.append("like", 'True');
+                body.append("project_id", `${project_id}`);
+                sendRequest(uri, 'POST', function () {
+                    
+                    if (this.response == "complete like") {
+                    document.cookie = `${project_id}=true; expires=Tue, 19 Jan 2038 03:14:07 GMT`;
+                    
+                    document.querySelector("#plike").innerHTML = parseInt(document.querySelector("#plike").innerHTML, 10) + 1;
+                    }
+                }, body);
+            }
+        }
+        // document.cookie = "user1=John2; expires=Tue, 19 Jan 2038 03:14:07 GMT"; // обновляем только куки с именем 'user'
+        // console.log(getCookie('name'));
+        // console.log(getCookie('user'));
+        // if (getCookie('name')){
+        //     alert('андефаинд');
+        // }
+        // if (getCookie('user')){
+        //     alert('всё правильно')
+        // }
 
     }
     if (window.location.toString().search("/admin/addprojects") != -1) {
@@ -23,9 +84,8 @@ window.onload = function () {
     l = els.length;
     for (var i = 0; i < l; i++) {
         els[i].onclick = function () {
-
-            showBlink();
-            CatchProjectOfDirection(this.dataset.id);
+        showBlink(this.children[1].children[0].innerHTML);
+        CatchProjectOfDirection(this.dataset.id);
 
         };
 
@@ -45,86 +105,56 @@ window.onload = function () {
             $('html, body').animate({ scrollTop: 0 }, '300');
         });
     });
-    
-    var swiper = new Swiper('.swiper-container', {
-        updateOnWindowResize: true,
-        observer: true,
-        observeParents: true,
-        pagination: {
-            el: '.swiper-pagination',
-            clickable: true,
-        },
-        navigation: {
-            nextEl: '.swiper-button-next',
-            prevEl: '.swiper-button-prev',
-        },
-        breakpoints: {
-            250: {
-                slidesPerView: 1,
-                spaceBetween: 15
-            },
-            550: {
-                slidesPerView: 2,
-                spaceBetween: 15
-            },
-            850: {
-                slidesPerView: 3,
-                spaceBetween: 15
-            },
-            1150: {
-                slidesPerView: 3,
-                spaceBetween: 15
-            },
-            1450: {
-                slidesPerView: 3,
-                spaceBetween: 15
-            }
-        }
-    });
 }
 
 /// ДЛЯ ПОДГРУЗКИ
-showBlink = function () {
-    var swiper = document.getElementById('swiperDisplay')
-    var cardPlace = document.getElementById('swiper')
-    swiper.style.display = '';
+showBlink = function (direction) {
+    var chosenDirection = document.getElementById('top-proj-derec');
+    chosenDirection.innerHTML = direction;
+    var cardPlace = document.getElementById('top-cards-flex');
     cardPlace.innerHTML = '';
     for (i = 0; i < 9; i++) {
 
 
-        var cardContainer = document.createElement("div");
-        cardContainer.classList.add("card-container");
-        cardContainer.classList.add("swiper-slide");
-
-        var card = document.createElement("div");
-
-        card.classList.add("swiper-card");
-        card.classList.add("ph-item");
-
-        cardCircle = document.createElement("div");
-        cardCircle.classList.add("swiper-circle");
-
-        cardTitle = document.createElement("div");
-
-
-        cardCircle.appendChild(cardTitle);
-
-        cardBody = document.createElement("div");
-        cardBody.classList.add("swiper-content");
-
-        cardText = document.createElement("p")
-        cardText.classList.add("card-text");
-
-        cardButton = document.createElement("a")
-        cardButton.classList.add("btn");
-        cardButton.classList.add("btn-primary");
-        cardButton.innerHTML = "Перейти";
-        cardBody.appendChild(cardText);
-        cardBody.appendChild(cardButton);
-
-        card.appendChild(cardCircle);
-        card.appendChild(cardBody);
+        var cardContainer = document.createElement("a");
+        cardContainer.classList.add("route-to-pr-page");
+        cardContainer.classList.add("top-card");
+        
+        /// место с картинкои и лаиками
+        var card = document.createElement("div"); 
+        card.classList.add('ph-item');     
+        card.classList.add("top-likes");
+        
+        var cardImage = document.createElement('img');
+        cardImage.src="https://img.pikbest.com/01/56/32/93KpIkbEsTjF8.jpg-0.jpg!bw700";
+        cardImage.classList.add('card-img-top');
+        card.appendChild(cardImage);
+        var likePlace = document.createElement('div');
+        likePlace.classList.add('bott-right');
+        var likeCount = document.createElement('p');
+        var heart = document.createElement('i');
+        heart.classList.add('bi');
+        heart.classList.add('bi-heart');
+        likeCount.appendChild(heart);
+        likePlace.appendChild(likeCount);
+        card.appendChild(likePlace);
         cardContainer.appendChild(card);
+        /// Название и описание проекта снизу карточки
+        var cardBody = document.createElement('div');
+        cardBody.classList.add('card-body');
+        
+        var cardTitle = document.createElement('h5');
+        cardTitle.classList.add('card-title');
+        cardTitle.classList.add('fw-bold');
+        
+        cardBody.appendChild(cardTitle);
+        var cardText = document.createElement('p');
+        // cardText.classList.add('card-text');
+        cardText.classList.add('ph-col-6');
+        cardText.classList.add('empty');
+        // cardText.innerHTML = 'amogus';
+        cardBody.appendChild(cardText);
+        cardContainer.appendChild(cardBody);
         cardPlace.appendChild(cardContainer);
 
     }
@@ -138,7 +168,8 @@ CatchProjectOfDirection = async function (directionID) {
 
     sendRequest(uri, 'POST', function () {
 
-        setTimeout(() => ShowProjects(this.response), 2000);
+        // setTimeout(() => ShowProjects(this.response), 10);
+        ShowProjects(this.response)
     }, body);
 
 
@@ -146,91 +177,60 @@ CatchProjectOfDirection = async function (directionID) {
 
 /// ДЛЯ ГЛАВНОЙ СТРАНИЦЫ
 ShowProjects = function (response) {
-    var swiper = document.getElementById('swiperDisplay')
-    var cardPlace = document.getElementById('swiper')
-    swiper.style.display = '';
+    var cardPlace = document.getElementById('top-cards-flex');
     cardPlace.innerHTML = '';
+    console.log(response);
     if (response.length < 1) {
-
+        var p = document.createElement('h5');
+        p.innerHTML="Ничего не найдено :("
+        cardPlace.appendChild(p)
     }
     else {
 
         for (i in response) {
-
-
-            var cardContainer = document.createElement("div");
-            cardContainer.classList.add("card-container");
-            cardContainer.classList.add("swiper-slide");
-
-            var card = document.createElement("div");
-
-            card.classList.add("swiper-card");
-
-            cardCircle = document.createElement("div");
-            cardCircle.classList.add("swiper-circle");
-
-            cardTitle = document.createElement("h4");
-
-            cardTitle.innerHTML = response[i].semester.name;
-
-            cardCircle.appendChild(cardTitle);
-
-            cardBody = document.createElement("div");
-            cardBody.classList.add("swiper-content");
-
-            cardText = document.createElement("p")
-            cardText.classList.add("card-text");
-            cardText.innerHTML = response[i].name;
-            cardButton = document.createElement("a")
-            cardButton.classList.add("btn");
-            cardButton.classList.add("btn-primary");
-            cardButton.href = url + '/view/project/' + response[i].id;
-            cardButton.innerHTML = "Перейти";
-            cardBody.appendChild(cardText);
-            cardBody.appendChild(cardButton);
-
-            card.appendChild(cardCircle);
-            card.appendChild(cardBody);
-            cardContainer.appendChild(card);
-            cardPlace.appendChild(cardContainer);
-
+        var cardContainer = document.createElement("a");
+        cardContainer.classList.add("route-to-pr-page");
+        cardContainer.classList.add("top-card");
+        cardContainer.href = url + '/view/project/' + response[i].id;
+        /// место с картинкои и лаиками
+        var card = document.createElement("div"); 
+        card.classList.add("top-likes");
+        
+        var cardImage = document.createElement('img');
+        cardImage.src="https://img.pikbest.com/01/56/32/93KpIkbEsTjF8.jpg-0.jpg!bw700";
+        cardImage.classList.add('card-img-top');
+        card.appendChild(cardImage);
+        var likePlace = document.createElement('div');
+        likePlace.classList.add('bott-right');
+        var likeCount = document.createElement('p');
+        likeCount.innerHTML = response[i].likes;
+        var heart = document.createElement('i');
+        heart.classList.add('bi');
+        heart.classList.add('bi-heart');
+        likeCount.appendChild(heart);
+        likePlace.appendChild(likeCount);
+        card.appendChild(likePlace);
+        cardContainer.appendChild(card);
+        /// Название и описание проекта снизу карточки
+        var cardBody = document.createElement('div');
+        cardBody.classList.add('card-body');
+        
+        var cardTitle = document.createElement('h5');
+        cardTitle.classList.add('card-title');
+        cardTitle.classList.add('fw-bold');
+        cardTitle.innerHTML = response[i].name;
+        
+        cardBody.appendChild(cardTitle);
+        var cardText = document.createElement('p');
+        cardText.classList.add('card-text');
+        cardText.innerHTML = response[i].short_description;
+        cardBody.appendChild(cardText);
+        cardContainer.appendChild(cardBody);
+        
+        cardPlace.appendChild(cardContainer);
+        
         }
     }
-    var swiper = new Swiper('.swiper-container', {
-        updateOnWindowResize: true,
-        observer: true,
-        observeParents: true,
-        pagination: {
-            el: '.swiper-pagination',
-            clickable: true,
-        },
-        navigation: {
-            nextEl: '.swiper-button-next',
-            prevEl: '.swiper-button-prev',
-        },
-        breakpoints: {
-            250: {
-                slidesPerView: 1,
-                spaceBetween: 15
-            },
-            550: {
-                slidesPerView: 2,
-                spaceBetween: 15
-            },
-            850: {
-                slidesPerView: 3,
-                spaceBetween: 15
-            },
-            1150: {
-                slidesPerView: 3,
-                spaceBetween: 15
-            },
-            1450: {
-                slidesPerView: 3,
-                spaceBetween: 15
-            }
-        }
-    });
 }
 
 sendRequest = function (url, method, onloadHandler, params) {
@@ -259,11 +259,12 @@ renderPagination = function () {
 
     try {
         // var curpage = document.getElementById('current_page');
-        page_val = event.target.value;
+        page_val = this.value;
         body.append("page", page_val);
         sendRequest(uri, 'POST', function () {
             if (this.response[3].length > 0) {
                 renderDirectionResponse(this.response);
+                console.log(this.response);
                 renderButtons(this.response[0], first = false);
             }
             else {
@@ -296,43 +297,70 @@ renderPagination = function () {
 }
 // ДЛЯ СТРАНИЦЫ /view/projects
 renderDirectionResponse = function (response) {
-
+// <a class="to-project-link">
+//     <!--Добавить ссылку на проект-->
+//     <div class="d-flex flex-column bd-highlight">
+//         <div class="d-flex justify-content-between bd-highlight pro-block">
+//             <div class="d-flex flex-column bd-highlight pro-name-napr">
+//                 <p class="fw-bold pro-name">Название проекта</p>
+//                 <!--Добавить название проекта-->
+//                 <p class="pro-derec">Учебное направление СДЕЛАТЬ!!!</p>
+//                 <!--Добавить направление проекта-->
+//             </div>
+//             <p class="pro-like"><i class="bi bi-heart"></i> 2222</p>
+//             <!--Добавить лайки проекта-->
+//             <p class="pro-sem">СЕМЕСТР СДЕЛАТЬ!!!!</p>
+//             <!--Добавить семестр проекта-->
+//         </div>
+//     </div>
+// </a>
     var cardPlace = document.getElementById('projects');
     cardPlace.innerHTML = '';
     for (i in response[3]) {
-        var cardContainer = document.createElement("div");
-        cardContainer.classList.add("card-container");
-
-        var card = document.createElement("div");
-
-        card.classList.add("swiper-card");
-        card.classList.add("d-flex");
-        card.classList.add("flex-column");
-        cardCircle = document.createElement("div");
-        cardCircle.classList.add("swiper-circle");
-
-        cardTitle = document.createElement("h4");
-
-        cardTitle.innerHTML = response[3][i].semester.name;
-
-        cardCircle.appendChild(cardTitle);
-
-        cardBody = document.createElement("div");
-        cardBody.classList.add("swiper-content");
-
-        cardText = document.createElement("p")
-        cardText.classList.add("card-text");
-        cardText.innerHTML = response[3][i].name;
-        cardButton = document.createElement("a")
-        cardButton.classList.add("btn");
-        cardButton.classList.add("btn-primary");
-        cardButton.href = url + '/view/project/' + response[3][i].id;
-        cardButton.innerHTML = "Перейти";
-        cardBody.appendChild(cardText);
-        cardBody.appendChild(cardButton);
-
-        card.appendChild(cardCircle);
-        card.appendChild(cardBody);
+        var cardContainer = document.createElement('a');
+        cardContainer.classList.add("to-project-link");
+        var card = document.createElement('div');
+        card.classList.add('d-flex');
+        card.classList.add('flex-column');
+        card.classList.add('bd-highlight');
+        //крепить к card
+        var escheodindiv = document.createElement('div');
+        escheodindiv.classList.add('d-flex');
+        escheodindiv.classList.add('justify-content-between');
+        escheodindiv.classList.add('bd-highlight');
+        escheodindiv.classList.add('pro-block');
+        // крепить к escheodindiv
+        var cardName = document.createElement('div');
+        cardName.classList.add('d-flex');
+        cardName.classList.add('flex-column');
+        cardName.classList.add('bd-highlight');
+        cardName.classList.add('pro-name-napr');
+        var p = document.createElement('p');
+        p.classList.add('fw-bold');
+        p.classList.add('pro-name');
+        var p2 = document.createElement('p');
+        p2.classList.add('pro-derec');
+        p.innerHTML = response[3][i].name;
+        cardContainer.href = url + '/view/project/' + response[3][i].id;
+        p2.innerHTML = response[3][i].direction.name;
+        cardName.appendChild(p);
+        cardName.appendChild(p2);
+        // крепить к escheodindiv
+        var likePlace = document.createElement('p');
+        likePlace.classList.add('pro-like');
+        likePlace.innerHTML = response[3][i].likes;
+        var heart = document.createElement('i');
+        heart.classList.add('bi');
+        heart.classList.add('bi-heart');
+        likePlace.appendChild(heart);
+        // крепить к escheodindiv
+        var cardSemester = document.createElement('p');
+        cardSemester.classList.add('pro-sem');
+        cardSemester.innerHTML = response[3][i].semester.name;
+        escheodindiv.appendChild(cardName);
+        escheodindiv.appendChild(likePlace);
+        escheodindiv.appendChild(cardSemester);
+        card.appendChild(escheodindiv);
         cardContainer.appendChild(card);
         cardPlace.appendChild(cardContainer);
 
@@ -344,8 +372,8 @@ renderDirectionResponse = function (response) {
 renderButtons = function (response) {
     var pagination = document.getElementById('pagination');
     pagination.style.display = '';
-    pagination.children[0].children[0].value = response.page - 1;
-    pagination.children[0].children[0].onclick = renderPagination;
+    pagination.children[0].value = response.page - 1;
+    pagination.children[0].onclick = renderPagination;
     if (response.page == response.iter_pages[0]) {
         pagination.children[0].classList.add('disabled');
     }
@@ -380,8 +408,8 @@ renderButtons = function (response) {
 
     }
     // pagination.children[pagination.children.length-1] = response.page +1;
-    pagination.children[pagination.children.length - 1].children[0].value = response.page ? response.page + 1 : 1;
-    pagination.children[pagination.children.length - 1].children[0].onclick = renderPagination;
+    pagination.children[pagination.children.length - 1].value = response.page + 1;
+    pagination.children[pagination.children.length - 1].onclick = renderPagination;
     if (response.page == response.iter_pages[response.iter_pages.length - 1]) {
         pagination.children[pagination.children.length - 1].classList.add('disabled');
     }

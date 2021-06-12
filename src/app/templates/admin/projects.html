@@ -1,18 +1,16 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<ul class="nav nav-tabs pt-5" id="myTab" role="tablist">
-    <li class="nav-item" role="presentation">
-        <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home"
-            aria-selected="true">Просмотр</a>
-    </li>
-    <li class="nav-item" role="presentation">
-        <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile"
-            aria-selected="false">Добавление</a>
-    </li>
-</ul>
-<div class="tab-content" id="myTabContent">
-    <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+<nav>
+    <div class="nav nav-tabs" id="nav-tab" role="tablist">
+        <button class="nav-link active" id="nav-home-tab" data-bs-toggle="tab" data-bs-target="#nav-home" type="button"
+            role="tab" aria-controls="nav-home" aria-selected="true">Просмотр</button>
+        <button class="nav-link" id="nav-profile-tab" data-bs-toggle="tab" data-bs-target="#nav-profile" type="button"
+            role="tab" aria-controls="nav-profile" aria-selected="false">Добавление</button>
+    </div>
+</nav>
+<div class="tab-content" id="nav-tabContent">
+    <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
         <table class="table table-striped">
             <thead>
                 <tr>
@@ -40,7 +38,7 @@
             {% endfor %}
         </table>
     </div>
-    <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+    <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
         <div id="project-area" class="m-5" style="margin-top: 5% !important;">
             <form class="w-50" method="post" name="search" id="search">
                 <div class="form-row">
@@ -96,7 +94,6 @@
         </button>
     </div>
 </div>
-
 
 <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
     aria-hidden="true">

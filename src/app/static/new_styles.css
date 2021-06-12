@@ -1,5 +1,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 @import url('http://fonts.cdnfonts.com/css/gilroy-bold');
+
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,400;1,500;1,700&display=swap');
+
 /* Default styles */
 * {
     outline: none !important;
@@ -9,7 +12,7 @@
 
 html,
 body {
-    font-family: 'Montserrat', sans-serif !important;
+    font-family: 'Montserat', sans-serif !important;
     color: #000;
 }
 
@@ -507,7 +510,7 @@ a:hover {
     font-size: 17px;
     color: #686c6c;
     outline: none;
-    border: none;
+    border: 1px solid transparent;
 }
 
 .page-item:hover .page-link{
@@ -545,9 +548,9 @@ a:hover {
     margin-right: 30px;
 }
 .poster-block-img{
-    max-height: 640px;
-    max-width: 640px;
-    min-height: 320px;
+    max-height: 720px;
+    max-width: 720px;
+    min-height: 360px;
     border-radius: 20px;
      
 }
@@ -629,7 +632,7 @@ a:hover {
     font-style: normal;
     font-size: 1.5em;
     line-height: 50px;
-    color: #4A46FF; 
+    color: white; 
 }
 
 .tech-block{
@@ -806,3 +809,74 @@ video{
     color: #818393;
     font-size: 12px;
 }
+
+.ph-item {
+    border: 0px !important;
+}
+
+.ndfHFb-c4YZDc-q77wGc {
+    display: none !important;
+}
+
+
+/* Для кнопки лаика */
+:root{
+    --like-font-size: 3rem 
+}
+.like-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    -webkit-font-smoothing: antialiased;
+}
+.like-btn {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 80px;
+    height: 80px;
+    cursor: pointer;
+    transition: all 0.5s;
+    opacity: 0;
+    z-index: 2;
+  }
+  .fa-heart{
+    position: absolute;
+    font-size: var(--like-font-size);
+    -webkit-text-stroke: 2px #e5e5e5;
+    color: whitesmoke;
+    transition: all ease-in-out;
+}
+.like-btn:checked + .fa-heart{
+    color: red;
+    -webkit-text-stroke: 1px red;
+    animation: .5s linear burst; 
+}
+@keyframes burst{
+    0%,10%{
+        transform: scale(1);
+        opacity: .5;
+        color:lavender;
+    }
+    45%{
+        transform: scale(.2) rotate(30deg);
+        opacity: .75;
+    }
+    50%{
+        transform: scale(2) rotate(-37.5deg);
+        opacity: 1;
+        color: red;
+        text-shadow: 2px 2px 6px rgba(235, 9, 9, 0.5);
+    }
+    90%,95%{
+        transform: scale(1) rotate(10deg);
+        text-shadow: none;
+    }
+    100% {
+        transform: rotate(-2.5deg);
+    }
+
+  }
+
+/* */

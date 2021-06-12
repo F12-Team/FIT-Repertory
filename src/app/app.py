@@ -86,6 +86,6 @@ def add_image():
     return jsonify('complete saving image')
 
 
-@app.errorhandler(Exception)
-def page_not_found(e):
-    return render_template('404.html'), 404
+# @app.errorhandler(Exception)
+# def page_not_found(e):
+#     return render_template('404.html'), 404

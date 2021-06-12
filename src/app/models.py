@@ -9,6 +9,7 @@ from sqlalchemy.dialects import mysql
 from sqlalchemy import exc
 from sqlalchemy_serializer import SerializerMixin
 from users_policy import UsersPolicy
+from sqlalchemy.ext.associationproxy import association_proxy
 
 
 pictures = db.Table('pictures',
@@ -17,11 +18,11 @@ pictures = db.Table('pictures',
                     db.Column('image_id', db.String(128), db.ForeignKey('images.id'), primary_key=True))
 
 
-teams = db.Table('teams',
-                    db.Column('student_id', db.Integer, db.ForeignKey('students.id'), primary_key=True),
-                    db.Column('project_id', db.Integer, db.ForeignKey('projects.id'), primary_key=True),
-                    db.Column('function', db.Text()),
-                    db.Column('description', db.Text()))
+# teams = db.Table('teams',
+#                     db.Column('student_id', db.Integer, db.ForeignKey('students.id'), primary_key=True),
+#                     db.Column('project_id', db.Integer, db.ForeignKey('projects.id'), primary_key=True),
+#                     db.Column('function', db.Text()),
+#                     db.Column('description', db.Text()))
 
 
 techs = db.Table('techs',
@@ -29,6 +30,16 @@ techs = db.Table('techs',
                     db.Column('project_id', db.Integer, db.ForeignKey('projects.id'), primary_key=True))
 
 
+
+class Team(db.Model, SerializerMixin):
+    __tablename__ = 'teams'
+
+    student_id = db.Column(db.Integer, db.ForeignKey('students.id'), primary_key=True)
+    project_id = db.Column(db.Integer, db.ForeignKey('projects.id'), primary_key=True)
+    function = db.Column(db.Text())
+    description = db.Column(db.Text())
+
+    student = db.relationship('Student')
 
 class Direction(db.Model, SerializerMixin):
     __tablename__ = 'directions'
@@ -114,6 +125,8 @@ class Student(db.Model, SerializerMixin):
     role_id = db.Column(db.Integer, db.ForeignKey('roles.id'), nullable=False)
     group_id = db.Column(db.Integer, db.ForeignKey('groups.id'), nullable=False)
 
+    group = db.relationship('Group')
+
     def __repr__(self):
         return '<Student %r>' % self.full_name
 
@@ -194,6 +207,8 @@ class Info(db.Model, SerializerMixin):
     project_id = db.Column(db.Integer, db.ForeignKey('projects.id'), primary_key=True)
     type_id = db.Column(db.Integer, db.ForeignKey('types.id'), primary_key=True)
 
+    type = db.relationship('Type')
+
 
 class Project(db.Model, SerializerMixin):
     __tablename__ = 'projects'
@@ -215,6 +230,11 @@ class Project(db.Model, SerializerMixin):
     direction = db.relationship('Direction')
     status = db.relationship('Status')
     semester = db.relationship('Semester')
+    function = db.relationship('Team')
+    info = db.relationship('Info')
+
+    techs = db.relationship('Technology', secondary=techs)
+
 
     def __repr__(self):
         return '<Project %r>' % self.name
