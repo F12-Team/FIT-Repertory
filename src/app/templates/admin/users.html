@@ -5,7 +5,7 @@
     <div class="text-white text-left sidebar sticky-top" id="sidebar-wrapper">
         <div class="list-group list-group-flush">
             <a href="" class="">Проекты</a> <!-- /admin/projects -->
-            <a href="" class="">Пользователи</a> <!-- /admin/projects -->
+            <a href="" class="active-href">Пользователи</a> <!-- /admin/projects -->
             <a href="" class="">Группы</a> <!-- /admin/projects -->
             <a href="" class="">Семестры</a> <!-- /admin/projects -->
         </div>
@@ -70,7 +70,7 @@
                                                     <td>{{ item.full_name }}</td>
                                                     <td>{{ item.role.name }}</td>
                                                     <td class="tab_buttons">
-                                                        <!-- Потом по требования добавлю иконки или надписи -->
+                                                        <!-- Потом по требованию добавлю иконки или надписи -->
                                                         <a type="button" class="btn btn-danger"></a>
                                                         <a type="button" class="btn btn-success"></a>
                                                         <a type="button" class="btn btn-secondary"></a>
@@ -165,37 +165,4 @@
         </div>
     </div>
 </div>
-<!-- <ul class="nav nav-tabs pt-5" id="myTab" role="tablist">
-    <li class="nav-item" role="presentation">
-        <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home"
-            aria-selected="true">Просмотр</a>
-    </li>
-    <li class="nav-item" role="presentation">
-        <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile"
-            aria-selected="false">Добавление</a>
-    </li>
-</ul>
-<div class="tab-content" id="myTabContent">
-    <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
-        <table class="table table-striped">
-            <thead>
-                <tr>
-                    <th scope="col">#</th>
-                    <th scope="col">Название</th>
-                    <th scope="col">Описание</th>
-                </tr>
-            </thead>
-            {% for item in users %}
-            <tbody>
-                <tr>
-                    <th scope="row">{{ loop.index }}</th>
-                    <td>{{ item.full_name }}</td>
-                    <td>{{ item.role.name }}</td>
-                </tr>
-            </tbody>
-            {% endfor %}
-        </table>
-    </div>
-    <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">...</div>
-</div> -->
 {% endblock %}

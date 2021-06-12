@@ -917,6 +917,14 @@ video{
   #sidebar-wrapper .list-group a:hover{
     background-color:  #C9C8FF;
   }
+  #sidebar-wrapper .list-group .active-href{
+      background: #4A46FF;
+      color: #FFFFFF;
+  }
+  #sidebar-wrapper .list-group .active-href:hover{
+    background: #4A46FF;
+    color: #FFFFFF;
+}
   #page-content-wrapper {
     min-width: 100vw;
   }
