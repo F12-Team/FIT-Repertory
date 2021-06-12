@@ -956,7 +956,15 @@ video{
 }
 
 .tab_lead{
-    width: 300px
+    width: 300px;
+}
+
+.tab_buttons{
+    width: 150px;
+}
+
+.tab_buttons a{
+    height: 30px;
 }
 
 .col{

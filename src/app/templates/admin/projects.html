@@ -4,10 +4,10 @@
 <div style="flex-grow: 2" class="d-flex" id="wrapper">
     <div class="text-white text-left sidebar sticky-top" id="sidebar-wrapper">
         <div class="list-group list-group-flush">
-            <a href="index.html" class="">Проекты</a>
-            <a href="index.html" class="">Пользователи</a>
-            <a href="index.html" class="">Группы</a>
-            <a href="index.html" class="">Семестры</a>
+            <a href="" class="">Проекты</a> <!-- /admin/projects -->
+            <a href="" class="">Пользователи</a> <!-- /admin/projects -->
+            <a href="" class="">Группы</a> <!-- /admin/projects -->
+            <a href="" class="">Семестры</a> <!-- /admin/projects -->
         </div>
     </div>
     <div id="page-content-wrapper">
@@ -27,7 +27,7 @@
                         <div class="col-md-12 mb-3">
                             <div class="card">
                                 <div class="card-header d-flex justify-content-between align-items-center">
-                                    <div class="d-flex align-items-center sel_el">
+                                    <div class="d-flex align-items-center sel_el"> <!-- Добавить сортировку по проектам -->
                                         <p class="sel_el_txt" style="color: black">
                                             Отображать по
                                         </p>
@@ -41,7 +41,7 @@
                                         <a></a>
                                     </div>
                                     <div>
-                                        <div class="input-group rounded">
+                                        <div class="input-group rounded"> <!--Добавить поиск -->
                                             <input type="search" class="form-control rounded" placeholder="Search"
                                                 aria-label="Search" aria-describedby="search-addon" />
                                             <span class="input-group-text border-0" id="search-addon">
@@ -62,6 +62,7 @@
                                                     <th>Направление</th>
                                                     <th>Лайки</th>
                                                     <th>Статус</th>
+                                                    <th class="tab_buttons">Действия</th>
                                                 </tr>
                                             </thead>
                                             {% for item in projects %}
@@ -76,13 +77,18 @@
                                                     <td>{{ item.direction.name }}</td>
                                                     <td>{{ item.likes }}</td>
                                                     <td>{{ item.status.name }}</td>
+                                                    <td class="tab_buttons"> <!-- Потом по требования добавлю иконки или надписи -->
+                                                        <a type="button" class="btn btn-danger"></a>
+                                                        <a type="button" class="btn btn-success"></a>
+                                                        <a type="button" class="btn btn-secondary"></a>
+                                                    </td>
                                                 </tr>
                                             </tbody>
                                             {% endfor %}
                                         </table>
                                     </div>
                                 </div>
-                                <div class="card-footer d-flex justify-content-center">
+                                 <div class="card-footer d-flex justify-content-center"> <!--Добавить пагинацию -->
                                     Пагинация
                                 </div>
                             </div>
@@ -91,14 +97,14 @@
                 </div>
                 <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
                     <div class="d-flex justify-content-center" >
-                        <div class="d-block justify-content-center"style="border: 1px solid #CCCED4; padding: 50px">
+                        <div class="d-block justify-content-center"style="border: 1px solid #CCCED4; padding: 50px; min-width: 1000px;">
                             <div class="send_proj_el">
                                 <div class="send_proj_name d-block">
                                     <p>Название проекта</p>
                                     <input class="form-control" type="text" name="name" value="">
                                 </div>
                             </div>
-                            <div class="d-flex">
+                            <div class="d-flex justify-content-around">
                             <div class="send_proj_el">
                                 <div class="send_proj_name d-block">
                                     <p>Выберите семестр</p>
@@ -173,33 +179,4 @@
         </div>
     </div>
 </div>
-
-
-
-
-
-<!-- 
-<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
-    aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
-
-            </div>
-            <div class="modal-body">
-                <div id="loader-success">
-                    <div class="spinner-border" role="status">
-                        <span class="sr-only">Loading...</span>
-                    </div>
-                </div>
-                <p id="uploadPlaceholder">Загрузка...</p>
-                <p id="results"> </p>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" id="modal-footer" data-dismiss="modal">Close</button>
-            </div>
-        </div>
-    </div>
-</div>  -->
 {% endblock %}
