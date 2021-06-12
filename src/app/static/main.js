@@ -1,16 +1,20 @@
 function getCookie(name) {
     let matches = document.cookie.match(new RegExp(
-      "(?:^|; )" + name.replace(/([\.$?*|{}\(\)\[\]\\\/\+^])/g, '\\$1') + "=([^;]*)"
+        "(?:^|; )" + name.replace(/([\.$?*|{}\(\)\[\]\\\/\+^])/g, '\\$1') + "=([^;]*)"
     ));
     return matches ? decodeURIComponent(matches[1]) : undefined;
-  }
+}
 let url = window.location.origin;
 // Для задержки между загрузкои проектов
 function sleep(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
 }
+$(document).ready(function () {
+    $('select').niceSelect();
+});
 window.onload = function () {
 
+    $('select').niceSelect('update');
     if (window.location.toString().search("/view/projects") != -1) {
         // let form = document.forms.search;
         // console.log(form);
@@ -20,31 +24,31 @@ window.onload = function () {
     }
     if (window.location.toString().search("/view/project/") != -1) {
         // let counter = 0;
-        project_id = window.location.toString().substring(window.location.toString().indexOf("/view/project/")+14,window.location.toString().length);
+        project_id = window.location.toString().substring(window.location.toString().indexOf("/view/project/") + 14, window.location.toString().length);
         // проставка лаика в случае cookie == true
         cookie1 = getCookie(project_id);
         if (cookie1 == "true") {
             document.querySelector("#button-like1").checked = true;
         }
         var like = document.querySelector('#button-like1');
-        
-        like.onclick = function() {
+
+        like.onclick = function () {
             cookie = getCookie(project_id);
-            if (cookie == "true"){
-                
+            if (cookie == "true") {
+
                 let urlDir = url + '/view/like';
                 let uri = new URL(urlDir);
                 var body = new FormData();
                 body.append("like", 'False');
                 body.append("project_id", `${project_id}`);
                 sendRequest(uri, 'POST', function () {
-                    
+
                     if (this.response == "complete dislike") {
-                    document.cookie = `${project_id}=false; expires=Tue, 19 Jan 2038 03:14:07 GMT`;
-                    document.querySelector("#plike").innerHTML = parseInt(document.querySelector("#plike").innerHTML, 10) - 1;
+                        document.cookie = `${project_id}=false; expires=Tue, 19 Jan 2038 03:14:07 GMT`;
+                        document.querySelector("#plike").innerHTML = parseInt(document.querySelector("#plike").innerHTML, 10) - 1;
                     }
                 }, body);
-                
+
             }
             else {
                 let urlDir = url + '/view/like';
@@ -53,11 +57,11 @@ window.onload = function () {
                 body.append("like", 'True');
                 body.append("project_id", `${project_id}`);
                 sendRequest(uri, 'POST', function () {
-                    
+
                     if (this.response == "complete like") {
-                    document.cookie = `${project_id}=true; expires=Tue, 19 Jan 2038 03:14:07 GMT`;
-                    
-                    document.querySelector("#plike").innerHTML = parseInt(document.querySelector("#plike").innerHTML, 10) + 1;
+                        document.cookie = `${project_id}=true; expires=Tue, 19 Jan 2038 03:14:07 GMT`;
+
+                        document.querySelector("#plike").innerHTML = parseInt(document.querySelector("#plike").innerHTML, 10) + 1;
                     }
                 }, body);
             }
@@ -84,8 +88,8 @@ window.onload = function () {
     l = els.length;
     for (var i = 0; i < l; i++) {
         els[i].onclick = function () {
-        showBlink(this.children[1].children[0].innerHTML);
-        CatchProjectOfDirection(this.dataset.id);
+            showBlink(this.children[1].children[0].innerHTML);
+            CatchProjectOfDirection(this.dataset.id);
 
         };
 
@@ -119,14 +123,14 @@ showBlink = function (direction) {
         var cardContainer = document.createElement("a");
         cardContainer.classList.add("route-to-pr-page");
         cardContainer.classList.add("top-card");
-        
+
         /// место с картинкои и лаиками
-        var card = document.createElement("div"); 
-        card.classList.add('ph-item');     
+        var card = document.createElement("div");
+        card.classList.add('ph-item');
         card.classList.add("top-likes");
-        
+
         var cardImage = document.createElement('img');
-        cardImage.src="https://img.pikbest.com/01/56/32/93KpIkbEsTjF8.jpg-0.jpg!bw700";
+        cardImage.src = "https://img.pikbest.com/01/56/32/93KpIkbEsTjF8.jpg-0.jpg!bw700";
         cardImage.classList.add('card-img-top');
         card.appendChild(cardImage);
         var likePlace = document.createElement('div');
@@ -142,11 +146,11 @@ showBlink = function (direction) {
         /// Название и описание проекта снизу карточки
         var cardBody = document.createElement('div');
         cardBody.classList.add('card-body');
-        
+
         var cardTitle = document.createElement('h5');
         cardTitle.classList.add('card-title');
         cardTitle.classList.add('fw-bold');
-        
+
         cardBody.appendChild(cardTitle);
         var cardText = document.createElement('p');
         // cardText.classList.add('card-text');
@@ -182,53 +186,53 @@ ShowProjects = function (response) {
     console.log(response);
     if (response.length < 1) {
         var p = document.createElement('h5');
-        p.innerHTML="Ничего не найдено :("
+        p.innerHTML = "Ничего не найдено :("
         cardPlace.appendChild(p)
     }
     else {
 
         for (i in response) {
-        var cardContainer = document.createElement("a");
-        cardContainer.classList.add("route-to-pr-page");
-        cardContainer.classList.add("top-card");
-        cardContainer.href = url + '/view/project/' + response[i].id;
-        /// место с картинкои и лаиками
-        var card = document.createElement("div"); 
-        card.classList.add("top-likes");
-        
-        var cardImage = document.createElement('img');
-        cardImage.src="https://img.pikbest.com/01/56/32/93KpIkbEsTjF8.jpg-0.jpg!bw700";
-        cardImage.classList.add('card-img-top');
-        card.appendChild(cardImage);
-        var likePlace = document.createElement('div');
-        likePlace.classList.add('bott-right');
-        var likeCount = document.createElement('p');
-        likeCount.innerHTML = response[i].likes;
-        var heart = document.createElement('i');
-        heart.classList.add('bi');
-        heart.classList.add('bi-heart');
-        likeCount.appendChild(heart);
-        likePlace.appendChild(likeCount);
-        card.appendChild(likePlace);
-        cardContainer.appendChild(card);
-        /// Название и описание проекта снизу карточки
-        var cardBody = document.createElement('div');
-        cardBody.classList.add('card-body');
-        
-        var cardTitle = document.createElement('h5');
-        cardTitle.classList.add('card-title');
-        cardTitle.classList.add('fw-bold');
-        cardTitle.innerHTML = response[i].name;
-        
-        cardBody.appendChild(cardTitle);
-        var cardText = document.createElement('p');
-        cardText.classList.add('card-text');
-        cardText.innerHTML = response[i].short_description;
-        cardBody.appendChild(cardText);
-        cardContainer.appendChild(cardBody);
-        
-        cardPlace.appendChild(cardContainer);
-        
+            var cardContainer = document.createElement("a");
+            cardContainer.classList.add("route-to-pr-page");
+            cardContainer.classList.add("top-card");
+            cardContainer.href = url + '/view/project/' + response[i].id;
+            /// место с картинкои и лаиками
+            var card = document.createElement("div");
+            card.classList.add("top-likes");
+
+            var cardImage = document.createElement('img');
+            cardImage.src = "https://img.pikbest.com/01/56/32/93KpIkbEsTjF8.jpg-0.jpg!bw700";
+            cardImage.classList.add('card-img-top');
+            card.appendChild(cardImage);
+            var likePlace = document.createElement('div');
+            likePlace.classList.add('bott-right');
+            var likeCount = document.createElement('p');
+            likeCount.innerHTML = response[i].likes;
+            var heart = document.createElement('i');
+            heart.classList.add('bi');
+            heart.classList.add('bi-heart');
+            likeCount.appendChild(heart);
+            likePlace.appendChild(likeCount);
+            card.appendChild(likePlace);
+            cardContainer.appendChild(card);
+            /// Название и описание проекта снизу карточки
+            var cardBody = document.createElement('div');
+            cardBody.classList.add('card-body');
+
+            var cardTitle = document.createElement('h5');
+            cardTitle.classList.add('card-title');
+            cardTitle.classList.add('fw-bold');
+            cardTitle.innerHTML = response[i].name;
+
+            cardBody.appendChild(cardTitle);
+            var cardText = document.createElement('p');
+            cardText.classList.add('card-text');
+            cardText.innerHTML = response[i].short_description;
+            cardBody.appendChild(cardText);
+            cardContainer.appendChild(cardBody);
+
+            cardPlace.appendChild(cardContainer);
+
         }
     }
 }
@@ -297,23 +301,23 @@ renderPagination = function () {
 }
 // ДЛЯ СТРАНИЦЫ /view/projects
 renderDirectionResponse = function (response) {
-// <a class="to-project-link">
-//     <!--Добавить ссылку на проект-->
-//     <div class="d-flex flex-column bd-highlight">
-//         <div class="d-flex justify-content-between bd-highlight pro-block">
-//             <div class="d-flex flex-column bd-highlight pro-name-napr">
-//                 <p class="fw-bold pro-name">Название проекта</p>
-//                 <!--Добавить название проекта-->
-//                 <p class="pro-derec">Учебное направление СДЕЛАТЬ!!!</p>
-//                 <!--Добавить направление проекта-->
-//             </div>
-//             <p class="pro-like"><i class="bi bi-heart"></i> 2222</p>
-//             <!--Добавить лайки проекта-->
-//             <p class="pro-sem">СЕМЕСТР СДЕЛАТЬ!!!!</p>
-//             <!--Добавить семестр проекта-->
-//         </div>
-//     </div>
-// </a>
+    // <a class="to-project-link">
+    //     <!--Добавить ссылку на проект-->
+    //     <div class="d-flex flex-column bd-highlight">
+    //         <div class="d-flex justify-content-between bd-highlight pro-block">
+    //             <div class="d-flex flex-column bd-highlight pro-name-napr">
+    //                 <p class="fw-bold pro-name">Название проекта</p>
+    //                 <!--Добавить название проекта-->
+    //                 <p class="pro-derec">Учебное направление СДЕЛАТЬ!!!</p>
+    //                 <!--Добавить направление проекта-->
+    //             </div>
+    //             <p class="pro-like"><i class="bi bi-heart"></i> 2222</p>
+    //             <!--Добавить лайки проекта-->
+    //             <p class="pro-sem">СЕМЕСТР СДЕЛАТЬ!!!!</p>
+    //             <!--Добавить семестр проекта-->
+    //         </div>
+    //     </div>
+    // </a>
     var cardPlace = document.getElementById('projects');
     cardPlace.innerHTML = '';
     for (i in response[3]) {

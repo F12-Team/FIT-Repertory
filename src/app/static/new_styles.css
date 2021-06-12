@@ -2,6 +2,7 @@
 @import url('http://fonts.cdnfonts.com/css/gilroy-bold');
 
 @import url('https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,400;1,500;1,700&display=swap');
+@import 'nice-select';
 
 /* Default styles */
 * {
@@ -354,6 +355,8 @@ a:hover {
 }
 .search-menu{
     font-size: 44px;
+    max-width: 100%;
+    
 }
 
 .search-link, .search-link:hover{
@@ -366,6 +369,79 @@ a:hover {
 .search-title{
     font-size: 44px;
     font-weight: 700;
+    
+}
+
+.sel{
+    border: none;
+    display: flex;
+    align-items: center;
+    font-size: 44px;
+    font-weight: 700;
+    font-family: Gilroy;
+    width: 300px;
+}
+.sel_opt{
+    font-size: 20px;
+    font-family: Gilroy;
+    font-weight: 400;
+    color: #212529;
+    padding: .25rem 1rem;
+    display: block;
+    /* background-color: #C9C8FF;
+    border-radius: 20px; */
+}
+.nice-select{
+    border: none;
+    font-size: 44px;
+    font-family: Gilory;
+    font-weight: 700;
+    color:#212529;
+}
+
+.se .current{
+    max-width: 350px;
+    display: inline-block;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+.nice-select .list{
+    min-width: 100%;
+    font-size: 20px;
+    font-weight: 400;
+    border: 1px solid #4A46FF;
+    border-radius: 20px;
+    padding: 10px; 
+}
+
+.sel_el{
+    font-size: 25px !important;
+    
+}
+
+.sel_el_txt{
+    font-size: 18px !important; 
+    margin-bottom: 0;
+    border: none !important;
+    font-weight: 600;
+    color: #CCCED4;
+}
+
+.sel_el_num{
+    border: 1px solid #4A46FF;
+    font-size: 18px !important;
+    margin-left: 20px;
+    color: #4A46FF;
+    border-radius: 10px;
+}
+
+.nice-select .option:hover, .nice-select .option.focus, .nice-select .option.selected.focus {
+    background-color: #C9C8FF;
+    color: black;
+    border-radius: 20px;
+    
 }
 
 .dropdown-toggle::after {
