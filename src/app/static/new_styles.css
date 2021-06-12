@@ -408,6 +408,11 @@ a:hover {
     font-family: Gilroy;
 }
 
+.nice-select.open .list{
+    border: 1px solid #4A46FF;
+    font-size: 20px;
+}
+
 .nice-select .list{
     min-width: 100%;
     font-size: 20px;
@@ -417,7 +422,10 @@ a:hover {
     padding: 10px; 
     font-family: Gilroy;
 }
-
+.nice-select.open .list{
+    border: 1px solid #4A46FF;
+    font-size: 20px;
+}
 .sel_el{
     font-size: 25px !important;
     
@@ -433,7 +441,7 @@ a:hover {
 
 .sel_el_num{
     border: 1px solid #4A46FF;
-    font-size: 18px !important;
+    font-size: 20px !important;
     margin-left: 20px;
     color: #4A46FF;
     border-radius: 10px;
@@ -890,7 +898,7 @@ video{
 
 /* Админ панель проекты */
 #sidebar-wrapper {
-    background: #C9C8FF;
+    border: 1px solid #4A46FF;
     width: 200px;
     height: 500px;
     margin-top: 150px;
@@ -907,7 +915,7 @@ video{
     padding: 20px;
   }
   #sidebar-wrapper .list-group a:hover{
-    border:1px solid #4A46FF;
+    background-color:  #C9C8FF;
   }
   #page-content-wrapper {
     min-width: 100vw;
@@ -956,7 +964,7 @@ video{
 }
 
 .send_proj_el{
-    margin: 50px 0;
+    margin: 10px 0;
     font-size: 25px;
     margin-right: 10px;
 }
