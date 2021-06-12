@@ -12,6 +12,7 @@ function sleep(ms) {
 $(document).ready(function () {
     $('select').niceSelect();
 });
+
 window.onload = function () {
 
     $('select').niceSelect('update');

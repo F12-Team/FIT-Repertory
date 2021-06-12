@@ -1,9 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
-@import url('http://fonts.cdnfonts.com/css/gilroy-bold');
+
 
 @import url('https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,400;1,500;1,700&display=swap');
 @import 'nice-select';
-
+@import 'Gilroy/stylesheet.css';
 /* Default styles */
 * {
     outline: none !important;
@@ -405,6 +405,7 @@ a:hover {
     text-overflow: ellipsis;
     overflow: hidden;
     white-space: nowrap;
+    font-family: Gilroy;
 }
 
 .nice-select .list{
@@ -414,6 +415,7 @@ a:hover {
     border: 1px solid #4A46FF;
     border-radius: 20px;
     padding: 10px; 
+    font-family: Gilroy;
 }
 
 .sel_el{
@@ -442,24 +444,6 @@ a:hover {
     color: black;
     border-radius: 20px;
     
-}
-
-.dropdown-toggle::after {
-    display: none;
-}
-
-.search-menu i{
-    
-    align-items: center;
-}
-.dropdown-menu{
-    border: 1px solid #C9C8FF;
-    border-radius: 20px;
-}
-
-.dropdown-item:hover{
-    background-color: #C9C8FF;
-    border-radius: 20px;
 }
 
 .ex-button{
@@ -555,7 +539,17 @@ a:hover {
     font-size: 44px;
     font-weight: 700;
     color: #CCCED4;
+    font-family: Gilroy;
 }
+
+.input-group::-ms-clear {
+    display: none;
+}
+input[type="search"]::-webkit-search-decoration,
+input[type="search"]::-webkit-search-cancel-button,
+input[type="search"]::-webkit-search-results-button,
+input[type="search"]::-webkit-search-results-decoration { display: none; }
+
 /* Pagination on search page*/
 
 .pagin-block{
@@ -894,7 +888,104 @@ video{
     display: none !important;
 }
 
+/* Админ панель проекты */
+#sidebar-wrapper {
+    background: #C9C8FF;
+    width: 200px;
+    height: 500px;
+    margin-top: 150px;
+  }
+  
+  #sidebar-wrapper .list-group {
+    color :black;
+    font-size: 24px;
+    font-weight: 600;
+  }
+  #sidebar-wrapper .list-group a{
+    border:1px solid transparent;
+    margin: 10px 0;
+    padding: 20px;
+  }
+  #sidebar-wrapper .list-group a:hover{
+    border:1px solid #4A46FF;
+  }
+  #page-content-wrapper {
+    min-width: 100vw;
+  }
+  
+  #wrapper.toggled #sidebar-wrapper {
+    margin-left: 0;
+  }
+  
+  @media (min-width: 768px) {
+    #sidebar-wrapper {
+      margin-left: 0;
+    }
+  
+    #page-content-wrapper {
+      min-width: 0;
+      width: 100%;
+    }
+  
+    #wrapper.toggled #sidebar-wrapper {
+      margin-left: -20rem;
+    }
+  }
 
+.nav-link, .nav-link:hover{
+    color: #4A46FF;
+}
+.con_admin{
+    margin: 50px; 
+}
+
+.tab_name{
+    width: 400px;
+}
+
+.tab_cur{
+    width: 300px;
+}
+
+.tab_lead{
+    width: 300px
+}
+
+.col{
+    margin: 30px 0;
+}
+
+.send_proj_el{
+    margin: 50px 0;
+    font-size: 25px;
+    margin-right: 10px;
+}
+
+.send_proj_name p{
+    margin-bottom: 0;
+    font-size: 25px;
+}
+
+.send_proj_name input{
+    width: 500px;
+}
+
+.send_select{
+    font-size: 25px !important;
+    border: 1px solid #4A46FF;
+}
+.form-check-input:checked {
+    background-color: #4A46FF;
+    border-color: #4A46FF;
+}
+input#checkbox.ok.form-check-input{
+    width: 22px !important;
+    color: #4A46FF;
+}
+
+.check_send{
+    margin-left: 10px;
+}
 /* Для кнопки лаика */
 :root{
     --like-font-size: 3rem 
@@ -952,7 +1043,4 @@ video{
     100% {
         transform: rotate(-2.5deg);
     }
-
-  }
-
-/* */
+}
