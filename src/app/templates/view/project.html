@@ -27,7 +27,7 @@
                                 проекта</a></div> <!-- Добавить подгрузку сайта -->
                     </div>
                     <div class="proj-likes d-flex align-items-center justify-content-end">
-                        <p class="" id="plike">{{ project.likes }}</p> <i class="bi bi-heart px-2 plike"></i>
+                        <p class="" style="margin-bottom: 0;"id="plike">{{ project.likes }}</p> <i class="bi bi-heart px-2 plike" style="color: black;"></i>
                     </div>
                 </div>
                 <div class="proj-shrt-desc d-flex justify-content-start">
@@ -57,7 +57,7 @@
         </div>
         <!-- <video src="{% for info in project.info %}{% if info.type.name == 'Видео с GoogleDisk' %}{{ info.resource }}{% endif %}{% endfor %}" playsinline
             controls class="intro-video" preload="auto" type="video/mp4"></video> -->
-        <iframe
+        <iframe class="video-mp4"
             src="{% for info in project.info %}{% if info.type.name == 'Видео с GoogleDisk' %}{{ info.resource | replace('view', 'preview') }}{% endif %}{% endfor %}"></iframe>
     </div>
     <div class="md-block">
