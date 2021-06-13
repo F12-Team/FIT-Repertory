@@ -153,6 +153,78 @@ a:hover {
     color: #4A46FF; 
 } 
 
+/* Кнопка лайка  */
+
+:root{
+    --like-font-size: 3rem 
+}
+.like-container{
+    position: fixed;   
+    bottom: 400px;   
+    right: 60px;
+    display: inline-block;
+    width: 50px;
+    height: 50px;
+    background: #C9C8FF;
+    border-radius: 10px;
+    /* display: flex;
+    justify-content: center;
+    align-items: center; */
+    -webkit-font-smoothing: antialiased;
+}
+.like-btn {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    line-height: 50px;
+    /* width: 50px;
+    height: 30px; */
+    font-size: 1.5rem;
+    cursor: pointer;
+    transition: all 0.5s;
+    opacity: 0;
+    z-index: 2;
+  }
+  i.fa.fa-heart{
+    font-size: 1.5rem;
+  }
+  .fa-heart{
+    position: absolute;
+    font-size: var(--like-font-size);
+    -webkit-text-stroke: 2px #e5e5e5;
+    color: whitesmoke;
+    transition: all ease-in-out;
+}
+.like-btn:checked + .fa-heart{
+    color: #4A46FF;
+    -webkit-text-stroke: 1px #4A46FF;
+    animation: .5s linear burst;
+}
+@keyframes burst{
+    0%,10%{
+        transform: scale(1);
+        opacity: .5;
+        color:lavender;
+    }
+    45%{
+        transform: scale(.2) rotate(30deg);
+        opacity: .75;
+    }
+    50%{
+        transform: scale(2) rotate(-37.5deg);
+        opacity: 1;
+        color: #4A46FF;
+        text-shadow: 2px 2px 6px rgba(235, 9, 9, 0.5);
+    }
+    90%,95%{
+        transform: scale(1) rotate(10deg);
+        text-shadow: none;
+    }
+    100% {
+        transform: rotate(-2.5deg);
+    }
+}
 
 /* Main page = направления + Top 9 проектов */
 
@@ -740,6 +812,10 @@ input[type="search"]::-webkit-search-results-decoration { display: none; }
     font-weight: 800;
     color: #4A46FF;
 }
+.video-mp4{
+    height: 600px;
+    border-radius: 20px;
+}
 
 video{
     border-radius: 20px;
@@ -896,7 +972,7 @@ video{
     display: none !important;
 }
 
-/* Админ панель проекты */
+/* Админ панель */
 #sidebar-wrapper {
     border: 1px solid #4A46FF;
     width: 200px;
@@ -1010,7 +1086,9 @@ input#checkbox.ok.form-check-input{
 .check_send{
     margin-left: 10px;
 }
+
 /* Для кнопки лаика */
+
 :root{
     --like-font-size: 3rem 
 }
@@ -1040,8 +1118,8 @@ input#checkbox.ok.form-check-input{
     transition: all ease-in-out;
 }
 .like-btn:checked + .fa-heart{
-    color: red;
-    -webkit-text-stroke: 1px red;
+    color: #4A46FF;
+    -webkit-text-stroke: 1px #4A46FF;
     animation: .5s linear burst; 
 }
 @keyframes burst{
@@ -1057,7 +1135,7 @@ input#checkbox.ok.form-check-input{
     50%{
         transform: scale(2) rotate(-37.5deg);
         opacity: 1;
-        color: red;
+        color: #4A46FF;
         text-shadow: 2px 2px 6px rgba(235, 9, 9, 0.5);
     }
     90%,95%{
@@ -1065,6 +1143,6 @@ input#checkbox.ok.form-check-input{
         text-shadow: none;
     }
     100% {
-        transform: rotate(-2.5deg);
+        transform: rotate(-1.5deg);
     }
 }
