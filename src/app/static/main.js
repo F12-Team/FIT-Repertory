@@ -228,7 +228,6 @@ ShowProjects = function (response) {
         cardContainer.appendChild(cardBody);
         
         cardPlace.appendChild(cardContainer);
-        
         }
     }
 }
@@ -274,7 +273,7 @@ renderPagination = function () {
 
     }
     catch (e) {
-        alert('ТРЕВОГА, НА СЕРВЕРЕ ЗАМЕЧЕНЫ УКРАИНЦЫ. МАССОВАЯ ЭВАКУАЦИЯ');
+        // alert('ТРЕВОГА, НА СЕРВЕРЕ ЗАМЕЧЕНЫ УКРАИНЦЫ. МАССОВАЯ ЭВАКУАЦИЯ');
         sendRequest(uri, 'POST', function () {
             renderDirectionResponse(this.response);
             renderButtons(this.response[0]);
