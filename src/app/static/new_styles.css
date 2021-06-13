@@ -1029,6 +1029,11 @@ video{
 }
 .con_admin{
     margin: 50px; 
+    font-family: Gilroy !important;
+}
+
+.con_admin .current{
+    font-family: Gilroy !important;
 }
 
 .tab_name{

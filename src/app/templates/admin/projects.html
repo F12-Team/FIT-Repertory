@@ -4,10 +4,10 @@
 <div style="flex-grow: 2" class="d-flex" id="wrapper">
     <div class="text-white text-left sidebar sticky-top" id="sidebar-wrapper">
         <div class="list-group list-group-flush">
-            <a href="" class="active-href">Проекты</a> <!-- /admin/projects -->
-            <a href="" class="">Пользователи</a> <!-- /admin/projects -->
-            <a href="" class="">Группы</a> <!-- /admin/projects -->
-            <a href="" class="">Семестры</a> <!-- /admin/projects -->
+            <a href="{{ url_for('admin.projects') }}" class="{% if url_for(request.endpoint) == url_for('admin.projects') %}active-href{% endif %}">Проекты</a> <!-- /admin/projects -->
+            <a href="{{ url_for('admin.users') }}" class="{% if url_for(request.endpoint) == url_for('admin.users') %}active-href{% endif %}">Пользователи</a> <!-- /admin/projects -->
+            <a href="{{ url_for('admin.groups') }}" class="{% if url_for(request.endpoint) == url_for('admin.groups') %}active-href{% endif %}">Группы</a> <!-- /admin/projects -->
+            <a href="{{ url_for('admin.semesters') }}" class="{% if url_for(request.endpoint) == url_for('admin.semesters') %}active-href{% endif %}">Семестры</a> <!-- /admin/projects -->
         </div>
     </div>
     <div id="page-content-wrapper">
@@ -156,7 +156,7 @@
                                     <a class="btn btn-primary" id="addProjectButton" style="margin-right: 20px; background-color: #4A46FF;">+</a>
                                     <button type="button" class="btn btn-primary" data-toggle="modal"
                                         data-target="#exampleModalCenter" id="uploadProjects" style="margin-right: 20px; background-color: #4A46FF;">
-                                        Launch demo modal
+                                        Отправить на сохранение
                                     </button>
                                 </div>
                             </div>
@@ -172,7 +172,7 @@
                     <a class="btn btn-primary" id="addProjectButton">+</a>
                     <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter"
                         id="uploadProjects">
-                        Launch demo modal
+                        Отправить на сохранение
                     </button> -->
                 </div>
             </div>
