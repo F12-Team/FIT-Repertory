@@ -1,4 +1,4 @@
-![image](https://github.com/F12-Team/FIT-Repertory/blob/master/docs/poster.jpg)
+![image](https://github.com/F12-Team/FIT-Repertory/blob/master/docs/new_poster.jpg)
 
 
 # Проект: «Информационная система хранения и демонстрации результатов проектной деятельности факультета Информационных технологий»
@@ -165,4 +165,4 @@
     +	Пагинация – 5 часов;
 -	Составление документации к проекту – 20 часов;
 
-![image](https://github.com/F12-Team/FIT-Repertory/blob/master/docs/poster.jpg)
+![image](https://github.com/F12-Team/FIT-Repertory/blob/master/docs/new_poster.jpg)
