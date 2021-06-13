@@ -519,6 +519,10 @@ a:hover {
     border-radius: 10px;
 }
 
+.sel_el_num .current{
+    font-family: Gilroy;
+}
+
 .nice-select .option:hover, .nice-select .option.focus, .nice-select .option.selected.focus {
     background-color: #C9C8FF;
     color: black;
