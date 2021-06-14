@@ -253,10 +253,10 @@ ShowProjects = function (response) {
         card.classList.add("top-likes");
         
         var cardImage = document.createElement('img');
-        if (response[i].poster[0].id){
+        try {
             cardImage.src = url+ "/images/" + response[i].poster[0].id;
         }
-        else {
+        catch(e) {
             cardImage.src= "https://img.pikbest.com/01/56/32/93KpIkbEsTjF8.jpg-0.jpg!bw700" ; 
         }
         
