@@ -39,7 +39,7 @@ def projects():
 
 @bp.route('/addproject', methods=['POST'])
 def addproject():
-    project = Project(**addproject_params(), status_id=1)
+    project = Project(**addproject_params(), status_id=4)
     db.session.add(project)
     db.session.commit()
     return jsonify('complete add')
