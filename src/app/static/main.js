@@ -254,10 +254,11 @@ ShowProjects = function (response) {
         
         var cardImage = document.createElement('img');
         try {
-            cardImage.src = url+ "/images/" + response[i].poster[0].id;
+        cardImage.src = url+ "/images/" + response[i].poster[0].id;
         }
         catch(e) {
-            cardImage.src= "https://img.pikbest.com/01/56/32/93KpIkbEsTjF8.jpg-0.jpg!bw700" ; 
+
+        cardImage.src= "https://img.pikbest.com/01/56/32/93KpIkbEsTjF8.jpg-0.jpg!bw700" ; 
         }
         
         
@@ -566,6 +567,7 @@ uploadProjects = async function () {
     document.getElementById('uploadProjects').onclick = function () {
         return false;
     }
+    let form = document.forms[document.forms.length - 1];
     forms = document.forms;
     cloneForm = forms[0].cloneNode(true);
     cloneForm.elements.semester_id.value = form.elements.semester_id.value;
@@ -584,12 +586,13 @@ uploadProjects = async function () {
     console.log(forms);
     // CountProjects = document.getElementById('uploadPlaceholder');
     var onDelete = []
+    let formLength = forms.length;
     for (var i = 0; i < forms.length; i++) {
 
         let urlDir = url + '/admin/addproject';
         let uri = new URL(urlDir);
         var body = new FormData(forms[i]);
-        await sleep(2000);
+        await sleep(1000);
         if (body.get('checkbox')) {
         }
         else {
