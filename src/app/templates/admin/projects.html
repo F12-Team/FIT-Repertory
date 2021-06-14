@@ -48,6 +48,7 @@
                                         <thead>
                                             <tr>
                                                 <th>#</th>
+                                                <th>ID</th>
                                                 <th class="tab_name">Название</th>
                                                 <th class="tab_cur">Куратор</th>
                                                 <th class="tab_lead">Тимлид</th>
@@ -59,9 +60,11 @@
                                             </tr>
                                         </thead>
                                         {% for item in projects %}
+                                        {% if item.status != 'Добавлено с админпанели' %}
                                         <tbody>
                                             <tr>
                                                 <th scope="row">{{ loop.index }}</th>
+                                                <td>{{ item.id }}</td>
                                                 <td class="tab_name">{{ item.name }}</td>
                                                 <td class="tab_cur">{{ item.curator.full_name or 'Не назначен' }}
                                                 </td>
@@ -80,6 +83,7 @@
                                                 </td>
                                             </tr>
                                         </tbody>
+                                        {% endif %}
                                         {% endfor %}
                                     </table>
                                 </div>
