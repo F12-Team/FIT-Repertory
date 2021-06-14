@@ -1,3 +1,4 @@
+var currDir = false;
 function getCookie(name) {
     let matches = document.cookie.match(new RegExp(
         "(?:^|; )" + name.replace(/([\.$?*|{}\(\)\[\]\\\/\+^])/g, '\\$1') + "=([^;]*)"
@@ -15,10 +16,15 @@ $(document).ready(function () {
 });
 
 window.onload = function () {
-
     $('select').niceSelect('update');
+    
+
     if (window.location.toString().search("/view/projects") != -1) {
-        
+        if (window.location.toString().indexOf("?") != -1){
+        baseUrl = window.location.href.split("?")[0];
+        direction_id = window.location.href.split("=")[1];
+        window.history.pushState('name', '', baseUrl);
+        }
         document.querySelector('#search-addon').onclick = function() {
             if (document.querySelector('#proj-name').value.length > 0)
             {
@@ -28,6 +34,42 @@ window.onload = function () {
                 document.querySelector("#clickme").innerHTML =  'Проект...';
             }
 
+        }
+        // let select = document.getElementsByClassName("nice-select")[0].children[1].getElementsByTagName('li');
+        if (direction_id) {
+        let select = document.querySelector("#direction_id").getElementsByTagName('option');
+
+        // let select = document.getElementsByClassName("nice-select")[0].children[1].getElementsByTagName('li');
+        // for (let doc =0; doc < select.length; doc++){
+        //     if (select[doc].dataset.value == direction_id) {
+        //         select[doc].classList.add('selected');
+        //         select[doc].classList.add('focus');
+        //         alert(select[doc].dataset.value);
+        //     }
+        // }
+        
+        for (let doc =0; doc < select.length; doc++){
+            if (select[doc].value == direction_id) {
+                select[doc].selected == true;
+            }
+            else {
+                select[doc].selected == false;
+            }
+        }     
+        $(`#direction_id option[value="${direction_id}"]`).attr('selected',true)       
+        let visualSelect = document.getElementsByClassName("nice-select")[0].children[1].getElementsByTagName('li');
+        for (let doc =0; doc < visualSelect.length; doc++){
+            if (visualSelect[doc].dataset.value == direction_id) {
+                visualSelect[doc].classList.add('selected');
+                visualSelect[doc].classList.add('focus');
+                document.getElementsByClassName("nice-select")[0].children[0].innerHTML = visualSelect[doc].innerHTML;
+            }
+            else {
+                visualSelect[doc].classList.remove('selected');
+                visualSelect[doc].classList.remove('focus');
+            }
+        } 
+        direction_id=null; 
         }
         // let form = document.forms.search;
         // console.log(form);
@@ -79,15 +121,7 @@ window.onload = function () {
                 }, body);
             }
         }
-        // document.cookie = "user1=John2; expires=Tue, 19 Jan 2038 03:14:07 GMT"; // обновляем только куки с именем 'user'
-        // console.log(getCookie('name'));
-        // console.log(getCookie('user'));
-        // if (getCookie('name')){
-        //     alert('андефаинд');
-        // }
-        // if (getCookie('user')){
-        //     alert('всё правильно')
-        // }
+        
 
     }
     if (window.location.toString().search("/admin/addprojects") != -1) {
@@ -101,7 +135,7 @@ window.onload = function () {
     l = els.length;
     for (var i = 0; i < l; i++) {
         els[i].onclick = function () {
-            showBlink(this.children[1].children[0].innerHTML);
+            showBlink(this.children[1].children[0].innerHTML, this.dataset.id);
             CatchProjectOfDirection(this.dataset.id);
 
         };
@@ -125,7 +159,10 @@ window.onload = function () {
 }
 
 /// ДЛЯ ПОДГРУЗКИ
-showBlink = function (direction) {
+showBlink = function (direction, datasetID) {
+    document.querySelector("#to-projects").children[0].href= url + `/view/projects?direction_id=${datasetID}`
+    document.cookie = `chosenDir=${datasetID}; path=/view/; expires=Tue, 19 Jan 2038 03:14:07 GMT`;
+    // строчка для перехода к выбранным проектам
     var chosenDirection = document.getElementById('top-proj-derec');
     chosenDirection.innerHTML = direction;
     var cardPlace = document.getElementById('top-cards-flex');
@@ -198,6 +235,7 @@ ShowProjects = function (response) {
     cardPlace.innerHTML = '';
     console.log(response);
     if (response.length < 1) {
+        
         var p = document.createElement('h5');
         p.innerHTML = "Ничего не найдено :("
         cardPlace.appendChild(p)
@@ -301,6 +339,7 @@ sendRequest = function (url, method, onloadHandler, params) {
 }
 
 renderPagination = function () {
+
     document.querySelector('#projects').innerHTML = '';
     document.querySelector("#loading").style.display = '';
     // if (form) {
@@ -310,15 +349,18 @@ renderPagination = function () {
     // else {
     //     alert('asd');   
     // }
+    
     let urlDir = url + '/view/search';
     let uri = new URL(urlDir);
     let form = document.forms.search;
     // console.log(form);
     var body = new FormData(form);
-
+    console.log(body);
     // console.log(body);
-
-
+    // if (direction_id) {
+    //     body.delete("direction_id");
+    //     body.append("direction_id",direction_id)
+    // }
     try {
         // var curpage = document.getElementById('current_page');
         page_val = this.value;
@@ -332,6 +374,7 @@ renderPagination = function () {
                 renderButtons(this.response[0], first = false);
             }
             else {
+            document.querySelector("#loading").style.display = 'none';
                 printEmpty();
             }
         }, body);
@@ -412,11 +455,12 @@ renderDirectionResponse = function (response) {
         // крепить к escheodindiv
         var likePlace = document.createElement('p');
         likePlace.classList.add('pro-like');
-        likePlace.innerHTML = response[3][i].likes;
+        
         var heart = document.createElement('i');
         heart.classList.add('bi');
         heart.classList.add('bi-heart');
         likePlace.appendChild(heart);
+        likePlace.innerHTML += response[3][i].likes;
         // крепить к escheodindiv
         var cardSemester = document.createElement('p');
         cardSemester.classList.add('pro-sem');
@@ -483,6 +527,7 @@ renderButtons = function (response) {
 }
 
 printEmpty = function () {
+
     var pagination = document.getElementById('pagination');
     pagination.style.display = 'none';
     var cardPlace = document.getElementById('projects');
