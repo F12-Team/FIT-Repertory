@@ -4,11 +4,8 @@
     <!-- <a id="button-like"></a> Добавить проставление лайков -->
     <div class="head-block">
         <div class="poster-block">
-<<<<<<< HEAD
             <img src="{{ project.poster[0].url }}" class="poster-block-img" alt="...">
-=======
             <img src="{% if project.poster %}{{ project.poster[0].url }}{% else %}Временно недоступен{% endif %}" class="poster-block-img" alt="...">
->>>>>>> 5ef947a6e6318a50dc2399adf00e71520985b886
             <!-- <iframe class="poster-block-img"
                 src="{% for info in project.info %}{% if info.type.name == 'Постер с GoogleDisk' %}{{ info.resource | replace('view', 'preview') }}{% endif %}{% endfor %}"
                 width="480" height="720" scrolling="no"></iframe> -->
