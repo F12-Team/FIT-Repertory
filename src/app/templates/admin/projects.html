@@ -54,6 +54,7 @@
                                                 <th>Направление</th>
                                                 <th>Лайки</th>
                                                 <th>Статус</th>
+                                                <th>Постер</th>
                                                 <th class="tab_buttons">Действия</th>
                                             </tr>
                                         </thead>
@@ -69,6 +70,7 @@
                                                 <td>{{ item.direction.name }}</td>
                                                 <td>{{ item.likes }}</td>
                                                 <td>{{ item.status.name }}</td>
+                                                <td>{% if item.poster %}ОК{% else %}НЕТ{% endif %}</td>
                                                 <td class="tab_buttons">
                                                     <!-- Потом по требования добавлю иконки или надписи -->
                                                     <a type="button" class="btn btn-danger"></a>
