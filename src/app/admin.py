@@ -100,7 +100,7 @@ def adduser():
 
 @bp.route('/updateproject/<project_id>', methods=['GET', 'POST'])
 def updateproject(project_id):
-    if request.method == 'GET':
+    if request.method == 'POST':
         project = Project.query.filter(Project.id == project_id).first()
 
         return render_template('admin/updateproject.html', project=project)
@@ -109,4 +109,4 @@ def updateproject(project_id):
         project = Project.query.filter(Project.id == project_id).first()
 
         flash('Проект успешно обновлён!', 'success')
-        return render_template('admin/projects.html')
+        return redirect(url_for('admin.projects'))
