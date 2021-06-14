@@ -11,7 +11,7 @@
                 <a id="clickme" class="bd-highlight search-link">Проект...</a>
                 <div class="bd-highlight align-items-center dropdown search-title" id="slider">
                     <!-- Выбор направления -->
-                    <select class="se" aria-label="Default select example" name="direction_id">
+                    <select class="se" aria-label="Default select example" name="direction_id" id="direction_id">
                         <option class="" selected value="">Направление</option>
                         {% for direction in directions %}
                         <option class="" value="{{ direction.id }}">{{ direction.name }}</option>
@@ -78,8 +78,9 @@
             
         </form>
     </div>
-    
-    <div class="loader" id="loading" style="display: none;">Loading...</div>
+    <div class="container">
+        <div class="loader" id="loading" style="display: none;">Loading...</div>
+    </div>
     <div class="some-proj" id="projects">
         
         <!-- <a class="to-project-link">
