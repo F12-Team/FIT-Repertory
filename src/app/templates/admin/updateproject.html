@@ -1,0 +1,20 @@
+{% extends 'admin/base_admin.html' %}
+
+{% block content_admin %}
+
+<form class="m-5 w-75" method="POST" enctype = "multipart/form-data">
+    <div class="mb-5 row">
+        <div class="col-md-2">Ссылка</div>
+        <div class="col-md-10">
+            <a href="{% for info in project.info %}{% if info.type.name == 'Постер с GoogleDisk' %}{{ info.resource }}{% endif %}{% endfor %}" target="_blank" rel="noopener noreferrer">{% for info in project.info %}{% if info.type.name == 'Постер с GoogleDisk' %}{{ info.resource }}{% endif %}{% endfor %}</a>
+        </div>
+    </div>
+    <div class="mb-5 row">
+        <input class="form-control form-control-lg" id="poster" type="file" name="file" >
+    </div>
+    <div class="mb-5 row">
+        <button type="submit" class="btn btn-primary mb-3">Сохранить</button>
+    </div>
+</form>
+
+{% endblock %}

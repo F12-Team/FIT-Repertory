@@ -6,6 +6,7 @@ from models import Direction, Group, Role, Status, Semester, Type, Student, User
 from auth import check_rights
 import bleach
 from app import db
+from tools import ImageSaver
 
 bp = Blueprint('admin', __name__, url_prefix='/admin')
 
@@ -96,3 +97,31 @@ def adduser():
     db.session.commit()
 
     return jsonify('complete add')
+
+@bp.route('/updateproject/<project_id>', methods=['GET', 'POST'])
+def updateproject(project_id):
+    if request.method == 'GET':
+        project = Project.query.filter(Project.id == project_id).first()
+
+        return render_template('admin/updateproject.html', project=project)
+
+    else:
+        project = Project.query.filter(Project.id == project_id).first()
+
+        f = request.files['file']
+        print(f)
+        img = None
+        if f and f.filename:
+            img_saver = ImageSaver(file=f, type_id=6)
+            img = img_saver.save()
+
+        if img == None:
+            flash(f'Нельзя добавить один постер к двум проектам!', 'danger')
+            return redirect(url_for('admin.projects'))
+        else:
+            project.poster.append(img)
+            db.session.add(project)
+            db.session.commit()
+
+        flash('Проект успешно обновлён!', 'success')
+        return redirect(url_for('admin.projects'))
