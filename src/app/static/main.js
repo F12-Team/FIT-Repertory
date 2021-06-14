@@ -243,7 +243,7 @@ ShowProjects = function (response) {
     else {
         console.log(response.length);
         for (i in response) {
-        console.log('виток');
+        console.log(response[i].poster[0].id);
         var cardContainer = document.createElement("a");
         cardContainer.classList.add("route-to-pr-page");
         cardContainer.classList.add("top-card");
@@ -253,7 +253,14 @@ ShowProjects = function (response) {
         card.classList.add("top-likes");
         
         var cardImage = document.createElement('img');
-        cardImage.src="https://img.pikbest.com/01/56/32/93KpIkbEsTjF8.jpg-0.jpg!bw700";
+        if (response[i].poster[0].id){
+            cardImage.src = url+ "/images/" + response[i].poster[0].id;
+        }
+        else {
+            cardImage.src= "https://img.pikbest.com/01/56/32/93KpIkbEsTjF8.jpg-0.jpg!bw700" ; 
+        }
+        
+        
         cardImage.classList.add('card-img-top');
         card.appendChild(cardImage);
         var likePlace = document.createElement('div');
