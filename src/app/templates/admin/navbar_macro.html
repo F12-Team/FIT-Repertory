@@ -1,0 +1,12 @@
+{% macro navbar(item_id=None) %}
+
+<div class="text-white text-left sidebar sticky-top" id="sidebar-wrapper">
+    <div class="list-group list-group-flush">
+        <a href="{{ url_for('admin.projects') }}" class="{% if request.path == url_for('admin.projects') %}active-href{% endif %}">Проекты</a> <!-- /admin/projects -->
+        <a href="{{ url_for('admin.users') }}" class="{% if request.path == url_for('admin.users') %}active-href{% endif %}">Пользователи</a> <!-- /admin/projects -->
+        <a href="{{ url_for('admin.groups') }}" class="{% if request.path == url_for('admin.groups') %}active-href{% endif %}">Группы</a> <!-- /admin/projects -->
+        <a href="{{ url_for('admin.semesters') }}" class="{% if request.path == url_for('admin.semesters') %}active-href{% endif %}">Семестры</a> <!-- /admin/projects -->
+    </div>
+</div>
+
+{% endmacro %}

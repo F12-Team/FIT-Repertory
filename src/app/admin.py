@@ -96,3 +96,17 @@ def adduser():
     db.session.commit()
 
     return jsonify('complete add')
+
+
+@bp.route('/updateproject/<project_id>', methods=['GET', 'POST'])
+def updateproject(project_id):
+    if request.method == 'GET':
+        project = Project.query.filter(Project.id == project_id).first()
+
+        return render_template('admin/updateproject.html', project=project)
+
+    else:
+        project = Project.query.filter(Project.id == project_id).first()
+
+        flash('Проект успешно обновлён!', 'success')
+        return render_template('admin/projects.html')
