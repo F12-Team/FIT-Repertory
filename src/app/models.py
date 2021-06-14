@@ -14,7 +14,7 @@ from sqlalchemy.ext.associationproxy import association_proxy
 
 pictures = db.Table('pictures',
                     db.Column('project_id', db.Integer, db.ForeignKey('projects.id'), primary_key=True),
-                    db.Column('type_id', db.Integer, db.ForeignKey('types.id'), primary_key=True),
+#                    db.Column('type_id', db.Integer, db.ForeignKey('types.id'), primary_key=True),
                     db.Column('image_id', db.String(128), db.ForeignKey('images.id'), primary_key=True))
 
 
@@ -234,6 +234,8 @@ class Project(db.Model, SerializerMixin):
     info = db.relationship('Info')
 
     techs = db.relationship('Technology', secondary=techs)
+
+    poster = db.relationship('Image',secondary=pictures)
 
 
     def __repr__(self):
