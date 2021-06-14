@@ -124,7 +124,7 @@ window.onload = function () {
         
 
     }
-    if (window.location.toString().search("/admin/addprojects") != -1) {
+    if (window.location.toString().search("/admin/projects") != -1) {
 
         document.getElementById('addProjectButton').onclick = addForm;
         document.getElementById('uploadProjects').onclick = uploadProjects;
@@ -221,9 +221,9 @@ CatchProjectOfDirection = async function (directionID) {
     body.append("direction_id", directionID);
 
     sendRequest(uri, 'POST', function () {
-
-        // setTimeout(() => ShowProjects(this.response), 10);
-        ShowProjects(this.response)
+        
+        setTimeout(() => ShowProjects(this.response), 10);
+        // ShowProjects(this.response)
     }, body);
 
 
@@ -241,9 +241,9 @@ ShowProjects = function (response) {
         cardPlace.appendChild(p)
     }
     else {
-
+        console.log(response.length);
         for (i in response) {
-
+        console.log('виток');
         var cardContainer = document.createElement("a");
         cardContainer.classList.add("route-to-pr-page");
         cardContainer.classList.add("top-card");
@@ -324,7 +324,7 @@ ShowProjects = function (response) {
             cardBody.appendChild(cardText);
             cardContainer.appendChild(cardBody);
 
-            cardPlace.appendChild(cardContainer);
+        // cardPlace.appendChild(cardContainer);
 
         }
     }
@@ -551,7 +551,7 @@ addForm = function () {
     cloneForm.name = `${Math.round(Math.random() * 10000)}`;
     cloneForm.id = `${Math.round(Math.random() * 10000)}`;
     var pArea = document.getElementById('project-area');
-    pArea.append(cloneForm);
+    pArea.insertBefore(cloneForm, pArea.children[pArea.children.length-2].nextElementSibling);
 
 }
 
@@ -570,7 +570,7 @@ uploadProjects = async function () {
 
     cloneForm.name = `${Math.round(Math.random() * 10000)}`;
     cloneForm.id = `${Math.round(Math.random() * 10000)}`;
-    button = document.getElementById('modal-footer')
+    button = document.getElementById('modal-footer');
     button.style.display = "none";
     var success = 0;
     var error = 0;
