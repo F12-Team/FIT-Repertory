@@ -243,7 +243,7 @@ ShowProjects = function (response) {
     else {
         console.log(response.length);
         for (i in response) {
-        console.log(response[i].poster[0].id);
+            
         var cardContainer = document.createElement("a");
         cardContainer.classList.add("route-to-pr-page");
         cardContainer.classList.add("top-card");
