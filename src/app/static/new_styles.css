@@ -389,6 +389,9 @@ a:hover {
 }
 .card-img-top{
     border-radius: 20px;
+    height: 510px;
+    max-width: 360px;
+    border: 1px solid #000;
 }
 
 .top-likes{
@@ -707,11 +710,11 @@ input[type="search"]::-webkit-search-results-decoration { display: none; }
     margin-right: 30px;
 }
 .poster-block-img{
-    max-height: 720px;
-    max-width: 720px;
     min-height: 360px;
+    max-width: 360px;
+    height: 510px;
     border-radius: 20px;
-     
+    border: 1px solid #000;
 }
 
 .info-block{
