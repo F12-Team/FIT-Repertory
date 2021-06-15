@@ -44,27 +44,26 @@
 </head>
 
 <body>
-    <div class="container">
-        <nav class="navbar navbar-expand-md navbar-light sticky-top">
+
+    <nav class="navbar navbar-expand-lg navbar-light sticky-top">
+        <div class="container">
             <a class="navbar-brand" href="{{ url_for('index') }}">FIT Repertory</a>
-            <button type="button" class="navbar-toggler" data-mdb-toggle="collapse" data-mdb-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false">
+            <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse"
+                aria-controls="navbarCollapse" aria-expanded="false">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            
-            <div class="collapse navbar-collapse d-flex justify-content-between" id="navbarCollapse">
-                <div class="navbar-nav">   
-                </div>
-                <div class="navbar-nav ml-auto">
-                    <div class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="{{ url_for('index') }}">Направления</a></div>
-                    <div class="nav-item">
-                        <a class="nav-link" href="https://pd.fit.mospolytech.ru/docs">Регламент</a>
-                    </div>
 
-                    <div class="nav-item">
+            <div class="collapse navbar-collapse" id="navbarCollapse">
+                <ul class="navbar-nav mr-auto d-flex align-items-center" style="margin-left: auto;">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="{{ url_for('index') }}">Направления</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="https://pd.fit.mospolytech.ru/docs">Регламент</a>
+                    </li>
+                    <li class="nav-item">
                         <a class="nav-link" href="https://pd.fit.mospolytech.ru/articles">Статьи</a>
-                    </div>
-                    
+                    </li>
                     {% if current_user.is_authenticated %}
                     <a class="btn btn-outline-success nav__button log-btn" type="submit"
                         href="{{ url_for('auth.logout') }}">Выйти</a>
@@ -74,12 +73,13 @@
                     {% endif %}
                     <a class="btn btn-primary nav__button last-btn" type="submit"
                         href="{{ url_for('view.projects') }}">Проекты</a>
-                </div>
+                </ul>
             </div>
-        </nav>
-    </div>
+        </div>
+    </nav>
+
     <script>
-        document.querySelector(".navbar-toggler").addEventListener("click", function(e){ document.querySelector("#navbarCollapse").classList.toggle("show"); }); 
+        document.querySelector(".navbar-toggler").addEventListener("click", function (e) { document.querySelector("#navbarCollapse").classList.toggle("show"); });
     </script>
 
     <a id="button-top"></a>
