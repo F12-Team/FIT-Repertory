@@ -1236,6 +1236,7 @@ input#checkbox.ok.form-check-input{
 
 
 @media only screen and (max-width: 1080px) {
+    
     div#navbarCollapse.collapse.navbar-collapse.show{
         width: 100%;
         background: #C9C8FF;
@@ -1392,6 +1393,11 @@ input#checkbox.ok.form-check-input{
 
     .top-card{
         width: 90%;
+    }
+
+    img, svg {
+        vertical-align: middle;
+        width: 100% !important;
     }
 
   }
