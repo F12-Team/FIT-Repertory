@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<div class="container mp-cont">
+<div class="container mp-cont ">
     <div class="derec__block">
         <div class="site-name">
             <div class="d-flex flex-column bd-highlight">
@@ -30,6 +30,24 @@
                 </div>
             </div>
         </div>
+        <div class="mobile-cards-block d-none">
+            <div class="send_proj_el">
+                <div class="send_proj_name d-block">
+                    <p></p>
+                    <div class="d-flex justify-content-center">
+                        <select class="send_select index-sel" aria-label="Default select example" name="curator_id">
+                            <option class="" selected>Выберите направление</option>
+                            {% for direction in directions%}
+                            <option class="" value="">{{ direction.name }}
+                            </option>
+                            {% endfor %}
+                        </select>
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
     </div>
     <div class="top_proj_block">
         <div class="info-block1 d-flex justify-content-between">
@@ -38,14 +56,15 @@
                     <div class="bd-highlight">
                         <p class="top-proj-name">Топ 9 проектов</p>
                     </div>
-                    <div class="bd-highlight">
+                    <div class="bd-highlight top-proj-name-desc">
                         <p class="top-proj-derec" id="top-proj-derec">Все направления</p>
                     </div>
                 </div>
             </div>
             <div class="derec-btn">
-                <div id="to-projects" class="d-flex align-items-start flex-column bd-highlight"><a href="{{ url_for('view.projects') }}"
-                        class="btn btn-primary to-all-proj"><i class="bi bi-search mx-2"></i>Ко всем проектам</a></div>
+                <div id="to-projects" class="d-flex align-items-start flex-column bd-highlight"><a
+                        href="{{ url_for('view.projects') }}" class="btn btn-primary to-all-proj"><i
+                            class="bi bi-search mx-2"></i>Ко всем проектам</a></div>
                 <!-- Обновить переход на страницу со всеми проектами с фильтром направления -->
             </div>
         </div>
@@ -58,7 +77,8 @@
                         {% if item.poster %}
                         <img src="{{ item.poster[0].url }}" class="poster-block-img" alt="...">
                         {% else %}
-                        <img src="https://img.pikbest.com/01/56/32/93KpIkbEsTjF8.jpg-0.jpg!bw700" class=" card-img-top" alt="...">
+                        <img src="https://img.pikbest.com/01/56/32/93KpIkbEsTjF8.jpg-0.jpg!bw700" class=" card-img-top"
+                            alt="...">
                         {% endif %}
                         <!-- <iframe class="poster-block-img" src="{% for info in item.info %}{% if info.type.name == 'Постер с GoogleDisk' %}{{ info.resource | replace('view', 'preview') }}{% endif %}{% endfor %}" width="480" height="720" scrolling="no"></iframe> -->
                         <div class="bott-right">

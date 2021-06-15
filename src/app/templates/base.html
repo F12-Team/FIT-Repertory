@@ -45,16 +45,31 @@
 
 <body>
 
-    <nav class="navbar navbar-expand-lg navbar-light sticky-top">
-        <div class="container">
+    <nav class="navbar navbar-expand-lg navbar-light">
+        <div class="container nav-width">
             <a class="navbar-brand" href="{{ url_for('index') }}">FIT Repertory</a>
-            <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse"
-                aria-controls="navbarCollapse" aria-expanded="false">
-                <span class="navbar-toggler-icon"></span>
+            <button class="opennav d-none" id="opennav">
+                <span class="navbar-toggler-icon"><i class="bi bi-list" style="font-size: 30px;"></i></span>
             </button>
+            <!-- <button  class="navbar-toggler" id="opennav">
+                <span class="navbar-toggler-icon"><i class="bi bi-list" style="font-size: 30px;"></i></span>
+            </button> -->
 
             <div class="collapse navbar-collapse" id="navbarCollapse">
                 <ul class="navbar-nav mr-auto d-flex align-items-center" style="margin-left: auto;">
+                    <li class="nav-item-icon d-none" style="margin-bottom: 50px;">
+                        <a class="nav-link active" aria-current="page" id="exitnav"><i
+                                class="bi bi-x-lg" style="color: #4A46FF;"></i></a>
+                    </li>
+                    <script>
+                        // $(button).addClass("active")
+                        $("#opennav").click(function () {
+                            $("#navbarCollapse").show("fast");
+                        });
+                        $("#exitnav").click(function () {
+                            $("#navbarCollapse").hide("fast");
+                        });
+                    </script>
                     <li class="nav-item">
                         <a class="nav-link active" aria-current="page" href="{{ url_for('index') }}">Направления</a>
                     </li>

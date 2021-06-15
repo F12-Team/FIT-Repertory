@@ -116,6 +116,16 @@ a:hover {
     background-color: #FFFFFF;
 }
 
+.navbar-toggler:focus,
+.navbar-toggler:active,
+.navbar-toggler-icon:focus {
+    outline: none;
+    box-shadow: none;
+}
+.navbar-light .navbar-toggler-icon {
+    background-image:none;
+  }
+
 
 /*Button on-top styles*/
 
@@ -406,8 +416,8 @@ a:hover {
     position: absolute;
     padding: 0 20px;
     padding-top: 10px;
-    bottom: -1px;
-    right: -1px;
+    bottom: 1px;
+    right: 2px;
     background: rgba(255, 255, 255, 0.7);
     border-radius: 20px 0px;
 }
@@ -1223,3 +1233,165 @@ input#checkbox.ok.form-check-input{
     height: 5em;
   }
 }
+
+
+@media only screen and (max-width: 1080px) {
+    div#navbarCollapse.collapse.navbar-collapse.show{
+        width: 100%;
+        background: #C9C8FF;
+        padding-top: 50px;
+    }
+
+    .navbar-collapse {
+        content: "";
+        position: absolute;
+        left: calc((100% - 100vw) / 2);
+        bottom: 0;
+        height: 100vh;
+        width: 100vw;
+        background: #C9C8FF;
+        z-index: 1100;
+        top: 0;
+        padding-top: 50px;
+    }
+
+    .opennav{
+        display: block !important;
+        padding: .25rem .75rem;
+        font-size: 1.25rem;
+        line-height: 1;
+        background-color: transparent;
+        border: 1px solid transparent;
+        border-radius: .25rem;
+        background: #4A46FF;
+        
+    }
+    .opennav i{
+        color: #fff;
+        font-weight: 600;
+    }
+    .nav-item-icon{
+        display: block !important;
+    }
+    .nav-item{
+        margin-left: 0;
+        margin-bottom: 30px;
+    }
+
+    .nav-link{
+        color: #4A46FF !important;
+    }
+
+    .nav__button{
+        margin-left: 0;
+        margin-bottom: 30px;
+    }
+
+    .nav-width{
+        width:90%;
+    }
+    .navbar-light .navbar-toggler{
+        border-color:#4A46FF;
+        background: #4A46FF;
+    }
+
+    .navbar-light .navbar-toggler{
+        color: #fff;
+    }
+
+    #button-top{
+        display: none;
+    }
+
+    .cprt-ic-block{
+        justify-content: center;
+        margin-bottom: 30px;
+    }
+    /* index page */
+
+    .site-name{
+        margin-top: 10px;
+    }
+    .tag-1{
+        text-align: center;
+        font-size: 40px;
+    }
+    .tag-2{
+        text-align: center;
+        font-size: 26px;
+    }
+    .cards-flex{
+        display: none;
+    }
+
+    .card-body{
+        padding: 0;
+    }
+    
+    .cards-block{
+        display: none;
+    }
+    .mobile-cards-block{
+        display: inline !important;
+    }
+
+    
+    
+    .nice-select.index-sel{
+        color:#4A46FF;
+        border: 1px solid #4A46FF;
+        width: 90%;
+        display: flex;
+        justify-content: center;
+        border-radius: 10px;
+        font-size: 20px !important;
+    }
+
+    .nice-select.index-sel .list{
+        margin: 0 auto;
+        overflow-wrap: break-word;
+        width: 100%;
+    }
+    .nice-select.index-sel .option{
+        word-break: break-all;
+        overflow: hidden;
+    }
+
+    span.current{
+        box-sizing: border-box;
+        width: auto;
+        max-width:100%;
+        overflow-wrap: break-word;
+
+    }
+
+    .top_proj_block{
+        margin-top: 60px;
+    }
+
+    .send_proj_el{
+        margin-right: 0;
+    }
+
+    .info-block1{
+        display: block !important;
+    }
+    .top-proj-name{
+        text-align: center;
+    }
+
+    .top-proj-name-desc{
+        display: none;
+
+    }
+
+    .derec-btn{
+        display: flex;
+        justify-content: center;
+    }
+
+    .top-card{
+        width: 90%;
+    }
+
+  }
