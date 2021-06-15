@@ -364,7 +364,7 @@ sendRequest = function (url, method, onloadHandler, params) {
 }
 
 renderPagination = function () {
-
+    $('html, body').animate({ scrollTop: 0 }, '300');
     document.querySelector('#projects').innerHTML = '';
     document.querySelector("#loading").style.display = '';
     // if (form) {
@@ -397,6 +397,7 @@ renderPagination = function () {
                 renderDirectionResponse(this.response);
                 console.log(this.response);
                 renderButtons(this.response[0], first = false);
+                
             }
             else {
                 document.querySelector("#loading").style.display = 'none';
