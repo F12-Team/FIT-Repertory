@@ -13,7 +13,7 @@
 
 html,
 body {
-    font-family: 'Montserat', sans-serif !important;
+    font-family: 'Gilroy' !important;
     color: #000;
 }
 
@@ -1287,8 +1287,8 @@ input#checkbox.ok.form-check-input{
         margin-left: 0;
         margin-bottom: 30px;
         -webkit-appearance: none;
--moz-appearance: none;
-appearance: none;
+        -moz-appearance: none;
+        appearance: none;
     }
 
     .nav-width{
@@ -1342,7 +1342,7 @@ appearance: none;
     
     
     .nice-select.index-sel{
-        color:#4A46FF;
+        color:#000;
         border: 1px solid #4A46FF;
         width: 90%;
         display: flex;
@@ -1355,17 +1355,24 @@ appearance: none;
         margin: 0 auto;
         overflow-wrap: break-word;
         width: 100%;
+        
     }
-    .nice-select.index-sel .option{
-        word-break: break-all;
-        overflow: hidden;
+
+    li.option{
+        white-space: normal;
+        padding: 10px 0;
     }
+    /* .nice-select.index-sel .option{
+                overflow: hidden;
+    } */
 
     span.current{
         box-sizing: border-box;
         width: auto;
         max-width:100%;
-        overflow-wrap: break-word;
+        text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
 
     }
 
