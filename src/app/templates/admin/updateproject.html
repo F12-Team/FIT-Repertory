@@ -2,19 +2,89 @@
 
 {% block content_admin %}
 
-<form class="m-5 w-75" method="POST" enctype = "multipart/form-data">
-    <div class="mb-5 row">
-        <div class="col-md-2">Ссылка</div>
-        <div class="col-md-10">
-            <a href="{% for info in project.info %}{% if info.type.name == 'Постер с GoogleDisk' %}{{ info.resource }}{% endif %}{% endfor %}" target="_blank" rel="noopener noreferrer">{% for info in project.info %}{% if info.type.name == 'Постер с GoogleDisk' %}{{ info.resource }}{% endif %}{% endfor %}</a>
-        </div>
+<form method="POST" enctype="multipart/form-data" class="w-75 m-5">
+
+    <div class="input-group mb-3">
+        <span class="input-group-text" id="name" name="name">Название проекта</span>
+        <input id="name" type="text" class="form-control" placeholder="Username" aria-label="Username"
+            aria-describedby="name" value="{{ project.name }}">
     </div>
-    <div class="mb-5 row">
-        <input class="form-control form-control-lg" id="poster" type="file" name="file" >
+
+    <div class="input-group mb-3">
+        <span class="input-group-text">Краткое описание</span>
+        <textarea id="short_description" class="form-control" aria-label="Краткое описание"
+            style="height: 100px">{{ project.short_description }}</textarea>
     </div>
-    <div class="mb-5 row">
-        <button type="submit" class="btn btn-primary mb-3">Сохранить</button>
+
+    <div class="input-group mb-3">
+        <span class="input-group-text">Полное описание</span>
+        <textarea id="description" class="form-control" aria-label="Полное описание"
+            style="height: 250px">{{ project.description }}</textarea>
     </div>
+
+    <div class="input-group mb-3">
+        <label class="input-group-text" for="status_id">Статус</label>
+        <select class="form-select" id="status_id">
+            <option value=0>Выбрать...</option>
+            {% for status in statuses %}
+            <option value="{{ status.id }}" {% if status.id == project.status_id %}selected{% endif %}>{{ status.name }}</option>
+            {% endfor %}
+        </select>
+    </div>
+
+    <div class="input-group mb-3">
+        <label class="input-group-text" for="semester_id">Семестр</label>
+        <select class="form-select" id="semester_id">
+            <option value=0>Выбрать...</option>
+            {% for semester in semesters %}
+            <option value="{{ semester.id }}" {% if semester.id == project.semester_id %}selected{% endif %}>{{ semester.name }}</option>
+            {% endfor %}
+        </select>
+    </div>
+
+    <div class="input-group mb-3">
+        <label class="input-group-text" for="direction_id">Напрвление</label>
+        <select class="form-select" id="direction_id">
+            <option value=0>Выбрать...</option>
+            {% for direction in directions %}
+            <option value="{{ direction.id }}" {% if direction.id == project.direction_id %}selected{% endif %}>{{ direction.name }}</option>
+            {% endfor %}
+        </select>
+    </div>
+
+    <div class="input-group mb-3">
+        <label class="input-group-text" for="teamlead_id">Тимлид</label>
+        <select class="form-select" id="teamlead_id">
+            <option value=0>Выбрать...</option>
+            {% for teamlead in teamleads %}
+            <option value="{{ teamlead.id }}" {% if teamlead.id == project.teamlead_id %}selected{% endif %}>{{ teamlead.full_name }}</option>
+            {% endfor %}
+        </select>
+    </div>
+
+    <div class="input-group mb-3">
+        <label class="input-group-text" for="curator_id">Куратор</label>
+        <select class="form-select" id="curator_id">
+            <option value=0>Выбрать...</option>
+            {% for curator in curators %}
+            <option value="{{ curator.id }}" {% if curator.id == project.curator_id %}selected{% endif %}>{{ curator.full_name }}</option>
+            {% endfor %}
+        </select>
+    </div>
+
+    <div class="input-group mb-3">
+        <span class="input-group-text">Технологии</span>
+        <textarea id="techs" class="form-control" aria-label="With textarea"
+            style="height: 100px">{% for tech in project.techs %}{{ tech.name }}{{ ", " if not loop.last else "" }}{% endfor %}</textarea>
+    </div>
+
+    <div class="input-group mb-3">
+        <label class="input-group-text" for="inputGroupFile01">Постер</label>
+        <input class="form-control form-control-lg" id="poster" type="file" name="file" {% if project.poster[0] %}disabled{% endif %}>
+    </div>
+
+    <button type="submit" class="btn btn-primary mb-3 w-100">Сохранить</button>
+
 </form>
 
 {% endblock %}

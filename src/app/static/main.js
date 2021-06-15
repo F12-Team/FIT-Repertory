@@ -12,11 +12,16 @@ function sleep(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
 }
 $(document).ready(function () {
-    $('select').niceSelect();
+    if (window.location.toString().search("/admin/updateproject") == -1) {
+        $('select').niceSelect();
+    }
 });
 
 window.onload = function () {
-    $('select').niceSelect('update');
+
+    if (window.location.toString().search("/admin/updateproject") == -1) {
+        $('select').niceSelect('update');
+    }
 
 
     if (window.location.toString().search("/view/projects") != -1) {
@@ -136,7 +141,7 @@ window.onload = function () {
         els[i].onclick = function () {
             // baseUrl = window.location.href.split("/")[0];
             // window.history.pushState('name', '', baseUrl);
-            
+
             showBlink(this.children[1].children[0].innerHTML, this.dataset.id);
             CatchProjectOfDirection(this.dataset.id);
         };
@@ -241,7 +246,7 @@ CatchProjectOfDirection = async function (directionID) {
         setTimeout(() => ShowProjects(this.response), 10);
         // ShowProjects(this.response)
     }, body);
-         
+
 }
 
 /// ДЛЯ ГЛАВНОЙ СТРАНИЦЫ
@@ -397,7 +402,7 @@ renderPagination = function () {
                 renderDirectionResponse(this.response);
                 console.log(this.response);
                 renderButtons(this.response[0], first = false);
-                
+
             }
             else {
                 document.querySelector("#loading").style.display = 'none';
