@@ -36,13 +36,11 @@ class ProjectsFilterForSearch:
 
 
 class ImageSaver:
-    print('init')
     def __init__(self, file, type_id):
         self.file = file
         self.type_id = type_id
 
     def save(self):
-        print('saving')
         self.img = self.__find_by_md5_hash()
         if self.img is not None:
             return None

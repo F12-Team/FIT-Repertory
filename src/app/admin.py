@@ -102,26 +102,54 @@ def adduser():
 def updateproject(project_id):
     if request.method == 'GET':
         project = Project.query.filter(Project.id == project_id).first()
+        teamleads = User.query.filter(User.role_id == 3).all()
+        curators = User.query.filter(User.role_id == 2).all()
+        directions = Direction.query.all()
+        semesters = Semester.query.all()
+        statuses = Status.query.all()
 
-        return render_template('admin/updateproject.html', project=project)
+        return render_template('admin/updateproject.html', project=project, teamleads=teamleads, curators=curators, directions=directions, semesters=semesters, statuses=statuses)
 
-    else:
+    if request.method == 'POST':
         project = Project.query.filter(Project.id == project_id).first()
 
-        f = request.files['file']
-        print(f)
-        img = None
-        if f and f.filename:
-            img_saver = ImageSaver(file=f, type_id=6)
-            img = img_saver.save()
+        print(request.form.to_dict())
 
-        if img == None:
-            flash(f'Нельзя добавить один постер к двум проектам!', 'danger')
-            return redirect(url_for('admin.projects'))
-        else:
-            project.poster.append(img)
-            db.session.add(project)
-            db.session.commit()
+        name = request.form.get('name')
+        short_description = request.form.get('short_description')
+        description = request.form.get('description')
+        status_id = request.form.get('status_id')
+        semester_id = request.form.get('semester_id')
+        direction_id = request.form.get('direction_id')
+        teamlead_id = request.form.get('teamlead_id')
+        curator_id = request.form.get('curator_id')
+        techs = request.form.get('techs')
+
+        print(name)
+        print(short_description)
+        print(description)
+        print(status_id)
+        print(semester_id)
+        print(direction_id)
+        print(teamlead_id)
+        print(curator_id)
+        print(techs)
+
+
+        # f = request.files['file']
+        # print(f)
+        # img = None
+        # if f and f.filename:
+        #     img_saver = ImageSaver(file=f, type_id=6)
+        #     img = img_saver.save()
+
+        # if img == None:
+        #     flash(f'Нельзя добавить один постер к двум проектам!', 'danger')
+        #     return redirect(url_for('admin.projects'))
+        # else:
+        #     project.poster.append(img)
+        #     db.session.add(project)
+        #     db.session.commit()
 
         flash('Проект успешно обновлён!', 'success')
         return redirect(url_for('admin.projects'))

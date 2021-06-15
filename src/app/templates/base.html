@@ -58,8 +58,8 @@
             <div class="collapse navbar-collapse" id="navbarCollapse">
                 <ul class="navbar-nav mr-auto d-flex align-items-center" style="margin-left: auto;">
                     <li class="nav-item-icon d-none" style="margin-bottom: 50px;">
-                        <a class="nav-link active" aria-current="page" id="exitnav"><i
-                                class="bi bi-x-lg" style="color: #4A46FF;"></i></a>
+                        <a class="nav-link active" aria-current="page" id="exitnav"><i class="bi bi-x-lg"
+                                style="color: #4A46FF;"></i></a>
                     </li>
                     <script>
                         // $(button).addClass("active")
@@ -97,6 +97,18 @@
         document.querySelector(".navbar-toggler").addEventListener("click", function (e) { document.querySelector("#navbarCollapse").classList.toggle("show"); });
     </script>
 
+    {% with messages = get_flashed_messages(with_categories=true) %}
+    {% for category, msg in messages %}
+    <div class="d-flex justify-content-center">
+        <div class="w-50 alert alert-{{ category }} alert-dismissible fade show d-flex justify-content-center" role="alert">
+            {{ msg }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    </div>
+
+    {% endfor %}
+    {% endwith %}
+
     <a id="button-top"></a>
 
     <div class="container my-5 mw-100 p-0 m-0 mt-0">
@@ -104,16 +116,6 @@
         <h1>Содержимое по умолчанию</h1>
         {% endblock %}
     </div>
-
-    {% with messages = get_flashed_messages(with_categories=true) %}
-    {% for category, msg in messages %}
-    <div class="alert alert-{{ category }} alert-dismissible fade show" role="alert">
-        {{ msg }}
-        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-    </div>
-    {% endfor %}
-    {% endwith %}
-
 
     <footer class="footer">
         <div class="container">
