@@ -36,6 +36,7 @@ class ProjectsFilterForSearch:
 
 
 class ImageSaver:
+    print('init')
     def __init__(self, file, type_id):
         self.file = file
         self.type_id = type_id

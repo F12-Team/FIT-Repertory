@@ -1,9 +1,11 @@
+var currDir = false;
 function getCookie(name) {
     let matches = document.cookie.match(new RegExp(
         "(?:^|; )" + name.replace(/([\.$?*|{}\(\)\[\]\\\/\+^])/g, '\\$1') + "=([^;]*)"
     ));
     return matches ? decodeURIComponent(matches[1]) : undefined;
 }
+
 let url = window.location.origin;
 // Для задержки между загрузкои проектов
 function sleep(ms) {
@@ -14,9 +16,61 @@ $(document).ready(function () {
 });
 
 window.onload = function () {
-
     $('select').niceSelect('update');
+    
+
     if (window.location.toString().search("/view/projects") != -1) {
+        if (window.location.toString().indexOf("?") != -1){
+        baseUrl = window.location.href.split("?")[0];
+        direction_id = window.location.href.split("=")[1];
+        window.history.pushState('name', '', baseUrl);
+        }
+        document.querySelector('#search-addon').onclick = function() {
+            if (document.querySelector('#proj-name').value.length > 0)
+            {
+            document.querySelector("#clickme").innerHTML = document.querySelector('#proj-name').value;
+            }
+            else {
+                document.querySelector("#clickme").innerHTML =  'Проект...';
+            }
+
+        }
+        // let select = document.getElementsByClassName("nice-select")[0].children[1].getElementsByTagName('li');
+        if (direction_id) {
+        let select = document.querySelector("#direction_id").getElementsByTagName('option');
+
+        // let select = document.getElementsByClassName("nice-select")[0].children[1].getElementsByTagName('li');
+        // for (let doc =0; doc < select.length; doc++){
+        //     if (select[doc].dataset.value == direction_id) {
+        //         select[doc].classList.add('selected');
+        //         select[doc].classList.add('focus');
+        //         alert(select[doc].dataset.value);
+        //     }
+        // }
+        
+        for (let doc =0; doc < select.length; doc++){
+            if (select[doc].value == direction_id) {
+                select[doc].selected == true;
+            }
+            else {
+                select[doc].selected == false;
+            }
+        }     
+        $(`#direction_id option[value="${direction_id}"]`).attr('selected',true)       
+        let visualSelect = document.getElementsByClassName("nice-select")[0].children[1].getElementsByTagName('li');
+        for (let doc =0; doc < visualSelect.length; doc++){
+            if (visualSelect[doc].dataset.value == direction_id) {
+                visualSelect[doc].classList.add('selected');
+                visualSelect[doc].classList.add('focus');
+                document.getElementsByClassName("nice-select")[0].children[0].innerHTML = visualSelect[doc].innerHTML;
+            }
+            else {
+                visualSelect[doc].classList.remove('selected');
+                visualSelect[doc].classList.remove('focus');
+            }
+        } 
+        direction_id=null; 
+        }
         // let form = document.forms.search;
         // console.log(form);
         renderPagination();
@@ -67,18 +121,10 @@ window.onload = function () {
                 }, body);
             }
         }
-        // document.cookie = "user1=John2; expires=Tue, 19 Jan 2038 03:14:07 GMT"; // обновляем только куки с именем 'user'
-        // console.log(getCookie('name'));
-        // console.log(getCookie('user'));
-        // if (getCookie('name')){
-        //     alert('андефаинд');
-        // }
-        // if (getCookie('user')){
-        //     alert('всё правильно')
-        // }
+        
 
     }
-    if (window.location.toString().search("/admin/addprojects") != -1) {
+    if (window.location.toString().search("/admin/projects") != -1) {
 
         document.getElementById('addProjectButton').onclick = addForm;
         document.getElementById('uploadProjects').onclick = uploadProjects;
@@ -89,7 +135,7 @@ window.onload = function () {
     l = els.length;
     for (var i = 0; i < l; i++) {
         els[i].onclick = function () {
-            showBlink(this.children[1].children[0].innerHTML);
+            showBlink(this.children[1].children[0].innerHTML, this.dataset.id);
             CatchProjectOfDirection(this.dataset.id);
 
         };
@@ -113,7 +159,10 @@ window.onload = function () {
 }
 
 /// ДЛЯ ПОДГРУЗКИ
-showBlink = function (direction) {
+showBlink = function (direction, datasetID) {
+    document.querySelector("#to-projects").children[0].href= url + `/view/projects?direction_id=${datasetID}`
+    document.cookie = `chosenDir=${datasetID}; path=/view/; expires=Tue, 19 Jan 2038 03:14:07 GMT`;
+    // строчка для перехода к выбранным проектам
     var chosenDirection = document.getElementById('top-proj-derec');
     chosenDirection.innerHTML = direction;
     var cardPlace = document.getElementById('top-cards-flex');
@@ -172,9 +221,9 @@ CatchProjectOfDirection = async function (directionID) {
     body.append("direction_id", directionID);
 
     sendRequest(uri, 'POST', function () {
-
-        // setTimeout(() => ShowProjects(this.response), 10);
-        ShowProjects(this.response)
+        
+        setTimeout(() => ShowProjects(this.response), 10);
+        // ShowProjects(this.response)
     }, body);
 
 
@@ -186,13 +235,64 @@ ShowProjects = function (response) {
     cardPlace.innerHTML = '';
     console.log(response);
     if (response.length < 1) {
+        
         var p = document.createElement('h5');
         p.innerHTML = "Ничего не найдено :("
         cardPlace.appendChild(p)
     }
     else {
-
+        console.log(response.length);
         for (i in response) {
+            
+        var cardContainer = document.createElement("a");
+        cardContainer.classList.add("route-to-pr-page");
+        cardContainer.classList.add("top-card");
+        cardContainer.href = url + '/view/project/' + response[i].id;
+        /// место с картинкои и лаиками
+        var card = document.createElement("div"); 
+        card.classList.add("top-likes");
+        
+        var cardImage = document.createElement('img');
+        try {
+        cardImage.src = url+ "/images/" + response[i].poster[0].id;
+        }
+        catch(e) {
+
+        cardImage.src= "https://img.pikbest.com/01/56/32/93KpIkbEsTjF8.jpg-0.jpg!bw700" ; 
+        }
+        
+        
+        cardImage.classList.add('card-img-top');
+        card.appendChild(cardImage);
+        var likePlace = document.createElement('div');
+        likePlace.classList.add('bott-right');
+        var likeCount = document.createElement('p');
+        likeCount.innerHTML = response[i].likes;
+        var heart = document.createElement('i');
+        heart.classList.add('bi');
+        heart.classList.add('bi-heart');
+        likeCount.appendChild(heart);
+        likePlace.appendChild(likeCount);
+        card.appendChild(likePlace);
+        cardContainer.appendChild(card);
+        /// Название и описание проекта снизу карточки
+        var cardBody = document.createElement('div');
+        cardBody.classList.add('card-body');
+        
+        var cardTitle = document.createElement('h5');
+        cardTitle.classList.add('card-title');
+        cardTitle.classList.add('fw-bold');
+        cardTitle.innerHTML = response[i].name;
+        
+        cardBody.appendChild(cardTitle);
+        var cardText = document.createElement('p');
+        cardText.classList.add('card-text');
+        cardText.innerHTML = response[i].short_description;
+        cardBody.appendChild(cardText);
+        cardContainer.appendChild(cardBody);
+        
+        cardPlace.appendChild(cardContainer);
+
             var cardContainer = document.createElement("a");
             cardContainer.classList.add("route-to-pr-page");
             cardContainer.classList.add("top-card");
@@ -232,7 +332,7 @@ ShowProjects = function (response) {
             cardBody.appendChild(cardText);
             cardContainer.appendChild(cardBody);
 
-            cardPlace.appendChild(cardContainer);
+        // cardPlace.appendChild(cardContainer);
 
         }
     }
@@ -247,6 +347,9 @@ sendRequest = function (url, method, onloadHandler, params) {
 }
 
 renderPagination = function () {
+
+    document.querySelector('#projects').innerHTML = '';
+    document.querySelector("#loading").style.display = '';
     // if (form) {
     //     alert('!!!!');
     //     document.getElementById('name').value = form.name.value;
@@ -254,32 +357,39 @@ renderPagination = function () {
     // else {
     //     alert('asd');   
     // }
+    
     let urlDir = url + '/view/search';
     let uri = new URL(urlDir);
     let form = document.forms.search;
     // console.log(form);
     var body = new FormData(form);
+    console.log(body);
     // console.log(body);
-
-
+    // if (direction_id) {
+    //     body.delete("direction_id");
+    //     body.append("direction_id",direction_id)
+    // }
     try {
         // var curpage = document.getElementById('current_page');
         page_val = this.value;
         body.append("page", page_val);
         sendRequest(uri, 'POST', function () {
+            console.log(this.response);
             if (this.response[3].length > 0) {
+                document.querySelector("#loading").style.display = 'none';
                 renderDirectionResponse(this.response);
                 console.log(this.response);
                 renderButtons(this.response[0], first = false);
             }
             else {
+            document.querySelector("#loading").style.display = 'none';
                 printEmpty();
             }
         }, body);
 
     }
     catch (e) {
-        alert('ТРЕВОГА, НА СЕРВЕРЕ ЗАМЕЧЕНЫ УКРАИНЦЫ. МАССОВАЯ ЭВАКУАЦИЯ');
+        // alert('ТРЕВОГА, НА СЕРВЕРЕ ЗАМЕЧЕНЫ УКРАИНЦЫ. МАССОВАЯ ЭВАКУАЦИЯ');
         sendRequest(uri, 'POST', function () {
             renderDirectionResponse(this.response);
             renderButtons(this.response[0]);
@@ -353,11 +463,12 @@ renderDirectionResponse = function (response) {
         // крепить к escheodindiv
         var likePlace = document.createElement('p');
         likePlace.classList.add('pro-like');
-        likePlace.innerHTML = response[3][i].likes;
+        
         var heart = document.createElement('i');
         heart.classList.add('bi');
         heart.classList.add('bi-heart');
         likePlace.appendChild(heart);
+        likePlace.innerHTML += response[3][i].likes;
         // крепить к escheodindiv
         var cardSemester = document.createElement('p');
         cardSemester.classList.add('pro-sem');
@@ -405,7 +516,7 @@ renderButtons = function (response) {
             li.value = response.iter_pages[i];
         }
         a.classList.add('page-link');
-        a.innerHTML = response.iter_pages[i];
+        response.iter_pages[i] == null ? a.innerHTML = '...' : a.innerHTML = response.iter_pages[i];
         a.onclick = renderPagination;
         a.value = response.iter_pages[i];
         li.appendChild(a);
@@ -424,6 +535,7 @@ renderButtons = function (response) {
 }
 
 printEmpty = function () {
+
     var pagination = document.getElementById('pagination');
     pagination.style.display = 'none';
     var cardPlace = document.getElementById('projects');
@@ -447,7 +559,7 @@ addForm = function () {
     cloneForm.name = `${Math.round(Math.random() * 10000)}`;
     cloneForm.id = `${Math.round(Math.random() * 10000)}`;
     var pArea = document.getElementById('project-area');
-    pArea.append(cloneForm);
+    pArea.insertBefore(cloneForm, pArea.children[pArea.children.length-2].nextElementSibling);
 
 }
 
@@ -455,6 +567,7 @@ uploadProjects = async function () {
     document.getElementById('uploadProjects').onclick = function () {
         return false;
     }
+    let form = document.forms[document.forms.length - 1];
     forms = document.forms;
     cloneForm = forms[0].cloneNode(true);
     cloneForm.elements.semester_id.value = form.elements.semester_id.value;
@@ -466,19 +579,20 @@ uploadProjects = async function () {
 
     cloneForm.name = `${Math.round(Math.random() * 10000)}`;
     cloneForm.id = `${Math.round(Math.random() * 10000)}`;
-    button = document.getElementById('modal-footer')
+    button = document.getElementById('modal-footer');
     button.style.display = "none";
     var success = 0;
     var error = 0;
     console.log(forms);
     // CountProjects = document.getElementById('uploadPlaceholder');
     var onDelete = []
+    let formLength = forms.length;
     for (var i = 0; i < forms.length; i++) {
 
         let urlDir = url + '/admin/addproject';
         let uri = new URL(urlDir);
         var body = new FormData(forms[i]);
-        await sleep(2000);
+        await sleep(1000);
         if (body.get('checkbox')) {
         }
         else {

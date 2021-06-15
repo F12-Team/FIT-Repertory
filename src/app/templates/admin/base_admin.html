@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+{% from 'admin/navbar_macro.html' import navbar %}
+
+{% block content %}
+<div style="flex-grow: 2" class="d-flex" id="wrapper">
+    {{ navbar() }}
+    {% block content_admin %}
+    
+    {% endblock %}
+</div>
+{% endblock %}
