@@ -1349,6 +1349,7 @@ input#checkbox.ok.form-check-input{
         justify-content: center;
         border-radius: 10px;
         font-size: 20px !important;
+        font-family: Gilroy;
     }
 
     .nice-select.index-sel .list{
@@ -1371,9 +1372,9 @@ input#checkbox.ok.form-check-input{
         width: auto;
         max-width:100%;
         text-overflow: ellipsis;
-    overflow: hidden;
-    white-space: nowrap;
-
+        overflow: hidden;
+        white-space: nowrap;
+        color: #4A46FF;
     }
 
     .top_proj_block{
