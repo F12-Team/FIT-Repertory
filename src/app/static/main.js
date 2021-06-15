@@ -141,6 +141,20 @@ window.onload = function () {
         };
 
     }
+    // альтернативныи onclick для мобильных устроиств
+
+    var els1 = document.getElementsByClassName('index-sel')[1].children[1].children;
+    l1 = els1.length;
+    for (var i = 0; i < l1; i++) {
+        els1[i].onclick = function () {
+            // alert(this.innerHTML);
+            // alert(this.dataset.value);
+            showBlink(this.innerHTML, this.dataset.value);
+            CatchProjectOfDirection(this.dataset.value);
+
+        };
+
+    }
     /*Код для button-top в base-html*/
     jQuery(document).ready(function () {
         var btn = $('#button-top');
@@ -161,7 +175,7 @@ window.onload = function () {
 /// ДЛЯ ПОДГРУЗКИ
 showBlink = function (direction, datasetID) {
     document.querySelector("#to-projects").children[0].href= url + `/view/projects?direction_id=${datasetID}`
-    document.cookie = `chosenDir=${datasetID}; path=/view/; expires=Tue, 19 Jan 2038 03:14:07 GMT`;
+    // document.cookie = `chosenDir=${datasetID}; path=/view/; expires=Tue, 19 Jan 2038 03:14:07 GMT`;
     // строчка для перехода к выбранным проектам
     var chosenDirection = document.getElementById('top-proj-derec');
     chosenDirection.innerHTML = direction;
@@ -601,7 +615,7 @@ uploadProjects = async function () {
             sendRequest(uri, 'POST', function () {
                 if (this.response == "complete add") {
                     p = document.getElementById('uploadPlaceholder');
-                    p.innerHTML = `${i} из ${forms.length}`;
+                    p.innerHTML = `${i} из ${formLength}`;
                     button = document.getElementById('modal-footer');
                     button.style.display = "";
                     success++;

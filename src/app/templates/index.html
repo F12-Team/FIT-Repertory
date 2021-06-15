@@ -35,10 +35,10 @@
                 <div class="send_proj_name d-block">
                     <p></p>
                     <div class="d-flex justify-content-center">
-                        <select class="send_select index-sel" aria-label="Default select example" name="curator_id">
+                        <select class="send_select index-sel" aria-label="Default select example" id="select-direction">
                             <option class="" selected>Выберите направление</option>
                             {% for direction in directions%}
-                            <option class="" value="">{{ direction.name }}
+                            <option class="" value="{{direction.id}}">{{ direction.name }}
                             </option>
                             {% endfor %}
                         </select>
