@@ -6,12 +6,14 @@
 
 <div class="container">
     <div class="search_block">
-        <form name="search" method="POST">
+        <form class="search_form"name="search" method="POST">
             <div class="d-flex justify-content-between bd-highlight search-menu align-items-center">
                 <a id="clickme" class="bd-highlight search-link">Проект...</a>
+                <input type="search" class="form-control rounded search-link-mobile d-none" placeholder="Название проекта"
+                        aria-label="Search" aria-describedby="search-addon" style="font-size: 44px;" id="proj-name" name="name"/>
                 <div class="bd-highlight align-items-center dropdown search-title" id="slider">
                     <!-- Выбор направления -->
-                    <select class="se" aria-label="Default select example" name="direction_id" id="direction_id">
+                    <select class="se projects-sel" aria-label="Default select example" name="direction_id" id="direction_id">
                         <option class="" selected value="">Направление</option>
                         {% for direction in directions %}
                         <option class="" value="{{ direction.id }}">{{ direction.name }}</option>
@@ -20,7 +22,7 @@
                 </div>
                 <div class="bd-highlight  align-items-center dropdown search-title" id="slider2">
                     <!-- Выбор семестра -->
-                    <select class="se" aria-label="Default select example" name="semester_id">
+                    <select class="se projects-sel" aria-label="Default select example" name="semester_id">
                         <option class="" selected value="">Семестр</option>
                         {% for semester in semesters %}
                         <option class="" value="{{ semester.id }}">{{ semester.name }}</option>
@@ -56,9 +58,7 @@
                     $("#other").hide("fast");
                 });
             </script>
-            <div class="pro-sort">
-                <div class="d-flex justify-content-between">
-                    <!-- <label class="pro-label"> -->
+            <div class="d-flex justify-content-between bd-highlight align-items-center select-search">
                     <!-- Кнопка для выбора количества отображаемых элементов -->
                     <div class="d-flex align-items-center sel_el">
                         <p class="sel_el_txt"style="">
@@ -71,9 +71,8 @@
                         </select>
                     </div>
                     <!-- </label> -->
-                    <button class="btn btn-primary search-but" type="button" id="submitForm">Найти</button>
+                    <div class="button-block"><a class="btn btn-primary search-but" type="button" id="submitForm">Найти</a></div>
                     <!-- Кнопка для отправки запроса поиска TODO://добавить скрытие строки поиска при нажатии на эту кнопку(ВЛАД) -->
-                </div>
             </div>
             
         </form>
@@ -85,7 +84,7 @@
         
         <!-- <a class="to-project-link">
             
-            <div class="d-flex flex-column bd-highlight">
+            <div class="d-flex flex-column bd-highlight projec-block">
                 <div class="d-flex justify-content-between bd-highlight pro-block">
                     <div class="d-flex flex-column bd-highlight pro-name-napr">
                         <p class="fw-bold pro-name">Название проекта</p>
@@ -93,10 +92,11 @@
                         <p class="pro-derec">Учебное направление СДЕЛАТЬ!!!</p>
                         
                     </div>
+                    <div class= "d-flex">
                     <p class="pro-like"><i class="bi bi-heart"></i> 2222</p>
                     
                     <p class="pro-sem">СЕМЕСТР СДЕЛАТЬ!!!!</p>
-                    
+                    </div>
                 </div>
             </div>
         </a> -->

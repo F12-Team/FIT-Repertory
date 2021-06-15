@@ -475,6 +475,10 @@ renderDirectionResponse = function (response) {
         cardName.appendChild(p);
         cardName.appendChild(p2);
         // крепить к escheodindiv
+        var cardStat = document.createElement('div');
+        cardStat.classList.add('d-flex');
+        cardStat.classList.add('justify-content-between');
+        cardStat.classList.add('card-stat');
         var likePlace = document.createElement('p');
         likePlace.classList.add('pro-like');
         
@@ -488,8 +492,11 @@ renderDirectionResponse = function (response) {
         cardSemester.classList.add('pro-sem');
         cardSemester.innerHTML = response[3][i].semester.name;
         escheodindiv.appendChild(cardName);
-        escheodindiv.appendChild(likePlace);
-        escheodindiv.appendChild(cardSemester);
+        // escheodindiv.appendChild(likePlace);
+        // escheodindiv.appendChild(cardSemester);
+        cardStat.appendChild(cardSemester);
+        cardStat.appendChild(likePlace);
+        escheodindiv.appendChild(cardStat);
         card.appendChild(escheodindiv);
         cardContainer.appendChild(card);
         cardPlace.appendChild(cardContainer);
