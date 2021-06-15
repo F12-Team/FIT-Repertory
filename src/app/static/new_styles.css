@@ -1286,6 +1286,9 @@ input#checkbox.ok.form-check-input{
     .nav__button{
         margin-left: 0;
         margin-bottom: 30px;
+        -webkit-appearance: none;
+-moz-appearance: none;
+appearance: none;
     }
 
     .nav-width{
