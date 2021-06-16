@@ -278,12 +278,9 @@ ShowProjects = function (response) {
                 cardImage.classList.add('card-img-top');
             }
             catch (e) {
-                cardImage.src = url+ "/images/defposter";
+                cardImage.src = url+ "/defposter";
                 cardImage.classList.add('poster-block-img');
             }
-
-
-            
             card.appendChild(cardImage);
             var likePlace = document.createElement('div');
             likePlace.classList.add('bott-right');
@@ -386,7 +383,7 @@ renderPagination = function () {
     let form = document.forms.search;
     // console.log(form);
     var body = new FormData(form);
-    console.log(body);
+
     // console.log(body);
     // if (direction_id) {
     //     body.delete("direction_id");
