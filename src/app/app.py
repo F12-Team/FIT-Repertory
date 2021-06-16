@@ -93,6 +93,16 @@ def add_image():
     return jsonify('complete saving image')
 
 
+@app.route('/e404')
+def e404():
+    return render_template('404.html')
+
+
+@app.route('/e503')
+def e503():
+    return render_template('503.html')
+
+
 # @app.errorhandler(Exception)
 # def page_not_found(e):
 #     return render_template('404.html'), 404
