@@ -345,13 +345,10 @@ a:hover {
 .top-cards-block{
     margin-top: 30px;
     margin-bottom: 120px;
+    height: 100%;
+    width: 100%;
 }
 
-.top-cards-flex{
-    display: flex;
-    justify-content: space-evenly;
-    flex-wrap: wrap;
-}
 
 .top-proj-name{
     font-weight: 800;
@@ -1651,4 +1648,36 @@ input#checkbox.ok.form-check-input{
         align-items:center; 
         text-align:center;
     }
+  }
+
+  .top-cards-flex{
+      height: 100%;
+      width: 100%;
+      display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+  }
+   .top-card{
+    width: 33%;
+    margin-bottom: 60px;
+    align-self: baseline; 
+}
+
+.before_course{
+    width: 35%;
+    margin-bottom: 60px;
+}
+.pre_course{
+    height: 394px;
+    text-align: center;
+    display: flex;
+    justify-content: start;
+    margin-bottom: 20px;
+}
+  .course{
+      background-size: cover;
+      background-position: center;
+      width: 278px;
+      height: 394px;
+      margin-bottom: 20px;
   }
