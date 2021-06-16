@@ -733,6 +733,7 @@ input[type="search"]::-webkit-search-results-decoration { display: none; }
     max-width: 360px;
     height: 394px;
     border-radius: 20px;
+    border: 4px solid #C9C8FF;
     
 }
 
@@ -842,10 +843,10 @@ input[type="search"]::-webkit-search-results-decoration { display: none; }
 }
 
 .video-txt{
-    font-size: 55px; 
+    font-size: 28px; 
     margin-bottom: 10px;
-    font-weight: 800;
-    color: #4A46FF;
+    font-weight: 600;
+    color: #020827;
 }
 .video-mp4{
     height: 600px;
@@ -865,10 +866,10 @@ video{
 }
 
 .md-txt{
-    font-size: 55px; 
+    font-size: 28px; 
     margin-bottom: 10px;
-    font-weight: 800;
-    color: #4A46FF;
+    font-weight: 600;
+    color: #020827;
 }
 
 .team-block{
@@ -877,10 +878,10 @@ video{
 }
 
 .team-txt{
-    font-size: 55px; 
+    font-size: 28px; 
     margin-bottom: 10px;
-    font-weight: 800;
-    color: #4A46FF;
+    font-weight: 600;
+    color: #020827;
 }
 
 .kur-block{
@@ -1680,4 +1681,6 @@ input#checkbox.ok.form-check-input{
       width: 278px;
       height: 394px;
       margin-bottom: 20px;
+      border-radius: 20px;
+      border: 4px solid #C9C8FF;
   }
