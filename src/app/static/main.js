@@ -201,7 +201,7 @@ showBlink = function (direction, datasetID) {
         card.classList.add("top-likes");
 
         var cardImage = document.createElement('img');
-        cardImage.src = "https://img.pikbest.com/01/56/32/93KpIkbEsTjF8.jpg-0.jpg!bw700";
+        cardImage.src = url + "/defposter";
         cardImage.classList.add('card-img-top');
         card.appendChild(cardImage);
         var likePlace = document.createElement('div');
@@ -275,14 +275,12 @@ ShowProjects = function (response) {
             var cardImage = document.createElement('img');
             try {
                 cardImage.src = url + "/images/" + response[i].poster[0].id;
+                cardImage.classList.add('poster-block-img');
             }
             catch (e) {
-
-                cardImage.src = "https://img.pikbest.com/01/56/32/93KpIkbEsTjF8.jpg-0.jpg!bw700";
+                cardImage.src = url+ "/defposter";
+                cardImage.classList.add('poster-block-img');
             }
-
-
-            cardImage.classList.add('card-img-top');
             card.appendChild(cardImage);
             var likePlace = document.createElement('div');
             likePlace.classList.add('bott-right');
@@ -385,7 +383,7 @@ renderPagination = function () {
     let form = document.forms.search;
     // console.log(form);
     var body = new FormData(form);
-    console.log(body);
+
     // console.log(body);
     // if (direction_id) {
     //     body.delete("direction_id");
