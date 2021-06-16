@@ -1091,11 +1091,15 @@ video{
 }
 
 .tab_buttons{
-    width: 150px;
+    width: 200px;
 }
 
 .tab_buttons a{
-    height: 30px;
+    padding: 10px;
+}
+
+.tab_buttons i{
+    font-size: 20px;
 }
 
 .col{
@@ -1642,7 +1646,7 @@ input#checkbox.ok.form-check-input{
     }
 
     .er503{
-        display: flex; 
+        display: flex !important; 
         justify-content:center; 
         align-items:center; 
         text-align:center;

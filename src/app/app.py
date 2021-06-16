@@ -47,14 +47,14 @@ from tools import ImageSaver
 @app.route('/')
 def index():
     directions = Direction.query.filter(Direction.name != 'Заглушка').all()
-    projects = Project.query.order_by(desc(Project.likes)).limit(9).all()
+    projects = Project.query.filter(Project.status_id == 2).order_by(desc(Project.likes)).limit(9).all()
     return render_template('index.html', directions=directions, projects=projects)
 
 
 @app.route('/direction', methods=['POST'])
 def get_projects_by_direction_id():
     direction_id = request.form.get('direction_id', 0, type=int)
-    projects = Project.query.filter(Project.direction_id == direction_id).order_by(desc(Project.likes)).limit(9).all()
+    projects = Project.query.filter(Project.status_id == 2).filter(Project.direction_id == direction_id).order_by(desc(Project.likes)).limit(9).all()
     newdata = []
     for entry in projects:
         newdata.append(entry.to_dict())

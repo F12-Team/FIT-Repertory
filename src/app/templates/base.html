@@ -93,10 +93,6 @@
         </div>
     </nav>
 
-    <script>
-        document.querySelector(".navbar-toggler").addEventListener("click", function (e) { document.querySelector("#navbarCollapse").classList.toggle("show"); });
-    </script>
-
     {% with messages = get_flashed_messages(with_categories=true) %}
     {% for category, msg in messages %}
     <div class="d-flex justify-content-center">
