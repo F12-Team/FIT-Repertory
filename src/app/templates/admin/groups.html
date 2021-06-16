@@ -1,5 +1,5 @@
 {% extends 'admin/base_admin.html' %}
-
+{% from 'admin/admin_modal.html' import modal_delete%}
 {% block content_admin %}
 <div id="page-content-wrapper">
 
@@ -64,10 +64,11 @@
                                                 <td>{{ item.description }}</td>
                                                 <td class="tab_buttons">
                                                     <!-- Потом по требованию добавлю иконки или надписи -->
-                                                    <a type="button" class="btn btn-secondary"><i class="bi bi-eye"></i></a>
+
+                                                    <a type="button" class="btn btn-secondary" ><i class="bi bi-eye"></i></a>
                                                     <a type="button" class="btn btn-warning"
                                                         href=""><i class="bi bi-pencil"></i></a>
-                                                    <a type="button" class="btn btn-danger"><i class="bi bi-trash"></i></a>
+                                                    <a type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#delete-modal"><i class="bi bi-trash"></i></a>
                                                 </td>
                                             </tr>
                                         </tbody>
@@ -144,4 +145,5 @@
         </div>
     </div>
 </div>
+{{ modal_delete() }}
 {% endblock %}
