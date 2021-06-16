@@ -7,7 +7,11 @@
             {% if project.poster %}
             <img src="{{ project.poster[0].url }}" class="poster-block-img" alt="...">
             {% else %}
-            <iframe class="poster-block-img" src="{% for info in project.info %}{% if info.type.name == 'Постер с GoogleDisk' %}{{ info.resource | replace('view', 'preview') }}{% endif %}{% endfor %}" width="480" height="720" scrolling="no"></iframe>
+                {% if google_poster %}
+                <iframe class="poster-block-img" src="{{google_poster | replace('view', 'preview')}}" width="480" height="720" scrolling="no"></iframe>
+                {% else %}
+                <img src="{{ url_for('defposter') }}" class="poster-block-img" alt="...">
+                {% endif %}
             {% endif %}
         </div>
         <div class="info-block">
@@ -52,6 +56,7 @@
         <input type="checkbox" class="like-btn" id="button-like1">
         <i class="fa fa-heart"></i>
     </div>
+    {% if google_video %}
     <div class="video-block d-flex flex-column">
         <div class="d-flex flex-row justify-content-start">
             <p class="video-txt">Видеообзор</p>
@@ -59,8 +64,9 @@
         <!-- <video src="{% for info in project.info %}{% if info.type.name == 'Видео с GoogleDisk' %}{{ info.resource }}{% endif %}{% endfor %}" playsinline
             controls class="intro-video" preload="auto" type="video/mp4"></video> -->
         <div class="video-mp4"><iframe class="video-mp4-item"
-            src="{% for info in project.info %}{% if info.type.name == 'Видео с GoogleDisk' %}{{ info.resource | replace('view', 'preview') }}{% endif %}{% endfor %}"></iframe></div>
+            src="{{ google_video }}"></iframe></div>
     </div>
+    {% endif %}
     <div class="md-block">
         <div class="d-flex flex-row justify-content-start">
             <p class="md-txt">Поподробнее о проекте</p>

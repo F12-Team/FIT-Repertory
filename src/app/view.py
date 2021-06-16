@@ -63,8 +63,15 @@ def search():
 @bp.route('/project/<project_id>')
 def project(project_id):
     project = Project.query.filter(Project.id == project_id).first()
+    google_poster = None
+    google_video = None
+    for info in project.info:
+        if info.type.name == 'Постер с GoogleDisk':
+            google_poster = info.resource
+        if info.type.name == 'Видео с GoogleDisk':
+            google_video = info.resource
 
-    return render_template('view/project.html', project=project)
+    return render_template('view/project.html', project=project, google_poster=google_poster, google_video=google_video)
 
 
 @bp.route('/like', methods=['POST'])
