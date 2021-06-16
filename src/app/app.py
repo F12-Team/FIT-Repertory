@@ -92,12 +92,6 @@ def add_image():
 
     return jsonify('complete saving image')
 
-@app.route('/restart')
-def restart():
-    os.system('systemctl restart fitrep.service')
-    return ('Restarted!')
-
-
 
 # @app.errorhandler(Exception)
 # def page_not_found(e):
