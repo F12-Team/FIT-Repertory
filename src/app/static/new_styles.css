@@ -764,7 +764,7 @@ input[type="search"]::-webkit-search-results-decoration { display: none; }
     background: none;
     padding: 12px 30px;
     border: 1px solid #4A46FF;
-    color: #4A46FF;
+    color: #4A46FF !important;
     border-radius: 10px;
     font-size: 14px;
 }
@@ -772,7 +772,7 @@ input[type="search"]::-webkit-search-results-decoration { display: none; }
 
 .plike{
     margin-bottom: 0;
-    color: #4A46FF;
+    color: #4A46FF !important;
     font-weight: 400;
     font-size: 18px;
     margin-right: 100px;
@@ -846,6 +846,10 @@ input[type="search"]::-webkit-search-results-decoration { display: none; }
 }
 .video-mp4{
     height: 600px;
+}
+.video-mp4-item{
+    width: 100%;
+    height: 100%;
     border-radius: 20px;
 }
 
@@ -1320,6 +1324,11 @@ input#checkbox.ok.form-check-input{
         justify-content: center;
         margin-bottom: 30px;
     }
+
+    .like-container{
+        right: 10px;
+        bottom: 300px;
+    }
     /* index page */
 
     .site-name{
@@ -1527,4 +1536,83 @@ input#checkbox.ok.form-check-input{
         width: 66%;
     }
 
+    .pagin-block{
+        width: 100%;
+    }
+
+    .pagination{
+        flex-wrap: wrap;
+    }
+
+    /* Project page mobile */
+
+    .head-block{
+        display: block !important;
+        margin-top: 30px;
+    }
+
+    .poster-block{
+        width: 100%;
+    }
+
+    .info-block{
+        width: 100%;
+        text-align: center;
+        margin-top: 10px;
+    }
+
+    .proj-desc-block{
+        align-items: center !important;
+    }
+    .proj-sem{
+        text-align: center;
+    }
+
+    .proj-links{
+        display: block !important;
+        margin-top: 30px;
+    }
+
+    .proj-git{
+        width: 50%;
+    }
+
+    .proj-site{
+        width: 50%;
+    }
+    .proj-links-block .plink{
+        width: 100%;
+    }
+
+    .proj-likes{
+        justify-content: center !important;
+        margin-top: 10px;
+        color: #4A46FF;
+    }
+
+    .proj-likes p{
+        margin-right: 0 !important ;
+    }
+
+    .proj-shrt-desc{
+        margin-top: 50px;
+    }
+
+    .kur-name{
+        text-align: center;
+    }
+
+    .video-mp4{
+        height: 200px;
+    }
+    .video-mp4-item{
+        width: 100%;
+        height: 100%;
+        border-radius: 20px;
+    }
+
+    .stud-block {
+        width: 100%;
+        text-align: center;
+    }
   }

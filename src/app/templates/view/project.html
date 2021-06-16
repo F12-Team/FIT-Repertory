@@ -12,12 +12,12 @@
         </div>
         <div class="info-block">
             <div class="proj-desc d-block">
-                <div class="d-flex align-items-start flex-column bd-highlight">
+                <div class="d-flex align-items-start flex-column bd-highlight proj-desc-block">
                     <p class="proj-name">{{ project.name }}</p>
                     <p class="proj-sem">{{ project.semester.name }}</p>
                 </div>
                 <div class="proj-links d-flex flex-row justify-content-between">
-                    <div class="d-flex justify-content-between bd-highlight">
+                    <div class="proj-links-block d-flex justify-content-between bd-highlight">
                         <div class="bd-highlight proj-git"><a target="_blank" rel="noopener noreferrer"
                                 class="btn btn-outline-success plink"
                                 href="{% for info in project.info %}{% if info.type.name == 'GitHub' %}{{ info.resource }}{% endif %}{% endfor %}">GitHub</a>
@@ -58,8 +58,8 @@
         </div>
         <!-- <video src="{% for info in project.info %}{% if info.type.name == 'Видео с GoogleDisk' %}{{ info.resource }}{% endif %}{% endfor %}" playsinline
             controls class="intro-video" preload="auto" type="video/mp4"></video> -->
-        <iframe class="video-mp4"
-            src="{% for info in project.info %}{% if info.type.name == 'Видео с GoogleDisk' %}{{ info.resource | replace('view', 'preview') }}{% endif %}{% endfor %}"></iframe>
+        <div class="video-mp4"><iframe class="video-mp4-item"
+            src="{% for info in project.info %}{% if info.type.name == 'Видео с GoogleDisk' %}{{ info.resource | replace('view', 'preview') }}{% endif %}{% endfor %}"></iframe></div>
     </div>
     <div class="md-block">
         <div class="d-flex flex-row justify-content-start">
