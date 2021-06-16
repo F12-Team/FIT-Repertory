@@ -69,6 +69,12 @@ def image(image_id):
     return send_from_directory(app.config['UPLOAD_FOLDER'], img.storage_filename)
 
 
+@app.route('/defposter')
+def defposter():
+
+    return send_from_directory(app.config['UPLOAD_FOLDER'], 'default_poster.svg')
+
+
 @app.route('/add_image', methods=['POST'])
 #@login_required
 #@check_rights('create_movie')
