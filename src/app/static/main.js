@@ -25,11 +25,18 @@ window.onload = function () {
 
 
     if (window.location.toString().search("/view/projects") != -1) {
+        if (screen.width>1079) {
+            document.querySelector('#proj-name1').remove();
+        }
+        else {
+            document.querySelector('#other').remove();
+        }
         if (window.location.toString().indexOf("?") != -1) {
             baseUrl = window.location.href.split("?")[0];
             direction_id = window.location.href.split("=")[1];
             window.history.pushState('name', '', baseUrl);
         }
+        if (document.querySelector('#search-addon')){
         document.querySelector('#search-addon').onclick = function () {
             if (document.querySelector('#proj-name').value.length > 0) {
                 document.querySelector("#clickme").innerHTML = document.querySelector('#proj-name').value;
@@ -38,6 +45,7 @@ window.onload = function () {
                 document.querySelector("#clickme").innerHTML = 'Проект...';
             }
 
+        }
         }
         // let select = document.getElementsByClassName("nice-select")[0].children[1].getElementsByTagName('li');
         if (direction_id) {
