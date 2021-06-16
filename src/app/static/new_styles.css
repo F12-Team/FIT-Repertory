@@ -1091,11 +1091,15 @@ video{
 }
 
 .tab_buttons{
-    width: 150px;
+    width: 200px;
 }
 
 .tab_buttons a{
-    height: 30px;
+    padding: 10px;
+}
+
+.tab_buttons i{
+    font-size: 20px;
 }
 
 .col{
