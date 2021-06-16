@@ -4,8 +4,6 @@ from sqlalchemy import MetaData, desc
 from flask_migrate import Migrate
 from sqlalchemy import exc
 import os
-import json
-from tools import ImageSaver
 
 app = Flask(__name__)
 application = app
@@ -43,6 +41,8 @@ app.register_blueprint(teamlead_bp)
 app.register_blueprint(project_bp)
 app.register_blueprint(view_bp)
 
+import json
+from tools import ImageSaver
 
 @app.route('/')
 def index():
