@@ -3,6 +3,7 @@ from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy import MetaData, desc
 from flask_migrate import Migrate
 from sqlalchemy import exc
+import os
 
 app = Flask(__name__)
 application = app
@@ -90,6 +91,11 @@ def add_image():
         return jsonify('error of saving image')
 
     return jsonify('complete saving image')
+
+@app.route('/restart')
+def restart():
+    os.system('systemctl restart fitrep.service')
+    return ('Restarted!')
 
 
 # @app.errorhandler(Exception)
