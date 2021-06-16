@@ -82,24 +82,25 @@
             <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
                 <div class="d-flex justify-content-center">
                     <div class="d-block justify-content-center"
-                        style="border: 1px solid #CCCED4; padding: 50px; min-width: 1000px;">
+                        style="border: 1px solid #CCCED4; padding: 50px; min-width: 1000px;" id="project-area">
+                        <form name="search" id="search">
                         <div class="d-flex justify-content-between">
                             <div class="send_proj_el">
                                 <div class="send_role_temp d-block">
                                     <p>Фамилия</p>
-                                    <input class="form-control" type="text" name="name" value="">
+                                    <input class="form-control" type="text" name="last_name" value="">
                                 </div>
                             </div>
                             <div class="send_proj_el">
                                 <div class="send_role_temp d-block">
                                     <p>Имя</p>
-                                    <input class="form-control" type="text" name="name" value="">
+                                    <input class="form-control" type="text" name="first_name" value="">
                                 </div>
                             </div>
                             <div class="send_proj_el">
                                 <div class="send_role_temp d-block">
                                     <p>Отчество</p>
-                                    <input class="form-control" type="text" name="name" value="">
+                                    <input class="form-control" type="text" name="middle_name" value="">
                                 </div>
                             </div>
                         </div>
@@ -107,20 +108,20 @@
                             <div class="send_proj_el">
                                 <div class="send_role_temp d-block">
                                     <p>Логин</p>
-                                    <input class="form-control" type="text" name="name" value="">
+                                    <input class="form-control" type="text" name="login" value="">
                                 </div>
                             </div>
                             <div class="send_proj_el">
                                 <div class="send_role_temp d-block">
                                     <p>Пароль</p>
-                                    <input class="form-control" type="text" name="name" value="">
+                                    <input class="form-control" type="password" name="password" value="">
                                 </div>
                             </div>
                             <div class="send_proj_el d-flex justify-content-center" style="width: 210px;">
                                 <div class="send_role_temp d-block">
                                     <p>Выберите роль</p>
                                     <div class="d-flex justify-content-between">
-                                        <select class="send_select" aria-label="Default select example">
+                                        <select class="send_select" aria-label="Default select example" name="role_id">
                                             <option class="" selected>Роль</option>
                                             {% for role in roles %}
                                             <option class="" value="{{ role.id }}">{{ role.name }}</option>
@@ -130,23 +131,26 @@
                                     </div>
                                 </div>
                             </div>
+                            
                         </div>
+                        <div class="check_send">
+                            <input type="checkbox" class="ok form-check-input" id="checkbox" name="checkbox">
+                            <label class="form-check-label" for="checkbox">Игнорировать</label>
+                        </div>
+                        </form>
                         <div class="d-flex justify-content-between align-items-center">
                             <div class="send_proj_el">
                                 <div class="d-flex">
-                                    <a class="btn btn-primary" id="addProjectButton"
+                                    <a class="btn btn-primary" id="addUserButton"
                                         style="margin-right: 20px; background-color: #4A46FF;">+</a>
                                     <button type="button" class="btn btn-primary" data-toggle="modal"
-                                        data-target="#exampleModalCenter" id="uploadProjects"
+                                        data-target="#exampleModalCenter" id="uploadUsers"
                                         style="margin-right: 20px; background-color: #4A46FF;">
                                         Отправить на сохранение
                                     </button>
                                 </div>
                             </div>
-                            <div class="check_send">
-                                <input type="checkbox" class="ok form-check-input" id="checkbox" name="checkbox">
-                                <label class="form-check-label" for="checkbox">Игнорировать</label>
-                            </div>
+                            
                         </div>
                     </div>
                 </div>

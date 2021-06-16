@@ -50,7 +50,6 @@ window.onload = function () {
         // let select = document.getElementsByClassName("nice-select")[0].children[1].getElementsByTagName('li');
         if (direction_id) {
             let select = document.querySelector("#direction_id").getElementsByTagName('option');
-
             // let select = document.getElementsByClassName("nice-select")[0].children[1].getElementsByTagName('li');
             // for (let doc =0; doc < select.length; doc++){
             //     if (select[doc].dataset.value == direction_id) {

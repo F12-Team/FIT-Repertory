@@ -85,8 +85,9 @@
             <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
                 <div class="d-flex justify-content-center">
                     <div class="d-block justify-content-center"
-                        style="border: 1px solid #CCCED4; padding: 50px; min-width: 1000px;">
-                        <div class="d-flex justify-content-between">
+                        style="border: 1px solid #CCCED4; padding: 50px; min-width: 1000px;" id='project-area'>
+                        <div class="d-flex justify-content-between" >
+                            <form class="d-flex justify-content-between w-100" id="search" name="search">
                             <div class="send_proj_el">
                                 <div class="send_role_temp d-block">
                                     <p>Название</p>
@@ -97,7 +98,7 @@
                                 <div class="send_role_temp d-block">
                                     <p>Выберите направление</p>
                                     <div class="d-flex justify-content-between">
-                                        <select class="send_select" aria-label="Default select example">
+                                        <select class="send_select" aria-label="Default select example" name="direction_id">
                                             <option class="" selected>Направление</option>
                                             {% for direction in directions %}
                                             <option class="" value="{{ direction.id }}">{{ direction.name }}
@@ -108,29 +109,33 @@
                                     </div>
                                 </div>
                             </div>
+                            
                             <div class="send_proj_el">
                                 <div class="send_role_temp d-block">
                                     <p>Описание</p>
-                                    <input class="form-control" type="text" name="name" value="">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="d-flex justify-content-between align-items-center">
-                            <div class="send_proj_el">
-                                <div class="d-flex">
-                                    <a class="btn btn-primary" id="addProjectButton"
-                                        style="margin-right: 20px; background-color: #4A46FF;">+</a>
-                                    <button type="button" class="btn btn-primary" data-toggle="modal"
-                                        data-target="#exampleModalCenter" id="uploadProjects"
-                                        style="margin-right: 20px; background-color: #4A46FF;">
-                                        Отправить на сохранение
-                                    </button>
+                                    <input class="form-control" type="text" name="description" value="">
                                 </div>
                             </div>
                             <div class="check_send">
                                 <input type="checkbox" class="ok form-check-input" id="checkbox" name="checkbox">
                                 <label class="form-check-label" for="checkbox">Игнорировать</label>
                             </div>
+                            </form>
+                        
+                        </div>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div class="send_proj_el">
+                                <div class="d-flex">
+                                    <a class="btn btn-primary" id="addGroupButton"
+                                        style="margin-right: 20px; background-color: #4A46FF;">+</a>
+                                    <button type="button" class="btn btn-primary" data-toggle="modal"
+                                        data-target="#exampleModalCenter" id="uploadGroups"
+                                        style="margin-right: 20px; background-color: #4A46FF;">
+                                        Отправить на сохранение
+                                    </button>
+                                </div>
+                            </div>
+                            
                         </div>
                     </div>
                 </div>

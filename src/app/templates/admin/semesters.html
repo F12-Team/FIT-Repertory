@@ -82,7 +82,8 @@
             <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
                 <div class="d-flex justify-content-center">
                     <div class="d-block justify-content-center"
-                        style="border: 1px solid #CCCED4; padding: 50px; min-width: 1000px;">
+                        style="border: 1px solid #CCCED4; padding: 50px; min-width: 1000px;" id="project-area">
+                        <form class="d-flex justify-content-between w-100" id="search" name="search">
                         <div class="d-flex justify-content-around">
                             <div class="send_proj_el">
                                 <div class="send_role_temp d-block">
@@ -93,27 +94,28 @@
                             <div class="send_proj_el">
                                 <div class="send_role_temp d-block">
                                     <p>Описание</p>
-                                    <input class="form-control" type="text" name="name" value="">
+                                    <input class="form-control" type="text" name="description" value="">
                                 </div>
                             </div>
                         </div>
-
+                        <div class="check_send">
+                            <input type="checkbox" class="ok form-check-input" id="checkbox" name="checkbox">
+                            <label class="form-check-label" for="checkbox">Игнорировать</label>
+                        </div>
+                        </form>
                         <div class="d-flex justify-content-between align-items-center">
                             <div class="send_proj_el">
                                 <div class="d-flex">
-                                    <a class="btn btn-primary" id="addProjectButton"
+                                    <a class="btn btn-primary" id="addSemesterButton"
                                         style="margin-right: 20px; background-color: #4A46FF;">+</a>
                                     <button type="button" class="btn btn-primary" data-toggle="modal"
-                                        data-target="#exampleModalCenter" id="uploadProjects"
+                                        data-target="#exampleModalCenter" id="uploadSemesters"
                                         style="margin-right: 20px; background-color: #4A46FF;">
                                         Отправить на сохранение
                                     </button>
                                 </div>
                             </div>
-                            <div class="check_send">
-                                <input type="checkbox" class="ok form-check-input" id="checkbox" name="checkbox">
-                                <label class="form-check-label" for="checkbox">Игнорировать</label>
-                            </div>
+                            
                         </div>
                     </div>
                 </div>
