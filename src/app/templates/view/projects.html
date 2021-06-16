@@ -6,7 +6,7 @@
 
 <div class="container">
     <div class="search_block">
-        <form class="search_form"name="search" method="POST">
+        <form class="search_form"name="search" id="search">
             <div class="d-flex justify-content-between bd-highlight search-menu align-items-center">
                 <a id="clickme" class="bd-highlight search-link">Проект...</a>
                 <input type="search" class="form-control rounded search-link-mobile" placeholder="Название проекта"
@@ -58,6 +58,15 @@
                     $("#other").hide("fast");
                 });
             </script>
+            <script type="text/javascript">
+                $(document).ready(function() {
+                   $("#search").bind("keypress", function(e) {
+                      if (e.keyCode == 13) {
+                         return false;
+                      }
+                   });
+                });
+        </script>
             <div class="d-flex justify-content-between bd-highlight align-items-center select-search">
                     <!-- Кнопка для выбора количества отображаемых элементов -->
                     <div class="d-flex align-items-center sel_el">
