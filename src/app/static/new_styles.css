@@ -403,8 +403,8 @@ a:hover {
     position: absolute;
     padding: 0 20px;
     padding-top: 10px;
-    bottom: 1px;
-    right: 2px;
+    bottom: -1px;
+    right: 39px;
     background: rgba(255, 255, 255, 0.7);
     border-radius: 20px 0px;
 }
@@ -1441,7 +1441,8 @@ input#checkbox.ok.form-check-input{
     }
 
     .bott-right{
-        right: 10px
+        bottom: -1px;
+        right: 10px;
     }
 
     /* search page */
