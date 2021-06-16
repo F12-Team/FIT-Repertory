@@ -8,7 +8,7 @@
             <img src="{{ project.poster[0].url }}" class="poster-block-img" alt="...">
             {% else %}
                 {% if google_poster %}
-                <iframe class="poster-block-img" src="{{google_poster | replace('view', 'preview')}}" width="480" height="720" scrolling="no"></iframe>
+                <iframe class="poster-block-img" src="{{ google_poster | replace('view', 'preview') }}" width="480" height="720" scrolling="no"></iframe>
                 {% else %}
                 <img src="{{ url_for('defposter') }}" class="poster-block-img" alt="...">
                 {% endif %}
@@ -64,7 +64,7 @@
         <!-- <video src="{% for info in project.info %}{% if info.type.name == 'Видео с GoogleDisk' %}{{ info.resource }}{% endif %}{% endfor %}" playsinline
             controls class="intro-video" preload="auto" type="video/mp4"></video> -->
         <div class="video-mp4"><iframe class="video-mp4-item"
-            src="{{ google_video }}"></iframe></div>
+            src="{{ google_video | replace('view', 'preview') }}"></iframe></div>
     </div>
     {% endif %}
     <div class="md-block">
