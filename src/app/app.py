@@ -103,6 +103,11 @@ def e503():
     return render_template('503.html')
 
 
-# @app.errorhandler(Exception)
+# @app.errorhandler(404)
 # def page_not_found(e):
 #     return render_template('404.html'), 404
+
+
+# @app.errorhandler(Exception)
+# def server_error(e):
+#     return render_template('503.html'), 503

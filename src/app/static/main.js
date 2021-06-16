@@ -141,7 +141,7 @@ window.onload = function () {
         document.getElementById('uploadProjects').onclick = uploadProjects;
     }
 
-
+    //добавление onlick деиствия для карточек на index
     var els = document.getElementsByClassName('route');
     l = els.length;
     for (var i = 0; i < l; i++) {
