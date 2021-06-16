@@ -1615,4 +1615,14 @@ input#checkbox.ok.form-check-input{
         width: 100%;
         text-align: center;
     }
+
+    /* Login page */
+
+    .place{
+        width: 100%;
+    }
+
+    .login-form{
+        width: 100%;
+    }
   }
