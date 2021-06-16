@@ -47,14 +47,14 @@ from tools import ImageSaver
 @app.route('/')
 def index():
     directions = Direction.query.filter(Direction.name != 'Заглушка').all()
-    projects = Project.query.filter(Project.status.name == 'Опубликовано').order_by(desc(Project.likes)).limit(9).all()
+    projects = Project.query.order_by(desc(Project.likes)).limit(9).all()
     return render_template('index.html', directions=directions, projects=projects)
 
 
 @app.route('/direction', methods=['POST'])
 def get_projects_by_direction_id():
     direction_id = request.form.get('direction_id', 0, type=int)
-    projects = Project.query.filter(Project.status.name == 'Опубликовано').filter(Project.direction_id == direction_id).order_by(desc(Project.likes)).limit(9).all()
+    projects = Project.query.filter(Project.direction_id == direction_id).order_by(desc(Project.likes)).limit(9).all()
     newdata = []
     for entry in projects:
         newdata.append(entry.to_dict())
@@ -103,11 +103,11 @@ def e503():
     return render_template('503.html')
 
 
-@app.errorhandler(404)
-def page_not_found(e):
-    return render_template('404.html'), 404
+# @app.errorhandler(404)
+# def page_not_found(e):
+#     return render_template('404.html'), 404
 
 
-@app.errorhandler(Exception)
-def server_error(e):
-    return render_template('503.html'), 503
+# @app.errorhandler(Exception)
+# def server_error(e):
+#     return render_template('503.html'), 503
