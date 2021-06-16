@@ -1,5 +1,6 @@
 {% extends 'admin/base_admin.html' %}
 {% from 'admin/admin_modal.html' import modal_delete%}
+{% from 'admin/admin_modal.html' import modal_upload%}
 {% block content_admin %}
 <div id="page-content-wrapper">
     <div class="con_admin">
@@ -148,7 +149,7 @@
                                         style="margin-right: 20px; background-color: #4A46FF;">+</a>
                                     <button type="button" class="btn btn-primary" data-toggle="modal"
                                         data-target="#exampleModalCenter" id="uploadUsers"
-                                        style="margin-right: 20px; background-color: #4A46FF;">
+                                        style="margin-right: 20px; background-color: #4A46FF;" data-bs-toggle="modal" data-bs-target="#upload-modal">
                                         Отправить на сохранение
                                     </button>
                                 </div>
@@ -162,4 +163,5 @@
     </div>
 </div>
 {{ modal_delete() }}
+{{ modal_upload() }}
 {% endblock %}
