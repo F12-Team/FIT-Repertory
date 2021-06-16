@@ -275,7 +275,7 @@ ShowProjects = function (response) {
             var cardImage = document.createElement('img');
             try {
                 cardImage.src = url + "/images/" + response[i].poster[0].id;
-                cardImage.classList.add('card-img-top');
+                cardImage.classList.add('poster-block-img');
             }
             catch (e) {
                 cardImage.src = url+ "/defposter";
