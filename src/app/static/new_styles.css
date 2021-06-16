@@ -1437,11 +1437,11 @@ input#checkbox.ok.form-check-input{
 
     img, svg {
         vertical-align: middle;
-        width: 100% !important;
+        
     }
 
     .bott-right{
-        right: 1px
+        right: 10px
     }
 
     /* search page */
