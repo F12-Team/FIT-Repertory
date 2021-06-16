@@ -432,6 +432,51 @@ a:hover {
     font-weight: 400;
 }
 
+.top-cards-flex{
+    height: 100%;
+    width: 100%;
+    display: flex;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+}
+ .top-card{
+  width: 33%;
+  margin-bottom: 60px;
+  align-self: baseline; 
+}
+
+.before_course{
+  width: 35%;
+  margin-bottom: 60px;
+}
+.pre_course{
+  height: 394px;
+  text-align: center;
+  display: flex;
+  justify-content: start;
+  margin-bottom: 20px;
+}
+.course{
+    background-size: cover;
+    background-position: center;
+    width: 278px;
+    height: 394px;
+    margin-bottom: 20px;
+    border-radius: 20px;
+    border: 4px solid #C9C8FF;
+    position: relative;
+}
+
+.course-like{
+    position: absolute;
+    bottom: -17px;
+    right: -1px;
+    background: rgba(255, 255, 255, 0.7);
+    
+    padding: 15px;
+    border-radius: 19px 0px;
+}
+
 /* Search page and projects page */
 
 .search_block{
@@ -1423,6 +1468,10 @@ input#checkbox.ok.form-check-input{
 
     }
 
+    .before_course{
+        width: 100%;
+    }
+
     .derec-btn{
         display: flex;
         justify-content: center;
@@ -1649,38 +1698,4 @@ input#checkbox.ok.form-check-input{
         align-items:center; 
         text-align:center;
     }
-  }
-
-  .top-cards-flex{
-      height: 100%;
-      width: 100%;
-      display: flex;
-    justify-content: space-evenly;
-    flex-wrap: wrap;
-  }
-   .top-card{
-    width: 33%;
-    margin-bottom: 60px;
-    align-self: baseline; 
-}
-
-.before_course{
-    width: 35%;
-    margin-bottom: 60px;
-}
-.pre_course{
-    height: 394px;
-    text-align: center;
-    display: flex;
-    justify-content: start;
-    margin-bottom: 20px;
-}
-  .course{
-      background-size: cover;
-      background-position: center;
-      width: 278px;
-      height: 394px;
-      margin-bottom: 20px;
-      border-radius: 20px;
-      border: 4px solid #C9C8FF;
   }

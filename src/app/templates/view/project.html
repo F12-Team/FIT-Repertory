@@ -21,7 +21,7 @@
                     <p class="proj-sem">{{ project.semester.name }}</p>
                 </div>
                 <div class="proj-links d-flex flex-row justify-content-between">
-                    <div class="proj-links-block d-flex justify-content-between bd-highlight">
+                    <div class="proj-links-block d-flex justify-content-between align-items-center bd-highlight">
                         <div class="bd-highlight proj-git"><a target="_blank" rel="noopener noreferrer"
                                 class="btn btn-outline-success plink"
                                 href="{% for info in project.info %}{% if info.type.name == 'GitHub' %}{{ info.resource }}{% endif %}{% endfor %}">GitHub</a>

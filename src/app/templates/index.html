@@ -92,23 +92,29 @@
                 <a class="before_course" href="{{ url_for('view.project', project_id=item.id) }}">
                     <div class="pre_course">
                         {% if item.poster %}
-                        <div class="course" style="background-image: url({{ url_for('image', image_id=item.poster[0].id) }});" 
+                        <div class="course"
+                            style="background-image: url({{ url_for('image', image_id=item.poster[0].id) }});"
                             alt="...">
+                            <p class="course-like">{{ item.likes }} <i class="bi bi-heart"></i></p>
                         </div>
                         {% else %}
-                        <div class="course" style="background-image: url({{ url_for('defposter') }});"></div>
+                        <div class="course"
+                            style="position:relative; background-image: url({{ url_for('defposter') }});">
+                            <div class="course-like">
+                                <p class="">{{ item.likes }} <i class="bi bi-heart"></i></p>
+                            </div>
+                            <p class="course-like">{{ item.likes }} <i class="bi bi-heart"></i></p>
+                        </div>
                         {% endif %}
                     </div>
-                    <div class="card-body">
-                        <h5 class="card-title fw-bold">{{ item.name }}</h5>
-                        <p class="card-text">{{ item.short_description | truncate }}</p>
-                        <!-- </div> -->
-                    </div>
+                        <div class="card-body">
+                            <h5 class="card-title fw-bold">{{ item.name }}</h5>
+                            <p class="card-text">{{ item.short_description | truncate }}</p>
+                            <!-- </div> -->
+                        </div>
                 </a>
                 {% endfor %}
             </div>
         </div>
-
     </div>
-</div>
-{% endblock %}
+    {% endblock %}
