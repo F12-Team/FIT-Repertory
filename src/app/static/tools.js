@@ -1,4 +1,5 @@
-window.onload = function() {
+window.addEventListener('load', init);
+function init() {
     if (window.location.toString().search("/admin/users") != -1) {
         document.querySelector('#addUserButton').onclick = addUserForm;
         document.querySelector('#uploadUsers').onclick = upload;
@@ -14,7 +15,7 @@ window.onload = function() {
         document.querySelector('#uploadSemesters').onclick = upload;
         document.querySelector('#uploadSemesters').dataset.value = 'semester';
     }
-    if (window.location.toString().search("/admin/") != -1){
+    if (window.location.toString().search("/admin/") != -1) {
         document.getElementsByClassName('btn-danger').onclick = function () {
             alert(3);
         };
@@ -22,13 +23,18 @@ window.onload = function() {
         l = els.length;
         for (var i = 0; i < l; i++) {
             els[i].onclick = function () {
-                alert(2);
+                if (window.location.toString().search("/admin/projects") != -1) {
+                document.querySelector('#delete-placeholder').innerHTML = `Удалить "${this.parentElement.parentElement.children[2].innerHTML}"?`;
+                }
+                else {
+                    document.querySelector('#delete-placeholder').innerHTML = `Удалить "${this.parentElement.parentElement.children[1].innerHTML}"?`;
+                }
             };
+        }
     }
-}
+
 
 }
-
 function addUserForm() {
     let form = document.forms[document.forms.length - 1];
     //login
@@ -53,7 +59,7 @@ function addUserForm() {
 }
 
 function addGroupForm() {
-    
+
     let form = document.forms[document.forms.length - 1];
     //name
     //description
@@ -71,7 +77,7 @@ function addGroupForm() {
 
 }
 
-function  addSemesterForm() {
+function addSemesterForm() {
     let form = document.forms[document.forms.length - 1];
     //name
     //description
@@ -87,9 +93,9 @@ function  addSemesterForm() {
     pArea.insertBefore(cloneForm, pArea.children[pArea.children.length - 2].nextElementSibling);
 }
 
-async function upload(){
+async function upload() {
     // alert(this.dataset.value);
-    this.onclick = function() {
+    this.onclick = function () {
         return false;
     }
     let form = document.forms[document.forms.length - 1];
