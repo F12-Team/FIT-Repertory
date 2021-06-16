@@ -278,8 +278,7 @@ ShowProjects = function (response) {
                 cardImage.classList.add('card-img-top');
             }
             catch (e) {
-
-                cardImage.src = "https://img.pikbest.com/01/56/32/93KpIkbEsTjF8.jpg-0.jpg!bw700";
+                cardImage.src = url+ "/images/defposter";
                 cardImage.classList.add('poster-block-img');
             }
 
