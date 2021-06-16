@@ -741,7 +741,7 @@ input[type="search"]::-webkit-search-results-decoration { display: none; }
     max-width: 360px;
     height: 394px;
     border-radius: 20px;
-    border: 1px solid #000;
+    
 }
 
 .poster-block-img .bott-right{

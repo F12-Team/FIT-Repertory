@@ -201,7 +201,7 @@ showBlink = function (direction, datasetID) {
         card.classList.add("top-likes");
 
         var cardImage = document.createElement('img');
-        cardImage.src = "https://img.pikbest.com/01/56/32/93KpIkbEsTjF8.jpg-0.jpg!bw700";
+        cardImage.src = url + "/defposter";
         cardImage.classList.add('card-img-top');
         card.appendChild(cardImage);
         var likePlace = document.createElement('div');
