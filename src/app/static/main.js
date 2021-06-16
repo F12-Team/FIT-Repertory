@@ -275,14 +275,16 @@ ShowProjects = function (response) {
             var cardImage = document.createElement('img');
             try {
                 cardImage.src = url + "/images/" + response[i].poster[0].id;
+                cardImage.classList.add('card-img-top');
             }
             catch (e) {
 
                 cardImage.src = "https://img.pikbest.com/01/56/32/93KpIkbEsTjF8.jpg-0.jpg!bw700";
+                cardImage.classList.add('poster-block-img');
             }
 
 
-            cardImage.classList.add('card-img-top');
+            
             card.appendChild(cardImage);
             var likePlace = document.createElement('div');
             likePlace.classList.add('bott-right');
