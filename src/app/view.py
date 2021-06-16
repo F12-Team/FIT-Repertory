@@ -35,7 +35,7 @@ def projects():
     direction_id = request.form.get('direction_id', 0, type=int)
     semesters = Semester.query.all()
     directions = Direction.query.filter(Direction.name != 'Заглушка').all()
-    projects = Project.query.order_by(desc(Project.likes))
+    projects = Project.query.filter(Project.status_id == 2).order_by(desc(Project.likes))
     if direction_id == 0:
         projects = projects.limit(PER_PAGE).all()
     else:
@@ -50,7 +50,7 @@ def search():
     per_page = request.form.get('per_page', PER_PAGE, type=int)
     projects_filter = ProjectsFilterForSearch(**search_params())
     projects = projects_filter.perform()
-    pagination = projects.paginate(page, per_page)
+    pagination = projects.filter(Project.status_id == 2).paginate(page, per_page)
     projects = pagination.items
 
     newdata = []
