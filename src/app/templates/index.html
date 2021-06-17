@@ -1,14 +1,22 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<img src="../static/pngs/arrow_big.svg" class="img-svg" style="display: inline-block; position: absolute; top: 300px">
-<img src="../static/pngs/arrow_small.svg" class="img-svg" style="display: inline-block; position: absolute; top: 450px">
-<img src="../static/pngs/Cylinder_top.svg"  class="img-svg"style="display: inline-block; position: absolute; top: 900px; left: 130px">
-<img src="../static/pngs/Toroid 1.svg" class="img-svg" style="display: inline-block; position: absolute; top: 1000px; left: 10px">
-<img src="../static/pngs/Cylinder_bot.svg" class="img-svg" style="display: inline-block; position: absolute; top: 1210px; left: 50px;">
-<img src="../static/pngs/Cube_small.svg" class="img-svg" style="display: inline-block; position: absolute; top: 250px; right: 80px;">
-<img src="../static/pngs/Cube_big.svg" class="img-svg" style="display: inline-block; position: absolute; top: 500px; right: 150px">
-<img src="../static/pngs/Graph.svg" class="img-svg" style="display: inline-block; position: absolute; top: 900px; right: 10px;">
+<img src="../static/pngs/arrow_big.svg" class="img-svg"
+    style="display: inline-block; position: absolute; top: 300px;z-index: -100;">
+<img src="../static/pngs/arrow_small.svg" class="img-svg"
+    style="display: inline-block; position: absolute; top: 450px; z-index: -100;">
+<img src="../static/pngs/Cylinder_top.svg" class="img-svg"
+    style="display: inline-block; position: absolute; top: 900px; left: 130px;z-index: -100;">
+<img src="../static/pngs/Toroid 1.svg" class="img-svg"
+    style="display: inline-block; position: absolute; top: 1000px; left: 10px;z-index: -100;">
+<img src="../static/pngs/Cylinder_bot.svg" class="img-svg"
+    style="display: inline-block; position: absolute; top: 1210px; left: 50px;z-index: -100;">
+<img src="../static/pngs/Cube_small.svg" class="img-svg"
+    style="display: inline-block; position: absolute; top: 250px; right: 80px;z-index: -100;">
+<img src="../static/pngs/Cube_big.svg" class="img-svg"
+    style="display: inline-block; position: absolute; top: 500px; right: 150px;z-index: -100;">
+<img src="../static/pngs/Graph.svg" class="img-svg"
+    style="display: inline-block; position: absolute; top: 900px; right: 10px;z-index: -100;">
 <div class="container mp-cont ">
     <div class="derec__block">
         <div class="site-name">
@@ -26,7 +34,7 @@
                 <div class="cards-flex">
                     {% for direction in directions %}
                     <!-- Обновить выбор направления и переход на блок с ТОП-проектами -->
-                    <a class="route service" data-id="{{direction.id}}" href="#cards" >
+                    <a class="route service" data-id="{{direction.id}}" href="#cards">
                         <div class="logo-block"><img class="logoqwerty" src="{{ direction.image.url }}"
                                 alt="Card image cap"></div>
                         <div class="card-body">
@@ -80,32 +88,37 @@
                 <!-- Обновить переход на страницу со всеми проектами с фильтром направления -->
             </div>
         </div>
+
         <div class="top-cards-block" id="cards">
             <div class="top-cards-flex" id="top-cards-flex">
+
                 {% for item in projects %}
-                <a class="route-to-pr-page top-card" href="{{ url_for('view.project', project_id=item.id) }}">
-                    <!-- <div class="top-card "> -->
-                    <div class="top-likes">
+                <a class="before_course" href="{{ url_for('view.project', project_id=item.id) }}">
+                    <div class="pre_course">
                         {% if item.poster %}
-                        <img src="{{ item.poster[0].url }}" class="poster-block-img" alt="...">
-                        {% else %}
-                        <img src="{{ url_for('defposter') }}" class="card-img-top"
+                        <div class="course"
+                            style="background-image: url({{ url_for('image', image_id=item.poster[0].id) }});"
                             alt="...">
-                        {% endif %}
-                        <!-- <iframe class="poster-block-img" src="{% for info in item.info %}{% if info.type.name == 'Постер с GoogleDisk' %}{{ info.resource | replace('view', 'preview') }}{% endif %}{% endfor %}" width="480" height="720" scrolling="no"></iframe> -->
-                        <div class="bott-right">
-                            <p>{{ item.likes }} <i class="bi bi-heart"></i></p>
+                            <p class="course-like">{{ item.likes }} <i class="bi bi-heart"></i></p>
                         </div>
+                        {% else %}
+                        <div class="course"
+                            style="position:relative; background-image: url({{ url_for('defposter') }});">
+                            <div class="course-like">
+                                <p class="">{{ item.likes }} <i class="bi bi-heart"></i></p>
+                            </div>
+                            <p class="course-like">{{ item.likes }} <i class="bi bi-heart"></i></p>
+                        </div>
+                        {% endif %}
                     </div>
-                    <div class="card-body">
-                        <h5 class="card-title fw-bold">{{ item.name }}</h5>
-                        <p class="card-text">{{ item.short_description | truncate }}</p>
-                        <!-- </div> -->
-                    </div>
+                        <div class="card-body">
+                            <h5 class="card-title fw-bold">{{ item.name }}</h5>
+                            <p class="card-text">{{ item.short_description | truncate }}</p>
+                            <!-- </div> -->
+                        </div>
                 </a>
                 {% endfor %}
             </div>
         </div>
     </div>
-</div>
-{% endblock %}
+    {% endblock %}

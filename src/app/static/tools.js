@@ -1,18 +1,22 @@
+function sleep(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms));
+}
+
 window.addEventListener('load', init);
 function init() {
     if (window.location.toString().search("/admin/users") != -1) {
         document.querySelector('#addUserButton').onclick = addUserForm;
-        document.querySelector('#uploadUsers').onclick = upload;
+        document.querySelector('#uploadUsers').onclick = Upload;
         document.querySelector('#uploadUsers').dataset.value = 'user';
     }
     if (window.location.toString().search("/admin/groups") != -1) {
         document.querySelector('#addGroupButton').onclick = addGroupForm;
-        document.querySelector('#uploadGroups').onclick = upload;
+        document.querySelector('#uploadGroups').onclick = Upload;
         document.querySelector('#uploadGroups').dataset.value = 'group';
     }
     if (window.location.toString().search("/admin/semesters") != -1) {
         document.querySelector('#addSemesterButton').onclick = addSemesterForm;
-        document.querySelector('#uploadSemesters').onclick = upload;
+        document.querySelector('#uploadSemesters').onclick = Upload;
         document.querySelector('#uploadSemesters').dataset.value = 'semester';
     }
     if (window.location.toString().search("/admin/") != -1) {
@@ -93,7 +97,7 @@ function addSemesterForm() {
     pArea.insertBefore(cloneForm, pArea.children[pArea.children.length - 2].nextElementSibling);
 }
 
-async function upload() {
+async function Upload() {
     // alert(this.dataset.value);
     this.onclick = function () {
         return false;
@@ -101,26 +105,36 @@ async function upload() {
     let form = document.forms[document.forms.length - 1];
     forms = document.forms;
     cloneForm = forms[0].cloneNode(true);
-    cloneForm.elements.semester_id.value = form.elements.semester_id.value;
-    cloneForm.elements.direction_id.value = form.elements.direction_id.value;
-    cloneForm.elements.semester_id.value = form.elements.semester_id.value;
+    if (this.dataset.value == "user")
+    {
+    cloneForm.elements.role_id.value = form.elements.role_id.value;
+    cloneForm.elements.login.value = '';
+    cloneForm.elements.first_name.value = '';
+    cloneForm.elements.last_name.value = '';
+    cloneForm.elements.middle_name.value = '';
+    cloneForm.elements.password.value = '';
+    }
+    else if(this.dataset.value == "semester") {
     cloneForm.elements.name.value = '';
-    cloneForm.elements.curator_id.value = '';
-    // console.log(cloneForm.elements.curators_ids);
-
+    cloneForm.elements.description.value = '';
+    }
+    else if (this.dataset.value == "group"){
+    cloneForm.elements.direction_id.value = form.elements.direction_id.value;
+    cloneForm.elements.name.value = '';
+    cloneForm.elements.description.value = '';
+    }
     cloneForm.name = `${Math.round(Math.random() * 10000)}`;
     cloneForm.id = `${Math.round(Math.random() * 10000)}`;
-    button = document.getElementById('modal-footer');
+    button = document.getElementById('button-footer');
     button.style.display = "none";
     var success = 0;
     var error = 0;
     console.log(forms);
-    // CountProjects = document.getElementById('uploadPlaceholder');
     var onDelete = []
     let formLength = forms.length;
     for (var i = 0; i < forms.length; i++) {
 
-        let urlDir = url + '/admin/addproject';
+        let urlDir = url + `/admin/add${this.dataset.value}`;
         let uri = new URL(urlDir);
         var body = new FormData(forms[i]);
         await sleep(1000);
@@ -131,17 +145,12 @@ async function upload() {
 
             sendRequest(uri, 'POST', function () {
                 if (this.response == "complete add") {
-                    p = document.getElementById('uploadPlaceholder');
+                    p = document.getElementById('upload-placeholder');
                     p.innerHTML = `${i} из ${formLength}`;
-                    button = document.getElementById('modal-footer');
+                    button = document.getElementById('button-footer');
                     button.style.display = "";
                     success++;
-                    // onDelete.push(forms[i].id);
 
-                    // console.log(forms[i].id);
-                    // projectArea = document.getElementById('project-area');
-                    // onDeleteForm = document.getElementById(`${forms[i].id}`); 
-                    // projectArea.removeChild(onDeleteForm);
                 } else {
                     error++;
                 }
@@ -162,9 +171,9 @@ async function upload() {
         }
     }
 
-    p1 = document.getElementById('results');
+    p1 = document.getElementById('upload-results');
     p1.innerHTML = `${success + 1} проектов успешно загружено, при загрузке ${error} произошла ошибка`;
-    successCheck = document.getElementById('loader-success');
+    successCheck = document.getElementById('uploader-success');
     successCheck.innerHTML = '';
     ico = document.createElement('i');
     ico.classList.add('fa');

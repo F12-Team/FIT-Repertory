@@ -345,13 +345,10 @@ a:hover {
 .top-cards-block{
     margin-top: 30px;
     margin-bottom: 120px;
+    height: 100%;
+    width: 100%;
 }
 
-.top-cards-flex{
-    display: flex;
-    justify-content: space-evenly;
-    flex-wrap: wrap;
-}
 
 .top-proj-name{
     font-weight: 800;
@@ -433,6 +430,51 @@ a:hover {
 .card-text{
     font-size: 18px;
     font-weight: 400;
+}
+
+.top-cards-flex{
+    height: 100%;
+    width: 100%;
+    display: flex;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+}
+ .top-card{
+  width: 33%;
+  margin-bottom: 60px;
+  align-self: baseline; 
+}
+
+.before_course{
+  width: 35%;
+  margin-bottom: 60px;
+}
+.pre_course{
+  height: 394px;
+  text-align: center;
+  display: flex;
+  justify-content: start;
+  margin-bottom: 20px;
+}
+.course{
+    background-size: cover;
+    background-position: center;
+    width: 278px;
+    height: 394px;
+    margin-bottom: 20px;
+    border-radius: 20px;
+    border: 4px solid #C9C8FF;
+    position: relative;
+}
+
+.course-like{
+    position: absolute;
+    bottom: -17px;
+    right: -1px;
+    background: rgba(255, 255, 255, 0.7);
+    
+    padding: 15px;
+    border-radius: 19px 0px;
 }
 
 /* Search page and projects page */
@@ -736,6 +778,7 @@ input[type="search"]::-webkit-search-results-decoration { display: none; }
     max-width: 360px;
     height: 394px;
     border-radius: 20px;
+    border: 4px solid #C9C8FF;
     
 }
 
@@ -845,10 +888,10 @@ input[type="search"]::-webkit-search-results-decoration { display: none; }
 }
 
 .video-txt{
-    font-size: 55px; 
+    font-size: 28px; 
     margin-bottom: 10px;
-    font-weight: 800;
-    color: #4A46FF;
+    font-weight: 600;
+    color: #020827;
 }
 .video-mp4{
     height: 600px;
@@ -868,10 +911,10 @@ video{
 }
 
 .md-txt{
-    font-size: 55px; 
+    font-size: 28px; 
     margin-bottom: 10px;
-    font-weight: 800;
-    color: #4A46FF;
+    font-weight: 600;
+    color: #020827;
 }
 
 .team-block{
@@ -880,10 +923,10 @@ video{
 }
 
 .team-txt{
-    font-size: 55px; 
+    font-size: 28px; 
     margin-bottom: 10px;
-    font-weight: 800;
-    color: #4A46FF;
+    font-weight: 600;
+    color: #020827;
 }
 
 .kur-block{
@@ -1423,6 +1466,10 @@ input#checkbox.ok.form-check-input{
     .top-proj-name-desc{
         display: none;
 
+    }
+
+    .before_course{
+        width: 100%;
     }
 
     .derec-btn{
