@@ -253,30 +253,6 @@ ShowProjects = function (response) {
     var cardPlace = document.getElementById('top-cards-flex');
     cardPlace.innerHTML = '';
     console.log(response);
-//     <a class="before_course" href="{{ url_for('view.project', project_id=item.id) }}">
-//     <div class="pre_course">
-//         {% if item.poster %}
-//         <div class="course"
-//             style="background-image: url({{ url_for('image', image_id=item.poster[0].id) }});"
-//             alt="...">
-//             <p class="course-like">{{ item.likes }} <i class="bi bi-heart"></i></p>
-//         </div>
-//         {% else %}
-//         <div class="course"
-//             style="position:relative; background-image: url({{ url_for('defposter') }});">
-//             <div class="course-like">
-//                 <p class="">{{ item.likes }} <i class="bi bi-heart"></i></p>
-//             </div>
-//             <p class="course-like">{{ item.likes }} <i class="bi bi-heart"></i></p>
-//         </div>
-//         {% endif %}
-//     </div>
-//         <div class="card-body">
-//             <h5 class="card-title fw-bold">{{ item.name }}</h5>
-//             <p class="card-text">{{ item.short_description | truncate }}</p>
-//             <!-- </div> -->
-//         </div>
-// </a>
     if (response.length < 1) {
 
         var p = document.createElement('h5');
@@ -298,7 +274,8 @@ ShowProjects = function (response) {
             cardImage.className = 'course';
 
             try{
-                cardImage.style.backgroundImage =`url(${url+"/images/"+ response[i].poster[0].id})`;
+                console.log(response[i].poster[0].id);
+                cardImage.style.backgroundImage = `url(${url+"/images/"+response[i].poster[0].id})`;
                 var courseLike = document.createElement('p');
                 courseLike.className = 'course-like';
                 var heart = document.createElement('i');
