@@ -298,7 +298,7 @@ ShowProjects = function (response) {
             cardImage.className = 'course';
 
             try{
-                cardImage.style.backgroundImage =`url(${url+"/defposter"+ response[i].poster[0].id})`;
+                cardImage.style.backgroundImage =`url(${url+"/images/"+ response[i].poster[0].id})`;
                 var courseLike = document.createElement('p');
                 courseLike.className = 'course-like';
                 var heart = document.createElement('i');
