@@ -47,6 +47,7 @@ class Direction(db.Model, SerializerMixin):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(128), nullable=False, unique=True)
     description = db.Column(db.Text())
+    queue = db.Column(db.Integer)
 
     image_id = db.Column(db.String(128), db.ForeignKey('images.id'))
 
