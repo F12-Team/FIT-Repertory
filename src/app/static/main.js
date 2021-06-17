@@ -568,7 +568,9 @@ renderButtons = function (response) {
     pagination.children[0].value = response.page - 1;
     pagination.children[0].onclick = renderPagination;
     if (response.page == response.iter_pages[0]) {
-        pagination.children[0].classList.add('disabled');
+        pagination.children[0].onclick = function() {
+            return false;
+        }
     }
     else {
         pagination.children[0].classList.remove('disabled');
@@ -579,7 +581,9 @@ renderButtons = function (response) {
         pagination.children[1].remove();
     }
     for (i in response.iter_pages) {
-        li = document.createElement('li');
+
+        
+        var li = document.createElement('li');
         li.classList.add('page-item');
         a = document.createElement('a');
 
@@ -591,6 +595,7 @@ renderButtons = function (response) {
         }
         else {
             li.value = response.iter_pages[i];
+            li.classList.add('not-displayed');
         }
         a.classList.add('page-link');
         response.iter_pages[i] == null ? a.innerHTML = '...' : a.innerHTML = response.iter_pages[i];
@@ -598,13 +603,14 @@ renderButtons = function (response) {
         a.value = response.iter_pages[i];
         li.appendChild(a);
         pagination.insertBefore(li, pagination.children[i].nextElementSibling);
-
     }
     // pagination.children[pagination.children.length-1] = response.page +1;
     pagination.children[pagination.children.length - 1].value = response.page + 1;
     pagination.children[pagination.children.length - 1].onclick = renderPagination;
     if (response.page == response.iter_pages[response.iter_pages.length - 1]) {
-        pagination.children[pagination.children.length - 1].classList.add('disabled');
+        pagination.children[pagination.children.length - 1].onclick = function() {
+            return false;
+        }
     }
     else {
         pagination.children[pagination.children.length - 1].classList.remove('disabled');

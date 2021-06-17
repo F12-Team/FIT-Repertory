@@ -1514,7 +1514,9 @@ input#checkbox.ok.form-check-input{
     .pro-sort{
         margin-top: 100px;
     }
-
+    .not-displayed{
+        display: none;
+    }
     .search-link{
         display: none;
     }
