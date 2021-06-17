@@ -77,11 +77,10 @@
             <script>
                 if (/^((?!chrome|android).)*safari/i.test(navigator.userAgent)) {
                     $('#video-mp').append(' <iframe class="video-mp4-item" src="{{ google_video | replace("view", "preview") }}" allowfullscreen allow="fullscreen;"></iframe>');
-                    $('#video-mp').children(".video-mp4-item").click(function () {
-                        alert('Данный браузер не отвечает требованиям для воспроизведения видео');
-                    })
                 } else {
                     $('#video-mp').append(' <iframe class="video-mp4-item" src="{{ google_video | replace("view", "preview") }}" allowfullscreen allow="fullscreen;"></iframe>');
+                    
+                    
                 }
             </script>
         </div>

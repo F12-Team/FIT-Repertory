@@ -39,7 +39,7 @@ window.onload = function () {
         if (document.querySelector('#search-addon')){
         document.querySelector('#search-addon').onclick = function () {
             if (document.querySelector('#proj-name').value.length > 0) {
-                document.querySelector("#clickme").innerHTML = document.querySelector('#proj-name').value;
+                document.querySelector("#clickme").innerText = document.querySelector('#proj-name').value;
             }
             else {
                 document.querySelector("#clickme").innerHTML = 'Проект...';
