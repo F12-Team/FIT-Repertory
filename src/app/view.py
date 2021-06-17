@@ -34,7 +34,7 @@ def local_pagination(pagination):
 def projects():
     direction_id = request.form.get('direction_id', 0, type=int)
     semesters = Semester.query.all()
-    directions = Direction.query.filter(Direction.name != 'Заглушка').all()
+    directions = Direction.query.filter(Direction.name != 'Не указано').all()
     projects = Project.query.filter(Project.status_id == 2).order_by(desc(Project.likes))
     if direction_id == 0:
         projects = projects.limit(PER_PAGE).all()
