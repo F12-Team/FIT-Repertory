@@ -267,6 +267,7 @@ ShowProjects = function (response) {
             // контреинер к которому всё крепится
             var cardContainer = document.createElement("a");
             cardContainer.className = 'before_course';
+            cardContainer.href = url + '/view/project/' + response[i].id;
             //верх с картинкои и лаиками
             var preCourse = document.createElement('div');
             preCourse.className = 'pre_course';
