@@ -76,8 +76,7 @@
             src="{{ google_video | replace('view', 'preview') }}" allowfullscreen allow="fullscreen;"></iframe> -->
             <script>
                 if ( /^((?!chrome|android).)*safari/i.test(navigator.userAgent)) {
-                    
-                    $('video-mp').append("<video controls class='video-mp4-item'> <source src='{{ google_video | replace('view', 'preview') }}' type='video/mp4'> </video>");
+                    alert('Данный браузер не отвечает требованиям для воспроизведения видео');
                 } else {
                     $('#video-mp').append(' <iframe class="video-mp4-item" src="{{ google_video | replace("view", "preview") }}" allowfullscreen allow="fullscreen;"></iframe>'); 
                 }
