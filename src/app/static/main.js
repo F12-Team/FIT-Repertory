@@ -280,7 +280,7 @@ ShowProjects = function (response) {
                 courseLike.className = 'course-like';
                 var heart = document.createElement('i');
                 heart.className = 'bi bi-heart';
-                p.innerHTML= response[i].likes;
+                courseLike.innerHTML= response[i].likes;
                 courseLike.appendChild(heart);
             }
             catch(e){
