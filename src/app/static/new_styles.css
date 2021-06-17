@@ -628,6 +628,9 @@ a:hover {
     padding: 10px 30px;
     color:#FFFFFF;
     font-weight: 600;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
 }
 .search-but:hover{
     background: #4A46FF;
