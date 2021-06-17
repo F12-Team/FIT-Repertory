@@ -27,7 +27,7 @@
     <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> -->
     <script src="{{ url_for('static', filename='tools.js')}}"></script>
     <script src="{{ url_for('static', filename='main.js')}}"></script>
-    
+
     <link rel="stylesheet" href="https://unpkg.com/placeholder-loading/dist/css/placeholder-loading.min.css">
     <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='new_styles.css') }}">
@@ -47,7 +47,12 @@
 
     <nav class="navbar navbar-expand-lg navbar-light">
         <div class="container nav-width">
-            <a class="navbar-brand" href="{{ url_for('index') }}">FIT Repertory</a>
+            <div class="d-flex justify-content-between align-items-center" style="height: 38px;">
+                <a href="https://new.mospolytech.ru/"><img src="../static/pngs/logo.svg"  class="" style="height: 38px; width: auto; margin-right: 24px;"></a>
+                <a class="navbar-brand" href="{{ url_for('index') }}">
+
+                    FIT Repertory</a>
+            </div>
             <button class="opennav d-none" id="opennav">
                 <span class="navbar-toggler-icon"><i class="bi bi-list" style="font-size: 30px;"></i></span>
             </button>
@@ -96,7 +101,8 @@
     {% with messages = get_flashed_messages(with_categories=true) %}
     {% for category, msg in messages %}
     <div class="d-flex justify-content-center">
-        <div class="w-50 alert alert-{{ category }} alert-dismissible fade show d-flex justify-content-center" role="alert">
+        <div class="w-50 alert alert-{{ category }} alert-dismissible fade show d-flex justify-content-center"
+            role="alert">
             {{ msg }}
             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
         </div>
