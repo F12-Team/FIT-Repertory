@@ -8,7 +8,7 @@
             <img src="{{ project.poster[0].url }}" class="poster-block-img" alt="...">
             {% else %}
                 {% if google_poster %}
-                <iframe class="poster-block-img" src="{{ google_poster | replace('view', 'preview') }}" width="480" height="720" scrolling="no"></iframe>
+                <iframe class="poster-block-img" src="{{ google_poster | replace('view', 'preview') }}" width="480" height="720" scrolling="no" allowfullscreen allow="fullscreen;"></iframe>
                 {% else %}
                 <img src="{{ url_for('defposter') }}" class="poster-block-img" alt="...">
                 {% endif %}
