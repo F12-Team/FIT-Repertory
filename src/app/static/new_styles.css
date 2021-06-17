@@ -278,7 +278,6 @@ a:hover {
     font-weight: bold;
     margin: 30px;
     margin-top: 50px;
-    align-self: baseline;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -471,10 +470,12 @@ a:hover {
     position: absolute;
     bottom: -17px;
     right: -1px;
-    background: rgba(255, 255, 255, 0.7);
+    background: rgba(255, 255, 255, 0.8);
     
-    padding: 15px;
+    padding: 5px;
     border-radius: 19px 0px;
+    font-size: 15px;
+    font-weight: 500;
 }
 
 /* Search page and projects page */
@@ -828,7 +829,8 @@ input[type="search"]::-webkit-search-results-decoration { display: none; }
 }
 
 .proj-shrt-desc{
-    margin-top: 120px;
+    margin-top: 60px;
+    font-size: 20px;
 }
 
 #button-like {   
@@ -1484,6 +1486,14 @@ input#checkbox.ok.form-check-input{
     img, svg {
         vertical-align: middle;
         
+    }
+
+    .top-cards-block{
+        margin-top: 30px;
+        margin-bottom: 120px;
+        height: 100%;
+        width: 90%;
+        margin-left: 30px;
     }
 
     .bott-right{
