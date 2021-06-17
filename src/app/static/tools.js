@@ -104,7 +104,8 @@ async function Upload() {
     }
     let form = document.forms[document.forms.length - 1];
     forms = document.forms;
-    cloneForm = forms[0].cloneNode(true);
+    var cloneForm = forms[0].cloneNode(true);
+    console.log(cloneForm);
     if (this.dataset.value == "user")
     {
     cloneForm.elements.role_id.value = form.elements.role_id.value;
@@ -144,6 +145,7 @@ async function Upload() {
             body.delete('checkbox');
 
             sendRequest(uri, 'POST', function () {
+                
                 if (this.response == "complete add") {
                     p = document.getElementById('upload-placeholder');
                     p.innerHTML = `${i} из ${formLength}`;
@@ -180,8 +182,9 @@ async function Upload() {
     ico.classList.add('fa-check');
     successCheck.appendChild(ico);
     projectArea = document.getElementById('project-area');
-    if (projectArea.children.length < 1) {
-        projectArea.appendChild(cloneForm);
+    console.log(cloneForm);
+    if (projectArea.children.length < 2) {
+        projectArea.insertBefore(cloneForm, projectArea.children[0]);
     }
 
 }

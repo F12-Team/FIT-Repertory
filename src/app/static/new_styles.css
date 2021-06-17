@@ -629,6 +629,9 @@ a:hover {
     padding: 10px 30px;
     color:#FFFFFF;
     font-weight: 600;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
 }
 .search-but:hover{
     background: #4A46FF;
@@ -1515,7 +1518,9 @@ input#checkbox.ok.form-check-input{
     .pro-sort{
         margin-top: 100px;
     }
-
+    .not-displayed{
+        display: none;
+    }
     .search-link{
         display: none;
     }
