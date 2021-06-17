@@ -1702,10 +1702,16 @@ input#checkbox.ok.form-check-input{
         display: none !important;
     }
 
-    .er503{
-        display: flex !important; 
-        justify-content:center; 
-        align-items:center; 
-        text-align:center;
-    }
+    
   }
+
+  
+@media only screen and (max-width: 500px) {
+    .er-text{
+        font-size: 18px !important;
+    }
+
+    .er-img{
+        width: 75% !important;
+    }
+}
