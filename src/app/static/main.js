@@ -252,7 +252,7 @@ CatchProjectOfDirection = async function (directionID) {
 ShowProjects = function (response) {
     var cardPlace = document.getElementById('top-cards-flex');
     cardPlace.innerHTML = '';
-    console.log(response);
+    // console.log(response);
     if (response.length < 1) {
 
         var p = document.createElement('h5');
@@ -262,7 +262,7 @@ ShowProjects = function (response) {
         cardPlace.appendChild(p)
     }
     else {
-        console.log(response.length);
+        // console.log(response.length);
         for (i in response) {
             // контреинер к которому всё крепится
             var cardContainer = document.createElement("a");
@@ -274,7 +274,7 @@ ShowProjects = function (response) {
             cardImage.className = 'course';
 
             try{
-                console.log(response[i].poster[0].id);
+                // console.log(response[i].poster[0].id);
                 cardImage.style.backgroundImage = `url(${url+"/images/"+response[i].poster[0].id})`;
                 var courseLike = document.createElement('p');
                 courseLike.className = 'course-like';
@@ -442,11 +442,11 @@ renderPagination = function () {
         page_val = this.value;
         body.append("page", page_val);
         sendRequest(uri, 'POST', function () {
-            console.log(this.response);
+            // console.log(this.response);
             if (this.response[3].length > 0) {
                 document.querySelector("#loading").style.display = 'none';
                 renderDirectionResponse(this.response);
-                console.log(this.response);
+                // console.log(this.response);
                 renderButtons(this.response[0], first = false);
 
             }
@@ -659,7 +659,7 @@ uploadProjects = async function () {
     button.style.display = "none";
     var success = 0;
     var error = 0;
-    console.log(forms);
+    // console.log(forms);
     // CountProjects = document.getElementById('uploadPlaceholder');
     var onDelete = []
     let formLength = forms.length;
@@ -695,11 +695,11 @@ uploadProjects = async function () {
             forms[i].innerHTML = '';
             onDelete.push(forms[i].id);
         }
-        console.log(onDelete);
+        // console.log(onDelete);
     }
     for (var i = 0; i < onDelete.length; i++) {
         if (onDelete[i] != "") {
-            console.log(onDelete.length);
+            // console.log(onDelete.length);
             projectArea = document.getElementById('project-area');
             onDeleteForm = document.getElementById(onDelete[i]);
             projectArea.removeChild(onDeleteForm);
