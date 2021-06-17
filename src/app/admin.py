@@ -89,7 +89,7 @@ def users():
 
 @bp.route('/adduser', methods=['POST'])
 def adduser():
-    user = Project(**adduser_params())
+    user = User(**adduser_params())
     password = request.form.get('password')
     user.set_password(password)
 
