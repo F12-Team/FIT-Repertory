@@ -2,6 +2,7 @@ from flask import Flask, render_template, abort, send_from_directory, render_tem
 from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy import MetaData, desc
 from flask_migrate import Migrate
+from flask_login import login_required
 
 app = Flask(__name__)
 application = app
@@ -74,8 +75,7 @@ def defposter():
 
 
 @app.route('/add_image', methods=['POST'])
-#@login_required
-#@check_rights('create_movie')
+@login_required
 def add_image():
     file = request.files.get('img')
     type_id = request.form.get('type_id')
@@ -100,13 +100,13 @@ def e503():
     return render_template('503.html')
 
 
-# @app.errorhandler(404)
-# def page_not_found(e):
-#     print(e)
-#     return render_template('404.html'), 404
+@app.errorhandler(404)
+def page_not_found(e):
+    print(e)
+    return render_template('404.html'), 404
 
 
-# @app.errorhandler(Exception)
-# def server_error(e):
-#     print(e)
-#     return render_template('503.html'), 503
+@app.errorhandler(Exception)
+def server_error(e):
+    print(e)
+    return render_template('503.html'), 503

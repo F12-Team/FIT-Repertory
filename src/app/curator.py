@@ -1,10 +1,11 @@
 from flask import Blueprint, jsonify, render_template, request
-from flask_login import current_user
+from flask_login import current_user, login_required
 from models import Project, Status, User
 import secrets
 import string
 from transliterate import transliterate
 from app import db
+
 
 bp = Blueprint('curator', __name__, url_prefix='/curator')
 
@@ -27,6 +28,7 @@ def gen_login(teamlead_name):
     return name
 
 @bp.route('/')
+@login_required
 def index():
     if current_user:
         projects = Project.query.join(Status).filter(Project.curator_id == current_user.id).filter(Status.name in curator_project_statuses).all()
@@ -40,6 +42,7 @@ def index():
 
 
 @bp.route('/genpsswds', methods=['POST'])
+@login_required
 def genpsswds():
     if current_user:
         projects = Project.query.join(Status).filter(Project.curator_id == current_user.id).filter(Status.name in curator_project_statuses_for_gen_psswds).all()
@@ -71,6 +74,7 @@ def genpsswds():
 
 
 @bp.route('/confirm', methods=['POST'])
+@login_required
 def confirm():
     project_id = request.form.get('project_id')
     project = Project.query.filter(Project.id == project_id).first()

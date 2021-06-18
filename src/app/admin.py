@@ -2,6 +2,7 @@ from flask import Blueprint, render_template, redirect, url_for, flash, request,
 from models import Direction, Group, Project, Role, Semester, Status, User
 from app import db
 from tools import ImageSaver
+from flask_login import login_required
 
 bp = Blueprint('admin', __name__, url_prefix='/admin')
 
@@ -23,6 +24,7 @@ def adduser_params():
     }
 
 @bp.route('/projects')
+@login_required
 def projects():
     projects = Project.query.all()
     semesters = Semester.query.all()
@@ -33,6 +35,7 @@ def projects():
 
 
 @bp.route('/addproject', methods=['POST'])
+@login_required
 def addproject():
     project = Project(**addproject_params(), status_id=4)
     db.session.add(project)
@@ -41,6 +44,7 @@ def addproject():
 
 
 @bp.route('/groups')
+@login_required
 def groups():
     groups = Group.query.all()
     directions = Direction.query.all()
@@ -49,6 +53,7 @@ def groups():
 
 
 @bp.route('/addgroup', methods=['POST'])
+@login_required
 def addgroup():
     name = request.form.get('name')
     direction_id = request.form.get('direction_id')
@@ -59,6 +64,7 @@ def addgroup():
 
 
 @bp.route('/semesters')
+@login_required
 def semesters():
     semesters = Semester.query.all()
 
@@ -66,6 +72,7 @@ def semesters():
 
 
 @bp.route('/addsemester', methods=['POST'])
+@login_required
 def addsemester():
     name = request.form.get('name')
     semester = Semester(name=name)
@@ -75,6 +82,7 @@ def addsemester():
 
 
 @bp.route('/users')
+@login_required
 def users():
     users = User.query.all()
     roles = Role.query.all()
@@ -83,6 +91,7 @@ def users():
 
 
 @bp.route('/adduser', methods=['POST'])
+@login_required
 def adduser():
     user = User(**adduser_params())
     password = request.form.get('password')
@@ -94,6 +103,7 @@ def adduser():
     return jsonify('complete add')
 
 @bp.route('/updateproject/<project_id>', methods=['GET', 'POST'])
+@login_required
 def updateproject(project_id):
     if request.method == 'GET':
         project = Project.query.filter(Project.id == project_id).first()
