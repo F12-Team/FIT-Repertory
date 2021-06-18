@@ -1,6 +1,7 @@
 {% extends 'admin/base_admin.html' %}
 {% from 'admin/admin_modal.html' import modal_delete%}
 {% from 'admin/admin_modal.html' import modal_upload%}
+
 {% block content_admin %}
 <div id="page-content-wrapper">
     <div class="con_admin">
@@ -19,7 +20,6 @@
                         <div class="card">
                             <div class="card-header d-flex justify-content-between align-items-center">
                                 <div class="d-flex align-items-center sel_el">
-                                    <!-- Добавить сортировку по проектам -->
                                     <p class="sel_el_txt" style="color: black">
                                         Отображать по
                                     </p>
@@ -34,7 +34,6 @@
                                 </div>
                                 <div>
                                     <div class="input-group rounded">
-                                        <!--Добавить поиск -->
                                         <input type="search" class="form-control rounded" placeholder="Search"
                                             aria-label="Search" aria-describedby="search-addon" />
                                         <span class="input-group-text border-0" id="search-addon">
@@ -61,8 +60,6 @@
                                                 <td>{{ item.name }}</td>
                                                 <td>{{ item.description }}</td>
                                                 <td class="tab_buttons">
-                                                    <!-- Потом по требованию добавлю иконки или надписи -->
-
                                                     <a type="button" class="btn btn-secondary"><i class="bi bi-eye"></i></a>
                                                     <a type="button" class="btn btn-warning"
                                                         href=""><i class="bi bi-pencil"></i></a>
@@ -73,10 +70,6 @@
                                         {% endfor %}
                                     </table>
                                 </div>
-                            </div>
-                            <div class="card-footer d-flex justify-content-center">
-                                <!--Добавить пагинацию -->
-                                Пагинация
                             </div>
                         </div>
                     </div>
@@ -118,7 +111,6 @@
                                     </button>
                                 </div>
                             </div>
-                            
                         </div>
                     </div>
                 </div>

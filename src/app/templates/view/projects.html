@@ -4,14 +4,15 @@
 
 <div class="container">
     <div class="search_block">
-        <form class="search_form"name="search" id="search">
+        <form class="search_form" name="search" id="search">
             <div class="d-flex justify-content-between bd-highlight search-menu align-items-center">
                 <a id="clickme" class="bd-highlight search-link">Проект...</a>
                 <input type="search" class="form-control rounded search-link-mobile" placeholder="Название проекта"
-                        aria-label="Search" aria-describedby="search-addon" style="font-size: 44px; display: none;" id="proj-name1" name="name"/>
+                    aria-label="Search" aria-describedby="search-addon" style="font-size: 44px; display: none;"
+                    id="proj-name1" name="name" />
                 <div class="bd-highlight align-items-center dropdown search-title" id="slider">
-                    <!-- Выбор направления -->
-                    <select class="se projects-sel" aria-label="Default select example" name="direction_id" id="direction_id">
+                    <select class="se projects-sel" aria-label="Default select example" name="direction_id"
+                        id="direction_id">
                         <option class="" selected value="">Направление</option>
                         {% for direction in directions %}
                         <option class="" value="{{ direction.id }}">{{ direction.name }}</option>
@@ -19,7 +20,6 @@
                     </select>
                 </div>
                 <div class="bd-highlight  align-items-center dropdown search-title" id="slider2">
-                    <!-- Выбор семестра -->
                     <select class="se projects-sel" aria-label="Default select example" name="semester_id">
                         <option class="" selected value="">Семестр</option>
                         {% for semester in semesters %}
@@ -29,15 +29,14 @@
 
                 </div>
                 <div id="other" class=" other input-group rounded" style="display: none;">
-                    <!-- Поиск проекта -->
-                    <input type="search" class="form-control rounded search-pro" placeholder="Название желаемого проекта"
-                        aria-label="Search" aria-describedby="search-addon" style="font-size: 44px;" id="proj-name" name="name"/>
+                    <input type="search" class="form-control rounded search-pro"
+                        placeholder="Название желаемого проекта" aria-label="Search" aria-describedby="search-addon"
+                        style="font-size: 44px;" id="proj-name" name="name" />
                     <span class="input-group-text border-0 ex-button" id="search-addon">
                         <i id="back-search" class="bi bi-x-lg "></i>
                     </span>
                 </div>
             </div>
-            <!-- Скрипт для отображения строки поиска -->
             <script>
                 $("#clickme").click(function () {
                     $("#slider").hide("fast");
@@ -46,8 +45,6 @@
                     $("#other").show("fast");
                 });
             </script>
-            <!-- Скрипт для скрытия строки поиска. Можно отправить в main.js -->
-            <!-- ну отправь -->
             <script>
                 $("#search-addon").click(function () {
                     $("#slider").show("fast");
@@ -57,106 +54,42 @@
                 });
             </script>
             <script type="text/javascript">
-                $(document).ready(function() {
-                   $("#search").bind("keypress", function(e) {
-                      if (e.keyCode == 13) {
-                         return false;
-                      }
-                   });
+                $(document).ready(function () {
+                    $("#search").bind("keypress", function (e) {
+                        if (e.keyCode == 13) {
+                            return false;
+                        }
+                    });
                 });
-        </script>
+            </script>
             <div class="d-flex justify-content-between bd-highlight align-items-center select-search">
-                    <!-- Кнопка для выбора количества отображаемых элементов -->
-                    <div class="d-flex align-items-center sel_el">
-                        <p class="sel_el_txt"style="">
-                            Отображать по
-                        </p>
-                        <select class="sel_el_num" name="per_page">
-                            <option value="6" selected>6</option>
-                            <option value="12">12</option>
-                            <option value="18">18</option>
-                        </select>
-                    </div>
-                    <!-- </label> -->
-                    <div class="button-block"><a class="btn btn-primary search-but" type="button" id="submitForm">Найти</a></div>
-                    <!-- Кнопка для отправки запроса поиска TODO://добавить скрытие строки поиска при нажатии на эту кнопку(ВЛАД) -->
+                <div class="d-flex align-items-center sel_el">
+                    <p class="sel_el_txt">Отображать по</p>
+                    <select class="sel_el_num" name="per_page">
+                        <option value="6" selected>6</option>
+                        <option value="12">12</option>
+                        <option value="18">18</option>
+                    </select>
+                </div>
+                <div class="button-block"><a class="btn btn-primary search-but" type="button" id="submitForm">Найти</a>
+                </div>
             </div>
-            
+
         </form>
     </div>
     <div class="container">
         <div class="loader" id="loading" style="display: none;">Loading...</div>
     </div>
-    <div class="some-proj" id="projects">
-        
-        <!-- <a class="to-project-link">
-            
-            <div class="d-flex flex-column bd-highlight projec-block">
-                <div class="d-flex justify-content-between bd-highlight pro-block">
-                    <div class="d-flex flex-column bd-highlight pro-name-napr">
-                        <p class="fw-bold pro-name">Название проекта</p>
-                        
-                        <p class="pro-derec">Учебное направление СДЕЛАТЬ!!!</p>
-                        
-                    </div>
-                    <div class= "d-flex">
-                    <p class="pro-like"><i class="bi bi-heart"></i> 2222</p>
-                    
-                    <p class="pro-sem">СЕМЕСТР СДЕЛАТЬ!!!!</p>
-                    </div>
-                </div>
-            </div>
-        </a> -->
-    </div>
+    <div class="some-proj" id="projects"></div>
     <nav aria-label="Page navigation example" class="text-center pagin-block">
-        <!-- Обновить пагинацию -->
         <ul class="pagination" id="pagination">
             <li class="page-item">
                 <a class="page-link prev-page-btn" aria-label="Previous">
-                    <!-- Кнопка возврата -->
                     <span class="sr-only">Назад</span>
                 </a>
             </li>
-            <!-- 
-            <li class="page-item act-pag-btn active">
-               
-                <a class="page-link" href="">
-                    <span>1</span>
-
-                </a>
-            </li>
-            <li class="page-item ">
-                <a class="page-link" href="">
-                    
-                    <span>2</span>
-
-                </a>
-            </li>
-            <li class="page-item ">
-                <a class="page-link" href="">
-                   
-                    <span>3</span>
-
-                </a>
-            </li>
-            <li class="page-item ">
-                <a class="page-link" href="">
-                   
-                    <span>. . .</span>
-
-                </a>
-            </li>
-            <li class="page-item ">
-                <a class="page-link" href="">
-                    
-                    <span>1234</span>
-
-                </a>
-            </li>  -->
-
             <li class="page-item">
                 <a class="page-link" aria-label="Next" id="next">
-                    <!-- Кнопка перехода на следующую сраницу -->
                     <span class="sr-only">Вперед</span>
                 </a>
             </li>

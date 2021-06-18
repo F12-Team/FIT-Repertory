@@ -1,7 +1,6 @@
 {% extends 'base.html' %}
 {% block content %}
 <div class="container">
-    <!-- <a id="button-like"></a> Добавить проставление лайков -->
     <div class="head-block">
         <div class="poster-block">
             {% if project.poster %}
@@ -28,14 +27,14 @@
                                 href="{% for info in project.info %}{% if info.type.name == 'GitHub' %}{{ info.resource }}{% endif %}{% endfor %}">GitHub</a>
                             {% for info in project.info %}{% if info.type.name == 'GitHub' %}
                             <script>$("#gthb-id").removeClass("disabled")</script>{% endif %}{% endfor %}
-                        </div> <!-- Добавить подгрузку гита -->
+                        </div>
                         <div class="bd-highlight proj-site"><a target="_blank" rel="noopener noreferrer"
                                 class="btn btn-outline-success plink disabled" id="site-id"
                                 href="{% for info in project.info %}{% if info.type.name == 'Сайт' %}{{ info.resource }}{% endif %}{% endfor %}">Сайт
                                 проекта</a>
                             {% for info in project.info %}{% if info.type.name == 'Сайт' %}
                             <script>$("#site-id").removeClass("disabled")</script>{% endif %}{% endfor %}
-                        </div> <!-- Добавить подгрузку сайта -->
+                        </div>
                     </div>
                     <div class="proj-likes d-flex align-items-center justify-content-end">
                         <i class="bi bi-heart px-2 plike" style="color: black; margin-right: 0px !important;"></i>
@@ -68,19 +67,12 @@
         <div class="d-flex flex-row justify-content-start">
             <p class="video-txt">Видеообзор</p>
         </div>
-        <!-- <video src="{% for info in project.info %}{% if info.type.name == 'Видео с GoogleDisk' %}{{ info.resource }}{% endif %}{% endfor %}" playsinline
-            controls class="intro-video" preload="auto" type="video/mp4"></video> -->
         <div class="video-mp4" allowfullscreen allow="fullscreen;" id="video-mp">
-
-            <!-- <iframe class="video-mp4-item"
-            src="{{ google_video | replace('view', 'preview') }}" allowfullscreen allow="fullscreen;"></iframe> -->
             <script>
                 if (/^((?!chrome|android).)*safari/i.test(navigator.userAgent)) {
                     $('#video-mp').append(' <iframe class="video-mp4-item" src="{{ google_video | replace("view", "preview") }}" allowfullscreen allow="fullscreen;"></iframe>');
                 } else {
                     $('#video-mp').append(' <iframe class="video-mp4-item" src="{{ google_video | replace("view", "preview") }}" allowfullscreen allow="fullscreen;"></iframe>');
-                    
-                    
                 }
             </script>
         </div>
@@ -101,8 +93,7 @@
         <div class="team-cards">
             <div class="d-flex justify-content-center">
                 <div class="kur-block d-flex flex-column align-items-center justify-content-center">
-                    <p class="kur-name">{% if project.curator %}{{ project.curator.full_name }}{% else %}Информация
-                        временно отсутствует{% endif %}</p>
+                    <p class="kur-name">{% if project.curator %}{{ project.curator.full_name }}{% else %}Информация временно отсутствует{% endif %}</p>
                     <p class="kur-role">Куратор</p>
                 </div>
             </div>

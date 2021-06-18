@@ -33,7 +33,6 @@
             <div class="" id="directions">
                 <div class="cards-flex">
                     {% for direction in directions %}
-                    <!-- Обновить выбор направления и переход на блок с ТОП-проектами -->
                     <a class="route service" data-id="{{direction.id}}" href="#cards">
                         <div class="logo-block"><img class="logoqwerty" src="{{ direction.image.url }}"
                                 alt="Card image cap"></div>
@@ -85,13 +84,11 @@
                 <div id="to-projects" class="d-flex align-items-start flex-column bd-highlight"><a
                         href="{{ url_for('view.projects') }}" class="btn btn-primary to-all-proj"><i
                             class="bi bi-search mx-2"></i>Все проекты</a></div>
-                <!-- Обновить переход на страницу со всеми проектами с фильтром направления -->
             </div>
         </div>
 
         <div class="top-cards-block" id="cards">
             <div class="top-cards-flex" id="top-cards-flex">
-
                 {% for item in projects %}
                 <a class="before_course" href="{{ url_for('view.project', project_id=item.id) }}">
                     <div class="pre_course">
@@ -111,14 +108,15 @@
                         </div>
                         {% endif %}
                     </div>
-                        <div class="card-body">
-                            <h5 class="card-title fw-bold">{{ item.name }}</h5>
-                            <p class="card-text">{{ item.short_description | truncate }}</p>
-                            <!-- </div> -->
-                        </div>
+                    <div class="card-body">
+                        <h5 class="card-title fw-bold">{{ item.name }}</h5>
+                        <p class="card-text">{{ item.short_description | truncate }}</p>
+                        <!-- </div> -->
+                    </div>
                 </a>
                 {% endfor %}
             </div>
         </div>
     </div>
-    {% endblock %}
+</div>
+{% endblock %}

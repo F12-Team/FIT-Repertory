@@ -1,6 +1,7 @@
 {% extends 'admin/base_admin.html' %}
 {% from 'admin/admin_modal.html' import modal_delete%}
 {% from 'admin/admin_modal.html' import modal_upload%}
+
 {% block content_admin %}
 <div id="page-content-wrapper">
 
@@ -20,7 +21,6 @@
                         <div class="card">
                             <div class="card-header d-flex justify-content-between align-items-center">
                                 <div class="d-flex align-items-center sel_el">
-                                    <!-- Добавить сортировку по проектам -->
                                     <p class="sel_el_txt" style="color: black">
                                         Отображать по
                                     </p>
@@ -35,7 +35,6 @@
                                 </div>
                                 <div>
                                     <div class="input-group rounded">
-                                        <!--Добавить поиск -->
                                         <input type="search" class="form-control rounded" placeholder="Search"
                                             aria-label="Search" aria-describedby="search-addon" />
                                         <span class="input-group-text border-0" id="search-addon">
@@ -64,22 +63,18 @@
                                                 <td>{{ item.direction.name }}</td>
                                                 <td>{{ item.description }}</td>
                                                 <td class="tab_buttons">
-                                                    <!-- Потом по требованию добавлю иконки или надписи -->
-
-                                                    <a type="button" class="btn btn-secondary" ><i class="bi bi-eye"></i></a>
-                                                    <a type="button" class="btn btn-warning"
-                                                        href=""><i class="bi bi-pencil"></i></a>
-                                                    <a type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#delete-modal"><i class="bi bi-trash"></i></a>
+                                                    <a type="button" class="btn btn-secondary"><i
+                                                            class="bi bi-eye"></i></a>
+                                                    <a type="button" class="btn btn-warning" href=""><i
+                                                            class="bi bi-pencil"></i></a>
+                                                    <a type="button" class="btn btn-danger" data-bs-toggle="modal"
+                                                        data-bs-target="#delete-modal"><i class="bi bi-trash"></i></a>
                                                 </td>
                                             </tr>
                                         </tbody>
                                         {% endfor %}
                                     </table>
                                 </div>
-                            </div>
-                            <div class="card-footer d-flex justify-content-center">
-                                <!--Добавить пагинацию -->
-                                Пагинация
                             </div>
                         </div>
                     </div>
@@ -88,45 +83,42 @@
             <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
                 <div class="d-flex justify-content-center">
                     <div class="d-block justify-content-center"
-                        style="border: 1px solid #CCCED4; padding: 50px; min-width: 1000px;" id='project-area'>
+                        style="border: 1px solid #CCCED4; padding: 50px; min-width: 1000px;" id="project-area">
                         <form class="d-flex justify-content-between w-100" id="search" name="search">
-                        <div class="d-flex justify-content-between" >
-                            
-                            <div class="send_proj_el">
-                                <div class="send_role_temp d-block">
-                                    <p>Название</p>
-                                    <input class="form-control" type="text" name="name" value="">
-                                </div>
-                            </div>
-                            <div class="send_proj_el d-flex justify-content-center" style="width: 210px;">
-                                <div class="send_role_temp d-block">
-                                    <p>Выберите направление</p>
-                                    <div class="d-flex justify-content-between">
-                                        <select class="send_select" aria-label="Default select example" name="direction_id">
-                                            <option class="" selected>Направление</option>
-                                            {% for direction in directions %}
-                                            <option class="" value="{{ direction.id }}">{{ direction.name }}
-                                            </option>
-                                            {% endfor %}
-                                        </select>
-
+                            <div class="d-flex justify-content-between">
+                                <div class="send_proj_el">
+                                    <div class="send_role_temp d-block">
+                                        <p>Название</p>
+                                        <input class="form-control" type="text" name="name" value="">
                                     </div>
                                 </div>
-                            </div>
-                            
-                            <div class="send_proj_el">
-                                <div class="send_role_temp d-block">
-                                    <p>Описание</p>
-                                    <input class="form-control" type="text" name="description" value="">
+                                <div class="send_proj_el d-flex justify-content-center" style="width: 210px;">
+                                    <div class="send_role_temp d-block">
+                                        <p>Выберите направление</p>
+                                        <div class="d-flex justify-content-between">
+                                            <select class="send_select" aria-label="Default select example"
+                                                name="direction_id">
+                                                <option class="" selected>Направление</option>
+                                                {% for direction in directions %}
+                                                <option class="" value="{{ direction.id }}">{{ direction.name }}
+                                                </option>
+                                                {% endfor %}
+                                            </select>
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="send_proj_el">
+                                    <div class="send_role_temp d-block">
+                                        <p>Описание</p>
+                                        <input class="form-control" type="text" name="description" value="">
+                                    </div>
+                                </div>
+                                <div class="check_send">
+                                    <input type="checkbox" class="ok form-check-input" id="checkbox" name="checkbox">
+                                    <label class="form-check-label" for="checkbox">Игнорировать</label>
                                 </div>
                             </div>
-                            <div class="check_send">
-                                <input type="checkbox" class="ok form-check-input" id="checkbox" name="checkbox">
-                                <label class="form-check-label" for="checkbox">Игнорировать</label>
-                            </div>
-                            
-                        
-                        </div>
                         </form>
                         <div class="d-flex justify-content-between align-items-center">
                             <div class="send_proj_el">
@@ -135,12 +127,12 @@
                                         style="margin-right: 20px; background-color: #4A46FF;">+</a>
                                     <button type="button" class="btn btn-primary" data-toggle="modal"
                                         data-target="#exampleModalCenter" id="uploadGroups"
-                                        style="margin-right: 20px; background-color: #4A46FF;" data-bs-toggle="modal" data-bs-target="#upload-modal">
+                                        style="margin-right: 20px; background-color: #4A46FF;" data-bs-toggle="modal"
+                                        data-bs-target="#upload-modal">
                                         Отправить на сохранение
                                     </button>
                                 </div>
                             </div>
-                            
                         </div>
                     </div>
                 </div>
