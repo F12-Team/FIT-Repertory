@@ -2,12 +2,12 @@
 
 {% block content %}
 <a id="#button-top" class="d-none"></a>
-<img src="../static/pngs/elka.svg" class="img-svg" style="display: inline-block; position: absolute; top: 180px">
-<img src="../static/pngs/question.svg" class="img-svg"
+<img src="{{ url_for('static', filename='/pngs/elka.svg')}}" class="img-svg" style="display: inline-block; position: absolute; top: 180px">
+<img src="{{ url_for('static', filename='/pngs/question.svg')}}" class="img-svg"
     style="display: inline-block; position: absolute; top: 180px; right: 0;">
 <div class="d-flex justify-content-center align-items-center text-center" >
     <div class="d-block w-50" style="margin: 180px 0; margin-bottom: 50px; ">
-        <img src="../static/pngs/503.svg" class="er-img w-50">
+        <img src="{{ url_for('static', filename='/pngs/503.svg')}}" class="er-img w-50">
         <p class="er-text" style="font-weight:800; font-size:35px; color: #4A46FF;">Проводятся технические работы</p>
     </div>
 </div>

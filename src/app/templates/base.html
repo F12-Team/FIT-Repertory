@@ -48,7 +48,7 @@
     <nav class="navbar navbar-expand-lg navbar-light">
         <div class="container nav-width">
             <div class="d-flex justify-content-between align-items-center" style="height: 38px;">
-                <a href="https://new.mospolytech.ru/"><img src="../static/pngs/logo.svg"  class="" style="height: 38px; width: auto; margin-right: 24px;"></a>
+                <a href="https://new.mospolytech.ru/"><img src="{{ url_for('static', filename='/pngs/logo.svg')}}"  class="" style="height: 38px; width: auto; margin-right: 24px;"></a>
                 <a class="navbar-brand" href="{{ url_for('index') }}">
 
                     FIT Repertory</a>
