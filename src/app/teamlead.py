@@ -1,8 +1,6 @@
-from flask import Blueprint, render_template, redirect, url_for, flash, request, jsonify
-from flask_login import LoginManager, login_user, logout_user, login_required, current_user
-from functools import wraps
-from sqlalchemy import exc
-from models import Direction, Group, Role, Status, Semester, Type, Student, User, Image, Info, Project
+from flask import Blueprint, jsonify, render_template, request
+from flask_login import current_user
+from models import Project
 from app import db
 
 bp = Blueprint('teamlead', __name__, url_prefix='/teamlead')

@@ -5,11 +5,8 @@ from flask_login import UserMixin
 from werkzeug.security import generate_password_hash, check_password_hash
 import markdown
 from app import db
-from sqlalchemy.dialects import mysql
-from sqlalchemy import exc
 from sqlalchemy_serializer import SerializerMixin
 from users_policy import UsersPolicy
-from sqlalchemy.ext.associationproxy import association_proxy
 
 
 pictures = db.Table('pictures',

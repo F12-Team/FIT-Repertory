@@ -1,4 +1,4 @@
-from models import Direction, Group, Role, Status, Semester, Type, Student, User, Image, Info, Project
+from models import Image, Project
 import os
 from uuid import uuid4
 from flask import current_app

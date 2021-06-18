@@ -2,8 +2,6 @@ from flask import Flask, render_template, abort, send_from_directory, render_tem
 from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy import MetaData, desc
 from flask_migrate import Migrate
-from sqlalchemy import exc
-import os
 
 app = Flask(__name__)
 application = app
@@ -22,7 +20,7 @@ db = SQLAlchemy(app, metadata=MetaData(naming_convention=naming_convention))
 migrate = Migrate(app, db)
 
 
-from models import Direction, Group, Role, Status, Semester, Type, Student, User, Image, Info, Project
+from models import Direction, Image, Project
 
 
 from auth import bp as auth_bp, init_login_manager
@@ -41,7 +39,6 @@ app.register_blueprint(teamlead_bp)
 app.register_blueprint(project_bp)
 app.register_blueprint(view_bp)
 
-import json
 from tools import ImageSaver
 
 @app.route('/')
@@ -103,13 +100,13 @@ def e503():
     return render_template('503.html')
 
 
-@app.errorhandler(404)
-def page_not_found(e):
-    print(e)
-    return render_template('404.html'), 404
+# @app.errorhandler(404)
+# def page_not_found(e):
+#     print(e)
+#     return render_template('404.html'), 404
 
 
-@app.errorhandler(Exception)
-def server_error(e):
-    print(e)
-    return render_template('503.html'), 503
+# @app.errorhandler(Exception)
+# def server_error(e):
+#     print(e)
+#     return render_template('503.html'), 503

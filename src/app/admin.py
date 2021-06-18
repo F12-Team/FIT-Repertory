@@ -1,10 +1,5 @@
 from flask import Blueprint, render_template, redirect, url_for, flash, request, jsonify
-from flask_login import LoginManager, login_user, logout_user, login_required, current_user
-from functools import wraps
-from sqlalchemy import exc
-from models import Direction, Group, Role, Status, Semester, Type, Student, User, Image, Info, Project
-from auth import check_rights
-import bleach
+from models import Direction, Group, Project, Role, Semester, Status, User
 from app import db
 from tools import ImageSaver
 
