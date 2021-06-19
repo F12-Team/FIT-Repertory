@@ -36,6 +36,13 @@ window.onload = function () {
 
 
     if (window.location.toString().search("/view/projects") != -1) {
+        var input = document.getElementById("search");
+        input.addEventListener("keyup", function(event) {
+        if (event.keyCode === 13) {
+            event.preventDefault();
+            renderPagination();
+        }
+        });
         if (screen.width>1079) {
             document.querySelector('#proj-name1').remove();
         }
@@ -346,7 +353,7 @@ renderPagination = function () {
 
     var body = new FormData(form);
     try {
-        page_val = this.value;
+        page_val = this.value ? this.value : 1;
         body.append("page", page_val);
         sendRequest(uri, 'POST', function () {
             if (this.response[3].length > 0) {
