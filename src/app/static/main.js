@@ -310,7 +310,7 @@ ShowProjects = function (response) {
             cardName.innerHTML = response[i].name;
             var cardText = document.createElement('p');
             cardText.className = 'card-text';
-            cardText.innerHTML = truncate(response[0].short_description);
+            cardText.innerHTML = truncate(response[i].short_description);
             cardBody.appendChild(cardName);
             cardBody.appendChild(cardText);
             cardContainer.appendChild(cardImage);
