@@ -1,6 +1,6 @@
 {% extends 'admin/base_admin.html' %}
 {% from 'admin/admin_modal.html' import modal_delete%}
-
+{% from 'admin/admin_modal.html' import modal_upload%}
 {% block content_admin %}
 <div id="page-content-wrapper">
     <div class="con_admin">
@@ -169,10 +169,10 @@
                                 <div class="d-flex">
                                     <a class="btn btn-primary" id="addProjectButton"
                                         style="margin-right: 20px; background-color: #4A46FF;">+</a>
-                                    <button type="button" class="btn btn-primary" data-bs-toggle="modal"
-                                        data-bs-target="#exampleModal" id="uploadProjects"
-                                        style="margin-right: 20px; background-color: #4A46FF;">
-                                        Отправить проекты
+                                    <button type="button" class="btn btn-primary" data-toggle="modal"
+                                        data-target="#exampleModalCenter" id="uploadProjects"
+                                        style="margin-right: 20px; background-color: #4A46FF;" data-bs-toggle="modal" data-bs-target="#upload-modal">
+                                        Отправить на сохранение
                                     </button>
                                 </div>
                             </div>
@@ -187,23 +187,7 @@
         </div>
     </div>
 </div>
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Загрузка проектов</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                <p id="uploadPlaceholder"></p>
-                <p id="results"> </p>
-                <p id="loader-success"></p>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" id="modal-footer">Close</button>
-            </div>
-        </div>
-    </div>
-</div>
+
 {{ modal_delete() }}
+{{ modal_upload() }}
 {% endblock %}

@@ -4,6 +4,11 @@ function sleep(ms) {
 
 window.addEventListener('load', init);
 function init() {
+    if (window.location.toString().search("/admin/projects") != -1) {
+        document.querySelector('#addProjectButton').onclick = addProjectForm;
+        document.querySelector('#uploadProjects').onclick = Upload;
+        document.querySelector('#uploadProjects').dataset.value = 'project';
+    }
     if (window.location.toString().search("/admin/users") != -1) {
         document.querySelector('#addUserButton').onclick = addUserForm;
         document.querySelector('#uploadUsers').onclick = Upload;
@@ -20,9 +25,6 @@ function init() {
         document.querySelector('#uploadSemesters').dataset.value = 'semester';
     }
     if (window.location.toString().search("/admin/") != -1) {
-        document.getElementsByClassName('btn-danger').onclick = function () {
-            alert(3);
-        };
         els = document.getElementsByClassName('btn-danger');
         l = els.length;
         for (var i = 0; i < l; i++) {
@@ -39,6 +41,23 @@ function init() {
 
 
 }
+function addProjectForm() {
+    
+    let form = document.forms[document.forms.length - 1];
+
+    cloneForm = form.cloneNode(true);
+    cloneForm.elements.semester_id.value = form.elements.semester_id.value;
+    cloneForm.elements.direction_id.value = form.elements.direction_id.value;
+    cloneForm.elements.semester_id.value = form.elements.semester_id.value;
+    cloneForm.elements.name.value = '';
+    cloneForm.elements.curator_id.value = '';
+    // console.log(cloneForm.elements.curators_ids);
+
+    cloneForm.name = `${Math.round(Math.random() * 10000)}`;
+    cloneForm.id = `${Math.round(Math.random() * 10000)}`;
+    var pArea = document.getElementById('project-area');
+    pArea.insertBefore(cloneForm, pArea.children[pArea.children.length - 2].nextElementSibling);
+}
 function addUserForm() {
     let form = document.forms[document.forms.length - 1];
     //login
@@ -54,8 +73,6 @@ function addUserForm() {
     cloneForm.elements.last_name.value = '';
     cloneForm.elements.middle_name.value = '';
     cloneForm.elements.password.value = '';
-    // console.log(cloneForm.elements.curators_ids);
-
     cloneForm.name = `${Math.round(Math.random() * 10000)}`;
     cloneForm.id = `${Math.round(Math.random() * 10000)}`;
     var pArea = document.getElementById('project-area');
@@ -72,8 +89,6 @@ function addGroupForm() {
     cloneForm.elements.direction_id.value = form.elements.direction_id.value;
     cloneForm.elements.name.value = '';
     cloneForm.elements.description.value = '';
-    // console.log(cloneForm.elements.curators_ids);
-
     cloneForm.name = `${Math.round(Math.random() * 10000)}`;
     cloneForm.id = `${Math.round(Math.random() * 10000)}`;
     var pArea = document.getElementById('project-area');
@@ -89,8 +104,6 @@ function addSemesterForm() {
     cloneForm = form.cloneNode(true);
     cloneForm.elements.name.value = '';
     cloneForm.elements.description.value = '';
-    // console.log(cloneForm.elements.curators_ids);
-
     cloneForm.name = `${Math.round(Math.random() * 10000)}`;
     cloneForm.id = `${Math.round(Math.random() * 10000)}`;
     var pArea = document.getElementById('project-area');
@@ -98,10 +111,16 @@ function addSemesterForm() {
 }
 
 async function Upload() {
-    // alert(this.dataset.value);
     this.onclick = function () {
         return false;
     }
+    document.querySelector('#upload-results').innerHTML= '';
+    document.querySelector('#upload-placeholder').innerHTML = '';
+    document.querySelector("#loader").classList.remove('d-none');
+    if (document.querySelector('#fa-check')){
+        document.querySelector('#fa-check').style.display = 'none';
+    }
+    
     let form = document.forms[document.forms.length - 1];
     forms = document.forms;
     var cloneForm = forms[0].cloneNode(true);
@@ -114,6 +133,13 @@ async function Upload() {
     cloneForm.elements.last_name.value = '';
     cloneForm.elements.middle_name.value = '';
     cloneForm.elements.password.value = '';
+    }
+    else if (this.dataset.value == "project") {
+        cloneForm.elements.semester_id.value = form.elements.semester_id.value;
+        cloneForm.elements.direction_id.value = form.elements.direction_id.value;
+        cloneForm.elements.semester_id.value = form.elements.semester_id.value;
+        cloneForm.elements.name.value = '';
+        cloneForm.elements.curator_id.value = '';
     }
     else if(this.dataset.value == "semester") {
     cloneForm.elements.name.value = '';
@@ -175,16 +201,17 @@ async function Upload() {
 
     p1 = document.getElementById('upload-results');
     p1.innerHTML = `${success + 1} проектов успешно загружено, при загрузке ${error} произошла ошибка`;
-    successCheck = document.getElementById('uploader-success');
-    successCheck.innerHTML = '';
+    document.querySelector('#loader').classList.add('d-none');
+    var successCheck = document.getElementById('uploader-success')
     ico = document.createElement('i');
     ico.classList.add('fa');
     ico.classList.add('fa-check');
+    ico.id = 'fa-check';
     successCheck.appendChild(ico);
     projectArea = document.getElementById('project-area');
     console.log(cloneForm);
     if (projectArea.children.length < 2) {
         projectArea.insertBefore(cloneForm, projectArea.children[0]);
     }
-
+    this.onclick = Upload;
 }

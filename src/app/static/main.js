@@ -40,6 +40,7 @@ window.onload = function () {
         document.querySelector('#search-addon').onclick = function () {
             if (document.querySelector('#proj-name').value.length > 0) {
                 document.querySelector("#clickme").innerText = document.querySelector('#proj-name').value;
+                
             }
             else {
                 document.querySelector("#clickme").innerHTML = 'Проект...';
@@ -135,20 +136,12 @@ window.onload = function () {
 
 
     }
-    if (window.location.toString().search("/admin/projects") != -1) {
-
-        document.getElementById('addProjectButton').onclick = addForm;
-        document.getElementById('uploadProjects').onclick = uploadProjects;
-    }
 
     //добавление onlick деиствия для карточек на index
     var els = document.getElementsByClassName('route');
     l = els.length;
     for (var i = 0; i < l; i++) {
         els[i].onclick = function () {
-            // baseUrl = window.location.href.split("/")[0];
-            // window.history.pushState('name', '', baseUrl);
-
             showBlink(this.children[1].children[0].innerHTML, this.dataset.id);
             CatchProjectOfDirection(this.dataset.id);
         };
@@ -160,8 +153,6 @@ window.onload = function () {
         l1 = els1.length;
         for (var i = 0; i < l1; i++) {
             els1[i].onclick = function () {
-                // alert(this.innerHTML);
-                // alert(this.dataset.value);
                 showBlink(this.innerHTML, this.dataset.value);
                 CatchProjectOfDirection(this.dataset.value);
 
@@ -189,7 +180,6 @@ window.onload = function () {
 /// ДЛЯ ПОДГРУЗКИ
 showBlink = function (direction, datasetID) {
     document.querySelector("#to-projects").children[0].href = url + `/view/projects?direction_id=${datasetID}`
-    // document.cookie = `chosenDir=${datasetID}; path=/view/; expires=Tue, 19 Jan 2038 03:14:07 GMT`;
     // строчка для перехода к выбранным проектам
     var chosenDirection = document.getElementById('top-proj-derec');
     chosenDirection.innerHTML = direction;
@@ -313,94 +303,6 @@ ShowProjects = function (response) {
             cardContainer.appendChild(cardBody);
             cardPlace.appendChild(cardContainer); 
 
-            // var cardContainer = document.createElement("a");
-            // cardContainer.classList.add("route-to-pr-page");
-            // cardContainer.classList.add("top-card");
-            // cardContainer.href = url + '/view/project/' + response[i].id;
-            // /// место с картинкои и лаиками
-            // var card = document.createElement("div");
-            // card.classList.add("top-likes");
-
-            // var cardImage = document.createElement('img');
-            // try {
-            //     cardImage.src = url + "/images/" + response[i].poster[0].id;
-            //     cardImage.classList.add('poster-block-img');
-            // }
-            // catch (e) {
-            //     cardImage.src = url+ "/defposter";
-            //     cardImage.classList.add('poster-block-img');
-            // }
-            // card.appendChild(cardImage);
-            // var likePlace = document.createElement('div');
-            // likePlace.classList.add('bott-right');
-            // var likeCount = document.createElement('p');
-            // likeCount.innerHTML = response[i].likes;
-            // var heart = document.createElement('i');
-            // heart.classList.add('bi');
-            // heart.classList.add('bi-heart');
-            // likeCount.appendChild(heart);
-            // likePlace.appendChild(likeCount);
-            // card.appendChild(likePlace);
-            // cardContainer.appendChild(card);
-            // /// Название и описание проекта снизу карточки
-            // var cardBody = document.createElement('div');
-            // cardBody.classList.add('card-body');
-
-            // var cardTitle = document.createElement('h5');
-            // cardTitle.classList.add('card-title');
-            // cardTitle.classList.add('fw-bold');
-            // cardTitle.innerHTML = response[i].name;
-
-            // cardBody.appendChild(cardTitle);
-            // var cardText = document.createElement('p');
-            // cardText.classList.add('card-text');
-            // cardText.innerHTML = response[i].short_description;
-            // cardBody.appendChild(cardText);
-            // cardContainer.appendChild(cardBody);
-
-            // cardPlace.appendChild(cardContainer);
-
-            // var cardContainer = document.createElement("a");
-            // cardContainer.classList.add("route-to-pr-page");
-            // cardContainer.classList.add("top-card");
-            // cardContainer.href = url + '/view/project/' + response[i].id;
-            // /// место с картинкои и лаиками
-            // var card = document.createElement("div");
-            // card.classList.add("top-likes");
-
-            // var cardImage = document.createElement('img');
-            // cardImage.src = "https://img.pikbest.com/01/56/32/93KpIkbEsTjF8.jpg-0.jpg!bw700";
-            // cardImage.classList.add('card-img-top');
-            // card.appendChild(cardImage);
-            // var likePlace = document.createElement('div');
-            // likePlace.classList.add('bott-right');
-            // var likeCount = document.createElement('p');
-            // likeCount.innerHTML = response[i].likes;
-            // var heart = document.createElement('i');
-            // heart.classList.add('bi');
-            // heart.classList.add('bi-heart');
-            // likeCount.appendChild(heart);
-            // likePlace.appendChild(likeCount);
-            // card.appendChild(likePlace);
-            // cardContainer.appendChild(card);
-            // /// Название и описание проекта снизу карточки
-            // var cardBody = document.createElement('div');
-            // cardBody.classList.add('card-body');
-
-            // var cardTitle = document.createElement('h5');
-            // cardTitle.classList.add('card-title');
-            // cardTitle.classList.add('fw-bold');
-            // cardTitle.innerHTML = response[i].name;
-
-            // cardBody.appendChild(cardTitle);
-            // var cardText = document.createElement('p');
-            // cardText.classList.add('card-text');
-            // cardText.innerHTML = response[i].short_description;
-            // cardBody.appendChild(cardText);
-            // cardContainer.appendChild(cardBody);
-
-            // cardPlace.appendChild(cardContainer);
-
         }
     }
     baseUrl = window.location.href.split("#")[0];
@@ -430,24 +332,16 @@ renderPagination = function () {
     let urlDir = url + '/view/search';
     let uri = new URL(urlDir);
     let form = document.forms.search;
-    // console.log(form);
-    var body = new FormData(form);
 
-    // console.log(body);
-    // if (direction_id) {
-    //     body.delete("direction_id");
-    //     body.append("direction_id",direction_id)
-    // }
+    var body = new FormData(form);
     try {
-        // var curpage = document.getElementById('current_page');
         page_val = this.value;
         body.append("page", page_val);
         sendRequest(uri, 'POST', function () {
-            // console.log(this.response);
             if (this.response[3].length > 0) {
                 document.querySelector("#loading").style.display = 'none';
                 renderDirectionResponse(this.response);
-                // console.log(this.response);
+
                 renderButtons(this.response[0], first = false);
 
             }
@@ -459,46 +353,18 @@ renderPagination = function () {
 
     }
     catch (e) {
-        // alert('ТРЕВОГА, НА СЕРВЕРЕ ЗАМЕЧЕНЫ УКРАИНЦЫ. МАССОВАЯ ЭВАКУАЦИЯ');
+
         sendRequest(uri, 'POST', function () {
             renderDirectionResponse(this.response);
             renderButtons(this.response[0]);
         }, body);
     }
-    // if (page) {
 
-    //     body.append('page',page);
-
-    //     }
-    // else {
-    //  sendRequest(uri,'POST',function () {
-    //     console.log(this.response);
-    //     renderDirectionResponse(this.response);
-    //     renderButtons(this.response[0]);
-    // }, body);
-    // }
 
 
 }
-// ДЛЯ СТРАНИЦЫ /view/projects
+
 renderDirectionResponse = function (response) {
-    // <a class="to-project-link">
-    //     <!--Добавить ссылку на проект-->
-    //     <div class="d-flex flex-column bd-highlight">
-    //         <div class="d-flex justify-content-between bd-highlight pro-block">
-    //             <div class="d-flex flex-column bd-highlight pro-name-napr">
-    //                 <p class="fw-bold pro-name">Название проекта</p>
-    //                 <!--Добавить название проекта-->
-    //                 <p class="pro-derec">Учебное направление СДЕЛАТЬ!!!</p>
-    //                 <!--Добавить направление проекта-->
-    //             </div>
-    //             <p class="pro-like"><i class="bi bi-heart"></i> 2222</p>
-    //             <!--Добавить лайки проекта-->
-    //             <p class="pro-sem">СЕМЕСТР СДЕЛАТЬ!!!!</p>
-    //             <!--Добавить семестр проекта-->
-    //         </div>
-    //     </div>
-    // </a>
     var cardPlace = document.getElementById('projects');
     cardPlace.innerHTML = '';
     for (i in response[3]) {
@@ -577,7 +443,6 @@ renderButtons = function (response) {
     }
     pLength = pagination.children.length - 1;
     for (var i = 1; i < pLength; i++) {
-        // console.log(pagination.children.length);
         pagination.children[1].remove();
     }
     for (i in response.iter_pages) {
@@ -626,105 +491,4 @@ printEmpty = function () {
     var h3 = document.createElement('h3');
     h3.innerHTML = "Ничего не найдено :(";
     cardPlace.appendChild(h3);
-}
-addForm = function () {
-
-    let form = document.forms[document.forms.length - 1];
-
-    cloneForm = form.cloneNode(true);
-    cloneForm.elements.semester_id.value = form.elements.semester_id.value;
-    cloneForm.elements.direction_id.value = form.elements.direction_id.value;
-    cloneForm.elements.semester_id.value = form.elements.semester_id.value;
-    cloneForm.elements.name.value = '';
-    cloneForm.elements.curator_id.value = '';
-    // console.log(cloneForm.elements.curators_ids);
-
-    cloneForm.name = `${Math.round(Math.random() * 10000)}`;
-    cloneForm.id = `${Math.round(Math.random() * 10000)}`;
-    var pArea = document.getElementById('project-area');
-    pArea.insertBefore(cloneForm, pArea.children[pArea.children.length - 2].nextElementSibling);
-
-}
-
-uploadProjects = async function () {
-    document.getElementById('uploadProjects').onclick = function () {
-        return false;
-    }
-    let form = document.forms[document.forms.length - 1];
-    forms = document.forms;
-    cloneForm = forms[0].cloneNode(true);
-    cloneForm.elements.semester_id.value = form.elements.semester_id.value;
-    cloneForm.elements.direction_id.value = form.elements.direction_id.value;
-    cloneForm.elements.semester_id.value = form.elements.semester_id.value;
-    cloneForm.elements.name.value = '';
-    cloneForm.elements.curator_id.value = '';
-    // console.log(cloneForm.elements.curators_ids);
-
-    cloneForm.name = `${Math.round(Math.random() * 10000)}`;
-    cloneForm.id = `${Math.round(Math.random() * 10000)}`;
-    button = document.getElementById('modal-footer');
-    button.style.display = "none";
-    var success = 0;
-    var error = 0;
-    // console.log(forms);
-    // CountProjects = document.getElementById('uploadPlaceholder');
-    var onDelete = []
-    let formLength = forms.length;
-    for (var i = 0; i < forms.length; i++) {
-
-        let urlDir = url + '/admin/addproject';
-        let uri = new URL(urlDir);
-        var body = new FormData(forms[i]);
-        await sleep(1000);
-        if (body.get('checkbox')) {
-        }
-        else {
-            body.delete('checkbox');
-
-            sendRequest(uri, 'POST', function () {
-                if (this.response == "complete add") {
-                    p = document.getElementById('uploadPlaceholder');
-                    p.innerHTML = `${i} из ${formLength}`;
-                    button = document.getElementById('modal-footer');
-                    button.style.display = "";
-                    success++;
-                    // onDelete.push(forms[i].id);
-
-                    // console.log(forms[i].id);
-                    // projectArea = document.getElementById('project-area');
-                    // onDeleteForm = document.getElementById(`${forms[i].id}`); 
-                    // projectArea.removeChild(onDeleteForm);
-                } else {
-                    error++;
-                }
-            }, body);
-
-            forms[i].innerHTML = '';
-            onDelete.push(forms[i].id);
-        }
-        // console.log(onDelete);
-    }
-    for (var i = 0; i < onDelete.length; i++) {
-        if (onDelete[i] != "") {
-            // console.log(onDelete.length);
-            projectArea = document.getElementById('project-area');
-            onDeleteForm = document.getElementById(onDelete[i]);
-            projectArea.removeChild(onDeleteForm);
-            onDelete[i] = "";
-        }
-    }
-
-    p1 = document.getElementById('results');
-    p1.innerHTML = `${success + 1} проектов успешно загружено, при загрузке ${error} произошла ошибка`;
-    successCheck = document.getElementById('loader-success');
-    successCheck.innerHTML = '';
-    ico = document.createElement('i');
-    ico.classList.add('fa');
-    ico.classList.add('fa-check');
-    successCheck.appendChild(ico);
-    projectArea = document.getElementById('project-area');
-    if (projectArea.children.length < 1) {
-        projectArea.appendChild(cloneForm);
-    }
-
 }
