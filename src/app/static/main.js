@@ -3,7 +3,7 @@ function truncate(string) {
         return string
     }
     else {
-        var firstSpace = string.substring(255, substring.length);
+        var firstSpace = string.substring(255, string.length);
         if (string.substring(firstSpace.indexOf(' '),string.length)){
             return string.substring(0,firstSpace.indexOf(' ')) + "..."
         }
