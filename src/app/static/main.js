@@ -1,3 +1,17 @@
+function truncate(string) {
+    if (string.length<255){
+        return string
+    }
+    else {
+        var firstSpace = string.substring(255, substring.length);
+        if (string.substring(firstSpace.indexOf(' '),string.length)){
+            return string.substring(0,firstSpace.indexOf(' ')) + "..."
+        }
+        else {
+            return string.substring(0, 255) + "..."
+        }
+    }
+}
 var currDir = false;
 function getCookie(name) {
     let matches = document.cookie.match(new RegExp(
