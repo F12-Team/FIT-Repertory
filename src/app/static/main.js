@@ -3,12 +3,9 @@ function truncate(string) {
         return string
     }
     else {
-        var firstSpace = string.substring(255, string.length);
-        if (string.substring(firstSpace.indexOf(' '),string.length)){
-            return string.substring(0,firstSpace.indexOf(' ')) + "..."
-        }
-        else {
-            return string.substring(0, 255) + "..."
+        var firstSpace = string.substring(0, 255);
+        if (string.substring(0,firstSpace.lastIndexOf(' '))){
+            return string.substring(0,firstSpace.lastIndexOf(' ')) + "..."
         }
     }
 }
