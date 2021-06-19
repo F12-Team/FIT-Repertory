@@ -296,14 +296,12 @@ ShowProjects = function (response) {
             catch(e){
                 cardImage.style.backgroundImage = `url(${url+"/defposter"})`;
                 cardImage.style.position = 'relative';
-                var courseLike = document.createElement('div');
+                var courseLike = document.createElement('p');
                 courseLike.className = 'course-like';
-                var itemLikes = document.createElement('p');
-                itemLikes.innerHTML = response[i].likes;
                 var heart = document.createElement('i');
                 heart.className = 'bi bi-heart';
-                itemLikes.appendChild(heart);
-                courseLike.appendChild(itemLikes);
+                courseLike.innerHTML= response[i].likes;
+                courseLike.appendChild(heart);
 
             }
             cardImage.appendChild(courseLike);
