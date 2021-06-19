@@ -1,22 +1,6 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<img src="{{ url_for('static', filename='/pngs/arrow_big.svg')}}" class="img-svg"
-    style="display: inline-block; position: absolute; top: 450px;z-index: -100;">
-<img src="{{ url_for('static', filename='/pngs/arrow_small.svg')}}" class="img-svg"
-    style="display: inline-block; position: absolute; top: 600px; z-index: -100;">
-<img src="{{ url_for('static', filename='/pngs/Cylinder_top.svg')}}" class="img-svg"
-    style="display: inline-block; position: absolute; top: 900px; left: 130px;z-index: -100;">
-<img src="{{ url_for('static', filename='/pngs/Toroid 1.svg')}}" class="img-svg"
-    style="display: inline-block; position: absolute; top: 1000px; left: 10px;z-index: -100;">
-<img src="{{ url_for('static', filename='/pngs/Cylinder_bot.svg')}}" class="img-svg"
-    style="display: inline-block; position: absolute; top: 1210px; left: 50px;z-index: -100;">
-<img src="{{ url_for('static', filename='/pngs/Cube_small.svg')}}" class="img-svg"
-    style="display: inline-block; position: absolute; top: 250px; right: 80px;z-index: -100;">
-<img src="{{ url_for('static', filename='/pngs/Cube_big.svg')}}" class="img-svg"
-    style="display: inline-block; position: absolute; top: 500px; right: 150px;z-index: -100;">
-<img src="{{ url_for('static', filename='/pngs/Graph.svg')}}" class="img-svg"
-    style="display: inline-block; position: absolute; top: 900px; right: 10px;z-index: -100;">
 <div class="container mp-cont ">
     <div class="derec__block">
         <div class="site-name">
@@ -61,11 +45,9 @@
                             </option>
                             {% endfor %}
                         </select>
-
                     </div>
                 </div>
             </div>
-
         </div>
     </div>
     <div class="top_proj_block">
@@ -81,12 +63,12 @@
                 </div>
             </div>
             <div class="derec-btn">
-                <div id="to-projects" class="d-flex align-items-start flex-column bd-highlight"><a
-                        href="{{ url_for('view.projects') }}" class="btn btn-primary to-all-proj"><i
-                            class="bi bi-search mx-2"></i>Все проекты</a></div>
+                <div id="to-projects" class="d-flex align-items-start flex-column bd-highlight">
+                    <a href="{{ url_for('view.projects') }}" class="btn btn-primary to-all-proj">
+                        <i class="bi bi-search mx-2"></i>Все проекты</a>
+                </div>
             </div>
         </div>
-
         <div class="top-cards-block" id="cards">
             <div class="top-cards-flex" id="top-cards-flex">
                 {% for item in projects %}
@@ -111,7 +93,6 @@
                     <div class="card-body">
                         <h5 class="card-title fw-bold">{{ item.name }}</h5>
                         <p class="card-text">{{ item.short_description | truncate }}</p>
-                        <!-- </div> -->
                     </div>
                 </a>
                 {% endfor %}
@@ -119,4 +100,20 @@
         </div>
     </div>
 </div>
+<img src="{{ url_for('static', filename='/pngs/arrow_big.svg')}}" class="img-svg"
+    style="display: inline-block; position: absolute; top: 450px;z-index: -100;">
+<img src="{{ url_for('static', filename='/pngs/arrow_small.svg')}}" class="img-svg"
+    style="display: inline-block; position: absolute; top: 600px; z-index: -100;">
+<img src="{{ url_for('static', filename='/pngs/Cylinder_top.svg')}}" class="img-svg"
+    style="display: inline-block; position: absolute; top: 900px; left: 130px;z-index: -100;">
+<img src="{{ url_for('static', filename='/pngs/Toroid_1.svg')}}" class="img-svg"
+    style="display: inline-block; position: absolute; top: 1000px; left: 10px;z-index: -100;">
+<img src="{{ url_for('static', filename='/pngs/Cylinder_bot.svg')}}" class="img-svg"
+    style="display: inline-block; position: absolute; top: 1210px; left: 50px;z-index: -100;">
+<img src="{{ url_for('static', filename='/pngs/Cube_small.svg')}}" class="img-svg"
+    style="display: inline-block; position: absolute; top: 250px; right: 80px;z-index: -100;">
+<img src="{{ url_for('static', filename='/pngs/Cube_big.svg')}}" class="img-svg"
+    style="display: inline-block; position: absolute; top: 500px; right: 150px;z-index: -100;">
+<img src="{{ url_for('static', filename='/pngs/Graph.svg')}}" class="img-svg"
+    style="display: inline-block; position: absolute; top: 900px; right: 10px;z-index: -100;">
 {% endblock %}
