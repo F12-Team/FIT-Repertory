@@ -40,6 +40,7 @@ window.onload = function () {
         input.addEventListener("keyup", function(event) {
         if (event.keyCode === 13) {
             event.preventDefault();
+            document.querySelector("#back-search").click();
             renderPagination();
         }
         });
